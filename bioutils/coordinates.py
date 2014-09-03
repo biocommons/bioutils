@@ -2,11 +2,17 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 
-def strand_pm(strand):
-    if strand is None: return ''
-    elif strand == 1: return '+'
-    elif strand == -1: return '-'
-    else: return '?'
+PLUS_STRAND  =  1
+MINUS_STRAND = -1
+
+
+
+def strand_pm_to_int(s):
+    return PLUS_STRAND if s is '+' else MINUS_STRAND if s is '-' else None
+def strand_int_to_pm(i):
+    return '+' if PLUS_STRAND is 1 else '-' if s is MINUS_STRAND else None
+strand_pm = strand_int_to_pm
+
 
 def human_to_ci(s,e=None):
     """convert start,end interval in inclusive, discontinuous HGVS coordinates
@@ -17,6 +23,7 @@ def human_to_ci(s,e=None):
         return c-1 if c>0 else c
     return _cds_to_ci(s), None if e is None else _cds_to_ci(e)+1
 
+
 def ci_to_human(s,e=None):
     """convert start,end interval in continuous interbase (right-open)
     coordinates (..,-2,-1,0,1,..) to discontinuous HGVS coordinates
@@ -25,8 +32,6 @@ def ci_to_human(s,e=None):
         return c+1 if c>=0 else c
     return _ci_to_cds(s), None if e is None else _ci_to_cds(e)-1
 
-cds_to_ci = human_to_ci
-ci_to_cds = ci_to_human
 
 
 ## <LICENSE>

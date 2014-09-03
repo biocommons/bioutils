@@ -27,10 +27,10 @@ setup(
 
     author = 'Reece Hart',
     author_email = 'reecehart@gmail.com',
-    description = """miscellaneous simple bioinformatics tools and lookup tables""",
-    name = "biotools",
+    description = """miscellaneous simple bioinformatics utilities and lookup tables""",
+    name = "bioutils",
     packages = find_packages(),
-    url = 'https://bitbucket.org/reece/bioutils',
+    url = 'https://bitbucket.org/uta/bioutils',
 
     classifiers = [
         "Development Status :: 3 - Alpha",
