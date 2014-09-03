@@ -51,19 +51,17 @@ setup(
     ],
 
     install_requires = [
-        'biopython',
-        'pysam >= 0.8.0',
     ],
 
     setup_requires = [
         'hgtools',
         'nose',
-        #'sphinx',
-        #'sphinxcontrib-fulltoc',
+        # 'sphinx',
+        # 'sphinxcontrib-fulltoc',
     ],
 
     tests_require = [
-        #'coverage',
+        # 'coverage',
     ],
 )
 
