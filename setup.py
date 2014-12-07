@@ -30,7 +30,7 @@ setup(
     description = """miscellaneous simple bioinformatics utilities and lookup tables""",
     name = "bioutils",
     packages = find_packages(),
-    url = 'https://bitbucket.org/uta/bioutils',
+    url = 'https://bitbucket.org/biocommons/bioutils',
 
     classifiers = [
         "Development Status :: 3 - Alpha",
@@ -66,7 +66,7 @@ setup(
 )
 
 ## <LICENSE>
-## Copyright 2014 Bioutils Contributors (https://bitbucket.org/uta/bioutils)
+## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.

@@ -35,7 +35,7 @@ def ci_to_human(s,e=None):
 
 
 ## <LICENSE>
-## Copyright 2014 Bioutils Contributors (https://bitbucket.org/uta/bioutils)
+## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
