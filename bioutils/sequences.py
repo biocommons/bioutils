@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-, flake8: noqa
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 """simple functions and lookup tables for nucleic acid and amino acid sequences"""
 
 import string
 
-
-complement_transtable_str = string.maketrans('ACGT', 'TGCA')
-complement_transtable_uni = dict(zip(map(ord, u'ACGT'), u'TGCA'))
 
 aa3_to_aa1_lut = {
     'Ala': 'A',    'Arg': 'R',    'Asn': 'N',    'Asp': 'D',
@@ -18,6 +15,9 @@ aa3_to_aa1_lut = {
     'Xaa': 'X',    'Ter': '*',    'Sec': 'U',
 }
 aa1_to_aa3_lut = {v: k for k, v in aa3_to_aa1_lut.iteritems()}
+
+complement_transtable_str = string.maketrans('ACGT', 'TGCA')
+complement_transtable_uni = dict(zip(map(ord, u'ACGT'), u'TGCA'))
 
 
 def reverse_complement(s):
@@ -33,28 +33,55 @@ def reverse_complement(s):
 def replace_t_to_u(s):
     return s.replace('T', 'U').replace('t', 'u') if s else s
 
+
 def replace_u_to_t(s):
     return s.replace('U', 'T').replace('u', 't') if s else s
-    
+
 
 def aa3_to_aa1(s):
-    "convert string of 3-letter amino acids to 1-letter amino acids"
+    """convert string of 3-letter amino acids to 1-letter amino acids
+
+    >>> aa3_to_aa1('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    u'CATSARELAME'
+
+    """
     return None if s is None else ''.join([aa3_to_aa1_lut[aa3] for aa3 in
                                           [s[i:i + 3] for i in range(0, len(s), 3)]])
 
 
 def aa1_to_aa3(s):
-    "convert string of 1-letter amino acids to 3-letter amino acids"
+    """convert string of 1-letter amino acids to 3-letter amino acids
+
+    >>> aa1_to_aa3('CATSARELAME')
+    u'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+
+    """
     return None if s is None else ''.join([aa1_to_aa3_lut[aa1] for aa1 in s])
 
 
 def aa_to_aa1(s):
-    "coerce string of 1- or 3-letter amino acids to 1-letter"
+    """coerce string of 1- or 3-letter amino acids to 1-letter
+
+    >>> aa_to_aa1('CATSARELAME')
+    u'CATSARELAME'
+
+    >>> aa_to_aa1('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    u'CATSARELAME'
+
+    """
     return aa3_to_aa1(s) if __looks_like_aa3_p(s) else s
 
 
 def aa_to_aa3(s):
-    "coerce string of 1- or 3-letter amino acids to 3-letter"
+    """coerce string of 1- or 3-letter amino acids to 3-letter
+
+    >>> aa_to_aa3('CATSARELAME')
+    u'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+
+    >>> aa_to_aa3('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    u'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+
+    """
     return aa1_to_aa3(s) if not __looks_like_aa3_p(s) else s
 
 

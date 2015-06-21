@@ -66,6 +66,45 @@ def ci_to_human(s,e=None):
         return c+1 if c>=0 else c
     return _ci_to_cds(s), None if e is None else _ci_to_cds(e)-1
 
+# def h_to_c(s, e):
+#     """convert Human/HGVS interval to a continuous interval"""
+#     def _h_to_c(c):
+#         assert c != 0, '0 is not a valid position in HGVS coordinates (expected ..,-2,-1,1,1,...)'
+#         return c - 1 if c > 0 else c
+#     return (None if s is None else _hgvs_to_ci(s),
+#             None if e is None else _hgvs_to_ci(e) + 1)
+
+
+
+
+
+############################################################################
+## Deprecated functions
+
+def hgvs_coord_to_ci(s, e):
+    """convert start,end interval in inclusive, discontinuous HGVS coordinates
+    (..,-2,-1,1,2,..) to continuous interbase (right-open) coordinates
+    (..,-2,-1,0,1,..)"""
+    def _hgvs_to_ci(c):
+        assert c != 0, 'received CDS coordinate 0; expected ..,-2,-1,1,1,...'
+        return c - 1 if c > 0 else c
+    return (None if s is None else _hgvs_to_ci(s),
+            None if e is None else _hgvs_to_ci(e) + 1)
+
+
+def ci_to_hgvs_coord(s, e):
+    """ Convert continuous interbase (right-open) coordinates (..,-2,-1,0,1,..) to
+    discontinuous HGVS coordinates (..,-2,-1,1,2,..)
+    """
+    def _ci_to_hgvs(c):
+        return c + 1 if c >= 0 else c
+    return (None if s is None else _ci_to_hgvs(s),
+            None if e is None else _ci_to_hgvs(e) - 1)
+
+
+
+
+
 
 
 ## <LICENSE>
