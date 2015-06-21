@@ -1,6 +1,3 @@
-from ez_setup import use_setuptools
-use_setuptools()
-
 import re
 
 from setuptools import setup, find_packages
