@@ -17,6 +17,7 @@ syntax: glob
 .DS_Store
 .Python
 .coverage
+.eggs
 .installed.cfg
 archive
 bdist

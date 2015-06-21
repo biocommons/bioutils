@@ -1,25 +1,9 @@
-import re
-
 from setuptools import setup, find_packages
-
-
-def version_handler(mgr, options):
-    version = mgr.get_current_version()
-    if version.endswith('dev'):
-        version += '-' + mgr._invoke('log', '-l1', '-r.', '--template', '{node|short}').strip()
-    elif re.match('^\d+\.\d+$', version):
-        # StrictVersion considers x.y == x.y.0 and drops the .0 from a
-        # repo tag.  Add it back and ensure that it's really a tag for
-        # our parent.
-        version += '.0'
-        assert version in mgr.get_parent_tags('tip')
-    return version
-
 
 setup(
     license = 'Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)',
-    long_description=open('README.rst').read(),
-    use_vcs_version = {'version_handler': version_handler},
+    long_description = open('README.rst').read(),
+    use_scm_version = True,
     zip_safe = True,
 
     author = 'Reece Hart',
@@ -51,14 +35,11 @@ setup(
     ],
 
     setup_requires = [
-        'hgtools',
+        'setuptools_scm',
         'nose',
-        # 'sphinx',
-        # 'sphinxcontrib-fulltoc',
     ],
 
     tests_require = [
-        # 'coverage',
     ],
 )
 
