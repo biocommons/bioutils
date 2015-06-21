@@ -30,6 +30,13 @@ def reverse_complement(s):
     return None if s is None else _rc_uni(s) if isinstance(s, unicode) else _rc_str(s)
 
 
+def replace_t_to_u(s):
+    return s.replace('T', 'U').replace('t', 'u') if s else s
+
+def replace_u_to_t(s):
+    return s.replace('U', 'T').replace('u', 't') if s else s
+    
+
 def aa3_to_aa1(s):
     "convert string of 3-letter amino acids to 1-letter amino acids"
     return None if s is None else ''.join([aa3_to_aa1_lut[aa3] for aa3 in
