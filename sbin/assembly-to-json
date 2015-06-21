@@ -1,0 +1,147 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import absolute_import, division, print_function, unicode_literals
+
+__doc__ = """this is what I do"""
+
+from argparse import ArgumentParser
+import csv
+import cStringIO as stringio
+import json
+import logging
+import os
+import re
+import sys
+import urllib2
+
+
+class Assembly(object):
+    """Parse an assembly file from NCBI, like this one:
+      ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/GCF_000001405.p13.assembly.txt
+    """
+
+    def __init__(self, body):
+        self._body = body.replace("\r","")
+    
+    @property
+    def name(self):
+        return re.search('^# Assembly Name:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+
+    @property
+    def description(self):
+        try:
+            return re.search('^# Description:\s+(.+)', self._body, flags=re.MULTILINE).group(1).strip()
+        except AttributeError:
+            return None
+
+    @property
+    def taxid(self):
+        return re.search('^# Taxid:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+    
+    @property
+    def genbank_accession(self):
+        try:
+            return re.search('^# GenBank Assembly Accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        except AttributeError:
+            return None
+
+    @property
+    def refseq_accession(self):
+        return re.search('^# RefSeq Assembly Accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+
+    @property
+    def submitter(self):
+        return re.search('^# Submitter:\s+(.+)', self._body, flags=re.MULTILINE).group(1).strip()
+
+    @property
+    def date(self):
+        dt = re.search('^# Date:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        ymd = map(int,dt.split('-'))
+        return "{:4d}-{:02d}-{:02d}".format(*ymd)
+
+    @property
+    def assembly_units(self):
+        block = re.search('## Assembly-Units:\n(.+?)\n#\n', self._body, flags=re.DOTALL).group(1).replace("## ","")
+        dr = csv.DictReader(stringio.StringIO(block), delimiter=str("\t"))
+        return list(dr)
+
+    @property
+    def sequences(self):
+        block = re.search('# (Sequence-Name.+)', self._body, flags=re.DOTALL).group(1)
+        dr = csv.DictReader(stringio.StringIO(block), delimiter=str("\t"))
+        return list(dr)
+
+
+
+def parse_options(argv):
+    ap = ArgumentParser(
+        description = __doc__,
+        )
+    ap.add_argument('ASSEMBLIES', nargs='+', help="files or accessions (GCF or GCA)")
+    ap.add_argument('--prefix', '-p', required=True, help="directory prefix for saving files -- must exist")
+    ap.add_argument('--fetch', '-f', help="ASSEMBLIES are accessions, to be fetched from NCBI", action="store_true")
+    opts = ap.parse_args(argv[1:])
+    return opts
+
+
+def build_seq_rec(seqrec):
+    aliases = []
+    if seqrec["UCSC-style-name"] != "na":
+        aliases = [seqrec["UCSC-style-name"]]     # "chr17_ctg5_hap1"
+    if seqrec["UCSC-style-name"] != "na":
+        genbank_ac = seqrec["GenBank-Accn"]       # "GL000258.1",
+    else:
+        genbank_ac = None
+
+    return {
+        'name': seqrec["Sequence-Name"],          # "HSCHR17_1_CTG5",
+        'assembly_unit': seqrec["Assembly-Unit"], # "ALT_REF_LOCI_9"
+        'genbank_ac': genbank_ac,
+        'refseq_ac': seqrec["RefSeq-Accn"],       # "NT_167251.1"
+        'length': int(seqrec["Sequence-Length"]), # "1680828"
+        'aliases': aliases,                       
+        #'': seqrec["Assigned-Molecule"], # "17"
+        #'': seqrec["Relationship"], # "=",
+        #'': seqrec["Assigned-Molecule-Location/Type"], # "Chromosome",
+        #'': seqrec["Sequence-Role"], # "alt-scaffold"
+        }
+
+def process1(opts, assy_name):
+    if opts.fetch:
+        url = "ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/{n}.assembly.txt".format(n=assy_name)
+        content = urllib2.urlopen(url).read()
+    else:
+        content = open(assy_name,'r').read()
+
+    assy = Assembly(content)
+
+    obj = {
+        'name': assy.name,
+        'description': assy.description,
+        'date': assy.date,
+        'submitter': assy.submitter,
+        'genbank_ac': assy.genbank_accession,
+        'refseq_ac': assy.refseq_accession,
+        'sequences': [build_seq_rec(sr) for sr in assy.sequences],
+        }
+    out_fn = os.path.join(opts.prefix, assy.name + '.json')
+    with open(out_fn,'w') as out_fd:
+        json.dump(fp=out_fd, sort_keys=True, indent=2, obj=obj)
+    return out_fn
+
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger()
+
+    opts = parse_options(sys.argv)
+
+    for assy_name in opts.ASSEMBLIES:
+        try:
+            out_fn = process1(opts, assy_name)
+            logger.info('wrote {}'.format(out_fn))
+        except Exception as e:
+            logger.error("oopsie on " + assy_name)
+            logger.exception(e)
+            

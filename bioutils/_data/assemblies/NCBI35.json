@@ -1,0 +1,954 @@
+{
+  "date": "2004-08-24", 
+  "description": null, 
+  "genbank_ac": null, 
+  "name": "NCBI35", 
+  "refseq_ac": "GCF_000001405.11", 
+  "sequences": [
+    {
+      "aliases": [
+        "chr1"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 248769978, 
+      "name": "1", 
+      "refseq_ac": "NC_000001.8"
+    }, 
+    {
+      "aliases": [
+        "chr2"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 243386387, 
+      "name": "2", 
+      "refseq_ac": "NC_000002.9"
+    }, 
+    {
+      "aliases": [
+        "chr3"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 200276456, 
+      "name": "3", 
+      "refseq_ac": "NC_000003.9"
+    }, 
+    {
+      "aliases": [
+        "chr4"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 192191500, 
+      "name": "4", 
+      "refseq_ac": "NC_000004.9"
+    }, 
+    {
+      "aliases": [
+        "chr5"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 181001553, 
+      "name": "5", 
+      "refseq_ac": "NC_000005.8"
+    }, 
+    {
+      "aliases": [
+        "chr6"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 172801261, 
+      "name": "6", 
+      "refseq_ac": "NC_000006.9"
+    }, 
+    {
+      "aliases": [
+        "chr7"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 159257103, 
+      "name": "7", 
+      "refseq_ac": "NC_000007.11"
+    }, 
+    {
+      "aliases": [
+        "chr8"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 146868636, 
+      "name": "8", 
+      "refseq_ac": "NC_000008.9"
+    }, 
+    {
+      "aliases": [
+        "chr9"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 139391933, 
+      "name": "9", 
+      "refseq_ac": "NC_000009.9"
+    }, 
+    {
+      "aliases": [
+        "chr10"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 135526903, 
+      "name": "10", 
+      "refseq_ac": "NC_000010.8"
+    }, 
+    {
+      "aliases": [
+        "chr11"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 134452384, 
+      "name": "11", 
+      "refseq_ac": "NC_000011.8"
+    }, 
+    {
+      "aliases": [
+        "chr12"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 132916629, 
+      "name": "12", 
+      "refseq_ac": "NC_000012.9"
+    }, 
+    {
+      "aliases": [
+        "chr13"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 114329838, 
+      "name": "13", 
+      "refseq_ac": "NC_000013.9"
+    }, 
+    {
+      "aliases": [
+        "chr14"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 106368585, 
+      "name": "14", 
+      "refseq_ac": "NC_000014.7"
+    }, 
+    {
+      "aliases": [
+        "chr15"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 100923261, 
+      "name": "15", 
+      "refseq_ac": "NC_000015.8"
+    }, 
+    {
+      "aliases": [
+        "chr16"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 88932739, 
+      "name": "16", 
+      "refseq_ac": "NC_000016.8"
+    }, 
+    {
+      "aliases": [
+        "chr17"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 80592752, 
+      "name": "17", 
+      "refseq_ac": "NC_000017.9"
+    }, 
+    {
+      "aliases": [
+        "chr18"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 76121415, 
+      "name": "18", 
+      "refseq_ac": "NC_000018.8"
+    }, 
+    {
+      "aliases": [
+        "chr19"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 64063509, 
+      "name": "19", 
+      "refseq_ac": "NC_000019.8"
+    }, 
+    {
+      "aliases": [
+        "chr20"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 62435964, 
+      "name": "20", 
+      "refseq_ac": "NC_000020.9"
+    }, 
+    {
+      "aliases": [
+        "chr21"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 46944323, 
+      "name": "21", 
+      "refseq_ac": "NC_000021.7"
+    }, 
+    {
+      "aliases": [
+        "chr22"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 49762028, 
+      "name": "22", 
+      "refseq_ac": "NC_000022.8"
+    }, 
+    {
+      "aliases": [
+        "chrX"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 156343432, 
+      "name": "X", 
+      "refseq_ac": "NC_000023.8"
+    }, 
+    {
+      "aliases": [
+        "chrY"
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "na", 
+      "length": 57701691, 
+      "name": "Y", 
+      "refseq_ac": "NC_000024.7"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 183763, 
+      "name": "Hs1_78018_35", 
+      "refseq_ac": "NT_077949.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 114056, 
+      "name": "Hs1_78031_35", 
+      "refseq_ac": "NT_077962.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 192352, 
+      "name": "Hs1_78033_35", 
+      "refseq_ac": "NT_077964.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 1637740, 
+      "name": "Hs1_78036_35", 
+      "refseq_ac": "NT_077967.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 208942, 
+      "name": "Hs1_78039_35", 
+      "refseq_ac": "NT_077970.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 197748, 
+      "name": "Hs1_79551_35", 
+      "refseq_ac": "NT_079486.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 51825, 
+      "name": "Hs1_79552_35", 
+      "refseq_ac": "NT_079487.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 27532, 
+      "name": "Hs1_79554_35", 
+      "refseq_ac": "NT_079489.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 25994, 
+      "name": "Hs1_79555_35", 
+      "refseq_ac": "NT_079490.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 106433, 
+      "name": "Hs1_79561_35", 
+      "refseq_ac": "NT_079496.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 176242, 
+      "name": "Hs1_79562_35", 
+      "refseq_ac": "NT_079497.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 42503, 
+      "name": "Hs1_79566_35", 
+      "refseq_ac": "NT_079501.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 145186, 
+      "name": "Hs1_86220_35", 
+      "refseq_ac": "NT_086608.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 136815, 
+      "name": "Hs1_86221_35", 
+      "refseq_ac": "NT_086609.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 182587, 
+      "name": "Hs2_78064_35", 
+      "refseq_ac": "NT_077995.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 185571, 
+      "name": "Hs2_79568_35", 
+      "refseq_ac": "NT_079503.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 146010, 
+      "name": "Hs3_79571_35", 
+      "refseq_ac": "NT_079506.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 172475, 
+      "name": "Hs3_79572_35", 
+      "refseq_ac": "NT_079507.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 137703, 
+      "name": "Hs3_79573_35", 
+      "refseq_ac": "NT_079508.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 143068, 
+      "name": "Hs3_79574_35", 
+      "refseq_ac": "NT_079509.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 171460, 
+      "name": "Hs3_86222_35", 
+      "refseq_ac": "NT_086643.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 137634, 
+      "name": "Hs4_78085_35", 
+      "refseq_ac": "NT_078016.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 3994, 
+      "name": "Hs4_79575_35", 
+      "refseq_ac": "NT_079510.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 96249, 
+      "name": "Hs4_86224_35", 
+      "refseq_ac": "NT_086661.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 191469, 
+      "name": "Hs4_86225_35", 
+      "refseq_ac": "NT_086662.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 161147, 
+      "name": "Hs4_86226_35", 
+      "refseq_ac": "NT_086663.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 189789, 
+      "name": "Hs4_91341_35", 
+      "refseq_ac": "NT_091700.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 143687, 
+      "name": "Hs5_79578_35", 
+      "refseq_ac": "NT_079513.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 1305230, 
+      "name": "Hs6_78089_35", 
+      "refseq_ac": "NT_078020.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 520332, 
+      "name": "Hs6_78092_35", 
+      "refseq_ac": "NT_078023.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 112804, 
+      "name": "Hs7_79579_35", 
+      "refseq_ac": "NT_079514.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 179305, 
+      "name": "Hs7_79580_35", 
+      "refseq_ac": "NT_079515.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 153959, 
+      "name": "Hs7_79581_35", 
+      "refseq_ac": "NT_079516.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 182896, 
+      "name": "Hs7_86228_35", 
+      "refseq_ac": "NT_086714.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 12854, 
+      "name": "Hs8_78107_35", 
+      "refseq_ac": "NT_078038.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 50950, 
+      "name": "Hs8_79582_35", 
+      "refseq_ac": "NT_079517.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 183161, 
+      "name": "Hs8_79583_35", 
+      "refseq_ac": "NT_079518.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 46082, 
+      "name": "Hs8_79584_35", 
+      "refseq_ac": "NT_079519.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 37175, 
+      "name": "Hs8_79586_35", 
+      "refseq_ac": "NT_079521.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 13036, 
+      "name": "Hs8_79588_35", 
+      "refseq_ac": "NT_079523.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 38914, 
+      "name": "Hs8_79589_35", 
+      "refseq_ac": "NT_079524.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 211638, 
+      "name": "Hs8_79591_35", 
+      "refseq_ac": "NT_079526.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 187035, 
+      "name": "Hs9_78115_35", 
+      "refseq_ac": "NT_078046.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 36148, 
+      "name": "Hs9_78141_35", 
+      "refseq_ac": "NT_078072.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 185143, 
+      "name": "Hs9_78143_35", 
+      "refseq_ac": "NT_078074.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 154740, 
+      "name": "Hs9_78144_35", 
+      "refseq_ac": "NT_078075.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 48770, 
+      "name": "Hs9_78145_35", 
+      "refseq_ac": "NT_078076.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 157546, 
+      "name": "Hs9_78147_35", 
+      "refseq_ac": "NT_078078.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 173443, 
+      "name": "Hs9_78148_35", 
+      "refseq_ac": "NT_078079.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 19840, 
+      "name": "Hs9_86235_35", 
+      "refseq_ac": "NT_086761.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 113275, 
+      "name": "Hs10_79609_35", 
+      "refseq_ac": "NT_079544.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 466818, 
+      "name": "Hs12_91342_35", 
+      "refseq_ac": "NT_091701.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 186858, 
+      "name": "Hs13_78161_35", 
+      "refseq_ac": "NT_078092.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 139260, 
+      "name": "Hs15_79611_35", 
+      "refseq_ac": "NT_079546.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 168820, 
+      "name": "Hs15_79612_35", 
+      "refseq_ac": "NT_079547.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 119514, 
+      "name": "Hs15_79613_35", 
+      "refseq_ac": "NT_079548.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 111864, 
+      "name": "Hs15_79614_35", 
+      "refseq_ac": "NT_079549.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 44888, 
+      "name": "Hs15_79618_35", 
+      "refseq_ac": "NT_079553.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 105485, 
+      "name": "Hs16_86241_35", 
+      "refseq_ac": "NT_086839.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 104495, 
+      "name": "Hs17_78171_35", 
+      "refseq_ac": "NT_078102.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 142595, 
+      "name": "Hs17_79621_35", 
+      "refseq_ac": "NT_079556.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 120350, 
+      "name": "Hs17_79622_35", 
+      "refseq_ac": "NT_079557.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 185449, 
+      "name": "Hs17_79623_35", 
+      "refseq_ac": "NT_079558.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 163628, 
+      "name": "Hs17_79624_35", 
+      "refseq_ac": "NT_079559.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 37443, 
+      "name": "Hs17_79625_35", 
+      "refseq_ac": "NT_079560.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 45226, 
+      "name": "Hs17_79626_35", 
+      "refseq_ac": "NT_079561.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 147354, 
+      "name": "Hs17_79628_35", 
+      "refseq_ac": "NT_079563.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 19187, 
+      "name": "Hs17_79629_35", 
+      "refseq_ac": "NT_079564.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 37498, 
+      "name": "Hs17_79630_35", 
+      "refseq_ac": "NT_079565.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 117663, 
+      "name": "Hs17_79631_35", 
+      "refseq_ac": "NT_079566.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 81707, 
+      "name": "Hs17_79632_35", 
+      "refseq_ac": "NT_079567.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 182567, 
+      "name": "Hs17_79633_35", 
+      "refseq_ac": "NT_079568.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 41001, 
+      "name": "Hs17_79634_35", 
+      "refseq_ac": "NT_079569.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 31181, 
+      "name": "Hs17_79635_35", 
+      "refseq_ac": "NT_079570.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 174588, 
+      "name": "Hs17_91343_35", 
+      "refseq_ac": "NT_091702.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 186078, 
+      "name": "Hs17_91344_35", 
+      "refseq_ac": "NT_091703.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 4262, 
+      "name": "Hs18_79637_35", 
+      "refseq_ac": "NT_079572.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 92689, 
+      "name": "Hs19_78172_35", 
+      "refseq_ac": "NT_078103.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 159169, 
+      "name": "Hs19_86250_35", 
+      "refseq_ac": "NT_086901.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 40752, 
+      "name": "Hs22_86252_35", 
+      "refseq_ac": "NT_086924.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 166566, 
+      "name": "Hs22_91345_35", 
+      "refseq_ac": "NT_091704.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 217385, 
+      "name": "HsX_78178_35", 
+      "refseq_ac": "NT_078109.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 204131, 
+      "name": "HsX_78179_35", 
+      "refseq_ac": "NT_078110.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 1005289, 
+      "name": "HsX_78185_35", 
+      "refseq_ac": "NT_078116.3"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 24360, 
+      "name": "HsX_79640_35", 
+      "refseq_ac": "NT_079575.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": null, 
+      "length": 68003, 
+      "name": "HsX_79643_35", 
+      "refseq_ac": "NT_079578.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "DR52", 
+      "genbank_ac": null, 
+      "length": 139182, 
+      "name": "NG_002392.2", 
+      "refseq_ac": "NG_002392.2"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "DR53", 
+      "genbank_ac": null, 
+      "length": 150447, 
+      "name": "NG_002433.1", 
+      "refseq_ac": "NG_002433.1"
+    }
+  ], 
+  "submitter": "International Human Genome Sequencing Consortium"
+}
