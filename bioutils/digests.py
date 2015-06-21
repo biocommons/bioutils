@@ -12,7 +12,7 @@ def _normalize_sequence(seq):
 
     """
 
-    return re.sub("\s","",seq).upper()
+    return re.sub("[\s\*]","",seq).upper()
 
 
 def seq_seguid(seq, normalize=True):
@@ -44,6 +44,12 @@ def seq_md5(seq, normalize=True):
     'd41d8cd98f00b204e9800998ecf8427e'
 
     >>> seq_md5('ACGT')
+    'f1f8f4bf413b16ad135722aa4591043e'
+
+    >>> seq_md5('ACGT*')
+    'f1f8f4bf413b16ad135722aa4591043e'
+
+    >>> seq_md5(' A C G T ')
     'f1f8f4bf413b16ad135722aa4591043e'
 
     >>> seq_md5('acgt')
