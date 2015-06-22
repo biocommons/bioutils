@@ -38,6 +38,7 @@ setup(
     setup_requires = [
         'setuptools_scm',
         'nose',
+        'recordtype',
     ],
 
     tests_require = [
