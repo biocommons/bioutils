@@ -20,14 +20,35 @@ complement_transtable_str = string.maketrans('ACGT', 'TGCA')
 complement_transtable_uni = dict(zip(map(ord, u'ACGT'), u'TGCA'))
 
 
+
+def complement(s):
+    """return the complement of a sequence
+
+    >>> complement(b'ATCG')
+    'TAGC'
+
+    >>> complement(u'ATCG')
+    u'TAGC'
+
+    """
+    if s is None:
+        return None
+    if isinstance(s, unicode):
+        return s.translate(complement_transtable_uni)
+    return s.translate(complement_transtable_str)
+
+
 def reverse_complement(s):
-    def _rc_str(s):
-        return ''.join(reversed(s.translate(complement_transtable_str)))
+    """return the reverse complement of a sequence
 
-    def _rc_uni(s):
-        return ''.join(reversed(s.translate(complement_transtable_uni)))
+    >>> reverse_complement(b'ATCG')
+    'CGAT'
 
-    return None if s is None else _rc_uni(s) if isinstance(s, unicode) else _rc_str(s)
+    >>> reverse_complement(u'ATCG')
+    u'CGAT'
+
+    """
+    return b''.join(reversed(complement(s)))
 
 
 def replace_t_to_u(s):
