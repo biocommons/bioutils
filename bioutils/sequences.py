@@ -48,7 +48,7 @@ def reverse_complement(s):
     u'CGAT'
 
     """
-    return b''.join(reversed(complement(s)))
+    return None if s is None else b''.join(reversed(complement(s)))
 
 
 def replace_t_to_u(s):
