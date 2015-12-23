@@ -21,6 +21,7 @@ syntax: glob
 .installed.cfg
 archive
 bdist
+bioutils/_data/assemblies/pull
 build
 cover
 dist

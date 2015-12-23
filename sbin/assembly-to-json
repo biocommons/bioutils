@@ -3,7 +3,12 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-__doc__ = """this is what I do"""
+"""fetch assembly data from NCBI and convert to json
+
+eg$ ./sbin/assembly-to-json -p bioutils/_data/assemblies -f GCF_000001405.
+
+"""
+
 
 from argparse import ArgumentParser
 import csv
@@ -16,9 +21,9 @@ import sys
 import urllib2
 
 
-class Assembly(object):
+class AssemblyParser(object):
     """Parse an assembly file from NCBI, like this one:
-      ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/GCF_000001405.p13.assembly.txt
+      ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/GCF_000001405.25.assembly.txt
     """
 
     def __init__(self, body):
@@ -78,7 +83,7 @@ def parse_options(argv):
     ap = ArgumentParser(
         description = __doc__,
         )
-    ap.add_argument('ASSEMBLIES', nargs='+', help="files or accessions (GCF or GCA)")
+    ap.add_argument('ASSEMBLIES', nargs='+', help="accessions (GCF or GCA) or filenames of downloaded assemblies")
     ap.add_argument('--prefix', '-p', required=True, help="directory prefix for saving files -- must exist")
     ap.add_argument('--fetch', '-f', help="ASSEMBLIES are accessions, to be fetched from NCBI", action="store_true")
     opts = ap.parse_args(argv[1:])
@@ -86,13 +91,14 @@ def parse_options(argv):
 
 
 def build_seq_rec(seqrec):
-    aliases = []
-    if seqrec["UCSC-style-name"] != "na":
-        aliases = [seqrec["UCSC-style-name"]]     # "chr17_ctg5_hap1"
-    if seqrec["UCSC-style-name"] != "na":
+    if seqrec["GenBank-Accn"] != "na":
         genbank_ac = seqrec["GenBank-Accn"]       # "GL000258.1",
     else:
         genbank_ac = None
+
+    aliases = []
+    if seqrec["UCSC-style-name"] != "na":
+        aliases = [seqrec["UCSC-style-name"]]     # "chr17_ctg5_hap1"
 
     return {
         'name': seqrec["Sequence-Name"],          # "HSCHR17_1_CTG5",
@@ -107,14 +113,16 @@ def build_seq_rec(seqrec):
         #'': seqrec["Sequence-Role"], # "alt-scaffold"
         }
 
-def process1(opts, assy_name):
-    if opts.fetch:
-        url = "ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/{n}.assembly.txt".format(n=assy_name)
-        content = urllib2.urlopen(url).read()
-    else:
-        content = open(assy_name,'r').read()
 
-    assy = Assembly(content)
+def process1(opts, assy_id_or_name):
+    if opts.fetch:
+        url = "ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/{n}.assembly.txt".format(n=assy_id_or_name)
+        content = urllib2.urlopen(url).read()
+        logger.info("Fetched {url}".format(url=url))
+    else:
+        content = open(assy_id_or_name,'r').read()
+
+    assy = AssemblyParser(content)
 
     obj = {
         'name': assy.name,
@@ -125,7 +133,9 @@ def process1(opts, assy_name):
         'refseq_ac': assy.refseq_accession,
         'sequences': [build_seq_rec(sr) for sr in assy.sequences],
         }
+
     out_fn = os.path.join(opts.prefix, assy.name + '.json')
+
     with open(out_fn,'w') as out_fd:
         json.dump(fp=out_fd, sort_keys=True, indent=2, obj=obj)
     return out_fn
@@ -137,11 +147,12 @@ if __name__ == '__main__':
 
     opts = parse_options(sys.argv)
 
-    for assy_name in opts.ASSEMBLIES:
+    for assy_id_or_name in opts.ASSEMBLIES:
         try:
-            out_fn = process1(opts, assy_name)
-            logger.info('wrote {}'.format(out_fn))
+            out_fn = process1(opts, assy_id_or_name)
+            if out_fn is not None:
+                logger.info('wrote {}'.format(out_fn))
         except Exception as e:
-            logger.error("oopsie on " + assy_name)
+            logger.error("oopsie on " + assy_id_or_name)
             logger.exception(e)
             

@@ -10,8 +10,8 @@
         "chr1"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 251393929, 
+      "genbank_ac": null, 
+      "length": 246127941, 
       "name": "1", 
       "refseq_ac": "NC_000001.7"
     }, 
@@ -20,8 +20,8 @@
         "chr2"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 244420789, 
+      "genbank_ac": null, 
+      "length": 243615958, 
       "name": "2", 
       "refseq_ac": "GPC_000000200.1"
     }, 
@@ -30,8 +30,8 @@
         "chr3"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 199943306, 
+      "genbank_ac": null, 
+      "length": 199344050, 
       "name": "3", 
       "refseq_ac": "NC_000003.8"
     }, 
@@ -40,8 +40,8 @@
         "chr4"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 192129983, 
+      "genbank_ac": null, 
+      "length": 191731959, 
       "name": "4", 
       "refseq_ac": "NC_000004.8"
     }, 
@@ -50,8 +50,8 @@
         "chr5"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 181178609, 
+      "genbank_ac": null, 
+      "length": 181034922, 
       "name": "5", 
       "refseq_ac": "NC_000005.7"
     }, 
@@ -60,8 +60,8 @@
         "chr6"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 172732953, 
+      "genbank_ac": null, 
+      "length": 170914576, 
       "name": "6", 
       "refseq_ac": "NC_000006.8"
     }, 
@@ -70,8 +70,8 @@
         "chr7"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 159028155, 
+      "genbank_ac": null, 
+      "length": 158545518, 
       "name": "7", 
       "refseq_ac": "NC_000007.10"
     }, 
@@ -80,8 +80,8 @@
         "chr8"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 147258200, 
+      "genbank_ac": null, 
+      "length": 146308819, 
       "name": "8", 
       "refseq_ac": "NC_000008.8"
     }, 
@@ -90,8 +90,8 @@
         "chr9"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 138538386, 
+      "genbank_ac": null, 
+      "length": 136372045, 
       "name": "9", 
       "refseq_ac": "GPC_000000201.1"
     }, 
@@ -100,8 +100,8 @@
         "chr10"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 135880990, 
+      "genbank_ac": null, 
+      "length": 135037215, 
       "name": "10", 
       "refseq_ac": "NC_000010.7"
     }, 
@@ -110,7 +110,7 @@
         "chr11"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 134482954, 
       "name": "11", 
       "refseq_ac": "NC_000011.7"
@@ -120,7 +120,7 @@
         "chr12"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 132078379, 
       "name": "12", 
       "refseq_ac": "NC_000012.8"
@@ -130,8 +130,8 @@
         "chr13"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 113232578, 
+      "genbank_ac": null, 
+      "length": 113042980, 
       "name": "13", 
       "refseq_ac": "NC_000013.8"
     }, 
@@ -140,7 +140,7 @@
         "chr14"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 105311216, 
       "name": "14", 
       "refseq_ac": "NC_000014.6"
@@ -150,8 +150,8 @@
         "chr15"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 100989482, 
+      "genbank_ac": null, 
+      "length": 100256656, 
       "name": "15", 
       "refseq_ac": "NC_000015.7"
     }, 
@@ -160,7 +160,7 @@
         "chr16"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 90041932, 
       "name": "16", 
       "refseq_ac": "NC_000016.7"
@@ -170,8 +170,8 @@
         "chr17"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 83559488, 
+      "genbank_ac": null, 
+      "length": 81860266, 
       "name": "17", 
       "refseq_ac": "NC_000017.8"
     }, 
@@ -180,8 +180,8 @@
         "chr18"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 76119401, 
+      "genbank_ac": null, 
+      "length": 76115139, 
       "name": "18", 
       "refseq_ac": "NC_000018.7"
     }, 
@@ -190,8 +190,8 @@
         "chr19"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 63904340, 
+      "genbank_ac": null, 
+      "length": 63811651, 
       "name": "19", 
       "refseq_ac": "NC_000019.8"
     }, 
@@ -200,7 +200,7 @@
         "chr20"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 63741868, 
       "name": "20", 
       "refseq_ac": "NC_000020.8"
@@ -210,7 +210,7 @@
         "chr21"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 46976097, 
       "name": "21", 
       "refseq_ac": "NC_000021.6"
@@ -220,7 +220,7 @@
         "chr22"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 49396972, 
       "name": "22", 
       "refseq_ac": "NC_000022.7"
@@ -230,8 +230,8 @@
         "chrX"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
-      "length": 156595949, 
+      "genbank_ac": null, 
+      "length": 153692391, 
       "name": "X", 
       "refseq_ac": "NC_000023.7"
     }, 
@@ -240,7 +240,7 @@
         "chrY"
       ], 
       "assembly_unit": "Primary Assembly", 
-      "genbank_ac": "na", 
+      "genbank_ac": null, 
       "length": 50286555, 
       "name": "Y", 
       "refseq_ac": "NC_000024.6"

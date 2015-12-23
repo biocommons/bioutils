@@ -1,9 +1,9 @@
 {
-  "date": "2014-12-05", 
-  "description": "Genome Reference Consortium Human Build 38 patch release 2 (GRCh38.p2)", 
-  "genbank_ac": "GCA_000001405.17", 
-  "name": "GRCh38.p2", 
-  "refseq_ac": "GCF_000001405.28", 
+  "date": "2015-09-22", 
+  "description": "Genome Reference Consortium Human Build 38 patch release 5 (GRCh38.p5)", 
+  "genbank_ac": "GCA_000001405.20", 
+  "name": "GRCh38.p5", 
+  "refseq_ac": "GCF_000001405.31", 
   "sequences": [
     {
       "aliases": [
@@ -1938,6 +1938,30 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KN538361.1", 
+      "length": 305542, 
+      "name": "HG2095_PATCH", 
+      "refseq_ac": "NW_011332688.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031383.1", 
+      "length": 467143, 
+      "name": "HG1342_HG2282_PATCH", 
+      "refseq_ac": "NW_012132914.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458383.1", 
+      "length": 349938, 
+      "name": "HSCHR1_4_CTG3", 
+      "refseq_ac": "NW_014040926.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN196472.1", 
       "length": 186494, 
       "name": "HG986_PATCH", 
@@ -1950,6 +1974,14 @@
       "length": 166200, 
       "name": "HG2058_PATCH", 
       "refseq_ac": "NW_009646195.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458382.1", 
+      "length": 141019, 
+      "name": "HSCHR1_3_CTG3", 
+      "refseq_ac": "NW_014040925.1"
     }, 
     {
       "aliases": [], 
@@ -1970,10 +2002,10 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
-      "genbank_ac": "KN538361.1", 
-      "length": 305542, 
-      "name": "HG2095_PATCH", 
-      "refseq_ac": "NW_011332688.1"
+      "genbank_ac": "KQ458384.1", 
+      "length": 212205, 
+      "name": "HSCHR1_5_CTG32_1", 
+      "refseq_ac": "NW_014040927.1"
     }, 
     {
       "aliases": [], 
@@ -1990,6 +2022,14 @@
       "length": 365499, 
       "name": "HG2232_PATCH", 
       "refseq_ac": "NW_011332690.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031384.1", 
+      "length": 481245, 
+      "name": "HG2290_PATCH", 
+      "refseq_ac": "NW_012132915.1"
     }, 
     {
       "aliases": [], 
@@ -2018,10 +2058,58 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031385.1", 
+      "length": 373699, 
+      "name": "HG2235_PATCH", 
+      "refseq_ac": "NW_012132916.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031386.1", 
+      "length": 165718, 
+      "name": "HG2237_PATCH", 
+      "refseq_ac": "NW_012132917.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090013.1", 
+      "length": 90922, 
+      "name": "HSCHR4_2_CTG4", 
+      "refseq_ac": "NW_013171799.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090014.1", 
+      "length": 163749, 
+      "name": "HSCHR4_8_CTG12", 
+      "refseq_ac": "NW_013171800.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090015.1", 
+      "length": 236512, 
+      "name": "HSCHR4_9_CTG12", 
+      "refseq_ac": "NW_013171801.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN196477.1", 
       "length": 139087, 
       "name": "HSCHR5_7_CTG1", 
       "refseq_ac": "NW_009646199.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090017.1", 
+      "length": 82315, 
+      "name": "HSCHR6_1_CTG10", 
+      "refseq_ac": "NW_013171803.1"
     }, 
     {
       "aliases": [], 
@@ -2034,10 +2122,66 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031387.1", 
+      "length": 320750, 
+      "name": "HG1651_PATCH", 
+      "refseq_ac": "NW_012132918.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090016.1", 
+      "length": 245716, 
+      "name": "HG2072_PATCH", 
+      "refseq_ac": "NW_013171802.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031388.1", 
+      "length": 179932, 
+      "name": "HG2239_PATCH", 
+      "refseq_ac": "NW_012132919.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090018.1", 
+      "length": 163882, 
+      "name": "HSCHR9_1_CTG6", 
+      "refseq_ac": "NW_013171804.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090019.1", 
+      "length": 134099, 
+      "name": "HSCHR9_1_CTG7", 
+      "refseq_ac": "NW_013171805.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN196479.1", 
       "length": 330164, 
       "name": "HG2030_PATCH", 
       "refseq_ac": "NW_009646201.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KN538367.1", 
+      "length": 420164, 
+      "name": "HG2244_HG2245_PATCH", 
+      "refseq_ac": "NW_011332694.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090020.1", 
+      "length": 185507, 
+      "name": "HSCHR10_1_CTG6", 
+      "refseq_ac": "NW_013171806.1"
     }, 
     {
       "aliases": [], 
@@ -2066,10 +2210,10 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
-      "genbank_ac": "KN538367.1", 
-      "length": 420164, 
-      "name": "HG2244_HG2245_PATCH", 
-      "refseq_ac": "NW_011332694.1"
+      "genbank_ac": "KQ090021.1", 
+      "length": 264545, 
+      "name": "HG2334_PATCH", 
+      "refseq_ac": "NW_013171807.1"
     }, 
     {
       "aliases": [], 
@@ -2086,6 +2230,22 @@
       "length": 108875, 
       "name": "HG2217_PATCH", 
       "refseq_ac": "NW_009646203.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090022.1", 
+      "length": 181958, 
+      "name": "HG2116_PATCH", 
+      "refseq_ac": "NW_013171808.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090023.1", 
+      "length": 109323, 
+      "name": "HSCHR12_2_CTG1", 
+      "refseq_ac": "NW_013171809.1"
     }, 
     {
       "aliases": [], 
@@ -2114,26 +2274,26 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
-      "genbank_ac": "KN196483.1", 
-      "length": 35455, 
-      "name": "HG2216_PATCH", 
-      "refseq_ac": "NW_009646205.1"
-    }, 
-    {
-      "aliases": [], 
-      "assembly_unit": "PATCHES", 
-      "genbank_ac": "KN538371.1", 
-      "length": 206320, 
-      "name": "HG2288_HG2289_PATCH", 
-      "refseq_ac": "NW_011332698.1"
-    }, 
-    {
-      "aliases": [], 
-      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN538372.1", 
       "length": 356766, 
       "name": "HG2291_PATCH", 
       "refseq_ac": "NW_011332699.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090024.1", 
+      "length": 168146, 
+      "name": "HSCHR13_1_CTG7", 
+      "refseq_ac": "NW_013171810.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KN196483.1", 
+      "length": 35455, 
+      "name": "HG2216_PATCH", 
+      "refseq_ac": "NW_009646205.1"
     }, 
     {
       "aliases": [], 
@@ -2146,6 +2306,22 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090025.1", 
+      "length": 123480, 
+      "name": "HSCHR13_1_CTG8", 
+      "refseq_ac": "NW_013171811.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KN538371.1", 
+      "length": 206320, 
+      "name": "HG2288_HG2289_PATCH", 
+      "refseq_ac": "NW_011332698.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN538374.1", 
       "length": 4998962, 
       "name": "HG2139_PATCH", 
@@ -2154,10 +2330,66 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031389.1", 
+      "length": 2365364, 
+      "name": "HSCHR15_6_CTG8", 
+      "refseq_ac": "NW_012132920.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ031390.1", 
+      "length": 169136, 
+      "name": "HSCHR16_3_CTG3_1", 
+      "refseq_ac": "NW_012132921.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090026.1", 
+      "length": 59016, 
+      "name": "HSCHR16_5_CTG1", 
+      "refseq_ac": "NW_013171812.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090027.1", 
+      "length": 267463, 
+      "name": "HSCHR16_4_CTG3_1", 
+      "refseq_ac": "NW_013171813.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458385.1", 
+      "length": 205101, 
+      "name": "HSCHR18_5_CTG1_1", 
+      "refseq_ac": "NW_014040928.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ090028.1", 
+      "length": 407387, 
+      "name": "HG2213_PATCH", 
+      "refseq_ac": "NW_013171814.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KN196484.1", 
       "length": 370917, 
       "name": "HG2021_PATCH", 
       "refseq_ac": "NW_009646206.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458386.1", 
+      "length": 405389, 
+      "name": "HG26_PATCH", 
+      "refseq_ac": "NW_014040929.1"
     }, 
     {
       "aliases": [], 
@@ -2174,6 +2406,22 @@
       "length": 153027, 
       "name": "HSCHR22_5_CTG1", 
       "refseq_ac": "NW_009646208.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458387.1", 
+      "length": 155930, 
+      "name": "HSCHR22_6_CTG1", 
+      "refseq_ac": "NW_014040930.1"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KQ458388.1", 
+      "length": 174749, 
+      "name": "HSCHR22_7_CTG1", 
+      "refseq_ac": "NW_014040931.1"
     }, 
     {
       "aliases": [], 

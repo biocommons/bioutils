@@ -10,7 +10,7 @@ setup(
     author_email = 'reecehart@gmail.com',
     description = """miscellaneous simple bioinformatics utilities and lookup tables""",
     name = "bioutils",
-    package_data = {'bioutils': ['_data/*/*']},
+    package_data = {'bioutils': ['_data/assemblies/*.json']},
     packages = find_packages(),
     url = 'https://bitbucket.org/biocommons/bioutils',
 

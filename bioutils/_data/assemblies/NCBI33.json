@@ -9,7 +9,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 255166563, 
+      "length": 245203898, 
       "name": "1", 
       "refseq_ac": "NC_000001.4"
     }, 
@@ -17,7 +17,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 244279060, 
+      "length": 243315028, 
       "name": "2", 
       "refseq_ac": "GPC_000001061.1"
     }, 
@@ -25,7 +25,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 199784916, 
+      "length": 199411731, 
       "name": "3", 
       "refseq_ac": "NC_000003.5"
     }, 
@@ -33,7 +33,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 192430017, 
+      "length": 191610523, 
       "name": "4", 
       "refseq_ac": "NC_000004.5"
     }, 
@@ -49,7 +49,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 173355444, 
+      "length": 170740541, 
       "name": "6", 
       "refseq_ac": "NC_000006.5"
     }, 
@@ -57,7 +57,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 159188864, 
+      "length": 158431299, 
       "name": "7", 
       "refseq_ac": "NC_000007.7"
     }, 
@@ -65,7 +65,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 146286454, 
+      "length": 145908738, 
       "name": "8", 
       "refseq_ac": "NC_000008.5"
     }, 
@@ -73,7 +73,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 136542295, 
+      "length": 134505819, 
       "name": "9", 
       "refseq_ac": "NC_000009.5"
     }, 
@@ -81,7 +81,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 136091123, 
+      "length": 135480874, 
       "name": "10", 
       "refseq_ac": "NC_000010.4"
     }, 
@@ -89,7 +89,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 135128894, 
+      "length": 134978784, 
       "name": "11", 
       "refseq_ac": "NC_000011.4"
     }, 
@@ -97,7 +97,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 133954865, 
+      "length": 133464434, 
       "name": "12", 
       "refseq_ac": "NC_000012.5"
     }, 
@@ -105,7 +105,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 114516315, 
+      "length": 114151656, 
       "name": "13", 
       "refseq_ac": "NC_000013.5"
     }, 
@@ -121,7 +121,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 100430144, 
+      "length": 100114055, 
       "name": "15", 
       "refseq_ac": "NC_000015.4"
     }, 
@@ -129,7 +129,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 90020359, 
+      "length": 89995999, 
       "name": "16", 
       "refseq_ac": "NC_000016.4"
     }, 
@@ -137,7 +137,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 81978656, 
+      "length": 81691216, 
       "name": "17", 
       "refseq_ac": "NC_000017.5"
     }, 
@@ -153,7 +153,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 64042718, 
+      "length": 63790860, 
       "name": "19", 
       "refseq_ac": "NC_000019.5"
     }, 
@@ -185,7 +185,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 156843278, 
+      "length": 152634166, 
       "name": "X", 
       "refseq_ac": "NC_000023.4"
     }, 
@@ -193,7 +193,7 @@
       "aliases": [], 
       "assembly_unit": "Primary Assembly", 
       "genbank_ac": null, 
-      "length": 51152805, 
+      "length": 50961097, 
       "name": "Y", 
       "refseq_ac": "NC_000024.3"
     }, 
