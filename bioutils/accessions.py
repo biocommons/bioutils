@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
 
+"""bioutils.accessions -- DEPRECATED; see bioutils.assemblies
+
+"""
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-from .assemblies import get_assembly
+from .assemblies import get_assembly, strip_chr, prepend_chr
 
 import warnings
-warnings.warn("GRCh37-specific components of bioutils.accessions are deprecated; see bioutils.assemblies")
+warnings.warn("bioutils.accessions is deprecated; see bioutils.assemblies")
 
+
+############################################################################
+# Deprecated stuff
+# This is all GRCh37 specific
 
 def chr22XY(c):
     """force to name in chr1..chr22, chrX, chrY, chrM"""
@@ -15,38 +23,6 @@ def chr22XY(c):
     if c == '23': c = 'X'
     if c == '24': c = 'Y'
     return 'chr'+c
-
-
-def prepend_chr(chr):
-    """prefix chr with 'chr' if not present
-
-    >>> prepend_chr('22')
-    u'chr22'
-
-    >>> prepend_chr('chr22')
-    u'chr22'
-
-    """
-    return chr if chr[0:3] == 'chr' else 'chr' + chr
-
-
-def strip_chr(chr):
-    """remove 'chr' prefix if it exists
-
-    >>> strip_chr('22')
-    u'22'
-
-    >>> strip_chr('chr22')
-    u'22'
-
-    """
-    return chr[3:] if chr[0:3] == 'chr' else chr        
-
-
-
-############################################################################
-# Deprecated stuff
-# This is all GRCh37 specific
 
 _grch37 = get_assembly("GRCh37.p13")
 primary_assembly_accessions = {

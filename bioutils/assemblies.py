@@ -8,6 +8,22 @@ Assemblies are stored in json files with the package in
 _data/assemblies/.  (Those files are built with sbin/assembly-to-json,
 also in this package.)
 
+Definitions:
+
+* accession (ac): symbol used to refer to a sequence (e.g., NC_000001.10)
+* name: human-label (e.g., '1', 'MT', 'HSCHR6_MHC_APD_CTG1') that
+  refers to a sequence, unique within some domain (e.g., GRCh37.p10)
+* chromosome (chr): subset of names that refer to chromosomes 1..22, X, Y, MT
+* aliases: list of other names; uniqueness unknown
+
+.. note:: Some users prefer using a 'chr' prefix for chromosomes and
+some don't.  Some prefer upper case and others prefer lower.  This
+rift is unfortunate and creates unnecessary friction in sharing data.
+You say TO-my-to and I say TO-mah-to doesn't apply here.  This code
+favors using the authoritative names exactly as defined in the
+assembly records.  Users are encouraged to use sequence names
+verbatim, without prefixes or case changes.
+
 """
 
 
@@ -88,6 +104,73 @@ def get_assemblies(names=[]):
     if names == []:
         names = get_assembly_names()
     return {a['name']: a for a in (get_assembly(n) for n in names)}
+
+
+def make_name_ac_map(assy_name, primary_only=False):
+    """make map from sequence name to accession for given assembly name
+
+    >>> grch38p5_name_ac_map = make_name_ac_map('GRCh38.p5')
+    >>> grch38p5_name_ac_map['1']
+    u'NC_000001.11'
+
+    """
+    return {s['name']: s['refseq_ac']
+            for s in get_assembly(assy_name)['sequences']
+            if (not primary_only or _is_primary(s))
+            }
+
+
+def make_ac_name_map(assy_name, primary_only=False):
+    """make map from accession (str) to sequence name (str) for given assembly name
+
+    >>> grch38p5_ac_name_map = make_ac_name_map('GRCh38.p5')
+    >>> grch38p5_ac_name_map['NC_000001.11']
+    u'1'
+
+    """
+
+    return {s['refseq_ac']: s['name']
+            for s in get_assembly(assy_name)['sequences']
+            if (not primary_only or _is_primary(s))
+            }
+
+
+def prepend_chr(chr):
+    """prefix chr with 'chr' if not present
+
+    Users are strongly encouraged to NOT use this function. Added a
+    'chr' prefix means that you're using a name that is not consistent
+    with authoritative assembly records.
+
+    >>> prepend_chr('22')
+    u'chr22'
+
+    >>> prepend_chr('chr22')
+    u'chr22'
+
+    """
+    return chr if chr[0:3] == 'chr' else 'chr' + chr
+
+
+def strip_chr(chr):
+    """remove 'chr' prefix if it exists
+
+    >>> strip_chr('22')
+    u'22'
+
+    >>> strip_chr('chr22')
+    u'22'
+
+    """
+    return chr[3:] if chr[0:3] == 'chr' else chr        
+
+
+
+############################################################################
+# Internal functions
+
+def _is_primary(s):
+    return s['assembly_unit'] == 'Primary Assembly'
 
 
 if __name__ == "__main__":
