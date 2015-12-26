@@ -5,10 +5,11 @@ import base64
 import hashlib
 import re
 
-def _normalize_sequence(seq):
+def normalize_sequence(seq):
     """return normalized representation of sequence for hashing
 
-    This really means removing whitespace and uppercasing.
+    This really means removing whitespace and asterisks and
+    uppercasing.
 
     """
 
@@ -33,7 +34,7 @@ def seq_seguid(seq, normalize=True):
     u'lII0AoG1/I8qKY271rgv5CFZtsU'
 
     """ 
-    seq = _normalize_sequence(seq) if normalize else seq
+    seq = normalize_sequence(seq) if normalize else seq
     return base64.standard_b64encode(hashlib.sha1(seq).digest()).rstrip('=')
 
 
@@ -59,7 +60,7 @@ def seq_md5(seq, normalize=True):
     'db516c3913e179338b162b2476d1c23f'
 
     """
-    seq = _normalize_sequence(seq) if normalize else seq
+    seq = normalize_sequence(seq) if normalize else seq
     return hashlib.md5(seq).hexdigest()
 
 
@@ -79,7 +80,7 @@ def seq_sha1(seq, normalize=True):
     '9482340281b5fc8f2a298dbbd6b82fe42159b6c5'
 
     """
-    seq = _normalize_sequence(seq) if normalize else seq
+    seq = normalize_sequence(seq) if normalize else seq
     return hashlib.sha1(seq).hexdigest()
 
 
@@ -99,7 +100,7 @@ def seq_sha512(seq, normalize=True):
     '785c1ac071dd89b69904372cf645b7826df587534d25c41edb2862e54fb2940d697218f2883d2bf1a11cdaee658c7f7ab945a1cfd08eb26cbce57ee88790250a'
 
     """
-    seq = _normalize_sequence(seq) if normalize else seq
+    seq = normalize_sequence(seq) if normalize else seq
     return hashlib.sha512(seq).hexdigest()
 
 
