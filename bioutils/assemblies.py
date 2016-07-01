@@ -56,33 +56,33 @@ def get_assembly(name):
     >>> assy = get_assembly('GRCh37.p13')
 
     >>> assy['name']
-    u'GRCh37.p13'
+    'GRCh37.p13'
 
     >>> assy['description']
-    u'Genome Reference Consortium Human Build 37 patch release 13 (GRCh37.p13)'
+    'Genome Reference Consortium Human Build 37 patch release 13 (GRCh37.p13)'
 
     >>> assy['refseq_ac']
-    u'GCF_000001405.25'
+    'GCF_000001405.25'
 
     >>> assy['genbank_ac']
-    u'GCA_000001405.14'
+    'GCA_000001405.14'
 
     >>> len(assy['sequences'])
     297
 
     >>> import pprint
     >>> pprint.pprint(assy['sequences'][0])
-    {u'aliases': [u'chr1'],
-     u'assembly_unit': u'Primary Assembly',
-     u'genbank_ac': u'CM000663.1',
-     u'length': 249250621,
-     u'name': u'1',
-     u'refseq_ac': u'NC_000001.10'}
+    {'aliases': ['chr1'],
+     'assembly_unit': 'Primary Assembly',
+     'genbank_ac': 'CM000663.1',
+     'length': 249250621,
+     'name': '1',
+     'refseq_ac': 'NC_000001.10'}
     
     """
 
-    rsrc_strm = pkg_resources.resource_stream(__name__, _assy_path_fmt.format(name=name))
-    return json.load(rsrc_strm)
+    js = pkg_resources.resource_string(__name__, _assy_path_fmt.format(name=name))
+    return json.loads(js.decode("utf-8"))
 
 
 def get_assemblies(names=[]):
@@ -91,12 +91,10 @@ def get_assemblies(names=[]):
     function for the structure of assembly data.
 
     >>> assemblies = get_assemblies(names=['GRCh37.p13'])
-    >>> assemblies.keys()
-    [u'GRCh37.p13']
     >>> assy = assemblies['GRCh37.p13']
 
     >>> assemblies = get_assemblies()
-    >>> u'GRCh38.p2' in assemblies.keys()
+    >>> 'GRCh38.p2' in assemblies
     True
 
     """
@@ -111,7 +109,7 @@ def make_name_ac_map(assy_name, primary_only=False):
 
     >>> grch38p5_name_ac_map = make_name_ac_map('GRCh38.p5')
     >>> grch38p5_name_ac_map['1']
-    u'NC_000001.11'
+    'NC_000001.11'
 
     """
     return {s['name']: s['refseq_ac']
@@ -125,7 +123,7 @@ def make_ac_name_map(assy_name, primary_only=False):
 
     >>> grch38p5_ac_name_map = make_ac_name_map('GRCh38.p5')
     >>> grch38p5_ac_name_map['NC_000001.11']
-    u'1'
+    '1'
 
     """
 
@@ -143,10 +141,10 @@ def prepend_chr(chr):
     with authoritative assembly records.
 
     >>> prepend_chr('22')
-    u'chr22'
+    'chr22'
 
     >>> prepend_chr('chr22')
-    u'chr22'
+    'chr22'
 
     """
     return chr if chr[0:3] == 'chr' else 'chr' + chr
@@ -156,10 +154,10 @@ def strip_chr(chr):
     """remove 'chr' prefix if it exists
 
     >>> strip_chr('22')
-    u'22'
+    '22'
 
     >>> strip_chr('chr22')
-    u'22'
+    '22'
 
     """
     return chr[3:] if chr[0:3] == 'chr' else chr        

@@ -6,6 +6,8 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
+from six import iteritems
+
 from .assemblies import get_assembly, strip_chr, prepend_chr
 
 import warnings
@@ -34,7 +36,7 @@ NC_to_chr_dict = {
     if s['refseq_ac'].startswith('NC_')
     }
 NC_to_chr = NC_to_chr_dict
-chr_to_NC_dict = {v: k for k, v in NC_to_chr_dict.iteritems()}
+chr_to_NC_dict = {v: k for k, v in iteritems(NC_to_chr_dict)}
 chr_to_NC = chr_to_NC_dict
 def chr_to_nc(s):
     return chr_to_NC_dict[s]

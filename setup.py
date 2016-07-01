@@ -33,11 +33,13 @@ setup(
     ],
 
     install_requires = [
+        'six',
     ],
 
     setup_requires = [
+        'pytest',
+        'pytest-cov',
         'setuptools_scm',
-        'nose',
         'recordtype',
     ],
 
