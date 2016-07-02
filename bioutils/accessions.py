@@ -60,10 +60,6 @@ def chr22XY(c):
     'chrX'
     >>> chr22XY("M")
     'chrM'
-    >>> chr22XY("å")
-    'chrå'
-    >>> chr22XY("β")
-    'chrβ'
 
     """
     c = str(c)
