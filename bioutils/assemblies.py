@@ -133,44 +133,19 @@ def make_ac_name_map(assy_name, primary_only=False):
             }
 
 
-def prepend_chr(chr):
-    """prefix chr with 'chr' if not present
-
-    Users are strongly encouraged to NOT use this function. Added a
-    'chr' prefix means that you're using a name that is not consistent
-    with authoritative assembly records.
-
-    >>> prepend_chr('22')
-    'chr22'
-
-    >>> prepend_chr('chr22')
-    'chr22'
-
-    """
-    return chr if chr[0:3] == 'chr' else 'chr' + chr
-
-
-def strip_chr(chr):
-    """remove 'chr' prefix if it exists
-
-    >>> strip_chr('22')
-    '22'
-
-    >>> strip_chr('chr22')
-    '22'
-
-    """
-    return chr[3:] if chr[0:3] == 'chr' else chr        
-
-
 
 ############################################################################
 # Internal functions
 
 def _is_primary(s):
+    """return True if this sequence record is part of the primary assembly
+
+    >>> _is_primary({'assembly_unit': 'Primary Assembly'})
+    True
+    
+    >>> _is_primary({'assembly_unit': 'Something else entirely'})
+    False
+
+    """
     return s['assembly_unit'] == 'Primary Assembly'
 
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

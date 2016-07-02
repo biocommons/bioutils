@@ -16,13 +16,13 @@ aa3_to_aa1_lut = {
 aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
 
 
-if six.PY2:
+if six.PY2:                     # pragma: no cover
 
     from string import lowercase as ascii_lowercase
     #complement_transtable_bt = string.maketrans('ACGT', 'TGCA')
     complement_transtable_tt = dict(zip(map(ord, u'ACGT'), u'TGCA'))
 
-elif six.PY3:
+elif six.PY3:                   # pragma: no cover
 
     from string import ascii_lowercase
     #complement_transtable_bt = bytes.maketrans(b"ACGT", b"TGCA")
@@ -34,6 +34,8 @@ def complement(s):
 
     >>> complement('ATCG')
     'TAGC'
+
+    >>> complement(None)
 
     """
 
@@ -54,10 +56,20 @@ def reverse_complement(s):
 
 
 def replace_t_to_u(s):
+    """
+    >>> replace_t_to_u('ACGT')
+    'ACGU'
+
+    """
     return s.replace('T', 'U').replace('t', 'u') if s else s
 
 
 def replace_u_to_t(s):
+    """
+    >>> replace_u_to_t('ACGU')
+    'ACGT'
+
+    """
     return s.replace('U', 'T').replace('u', 't') if s else s
 
 

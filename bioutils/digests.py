@@ -103,7 +103,3 @@ def seq_sha512(seq, normalize=True):
     seq = normalize_sequence(seq) if normalize else seq
     return hashlib.sha512(seq.encode('utf-8')).hexdigest()
 
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
