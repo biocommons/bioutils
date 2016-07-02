@@ -3,22 +3,22 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-"""fetch assembly data from NCBI and convert to json
+"""convert assembly text file to json
 
-eg$ ./sbin/assembly-to-json -p bioutils/_data/assemblies -f GCF_000001405.
+eg$ ./sbin/assembly-to-json -p bioutils/_data/assemblies -f pull/GCF_000001405.29.assembly.txt
 
 """
 
 
 from argparse import ArgumentParser
 import csv
-import cStringIO as stringio
 import json
 import logging
 import os
 import re
 import sys
-import urllib2
+
+import six
 
 
 class AssemblyParser(object):
@@ -31,7 +31,7 @@ class AssemblyParser(object):
     
     @property
     def name(self):
-        return re.search('^# Assembly Name:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search('^# Assembly name:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
 
     @property
     def description(self):
@@ -47,13 +47,13 @@ class AssemblyParser(object):
     @property
     def genbank_accession(self):
         try:
-            return re.search('^# GenBank Assembly Accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+            return re.search('^# GenBank assembly accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
         except AttributeError:
             return None
 
     @property
     def refseq_accession(self):
-        return re.search('^# RefSeq Assembly Accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search('^# RefSeq assembly accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
 
     @property
     def submitter(self):
@@ -68,13 +68,13 @@ class AssemblyParser(object):
     @property
     def assembly_units(self):
         block = re.search('## Assembly-Units:\n(.+?)\n#\n', self._body, flags=re.DOTALL).group(1).replace("## ","")
-        dr = csv.DictReader(stringio.StringIO(block), delimiter=str("\t"))
+        dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
     @property
     def sequences(self):
         block = re.search('# (Sequence-Name.+)', self._body, flags=re.DOTALL).group(1)
-        dr = csv.DictReader(stringio.StringIO(block), delimiter=str("\t"))
+        dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
 
@@ -85,7 +85,6 @@ def parse_options(argv):
         )
     ap.add_argument('ASSEMBLIES', nargs='+', help="accessions (GCF or GCA) or filenames of downloaded assemblies")
     ap.add_argument('--prefix', '-p', required=True, help="directory prefix for saving files -- must exist")
-    ap.add_argument('--fetch', '-f', help="ASSEMBLIES are accessions, to be fetched from NCBI", action="store_true")
     opts = ap.parse_args(argv[1:])
     return opts
 
@@ -115,12 +114,7 @@ def build_seq_rec(seqrec):
 
 
 def process1(opts, assy_id_or_name):
-    if opts.fetch:
-        url = "ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/{n}.assembly.txt".format(n=assy_id_or_name)
-        content = urllib2.urlopen(url).read()
-        logger.info("Fetched {url}".format(url=url))
-    else:
-        content = open(assy_id_or_name,'r').read()
+    content = open(assy_id_or_name,'r').read()
 
     assy = AssemblyParser(content)
 
