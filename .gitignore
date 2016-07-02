@@ -1,5 +1,3 @@
-syntax: glob
-
 *.bak
 *.cache
 *.egg
@@ -19,6 +17,8 @@ syntax: glob
 .coverage
 .eggs
 .installed.cfg
+.tox
+__pycache__
 archive
 bdist
 bioutils/_data/assemblies/pull
