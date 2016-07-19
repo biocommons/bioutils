@@ -35,7 +35,7 @@ def seq_seguid(seq, normalize=True):
 
     """ 
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.b64encode(hashlib.sha1(seq.encode('utf-8')).digest()).decode("utf=8").rstrip('=')
+    return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("utf=8").rstrip('=')
 
 
 def seq_md5(seq, normalize=True):
@@ -61,7 +61,7 @@ def seq_md5(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.md5(seq.encode('utf-8')).hexdigest()
+    return hashlib.md5(seq.encode("ascii")).hexdigest()
 
 
 def seq_sha1(seq, normalize=True):
@@ -81,7 +81,7 @@ def seq_sha1(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha1(seq.encode('utf-8')).hexdigest()
+    return hashlib.sha1(seq.encode("ascii")).hexdigest()
 
 
 def seq_sha512(seq, normalize=True):
@@ -101,5 +101,5 @@ def seq_sha512(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha512(seq.encode('utf-8')).hexdigest()
+    return hashlib.sha512(seq.encode("ascii")).hexdigest()
 
