@@ -22,20 +22,20 @@ def seq_seguid(seq, normalize=True):
     This seguid is compatible with BioPython's seguid.
 
     >>> seq_seguid('')
-    u'2jmj7l5rSw0yVb/vlWAYkK/YBwk'
+    '2jmj7l5rSw0yVb/vlWAYkK/YBwk'
 
     >>> seq_seguid('ACGT')
-    u'IQiZThf2zKn/I1KtqStlEdsHYDQ'
+    'IQiZThf2zKn/I1KtqStlEdsHYDQ'
 
     >>> seq_seguid('acgt')
-    u'IQiZThf2zKn/I1KtqStlEdsHYDQ'
+    'IQiZThf2zKn/I1KtqStlEdsHYDQ'
 
     >>> seq_seguid('acgt', normalize=False)
-    u'lII0AoG1/I8qKY271rgv5CFZtsU'
+    'lII0AoG1/I8qKY271rgv5CFZtsU'
 
     """ 
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.standard_b64encode(hashlib.sha1(seq).digest()).rstrip('=')
+    return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("utf=8").rstrip('=')
 
 
 def seq_md5(seq, normalize=True):
@@ -61,7 +61,7 @@ def seq_md5(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.md5(seq).hexdigest()
+    return hashlib.md5(seq.encode("ascii")).hexdigest()
 
 
 def seq_sha1(seq, normalize=True):
@@ -81,7 +81,7 @@ def seq_sha1(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha1(seq).hexdigest()
+    return hashlib.sha1(seq.encode("ascii")).hexdigest()
 
 
 def seq_sha512(seq, normalize=True):
@@ -101,7 +101,7 @@ def seq_sha512(seq, normalize=True):
 
     """
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha512(seq).hexdigest()
+    return hashlib.sha512(seq.encode("ascii")).hexdigest()
 
 
 if __name__ == "__main__":
