@@ -37,13 +37,14 @@ setup(
     ],
 
     setup_requires = [
-        'pytest',
-        'pytest-cov',
         'setuptools_scm',
         'recordtype',
+        'wheel',
     ],
 
     tests_require = [
+        'pytest',
+        'pytest-cov',
     ],
 )
 
