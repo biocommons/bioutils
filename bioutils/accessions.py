@@ -1,73 +1,49 @@
 # -*- coding: utf-8 -*-
 
-"""simple routines to deal with accessions, identifiers, etc.
+"""bioutils.accessions -- DEPRECATED; see bioutils.assemblies
 
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-from six import iteritems
+from .assemblies import get_assembly, strip_chr, prepend_chr
+
+import warnings
+warnings.warn("bioutils.accessions is deprecated; see bioutils.assemblies")
 
 
-def prepend_chr(chr):
-    """prefix chr with 'chr' if not present
-
-    Users are strongly encouraged to NOT use this function. Added a
-    'chr' prefix means that you're using a name that is not consistent
-    with authoritative assembly records.
-
-    >>> prepend_chr('22')
-    'chr22'
-
-    >>> prepend_chr('chr22')
-    'chr22'
-
-    """
-    return chr if chr[0:3] == 'chr' else 'chr' + chr
-
-
-def strip_chr(chr):
-    """remove 'chr' prefix if it exists
-
-    >>> strip_chr('22')
-    '22'
-
-    >>> strip_chr('chr22')
-    '22'
-
-    """
-    return chr[3:] if chr[0:3] == 'chr' else chr        
-
+############################################################################
+# Deprecated stuff
+# This is all GRCh37 specific
 
 def chr22XY(c):
-    """force to name from 1..22, 23, 24, X, Y, M 
-    to in chr1..chr22, chrX, chrY, chrM
-    str or ints accepted
-
-    >>> chr22XY('1')
-    'chr1'
-    >>> chr22XY(1)
-    'chr1'
-    >>> chr22XY('chr1')
-    'chr1'
-    >>> chr22XY(23)
-    'chrX'
-    >>> chr22XY(24)
-    'chrY'
-    >>> chr22XY("X")
-    'chrX'
-    >>> chr22XY("23")
-    'chrX'
-    >>> chr22XY("M")
-    'chrM'
-
-    """
-    c = str(c)
+    """force to name in chr1..chr22, chrX, chrY, chrM"""
     if c[0:3] == 'chr':
         c = c[3:]
     if c == '23': c = 'X'
     if c == '24': c = 'Y'
     return 'chr'+c
+
+_grch37 = get_assembly("GRCh37.p13")
+primary_assembly_accessions = {
+    'GRCh37': {s['refseq_ac'] for s in _grch37['sequences'] if s['refseq_ac'].startswith('NC_')},
+    }
+NC_to_chr_dict = {
+    s['refseq_ac']: str(s['name'])
+    for s in _grch37['sequences']
+    if s['refseq_ac'].startswith('NC_')
+    }
+NC_to_chr = NC_to_chr_dict
+chr_to_NC_dict = {v: k for k, v in NC_to_chr_dict.iteritems()}
+chr_to_NC = chr_to_NC_dict
+def chr_to_nc(s):
+    return chr_to_NC_dict[s]
+chr_size = {
+    prepend_chr(s['name']): s['length']
+    for s in _grch37['sequences']
+    if s['refseq_ac'].startswith('NC_')
+    }
+
 
 
 ## <LICENSE>

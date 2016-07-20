@@ -51,7 +51,7 @@ upload_all: upload_pypi upload_docs;
 
 #=> upload_*: upload to named pypi service (requires config in ~/.pypirc)
 upload_%:
-	python setup.py bdist_egg bdist_wheel sdist upload -r $*
+	python setup.py bdist_egg sdist upload -r $*
 
 #=> upload_docs: upload documentation to pythonhosted
 upload_docs: %:
@@ -67,11 +67,11 @@ host-info:
 
 #=> test -- run all tests (except those tagged "extra")
 test: host-info
-	py.test --cov=bioutils bioutils
+	python setup.py nosetests -A '(not tags) or ("extra" not in tags)'
 
 #=> test-* -- run tests with specified tag
 test-%: host-info
-	py.test -m $* --cov=bioutils bioutils
+	python setup.py nosetests -a 'tags=$*'
 
 #=> ci-test -- per-commit test target for CI
 ci-test: test
