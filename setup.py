@@ -12,7 +12,7 @@ setup(
     name = "bioutils",
     package_data = {'bioutils': ['_data/assemblies/*.json']},
     packages = find_packages(),
-    url = 'https://bitbucket.org/biocommons/bioutils',
+    url = 'https://github.com/biocommons/bioutils',
 
     classifiers = [
         "Development Status :: 3 - Alpha",
@@ -46,7 +46,7 @@ setup(
 )
 
 ## <LICENSE>
-## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
+## Copyright 2014-2016 bioutils Contributors (https://github.com/biocommons/bioutils)
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
