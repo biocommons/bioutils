@@ -1,9 +1,8 @@
-# Python project Makefile
+# Makefile for Python project
 
-.SUFFIXES :
-.PRECIOUS :
-.PHONY : FORCE
 .DELETE_ON_ERROR:
+.PHONY: FORCE
+.SUFFIXES:
 
 SHELL:=/bin/bash -o pipefail
 SELF:=$(firstword $(MAKEFILE_LIST))
@@ -14,123 +13,105 @@ SELF:=$(firstword $(MAKEFILE_LIST))
 default: help
 
 #=> help -- display this help message
-help: config
-	@sbin/extract-makefile-documentation "${SELF}"
-
-config:
-	@echo CONFIGURATION
-	@echo "  UTA_DB_URL=${UTA_DB_URL}"
+help:
+	@sbin/makefile-extract-documentation "${SELF}"
 
 
 ############################################################################
 #= SETUP, INSTALLATION, PACKAGING
 
-#=> setup
-setup: develop
+#=> venv: make a Python 3 virtual environment
+.PHONY: venv
+venv:
+	pyvenv venv; \
+	source venv/bin/activate; \
+	python -m ensurepip --upgrade; \
+	pip install --upgrade pip setuptools
 
-#=> docs -- make sphinx docs
-docs: setup build_sphinx
+#=> setup: setup/upgrade *in current environment*
+.PHONY: setup
+setup: etc/develop.reqs etc/install.reqs
+	pip install --upgrade -r $(word 1,$^)
+	pip install --upgrade -r $(word 2,$^)
 
-#=> build_sphinx
-# sphinx docs needs to be able to import packages
-build_sphinx: develop
+#=> develop: install package in develop mode in venv
+.PHONY: develop
+develop: venv
+	source venv/bin/activate; \
+	make setup; \
+	python setup.py $@
+	@echo "################################################################################"
+	@echo "###     Don't forget to source venv/bin/activate to use this environment     ###"
+	@echo "################################################################################"
 
-#=> develop, bdist, bdist_egg, sdist, upload_docs, etc
-develop: %:
-	#pip install --upgrade setuptools
-	python setup.py $*
+#=> install: install package
+#=> bdist bdist_egg bdist_wheel build sdist: distribution options
+.PHONY: bdist bdist_egg bdist_wheel build build_sphinx sdist install
+bdist bdist_egg bdist_wheel build sdist install: %:
+	python setup.py $@
 
-bdist bdist_egg build build_sphinx install sdist: %:
-	python setup.py $*
-
-#=> upload
+#=> upload: upload to pypi
+#=> upload_*: upload to named pypi service (requires config in ~/.pypirc)
+.PHONY: upload upload_%
 upload: upload_pypi
 
-#=> upload_all: upload_pypi, upload_invitae, and upload_docs
-upload_all: upload_pypi upload_docs;
-
-#=> upload_*: upload to named pypi service (requires config in ~/.pypirc)
 upload_%:
 	python setup.py bdist_egg bdist_wheel sdist upload -r $*
 
-#=> upload_docs: upload documentation to pythonhosted
-upload_docs: %:
-	python setup.py $* -r pypi
 
 
 ############################################################################
 #= TESTING
-# see test configuration in setup.cfg
 
-host-info:
-	(PS4="\n>>"; set -x; /bin/uname -a; ./sbin/cpu-info; /usr/bin/free) 2>&1 | sed -e 's/^/## /'
+#=> test: execute tests
+.PHONY: test
+test:
+	python setup.py pytest
 
-#=> test -- run all tests (except those tagged "extra")
-test: host-info
-	py.test --cov=bioutils bioutils
-
-#=> test-* -- run tests with specified tag
-test-%: host-info
-	py.test -m $* --cov=bioutils bioutils
-
-#=> ci-test -- per-commit test target for CI
-ci-test: test
-
-#=> ci-test-ve -- test in virtualenv
-ci-test-ve: ve
-	source ve/bin/activate; \
-	make ci-test
+#=> tox: execute tests via tox
+.PHONY: tox
+tox:
+	tox
 
 
 
 ############################################################################
 #= UTILITY TARGETS
 
-#=> changelog
-doc/source/changelog.rst: CHANGELOG
-	./sbin/clog-txt-to-rst <$< >$@
+# N.B. Although code is stored in github, I use hg and hg-git on the command line
+#=> reformat: reformat code with yapf and commit
+.PHONY: reformat
+reformat:
+	@if hg sum | grep -qL '^commit:.*modified'; then echo "Repository not clean" 1>&2; exit 1; fi
+	@if hg sum | grep -qL ' applied'; then echo "Repository has applied patches" 1>&2; exit 1; fi
+	yapf -i -r seqrepo tests
+	hg commit -m "reformatted with yapf"
 
-#=> lint -- run lint, flake, etc
-# TBD
+#=> docs -- make sphinx docs
+.PHONY: doc docs
+doc docs: develop
+	# RTD makes json. Build here to ensure that it works.
+	make -C doc html json
 
-
-#=> ve -- create a *local* virtualenv (not typically needed)
-VE_DIR:=ve
-VE_MAJOR:=1
-VE_MINOR:=10
-VE_PY_DIR:=virtualenv-${VE_MAJOR}.${VE_MINOR}
-VE_PY:=${VE_PY_DIR}/virtualenv.py
-${VE_PY}:
-	curl -sO  https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VE_MAJOR}.${VE_MINOR}.tar.gz
-	tar -xvzf virtualenv-${VE_MAJOR}.${VE_MINOR}.tar.gz
-	rm -f virtualenv-${VE_MAJOR}.${VE_MINOR}.tar.gz
-${VE_DIR}: ${VE_PY} 
-	${SYSTEM_PYTHON} $< ${VE_DIR} 2>&1 | tee "$@.err"
-	/bin/mv "$@.err" "$@"
-
-
-############################################################################
-#= CLEANUP
-.PHONY: clean cleaner cleanest pristine
-#=> clean: clean up editor backups, etc.
+#=> clean: remove temporary and backup files
+.PHONY: clean
 clean:
-	find . -name \*~ -print0 | xargs -0r /bin/rm
-#=> cleaner: above, and remove generated files
-cleaner: clean
-	find . -name \*.pyc -print0 | xargs -0r /bin/rm -f
-	/bin/rm -fr build bdist cover dist sdist
-#	-make -C doc clean
-#=> cleanest: above, and remove the virtualenv, .orig, and .bak files
-cleanest: cleaner
-	find . \( -name \*.orig -o -name \*.bak \) -print0 | xargs -0r /bin/rm -v
-	/bin/rm -fr distribute-* *.egg *.egg-info *.tar.gz nosetests.xml cover __pycache__
-#=> pristine: above, and delete anything unknown to mercurial
-pristine: cleanest
-	hg st -un0 | xargs -0r echo /bin/rm -fv
+	find . \( -name \*~ -o -name \*.bak \) -print0 | xargs -0r rm
 
+#=> cleaner: remove files and directories that are easily rebuilt
+.PHONY: cleaner
+cleaner: clean
+	rm -fr .cache *.egg-info build dist doc/_build
+	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
+	find . -name __pycache__ -print0 | xargs -0r rm -fr
+
+#=> cleaner: remove files and directories that require more time/network fetches to rebuild
+.PHONY: cleanest distclean
+cleanest distclean: cleaner
+	rm -fr .eggs .tox venv
 
 ## <LICENSE>
-## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
+## Copyright 2016 Source Code Committers
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
