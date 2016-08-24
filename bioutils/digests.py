@@ -35,7 +35,45 @@ def seq_seguid(seq, normalize=True):
 
     """ 
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("utf=8").rstrip('=')
+    return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("ascii").rstrip('=')
+
+
+def seq_seqhash(seq, normalize=True):
+    """returns ASCII seqhash hash for sequence `seq`
+
+    The seqhash hash is modelled on seguid with the following observations::
+
+    * sha512 is 2x faster than sha1 on modern 64-bit platforms
+    * 512 bits (64 bytes) is far more than is necessary. So, use 512 for speed, but truncate to 192 bits.
+    * seqhash uses "url-safe" base64 alphabet (https://tools.ietf.org/html/rfc3548#section-4)
+    * the gain (in decreased encoded size) isn't worth base85 encoding
+
+    Following the logic in http://stackoverflow.com/a/4014407/342839,
+    the probability of a collision using n bits with p sequences is
+    P(collision) = p^2 / 2^(n+1).  Solving for the number of messages:
+
+       p = P(collision)^(1/2) * 2^((n+1)/2)
+
+    If we arbitrarily want P(collision) < 10^-20 for 192 bits, then p = 1.12e+19. 
+    That is, for ~10^19 sequences, there's a 1/10^20 probability of collision.
+    This seems good enough to me.
+
+    >>> seq_seqhash("")
+    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
+
+    >>> seq_seqhash("ACGT")
+    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+
+    >>> seq_seqhash("acgt")
+    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+
+    >>> seq_seqhash("acgt", normalize=False)
+    'eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
+
+    """ 
+    n_bytes = 24
+    seq = normalize_sequence(seq) if normalize else seq
+    return base64.urlsafe_b64encode(hashlib.sha512(seq.encode("ascii")).digest()[:n_bytes]).decode("ascii")
 
 
 def seq_md5(seq, normalize=True):
