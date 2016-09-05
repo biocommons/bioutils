@@ -38,25 +38,33 @@ def seq_seguid(seq, normalize=True):
     return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("ascii").rstrip('=')
 
 
-def seq_seqhash(seq, normalize=True):
+def sha512t(data, digest_size=24):
+    """returns ASCII seqhash hash for sequence `seq`
+
+    Following the logic in http://stackoverflow.com/a/4014407/342839,
+    the probability of a collision using b bits with m messages (sequences) is
+    P(collision) = m^2 / 2^(b+1).  Solving for the number of messages:
+
+       p = ( P(collision) * 2^(b+1) )^(1/2)
+
+    If we arbitrarily want P(collision) < 10^-20 for 192 bits, then m = 1.12e+19. 
+    That is, for ~10^19 sequences, there's a 1/10^20 probability of collision.
+    This seems good enough to me.
+
+    """ 
+    return base64.urlsafe_b64encode(hashlib.sha512(data).digest()[:digest_size]).decode("ascii")
+
+
+def seq_seqhash(seq, normalize=True, digest_size=24):
     """returns ASCII seqhash hash for sequence `seq`
 
     The seqhash hash is modelled on seguid with the following observations::
 
     * sha512 is 2x faster than sha1 on modern 64-bit platforms
-    * 512 bits (64 bytes) is far more than is necessary. So, use 512 for speed, but truncate to 192 bits.
+    * 512 bits (64 bytes) is far more than is necessary. So, use 512
+      for speed, but truncate for desired relative uniqueness
     * seqhash uses "url-safe" base64 alphabet (https://tools.ietf.org/html/rfc3548#section-4)
     * the gain (in decreased encoded size) isn't worth base85 encoding
-
-    Following the logic in http://stackoverflow.com/a/4014407/342839,
-    the probability of a collision using n bits with p sequences is
-    P(collision) = p^2 / 2^(n+1).  Solving for the number of messages:
-
-       p = P(collision)^(1/2) * 2^((n+1)/2)
-
-    If we arbitrarily want P(collision) < 10^-20 for 192 bits, then p = 1.12e+19. 
-    That is, for ~10^19 sequences, there's a 1/10^20 probability of collision.
-    This seems good enough to me.
 
     >>> seq_seqhash("")
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
@@ -70,10 +78,13 @@ def seq_seqhash(seq, normalize=True):
     >>> seq_seqhash("acgt", normalize=False)
     'eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
 
-    """ 
-    n_bytes = 24
+    """
+
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.urlsafe_b64encode(hashlib.sha512(seq.encode("ascii")).digest()[:n_bytes]).decode("ascii")
+    data = seq.encode("ascii")
+    return sha512t(data, digest_size=24)
+
+
 
 
 def seq_md5(seq, normalize=True):
