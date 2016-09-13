@@ -5,6 +5,13 @@ import base64
 import hashlib
 import re
 
+import six
+
+
+def _to_binary(s):
+    return s if isinstance(s, six.binary_type) else s.encode()
+
+
 def normalize_sequence(seq):
     """return normalized representation of sequence for hashing
 
@@ -13,7 +20,8 @@ def normalize_sequence(seq):
 
     """
 
-    return re.sub("[\s\*]","",seq).upper()
+    seq = _to_binary(seq)
+    return re.sub(b"[\s\*]", b"", seq).upper()
 
 
 def seq_seguid(seq, normalize=True):
@@ -34,8 +42,9 @@ def seq_seguid(seq, normalize=True):
     'lII0AoG1/I8qKY271rgv5CFZtsU'
 
     """ 
+    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.b64encode(hashlib.sha1(seq.encode("ascii")).digest()).decode("ascii").rstrip('=')
+    return base64.b64encode(hashlib.sha1(seq).digest()).decode("ascii").rstrip('=')
 
 
 def sha512t(data, digest_size=24):
@@ -80,9 +89,9 @@ def seq_seqhash(seq, normalize=True, digest_size=24):
 
     """
 
+    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    data = seq.encode("ascii")
-    return sha512t(data, digest_size=24)
+    return sha512t(seq, digest_size=24)
 
 
 
@@ -109,8 +118,9 @@ def seq_md5(seq, normalize=True):
     'db516c3913e179338b162b2476d1c23f'
 
     """
+    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.md5(seq.encode("ascii")).hexdigest()
+    return hashlib.md5(seq).hexdigest()
 
 
 def seq_sha1(seq, normalize=True):
@@ -129,8 +139,10 @@ def seq_sha1(seq, normalize=True):
     '9482340281b5fc8f2a298dbbd6b82fe42159b6c5'
 
     """
+
+    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha1(seq.encode("ascii")).hexdigest()
+    return hashlib.sha1(seq).hexdigest()
 
 
 def seq_sha512(seq, normalize=True):
@@ -149,6 +161,8 @@ def seq_sha512(seq, normalize=True):
     '785c1ac071dd89b69904372cf645b7826df587534d25c41edb2862e54fb2940d697218f2883d2bf1a11cdaee658c7f7ab945a1cfd08eb26cbce57ee88790250a'
 
     """
+
+    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha512(seq.encode("ascii")).hexdigest()
+    return hashlib.sha512(seq).hexdigest()
 

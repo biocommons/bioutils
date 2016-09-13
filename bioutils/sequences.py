@@ -5,127 +5,165 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import six
 
+
 aa3_to_aa1_lut = {
-    'Ala': 'A',    'Arg': 'R',    'Asn': 'N',    'Asp': 'D',
-    'Cys': 'C',    'Gln': 'Q',    'Glu': 'E',    'Gly': 'G',
-    'His': 'H',    'Ile': 'I',    'Leu': 'L',    'Lys': 'K',
-    'Met': 'M',    'Phe': 'F',    'Pro': 'P',    'Ser': 'S',
-    'Thr': 'T',    'Trp': 'W',    'Tyr': 'Y',    'Val': 'V',
-    'Xaa': 'X',    'Ter': '*',    'Sec': 'U',
+    "Ala": "A",    "Arg": "R",    "Asn": "N",    "Asp": "D",
+    "Cys": "C",    "Gln": "Q",    "Glu": "E",    "Gly": "G",
+    "His": "H",    "Ile": "I",    "Leu": "L",    "Lys": "K",
+    "Met": "M",    "Phe": "F",    "Pro": "P",    "Ser": "S",
+    "Thr": "T",    "Trp": "W",    "Tyr": "Y",    "Val": "V",
+    "Xaa": "X",    "Ter": "*",    "Sec": "",
 }
 aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
 
 
+def _to_unicode(s):
+    return s if isinstance(s, six.text_type) else s.decode()
+
+
 if six.PY2:                     # pragma: no cover
 
-    from string import lowercase as ascii_lowercase
-    #complement_transtable_bt = string.maketrans('ACGT', 'TGCA')
-    complement_transtable_tt = dict(zip(map(ord, u'ACGT'), u'TGCA'))
+    import string
+    from string import ascii_lowercase
+    complement_transtable = {ord(f):ord(t) for f,t in zip("ACGT","TGCA")}
 
 elif six.PY3:                   # pragma: no cover
 
     from string import ascii_lowercase
-    #complement_transtable_bt = bytes.maketrans(b"ACGT", b"TGCA")
-    complement_transtable_tt = str.maketrans("ACGT", "TGCA")
+    complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
-def complement(s):
+def complement(seq):
     """return the complement of a sequence
 
-    >>> complement('ATCG')
+    >>> complement("ATCG")
     'TAGC'
 
     >>> complement(None)
 
     """
 
-    if s is None:
+    if seq is None:
         return None
+    seq = _to_unicode(seq)
+    return seq.translate(complement_transtable)
 
-    return s.translate(complement_transtable_tt)
 
-
-def reverse_complement(s):
+def reverse_complement(seq):
     """return the reverse complement of a sequence
 
-    >>> reverse_complement('ATCG')
+    >>> reverse_complement("ATCG")
     'CGAT'
 
+    >>> reverse_complement(None)
+
     """
-    return None if s is None else ''.join(reversed(complement(s)))
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return "".join(reversed(complement(seq)))
 
 
-def replace_t_to_u(s):
+def replace_t_to_u(seq):
     """
-    >>> replace_t_to_u('ACGT')
+    >>> replace_t_to_u("ACGT")
     'ACGU'
 
+    >>> replace_t_to_u(None)
+
     """
-    return s.replace('T', 'U').replace('t', 'u') if s else s
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return seq.replace("T", "U").replace("t", "u")
 
 
-def replace_u_to_t(s):
+def replace_u_to_t(seq):
     """
-    >>> replace_u_to_t('ACGU')
+    >>> replace_u_to_t("ACGU")
     'ACGT'
 
+    >>> replace_u_to_t(None)
+
     """
-    return s.replace('U', 'T').replace('u', 't') if s else s
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return seq.replace("U", "T").replace("u", "t")
 
 
-def aa3_to_aa1(s):
+def aa3_to_aa1(seq):
     """convert string of 3-letter amino acids to 1-letter amino acids
 
-    >>> aa3_to_aa1('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    >>> aa3_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
     'CATSARELAME'
 
+    >>> aa3_to_aa1(None)
+
     """
-    return None if s is None else ''.join([aa3_to_aa1_lut[aa3] for aa3 in
-                                          [s[i:i + 3] for i in range(0, len(s), 3)]])
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return "".join(aa3_to_aa1_lut[aa3] for aa3 in [seq[i:i + 3] for i in range(0, len(seq), 3)])
 
 
-def aa1_to_aa3(s):
+def aa1_to_aa3(seq):
     """convert string of 1-letter amino acids to 3-letter amino acids
 
-    >>> aa1_to_aa3('CATSARELAME')
+    >>> aa1_to_aa3("CATSARELAME")
     'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
+    >>> aa1_to_aa3(None)
+
     """
-    return None if s is None else ''.join([aa1_to_aa3_lut[aa1] for aa1 in s])
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return "".join(aa1_to_aa3_lut[aa1] for aa1 in seq)
 
 
-def aa_to_aa1(s):
+def aa_to_aa1(seq):
     """coerce string of 1- or 3-letter amino acids to 1-letter
 
-    >>> aa_to_aa1('CATSARELAME')
+    >>> aa_to_aa1("CATSARELAME")
     'CATSARELAME'
 
-    >>> aa_to_aa1('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    >>> aa_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
     'CATSARELAME'
+
+    >>> aa_to_aa1(None)
 
     """
-    return aa3_to_aa1(s) if __looks_like_aa3_p(s) else s
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return aa3_to_aa1(seq) if __looks_like_aa3_p(seq) else seq
 
 
-def aa_to_aa3(s):
+def aa_to_aa3(seq):
     """coerce string of 1- or 3-letter amino acids to 3-letter
 
-    >>> aa_to_aa3('CATSARELAME')
+    >>> aa_to_aa3("CATSARELAME")
     'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
-    >>> aa_to_aa3('CysAlaThrSerAlaArgGluLeuAlaMetGlu')
+    >>> aa_to_aa3("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
     'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+
+    >>> aa_to_aa3(None)
 
     """
-    return aa1_to_aa3(s) if not __looks_like_aa3_p(s) else s
+    if seq is None:
+        return None
+    seq = _to_unicode(seq)
+    return aa1_to_aa3(seq) if not __looks_like_aa3_p(seq) else seq
 
 
-def __looks_like_aa3_p(s):
-    "string looks like a 3-letter AA string"
+def __looks_like_aa3_p(seq):
+    """string looks like a 3-letter AA string"""
     return (
-        s is not None
-        and (len(s) % 3 == 0)
-        and (len(s) == 0 or s[1] in ascii_lowercase)
+        seq is not None
+        and (len(seq) % 3 == 0)
+        and (len(seq) == 0 or seq[1] in ascii_lowercase)
     )
 
 
