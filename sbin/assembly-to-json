@@ -31,49 +31,49 @@ class AssemblyParser(object):
     
     @property
     def name(self):
-        return re.search('^# Assembly name:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search("^# Assembly name:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
 
     @property
     def description(self):
         try:
-            return re.search('^# Description:\s+(.+)', self._body, flags=re.MULTILINE).group(1).strip()
+            return re.search("^# Description:\s+(.+)", self._body, flags=re.MULTILINE).group(1).strip()
         except AttributeError:
             return None
 
     @property
     def taxid(self):
-        return re.search('^# Taxid:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search("^# Taxid:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
     
     @property
     def genbank_accession(self):
         try:
-            return re.search('^# GenBank assembly accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+            return re.search("^# GenBank assembly accession:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
         except AttributeError:
             return None
 
     @property
     def refseq_accession(self):
-        return re.search('^# RefSeq assembly accession:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search("^# RefSeq assembly accession:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
 
     @property
     def submitter(self):
-        return re.search('^# Submitter:\s+(.+)', self._body, flags=re.MULTILINE).group(1).strip()
+        return re.search("^# Submitter:\s+(.+)", self._body, flags=re.MULTILINE).group(1).strip()
 
     @property
     def date(self):
-        dt = re.search('^# Date:\s+(\S+)', self._body, flags=re.MULTILINE).group(1).strip()
-        ymd = map(int,dt.split('-'))
+        dt = re.search("^# Date:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
+        ymd = map(int,dt.split("-"))
         return "{:4d}-{:02d}-{:02d}".format(*ymd)
 
     @property
     def assembly_units(self):
-        block = re.search('## Assembly-Units:\n(.+?)\n#\n', self._body, flags=re.DOTALL).group(1).replace("## ","")
+        block = re.search("## Assembly-Units:\n(.+?)\n#\n", self._body, flags=re.DOTALL).group(1).replace("## ","")
         dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
     @property
     def sequences(self):
-        block = re.search('# (Sequence-Name.+)', self._body, flags=re.DOTALL).group(1)
+        block = re.search("# (Sequence-Name.+)", self._body, flags=re.DOTALL).group(1)
         dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
@@ -83,59 +83,59 @@ def parse_options(argv):
     ap = ArgumentParser(
         description = __doc__,
         )
-    ap.add_argument('ASSEMBLIES', nargs='+', help="accessions (GCF or GCA) or filenames of downloaded assemblies")
-    ap.add_argument('--prefix', '-p', required=True, help="directory prefix for saving files -- must exist")
+    ap.add_argument("ASSEMBLIES", nargs="+", help="accessions (GCF or GCA) or filenames of downloaded assemblies")
+    ap.add_argument("--prefix", "-p", required=True, help="directory prefix for saving files -- must exist")
     opts = ap.parse_args(argv[1:])
     return opts
 
 
 def build_seq_rec(seqrec):
+    aliases = []
+    if seqrec["UCSC-style-name"] != "na":
+        aliases = [seqrec["UCSC-style-name"]]     # "chr17_ctg5_hap1"
+
     if seqrec["GenBank-Accn"] != "na":
         genbank_ac = seqrec["GenBank-Accn"]       # "GL000258.1",
     else:
         genbank_ac = None
 
-    aliases = []
-    if seqrec["UCSC-style-name"] != "na":
-        aliases = [seqrec["UCSC-style-name"]]     # "chr17_ctg5_hap1"
-
     return {
-        'name': seqrec["Sequence-Name"],          # "HSCHR17_1_CTG5",
-        'assembly_unit': seqrec["Assembly-Unit"], # "ALT_REF_LOCI_9"
-        'genbank_ac': genbank_ac,
-        'refseq_ac': seqrec["RefSeq-Accn"],       # "NT_167251.1"
-        'length': int(seqrec["Sequence-Length"]), # "1680828"
-        'aliases': aliases,                       
-        #'': seqrec["Assigned-Molecule"], # "17"
-        #'': seqrec["Relationship"], # "=",
-        #'': seqrec["Assigned-Molecule-Location/Type"], # "Chromosome",
-        #'': seqrec["Sequence-Role"], # "alt-scaffold"
-        }
+        "aliases": aliases,
+        "assembly_unit": seqrec["Assembly-Unit"], # "ALT_REF_LOCI_9"
+        "genbank_ac": genbank_ac,                 # "GL000258.1",
+        "length": int(seqrec["Sequence-Length"]), # "1680828"
+        "name": seqrec["Sequence-Name"],          # "HSCHR17_1_CTG5",
+        "refseq_ac": seqrec["RefSeq-Accn"],       # "NT_167251.1"
+        "relationship": seqrec["Relationship"],   # "=",
+        "sequence_role": seqrec["Sequence-Role"],  # "alt-scaffold"
+        #"": seqrec["Assigned-Molecule"], # "17"
+        #"": seqrec["Assigned-Molecule-Location/Type"], # "Chromosome",
+    }
 
 
 def process1(opts, assy_id_or_name):
-    content = open(assy_id_or_name,'r').read()
+    content = open(assy_id_or_name,"r").read()
 
     assy = AssemblyParser(content)
 
     obj = {
-        'name': assy.name,
-        'description': assy.description,
-        'date': assy.date,
-        'submitter': assy.submitter,
-        'genbank_ac': assy.genbank_accession,
-        'refseq_ac': assy.refseq_accession,
-        'sequences': [build_seq_rec(sr) for sr in assy.sequences],
+        "name": assy.name,
+        "description": assy.description,
+        "date": assy.date,
+        "submitter": assy.submitter,
+        "genbank_ac": assy.genbank_accession,
+        "refseq_ac": assy.refseq_accession,
+        "sequences": [build_seq_rec(sr) for sr in assy.sequences],
         }
 
-    out_fn = os.path.join(opts.prefix, assy.name + '.json')
+    out_fn = os.path.join(opts.prefix, assy.name + ".json")
 
-    with open(out_fn,'w') as out_fd:
+    with open(out_fn,"w") as out_fd:
         json.dump(fp=out_fd, sort_keys=True, indent=2, obj=obj)
     return out_fn
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger()
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
         try:
             out_fn = process1(opts, assy_id_or_name)
             if out_fn is not None:
-                logger.info('wrote {}'.format(out_fn))
+                logger.info("wrote {}".format(out_fn))
         except Exception as e:
             logger.error("oopsie on " + assy_id_or_name)
             logger.exception(e)

@@ -77,8 +77,9 @@ def get_assembly(name):
      'genbank_ac': 'CM000663.1',
      'length': 249250621,
      'name': '1',
-     'refseq_ac': 'NC_000001.10'}
-    
+     'refseq_ac': 'NC_000001.10',
+     'relationship': '=',
+     'sequence_role': 'assembled-molecule'}
     """
 
     js = pkg_resources.resource_string(__name__, _assy_path_fmt.format(name=name))

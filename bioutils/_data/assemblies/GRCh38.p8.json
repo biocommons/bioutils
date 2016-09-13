@@ -1,9 +1,9 @@
 {
-  "date": "2016-03-21", 
-  "description": "Genome Reference Consortium Human Build 38 patch release 7 (GRCh38.p7)", 
-  "genbank_ac": "GCA_000001405.22", 
-  "name": "GRCh38.p7", 
-  "refseq_ac": "GCF_000001405.33", 
+  "date": "2016-06-30", 
+  "description": "Genome Reference Consortium Human Build 38 patch release 8 (GRCh38.p8)", 
+  "genbank_ac": "GCA_000001405.23", 
+  "name": "GRCh38.p8", 
+  "refseq_ac": "GCF_000001405.34", 
   "sequences": [
     {
       "aliases": [
@@ -2574,6 +2574,26 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575243.1", 
+      "length": 362221, 
+      "name": "HSCHR5_8_CTG1", 
+      "refseq_ac": "NW_016107297.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575244.1", 
+      "length": 673059, 
+      "name": "HG30_PATCH", 
+      "refseq_ac": "NW_016107298.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KQ090017.1", 
       "length": 82315, 
       "name": "HSCHR6_1_CTG10", 
@@ -2914,6 +2934,16 @@
     {
       "aliases": [], 
       "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575245.1", 
+      "length": 154723, 
+      "name": "HG2046_PATCH", 
+      "refseq_ac": "NW_016107299.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
       "genbank_ac": "KQ458385.1", 
       "length": 205101, 
       "name": "HSCHR18_5_CTG1_1", 
@@ -2950,6 +2980,156 @@
       "refseq_ac": "NW_014040929.1", 
       "relationship": "=", 
       "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575246.1", 
+      "length": 163926, 
+      "name": "HSCHR19KIR_0019-4656-A_CTG3_1", 
+      "refseq_ac": "NW_016107300.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575247.1", 
+      "length": 170206, 
+      "name": "HSCHR19KIR_CA01-TA01_1_CTG3_1", 
+      "refseq_ac": "NW_016107301.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575248.1", 
+      "length": 168131, 
+      "name": "HSCHR19KIR_CA01-TA01_2_CTG3_1", 
+      "refseq_ac": "NW_016107302.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575249.1", 
+      "length": 293522, 
+      "name": "HSCHR19KIR_CA01-TB04_CTG3_1", 
+      "refseq_ac": "NW_016107303.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575250.1", 
+      "length": 241058, 
+      "name": "HSCHR19KIR_CA01-TB01_CTG3_1", 
+      "refseq_ac": "NW_016107304.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575251.1", 
+      "length": 159285, 
+      "name": "HSCHR19KIR_HG2394_CTG3_1", 
+      "refseq_ac": "NW_016107305.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575252.1", 
+      "length": 178197, 
+      "name": "HSCHR19KIR_502960008-2_CTG3_1", 
+      "refseq_ac": "NW_016107306.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575253.1", 
+      "length": 166713, 
+      "name": "HSCHR19KIR_502960008-1_CTG3_1", 
+      "refseq_ac": "NW_016107307.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575254.1", 
+      "length": 99845, 
+      "name": "HSCHR19KIR_0010-5217-AB_CTG3_1", 
+      "refseq_ac": "NW_016107308.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575255.1", 
+      "length": 161095, 
+      "name": "HSCHR19KIR_7191059-1_CTG3_1", 
+      "refseq_ac": "NW_016107309.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575256.1", 
+      "length": 223118, 
+      "name": "HSCHR19KIR_0019-4656-B_CTG3_1", 
+      "refseq_ac": "NW_016107310.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575257.1", 
+      "length": 100553, 
+      "name": "HSCHR19KIR_CA04_CTG3_1", 
+      "refseq_ac": "NW_016107311.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575258.1", 
+      "length": 156965, 
+      "name": "HSCHR19KIR_HG2393_CTG3_1", 
+      "refseq_ac": "NW_016107312.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575259.1", 
+      "length": 171263, 
+      "name": "HSCHR19KIR_7191059-2_CTG3_1", 
+      "refseq_ac": "NW_016107313.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KV575260.1", 
+      "length": 145691, 
+      "name": "HSCHR19KIR_HG2396_CTG3_1", 
+      "refseq_ac": "NW_016107314.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
     }, 
     {
       "aliases": [], 
