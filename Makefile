@@ -63,7 +63,7 @@ upload_%:
 #=> test: execute tests
 .PHONY: test
 test:
-	python setup.py pytest --addopts="--cov=biocommons biocommons tests"
+	python setup.py pytest --addopts="--cov=bioutils"
 
 #=> tox: execute tests via tox
 .PHONY: tox

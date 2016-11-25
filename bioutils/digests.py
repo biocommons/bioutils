@@ -7,6 +7,8 @@ import re
 
 import six
 
+from .truncated_digest import truncated_digest
+
 
 def _to_binary(s):
     return s if isinstance(s, six.binary_type) else s.encode()
@@ -15,13 +17,12 @@ def _to_binary(s):
 def normalize_sequence(seq):
     """return normalized representation of sequence for hashing
 
-    This really means removing whitespace and asterisks and
-    uppercasing.
+    This really means ensuring that the sequence is represented as a
+    binary blob and removing whitespace and asterisks and uppercasing.
 
     """
 
-    seq = _to_binary(seq)
-    return re.sub(b"[\s\*]", b"", seq).upper()
+    return re.sub(b"[\s\*]", b"", _to_binary(seq)).upper()
 
 
 def seq_seguid(seq, normalize=True):
@@ -47,33 +48,8 @@ def seq_seguid(seq, normalize=True):
     return base64.b64encode(hashlib.sha1(seq).digest()).decode("ascii").rstrip('=')
 
 
-def sha512t(data, digest_size=24):
-    """returns unicode seqhash hash for sequence `seq`
-
-    Following the logic in http://stackoverflow.com/a/4014407/342839,
-    the probability of a collision using b bits with m messages (sequences) is
-    P(collision) = m^2 / 2^(b+1).  Solving for the number of messages:
-
-       m = (P(collision) * 2^(b+1)) ^ (1/2)
-
-    If we arbitrarily want P(collision)=10^-20 for b=192 bits, then m
-    = 1.12e+19.  That is, for ~10^19 sequences, there's a 1/10^20
-    probability of collision.  This seems good enough to me.
-
-    """ 
-    return base64.urlsafe_b64encode(hashlib.sha512(data).digest()[:digest_size]).decode("ascii")
-
-
 def seq_seqhash(seq, normalize=True, digest_size=24):
-    """returns unicode seqhash hash for sequence `seq`
-
-    The seqhash hash is modelled on seguid with the following observations::
-
-    * sha512 is 2x faster than sha1 on modern 64-bit platforms
-    * 512 bits (64 bytes) is far more than is necessary. So, use 512
-      for speed, but truncate for desired relative uniqueness
-    * seqhash uses "url-safe" base64 alphabet (https://tools.ietf.org/html/rfc3548#section-4)
-    * the gain (in decreased encoded size) isn't worth base85 encoding
+    """returns 24-byte Truncated Digest sequence `seq`
 
     >>> seq_seqhash("")
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
@@ -89,11 +65,8 @@ def seq_seqhash(seq, normalize=True, digest_size=24):
 
     """
 
-    seq = _to_binary(seq)
-    seq = normalize_sequence(seq) if normalize else seq
-    return sha512t(seq, digest_size=24)
-
-
+    seq = normalize_sequence(seq) if normalize else _to_binary(seq)
+    return truncated_digest(seq, digest_size=24)
 
 
 def seq_md5(seq, normalize=True):
