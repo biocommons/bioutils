@@ -31,16 +31,16 @@ venv:
 #=> setup: setup/upgrade packages *in current environment*
 .PHONY: setup
 setup: etc/develop.reqs etc/install.reqs
-	pip install --upgrade -r $(word 1,$^)
-	pip install --upgrade -r $(word 2,$^)
+	if [ -s $(word 1,$^) ]; then pip install --upgrade -r $(word 1,$^); fi
+	if [ -s $(word 2,$^) ]; then pip install --upgrade -r $(word 2,$^); fi
 
 #=> devready: create venv, install prerequisites, install pkg in develop mode
 .PHONY: devready
 devready:
-	(make venv; source venv/bin/activate; make setup develop) >$@.log 2>&1
-	@echo "############################################################################"
-	@echo "###   Don't forget to source venv/bin/activate to use this environment   ###"
-	@echo "############################################################################"
+	make venv && source venv/bin/activate && make setup develop
+	@echo '#############################################################################'
+	@echo '###  Do not forget to `source venv/bin/activate` to use this environment  ###'
+	@echo '#############################################################################'
 
 #=> develop: install package in develop mode
 #=> install: install package
@@ -53,10 +53,8 @@ bdist bdist_egg bdist_wheel build sdist install develop: %:
 #=> upload_*: upload to named pypi service (requires config in ~/.pypirc)
 .PHONY: upload upload_%
 upload: upload_pypi
-
 upload_%:
 	python setup.py bdist_egg bdist_wheel sdist upload -r $*
-
 
 
 ############################################################################
@@ -65,13 +63,12 @@ upload_%:
 #=> test: execute tests
 .PHONY: test
 test:
-	python setup.py pytest
+	python setup.py pytest --addopts="--cov=biocommons biocommons tests"
 
 #=> tox: execute tests via tox
 .PHONY: tox
 tox:
 	tox
-
 
 
 ############################################################################
@@ -100,7 +97,8 @@ clean:
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
 cleaner: clean
-	rm -fr .cache *.egg-info build dist doc/_build
+	rm -f devready.log
+	rm -fr .cache *.egg-info build dist doc/_build htmlcov
 	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
 	find . -name __pycache__ -print0 | xargs -0r rm -fr
 
@@ -108,6 +106,7 @@ cleaner: clean
 .PHONY: cleanest distclean
 cleanest distclean: cleaner
 	rm -fr .eggs .tox venv
+
 
 ## <LICENSE>
 ## Copyright 2016 Source Code Committers
