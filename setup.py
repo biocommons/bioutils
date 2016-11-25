@@ -53,8 +53,7 @@ setup(
 
     setup_requires = [
         "pytest-runner",
-        "setuptools_scm",
-        "recordtype",
+        "setuptools_scm==1.11.1", # bug in 1.13.1 https://github.com/pypa/setuptools_scm/issues/134
         "wheel",
     ],
 
