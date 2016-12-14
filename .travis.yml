@@ -12,7 +12,7 @@ deploy:
   user: biocommons
   on:
     tags: true
-    distributions: sdist bdist_wheel
+    distributions: "sdist bdist_wheel"
     branch: master
   password:
     secure: QQzEvbAr4tkRDlART3uknvELKdt9//U9W6w0i6S/97AV0orQzBkidRlfc0P9hJ4zlHHzeUUy9QVb7na0EStZtqUW3Nc5BApxH5zZk2ORC41eR3UexkZAF7+tQcvP1fNxOsyr/ntUM6nHT1D2hqS/JeKnVu5pjlgFRydiwtCiN88K2eYMoOrtjaCf5393eAbmQgLdkSf9LsP6RzLZWD/+jNzoMZ5byKI+6ju7gZN+bMqXQnEg1BHWHNm9MaUoSrBa9VouVR9P3C6VHybFXv8aykYeKkunpDf08O+fjnNkTCiHw1fKJfaqsbzOgu4UNlEtPaOEl432aVXwGjKKUShEKw7EwkDjB4F7HQ7w2d2hv/2ejHrWnVhWkB6eyX/Q+S5YHq0sTADlCiR4ZQ+sRHrd24V3DTDQo2n8wvcCyUL7dfeC58pt+bh0bt7FNezjuQLTe2EIQbAuxTeSsSxkz50MPyyQt6rsUvEwmropH6Dx0N7xInkMQzbpmZoBbYTDtd0TtRkmdttdjGf+wdaVBJJAsQrJBd4xPVqgWHpKETFPkpck96Hro91NSEBc8vi1BPQI0+DkKGZP47VSn3y6+6gMGw3edhuRxlBEFOvDkPoDGmhpeHktrmWl/5nrSYC20jdEw47mv4/iLY0Jg/sY2QnzWVi+82EM5ryUO+lfkbWlPEU=
