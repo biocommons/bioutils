@@ -1,2996 +1,2996 @@
 {
-  "date": "2012-12-18",
-  "description": "Genome Reference Consortium Human Build 37 patch release 11 (GRCh37.p11)",
-  "genbank_ac": "GCA_000001405.12",
-  "name": "GRCh37.p11",
-  "refseq_ac": "GCF_000001405.23",
+  "date": "2012-12-18", 
+  "description": "Genome Reference Consortium Human Build 37 patch release 11 (GRCh37.p11)", 
+  "genbank_ac": "GCA_000001405.12", 
+  "name": "GRCh37.p11", 
+  "refseq_ac": "GCF_000001405.23", 
   "sequences": [
     {
       "aliases": [
         "chr1"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000663.1",
-      "length": 249250621,
-      "name": "1",
-      "refseq_ac": "NC_000001.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000663.1", 
+      "length": 249250621, 
+      "name": "1", 
+      "refseq_ac": "NC_000001.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr2"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000664.1",
-      "length": 243199373,
-      "name": "2",
-      "refseq_ac": "NC_000002.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000664.1", 
+      "length": 243199373, 
+      "name": "2", 
+      "refseq_ac": "NC_000002.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr3"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000665.1",
-      "length": 198022430,
-      "name": "3",
-      "refseq_ac": "NC_000003.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000665.1", 
+      "length": 198022430, 
+      "name": "3", 
+      "refseq_ac": "NC_000003.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr4"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000666.1",
-      "length": 191154276,
-      "name": "4",
-      "refseq_ac": "NC_000004.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000666.1", 
+      "length": 191154276, 
+      "name": "4", 
+      "refseq_ac": "NC_000004.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr5"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000667.1",
-      "length": 180915260,
-      "name": "5",
-      "refseq_ac": "NC_000005.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000667.1", 
+      "length": 180915260, 
+      "name": "5", 
+      "refseq_ac": "NC_000005.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr6"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000668.1",
-      "length": 171115067,
-      "name": "6",
-      "refseq_ac": "NC_000006.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000668.1", 
+      "length": 171115067, 
+      "name": "6", 
+      "refseq_ac": "NC_000006.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr7"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000669.1",
-      "length": 159138663,
-      "name": "7",
-      "refseq_ac": "NC_000007.13",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000669.1", 
+      "length": 159138663, 
+      "name": "7", 
+      "refseq_ac": "NC_000007.13", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr8"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000670.1",
-      "length": 146364022,
-      "name": "8",
-      "refseq_ac": "NC_000008.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000670.1", 
+      "length": 146364022, 
+      "name": "8", 
+      "refseq_ac": "NC_000008.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr9"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000671.1",
-      "length": 141213431,
-      "name": "9",
-      "refseq_ac": "NC_000009.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000671.1", 
+      "length": 141213431, 
+      "name": "9", 
+      "refseq_ac": "NC_000009.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr10"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000672.1",
-      "length": 135534747,
-      "name": "10",
-      "refseq_ac": "NC_000010.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000672.1", 
+      "length": 135534747, 
+      "name": "10", 
+      "refseq_ac": "NC_000010.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr11"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000673.1",
-      "length": 135006516,
-      "name": "11",
-      "refseq_ac": "NC_000011.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000673.1", 
+      "length": 135006516, 
+      "name": "11", 
+      "refseq_ac": "NC_000011.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr12"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000674.1",
-      "length": 133851895,
-      "name": "12",
-      "refseq_ac": "NC_000012.11",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000674.1", 
+      "length": 133851895, 
+      "name": "12", 
+      "refseq_ac": "NC_000012.11", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr13"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000675.1",
-      "length": 115169878,
-      "name": "13",
-      "refseq_ac": "NC_000013.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000675.1", 
+      "length": 115169878, 
+      "name": "13", 
+      "refseq_ac": "NC_000013.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr14"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000676.1",
-      "length": 107349540,
-      "name": "14",
-      "refseq_ac": "NC_000014.8",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000676.1", 
+      "length": 107349540, 
+      "name": "14", 
+      "refseq_ac": "NC_000014.8", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr15"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000677.1",
-      "length": 102531392,
-      "name": "15",
-      "refseq_ac": "NC_000015.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000677.1", 
+      "length": 102531392, 
+      "name": "15", 
+      "refseq_ac": "NC_000015.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr16"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000678.1",
-      "length": 90354753,
-      "name": "16",
-      "refseq_ac": "NC_000016.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000678.1", 
+      "length": 90354753, 
+      "name": "16", 
+      "refseq_ac": "NC_000016.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr17"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000679.1",
-      "length": 81195210,
-      "name": "17",
-      "refseq_ac": "NC_000017.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000679.1", 
+      "length": 81195210, 
+      "name": "17", 
+      "refseq_ac": "NC_000017.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr18"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000680.1",
-      "length": 78077248,
-      "name": "18",
-      "refseq_ac": "NC_000018.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000680.1", 
+      "length": 78077248, 
+      "name": "18", 
+      "refseq_ac": "NC_000018.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr19"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000681.1",
-      "length": 59128983,
-      "name": "19",
-      "refseq_ac": "NC_000019.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000681.1", 
+      "length": 59128983, 
+      "name": "19", 
+      "refseq_ac": "NC_000019.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr20"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000682.1",
-      "length": 63025520,
-      "name": "20",
-      "refseq_ac": "NC_000020.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000682.1", 
+      "length": 63025520, 
+      "name": "20", 
+      "refseq_ac": "NC_000020.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr21"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000683.1",
-      "length": 48129895,
-      "name": "21",
-      "refseq_ac": "NC_000021.8",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000683.1", 
+      "length": 48129895, 
+      "name": "21", 
+      "refseq_ac": "NC_000021.8", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr22"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000684.1",
-      "length": 51304566,
-      "name": "22",
-      "refseq_ac": "NC_000022.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000684.1", 
+      "length": 51304566, 
+      "name": "22", 
+      "refseq_ac": "NC_000022.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chrX"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000685.1",
-      "length": 155270560,
-      "name": "X",
-      "refseq_ac": "NC_000023.10",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000685.1", 
+      "length": 155270560, 
+      "name": "X", 
+      "refseq_ac": "NC_000023.10", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chrY"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "CM000686.1",
-      "length": 59373566,
-      "name": "Y",
-      "refseq_ac": "NC_000024.9",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM000686.1", 
+      "length": 59373566, 
+      "name": "Y", 
+      "refseq_ac": "NC_000024.9", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
-    },
+    }, 
     {
       "aliases": [
         "chr1_gl000191_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000191.1",
-      "length": 106433,
-      "name": "HSCHR1_RANDOM_CTG5",
-      "refseq_ac": "NT_113878.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000191.1", 
+      "length": 106433, 
+      "name": "HSCHR1_RANDOM_CTG5", 
+      "refseq_ac": "NT_113878.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr1_gl000192_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000192.1",
-      "length": 547496,
-      "name": "HSCHR1_RANDOM_CTG12",
-      "refseq_ac": "NT_167207.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000192.1", 
+      "length": 547496, 
+      "name": "HSCHR1_RANDOM_CTG12", 
+      "refseq_ac": "NT_167207.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr4_gl000193_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000193.1",
-      "length": 189789,
-      "name": "HSCHR4_RANDOM_CTG2",
-      "refseq_ac": "NT_113885.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000193.1", 
+      "length": 189789, 
+      "name": "HSCHR4_RANDOM_CTG2", 
+      "refseq_ac": "NT_113885.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr4_gl000194_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000194.1",
-      "length": 191469,
-      "name": "HSCHR4_RANDOM_CTG3",
-      "refseq_ac": "NT_113888.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000194.1", 
+      "length": 191469, 
+      "name": "HSCHR4_RANDOM_CTG3", 
+      "refseq_ac": "NT_113888.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr7_gl000195_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000195.1",
-      "length": 182896,
-      "name": "HSCHR7_RANDOM_CTG1",
-      "refseq_ac": "NT_113901.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000195.1", 
+      "length": 182896, 
+      "name": "HSCHR7_RANDOM_CTG1", 
+      "refseq_ac": "NT_113901.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr8_gl000196_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000196.1",
-      "length": 38914,
-      "name": "HSCHR8_RANDOM_CTG1",
-      "refseq_ac": "NT_113909.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000196.1", 
+      "length": 38914, 
+      "name": "HSCHR8_RANDOM_CTG1", 
+      "refseq_ac": "NT_113909.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr8_gl000197_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000197.1",
-      "length": 37175,
-      "name": "HSCHR8_RANDOM_CTG4",
-      "refseq_ac": "NT_113907.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000197.1", 
+      "length": 37175, 
+      "name": "HSCHR8_RANDOM_CTG4", 
+      "refseq_ac": "NT_113907.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr9_gl000198_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000198.1",
-      "length": 90085,
-      "name": "HSCHR9_RANDOM_CTG1",
-      "refseq_ac": "NT_113914.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000198.1", 
+      "length": 90085, 
+      "name": "HSCHR9_RANDOM_CTG1", 
+      "refseq_ac": "NT_113914.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr9_gl000199_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000199.1",
-      "length": 169874,
-      "name": "HSCHR9_RANDOM_CTG2",
-      "refseq_ac": "NT_113916.2",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000199.1", 
+      "length": 169874, 
+      "name": "HSCHR9_RANDOM_CTG2", 
+      "refseq_ac": "NT_113916.2", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr9_gl000200_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000200.1",
-      "length": 187035,
-      "name": "HSCHR9_RANDOM_CTG4",
-      "refseq_ac": "NT_113915.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000200.1", 
+      "length": 187035, 
+      "name": "HSCHR9_RANDOM_CTG4", 
+      "refseq_ac": "NT_113915.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr9_gl000201_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000201.1",
-      "length": 36148,
-      "name": "HSCHR9_RANDOM_CTG5",
-      "refseq_ac": "NT_113911.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000201.1", 
+      "length": 36148, 
+      "name": "HSCHR9_RANDOM_CTG5", 
+      "refseq_ac": "NT_113911.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr11_gl000202_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000202.1",
-      "length": 40103,
-      "name": "HSCHR11_RANDOM_CTG2",
-      "refseq_ac": "NT_113921.2",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000202.1", 
+      "length": 40103, 
+      "name": "HSCHR11_RANDOM_CTG2", 
+      "refseq_ac": "NT_113921.2", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr17_gl000203_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000203.1",
-      "length": 37498,
-      "name": "HSCHR17_RANDOM_CTG1",
-      "refseq_ac": "NT_113941.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000203.1", 
+      "length": 37498, 
+      "name": "HSCHR17_RANDOM_CTG1", 
+      "refseq_ac": "NT_113941.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr17_gl000204_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000204.1",
-      "length": 81310,
-      "name": "HSCHR17_RANDOM_CTG2",
-      "refseq_ac": "NT_113943.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000204.1", 
+      "length": 81310, 
+      "name": "HSCHR17_RANDOM_CTG2", 
+      "refseq_ac": "NT_113943.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr17_gl000205_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000205.1",
-      "length": 174588,
-      "name": "HSCHR17_RANDOM_CTG3",
-      "refseq_ac": "NT_113930.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000205.1", 
+      "length": 174588, 
+      "name": "HSCHR17_RANDOM_CTG3", 
+      "refseq_ac": "NT_113930.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr17_gl000206_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000206.1",
-      "length": 41001,
-      "name": "HSCHR17_RANDOM_CTG4",
-      "refseq_ac": "NT_113945.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000206.1", 
+      "length": 41001, 
+      "name": "HSCHR17_RANDOM_CTG4", 
+      "refseq_ac": "NT_113945.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr18_gl000207_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000207.1",
-      "length": 4262,
-      "name": "HSCHR18_RANDOM_CTG1",
-      "refseq_ac": "NT_113947.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000207.1", 
+      "length": 4262, 
+      "name": "HSCHR18_RANDOM_CTG1", 
+      "refseq_ac": "NT_113947.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr19_gl000208_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000208.1",
-      "length": 92689,
-      "name": "HSCHR19_RANDOM_CTG1",
-      "refseq_ac": "NT_113948.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000208.1", 
+      "length": 92689, 
+      "name": "HSCHR19_RANDOM_CTG1", 
+      "refseq_ac": "NT_113948.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr19_gl000209_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000209.1",
-      "length": 159169,
-      "name": "HSCHR19_RANDOM_CTG2",
-      "refseq_ac": "NT_113949.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000209.1", 
+      "length": 159169, 
+      "name": "HSCHR19_RANDOM_CTG2", 
+      "refseq_ac": "NT_113949.1", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr21_gl000210_random"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000210.1",
-      "length": 27682,
-      "name": "HSCHR21_RANDOM_CTG9",
-      "refseq_ac": "NT_113950.2",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000210.1", 
+      "length": 27682, 
+      "name": "HSCHR21_RANDOM_CTG9", 
+      "refseq_ac": "NT_113950.2", 
+      "relationship": "=", 
       "sequence_role": "unlocalized-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000211"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000211.1",
-      "length": 166566,
-      "name": "HSCHRUN_RANDOM_CTG1",
-      "refseq_ac": "NT_113961.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000211.1", 
+      "length": 166566, 
+      "name": "HSCHRUN_RANDOM_CTG1", 
+      "refseq_ac": "NT_113961.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000212"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000212.1",
-      "length": 186858,
-      "name": "HSCHRUN_RANDOM_CTG2",
-      "refseq_ac": "NT_113923.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000212.1", 
+      "length": 186858, 
+      "name": "HSCHRUN_RANDOM_CTG2", 
+      "refseq_ac": "NT_113923.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000213"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000213.1",
-      "length": 164239,
-      "name": "HSCHRUN_RANDOM_CTG3",
-      "refseq_ac": "NT_167208.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000213.1", 
+      "length": 164239, 
+      "name": "HSCHRUN_RANDOM_CTG3", 
+      "refseq_ac": "NT_167208.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000214"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000214.1",
-      "length": 137718,
-      "name": "HSCHRUN_RANDOM_CTG4",
-      "refseq_ac": "NT_167209.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000214.1", 
+      "length": 137718, 
+      "name": "HSCHRUN_RANDOM_CTG4", 
+      "refseq_ac": "NT_167209.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000215"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000215.1",
-      "length": 172545,
-      "name": "HSCHRUN_RANDOM_CTG5",
-      "refseq_ac": "NT_167210.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000215.1", 
+      "length": 172545, 
+      "name": "HSCHRUN_RANDOM_CTG5", 
+      "refseq_ac": "NT_167210.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000216"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000216.1",
-      "length": 172294,
-      "name": "HSCHRUN_RANDOM_CTG6",
-      "refseq_ac": "NT_167211.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000216.1", 
+      "length": 172294, 
+      "name": "HSCHRUN_RANDOM_CTG6", 
+      "refseq_ac": "NT_167211.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000217"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000217.1",
-      "length": 172149,
-      "name": "HSCHRUN_RANDOM_CTG7",
-      "refseq_ac": "NT_167212.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000217.1", 
+      "length": 172149, 
+      "name": "HSCHRUN_RANDOM_CTG7", 
+      "refseq_ac": "NT_167212.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000218"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000218.1",
-      "length": 161147,
-      "name": "HSCHRUN_RANDOM_CTG9",
-      "refseq_ac": "NT_113889.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000218.1", 
+      "length": 161147, 
+      "name": "HSCHRUN_RANDOM_CTG9", 
+      "refseq_ac": "NT_113889.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000219"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000219.1",
-      "length": 179198,
-      "name": "HSCHRUN_RANDOM_CTG10",
-      "refseq_ac": "NT_167213.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000219.1", 
+      "length": 179198, 
+      "name": "HSCHRUN_RANDOM_CTG10", 
+      "refseq_ac": "NT_167213.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000220"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000220.1",
-      "length": 161802,
-      "name": "HSCHRUN_RANDOM_CTG11",
-      "refseq_ac": "NT_167214.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000220.1", 
+      "length": 161802, 
+      "name": "HSCHRUN_RANDOM_CTG11", 
+      "refseq_ac": "NT_167214.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000221"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000221.1",
-      "length": 155397,
-      "name": "HSCHRUN_RANDOM_CTG13",
-      "refseq_ac": "NT_167215.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000221.1", 
+      "length": 155397, 
+      "name": "HSCHRUN_RANDOM_CTG13", 
+      "refseq_ac": "NT_167215.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000222"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000222.1",
-      "length": 186861,
-      "name": "HSCHRUN_RANDOM_CTG14",
-      "refseq_ac": "NT_167216.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000222.1", 
+      "length": 186861, 
+      "name": "HSCHRUN_RANDOM_CTG14", 
+      "refseq_ac": "NT_167216.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000223"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000223.1",
-      "length": 180455,
-      "name": "HSCHRUN_RANDOM_CTG15",
-      "refseq_ac": "NT_167217.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000223.1", 
+      "length": 180455, 
+      "name": "HSCHRUN_RANDOM_CTG15", 
+      "refseq_ac": "NT_167217.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000224"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000224.1",
-      "length": 179693,
-      "name": "HSCHRUN_RANDOM_CTG16",
-      "refseq_ac": "NT_167218.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000224.1", 
+      "length": 179693, 
+      "name": "HSCHRUN_RANDOM_CTG16", 
+      "refseq_ac": "NT_167218.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000225"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000225.1",
-      "length": 211173,
-      "name": "HSCHRUN_RANDOM_CTG17",
-      "refseq_ac": "NT_167219.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000225.1", 
+      "length": 211173, 
+      "name": "HSCHRUN_RANDOM_CTG17", 
+      "refseq_ac": "NT_167219.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000226"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000226.1",
-      "length": 15008,
-      "name": "HSCHRUN_RANDOM_CTG19",
-      "refseq_ac": "NT_167220.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000226.1", 
+      "length": 15008, 
+      "name": "HSCHRUN_RANDOM_CTG19", 
+      "refseq_ac": "NT_167220.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000227"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000227.1",
-      "length": 128374,
-      "name": "HSCHRUN_RANDOM_CTG20",
-      "refseq_ac": "NT_167221.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000227.1", 
+      "length": 128374, 
+      "name": "HSCHRUN_RANDOM_CTG20", 
+      "refseq_ac": "NT_167221.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000228"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000228.1",
-      "length": 129120,
-      "name": "HSCHRUN_RANDOM_CTG21",
-      "refseq_ac": "NT_167222.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000228.1", 
+      "length": 129120, 
+      "name": "HSCHRUN_RANDOM_CTG21", 
+      "refseq_ac": "NT_167222.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000229"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000229.1",
-      "length": 19913,
-      "name": "HSCHRUN_RANDOM_CTG22",
-      "refseq_ac": "NT_167223.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000229.1", 
+      "length": 19913, 
+      "name": "HSCHRUN_RANDOM_CTG22", 
+      "refseq_ac": "NT_167223.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000230"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000230.1",
-      "length": 43691,
-      "name": "HSCHRUN_RANDOM_CTG23",
-      "refseq_ac": "NT_167224.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000230.1", 
+      "length": 43691, 
+      "name": "HSCHRUN_RANDOM_CTG23", 
+      "refseq_ac": "NT_167224.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000231"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000231.1",
-      "length": 27386,
-      "name": "HSCHRUN_RANDOM_CTG24",
-      "refseq_ac": "NT_167225.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000231.1", 
+      "length": 27386, 
+      "name": "HSCHRUN_RANDOM_CTG24", 
+      "refseq_ac": "NT_167225.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000232"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000232.1",
-      "length": 40652,
-      "name": "HSCHRUN_RANDOM_CTG25",
-      "refseq_ac": "NT_167226.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000232.1", 
+      "length": 40652, 
+      "name": "HSCHRUN_RANDOM_CTG25", 
+      "refseq_ac": "NT_167226.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000233"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000233.1",
-      "length": 45941,
-      "name": "HSCHRUN_RANDOM_CTG26",
-      "refseq_ac": "NT_167227.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000233.1", 
+      "length": 45941, 
+      "name": "HSCHRUN_RANDOM_CTG26", 
+      "refseq_ac": "NT_167227.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000234"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000234.1",
-      "length": 40531,
-      "name": "HSCHRUN_RANDOM_CTG27",
-      "refseq_ac": "NT_167228.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000234.1", 
+      "length": 40531, 
+      "name": "HSCHRUN_RANDOM_CTG27", 
+      "refseq_ac": "NT_167228.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000235"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000235.1",
-      "length": 34474,
-      "name": "HSCHRUN_RANDOM_CTG28",
-      "refseq_ac": "NT_167229.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000235.1", 
+      "length": 34474, 
+      "name": "HSCHRUN_RANDOM_CTG28", 
+      "refseq_ac": "NT_167229.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000236"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000236.1",
-      "length": 41934,
-      "name": "HSCHRUN_RANDOM_CTG29",
-      "refseq_ac": "NT_167230.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000236.1", 
+      "length": 41934, 
+      "name": "HSCHRUN_RANDOM_CTG29", 
+      "refseq_ac": "NT_167230.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000237"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000237.1",
-      "length": 45867,
-      "name": "HSCHRUN_RANDOM_CTG30",
-      "refseq_ac": "NT_167231.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000237.1", 
+      "length": 45867, 
+      "name": "HSCHRUN_RANDOM_CTG30", 
+      "refseq_ac": "NT_167231.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000238"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000238.1",
-      "length": 39939,
-      "name": "HSCHRUN_RANDOM_CTG31",
-      "refseq_ac": "NT_167232.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000238.1", 
+      "length": 39939, 
+      "name": "HSCHRUN_RANDOM_CTG31", 
+      "refseq_ac": "NT_167232.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000239"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000239.1",
-      "length": 33824,
-      "name": "HSCHRUN_RANDOM_CTG32",
-      "refseq_ac": "NT_167233.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000239.1", 
+      "length": 33824, 
+      "name": "HSCHRUN_RANDOM_CTG32", 
+      "refseq_ac": "NT_167233.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000240"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000240.1",
-      "length": 41933,
-      "name": "HSCHRUN_RANDOM_CTG33",
-      "refseq_ac": "NT_167234.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000240.1", 
+      "length": 41933, 
+      "name": "HSCHRUN_RANDOM_CTG33", 
+      "refseq_ac": "NT_167234.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000241"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000241.1",
-      "length": 42152,
-      "name": "HSCHRUN_RANDOM_CTG34",
-      "refseq_ac": "NT_167235.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000241.1", 
+      "length": 42152, 
+      "name": "HSCHRUN_RANDOM_CTG34", 
+      "refseq_ac": "NT_167235.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000242"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000242.1",
-      "length": 43523,
-      "name": "HSCHRUN_RANDOM_CTG35",
-      "refseq_ac": "NT_167236.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000242.1", 
+      "length": 43523, 
+      "name": "HSCHRUN_RANDOM_CTG35", 
+      "refseq_ac": "NT_167236.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000243"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000243.1",
-      "length": 43341,
-      "name": "HSCHRUN_RANDOM_CTG36",
-      "refseq_ac": "NT_167237.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000243.1", 
+      "length": 43341, 
+      "name": "HSCHRUN_RANDOM_CTG36", 
+      "refseq_ac": "NT_167237.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000244"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000244.1",
-      "length": 39929,
-      "name": "HSCHRUN_RANDOM_CTG37",
-      "refseq_ac": "NT_167238.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000244.1", 
+      "length": 39929, 
+      "name": "HSCHRUN_RANDOM_CTG37", 
+      "refseq_ac": "NT_167238.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000245"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000245.1",
-      "length": 36651,
-      "name": "HSCHRUN_RANDOM_CTG38",
-      "refseq_ac": "NT_167239.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000245.1", 
+      "length": 36651, 
+      "name": "HSCHRUN_RANDOM_CTG38", 
+      "refseq_ac": "NT_167239.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000246"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000246.1",
-      "length": 38154,
-      "name": "HSCHRUN_RANDOM_CTG39",
-      "refseq_ac": "NT_167240.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000246.1", 
+      "length": 38154, 
+      "name": "HSCHRUN_RANDOM_CTG39", 
+      "refseq_ac": "NT_167240.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000247"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000247.1",
-      "length": 36422,
-      "name": "HSCHRUN_RANDOM_CTG40",
-      "refseq_ac": "NT_167241.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000247.1", 
+      "length": 36422, 
+      "name": "HSCHRUN_RANDOM_CTG40", 
+      "refseq_ac": "NT_167241.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000248"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000248.1",
-      "length": 39786,
-      "name": "HSCHRUN_RANDOM_CTG41",
-      "refseq_ac": "NT_167242.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000248.1", 
+      "length": 39786, 
+      "name": "HSCHRUN_RANDOM_CTG41", 
+      "refseq_ac": "NT_167242.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrUn_gl000249"
-      ],
-      "assembly_unit": "Primary Assembly",
-      "genbank_ac": "GL000249.1",
-      "length": 38502,
-      "name": "HSCHRUN_RANDOM_CTG42",
-      "refseq_ac": "NT_167243.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "GL000249.1", 
+      "length": 38502, 
+      "name": "HSCHRUN_RANDOM_CTG42", 
+      "refseq_ac": "NT_167243.1", 
+      "relationship": "=", 
       "sequence_role": "unplaced-scaffold"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949741.1",
-      "length": 151551,
-      "name": "HG989_PATCH",
-      "refseq_ac": "NW_003571030.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636052.4",
-      "length": 7283150,
-      "name": "HG1287_PATCH",
-      "refseq_ac": "NW_003871055.3",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636053.2",
-      "length": 1625775,
-      "name": "HG1292_PATCH",
-      "refseq_ac": "NW_003871056.2",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806574.1",
-      "length": 23300,
-      "name": "HG1472_PATCH",
-      "refseq_ac": "NW_004070864.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383518.1",
-      "length": 182439,
-      "name": "HSCHR1_1_CTG31",
-      "refseq_ac": "NW_003315905.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383519.1",
-      "length": 110268,
-      "name": "HSCHR1_2_CTG31",
-      "refseq_ac": "NW_003315906.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383520.1",
-      "length": 366579,
-      "name": "HSCHR1_3_CTG31",
-      "refseq_ac": "NW_003315907.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383516.1",
-      "length": 49316,
-      "name": "HG999_1_PATCH",
-      "refseq_ac": "NW_003315903.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383517.1",
-      "length": 49352,
-      "name": "HG999_2_PATCH",
-      "refseq_ac": "NW_003315904.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636054.1",
-      "length": 758378,
-      "name": "HG1293_PATCH",
-      "refseq_ac": "NW_003871057.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806573.1",
-      "length": 24680,
-      "name": "HG1471_PATCH",
-      "refseq_ac": "NW_004070863.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806575.1",
-      "length": 47409,
-      "name": "HG1473_PATCH",
-      "refseq_ac": "NW_004070865.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383521.1",
-      "length": 143390,
-      "name": "HSCHR2_1_CTG1",
-      "refseq_ac": "NW_003315908.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877871.1",
-      "length": 389939,
-      "name": "HG686_PATCH",
-      "refseq_ac": "NW_003571032.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383522.1",
-      "length": 123821,
-      "name": "HSCHR2_1_CTG12",
-      "refseq_ac": "NW_003315909.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582966.2",
-      "length": 96131,
-      "name": "HSCHR2_2_CTG12",
-      "refseq_ac": "NW_003571033.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877870.2",
-      "length": 66021,
-      "name": "HG1007_PATCH",
-      "refseq_ac": "NW_003571031.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636055.1",
-      "length": 173151,
-      "name": "HSCHR3_1_CTG1",
-      "refseq_ac": "NW_003871060.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383523.1",
-      "length": 171362,
-      "name": "HG186_PATCH",
-      "refseq_ac": "NW_003315910.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383524.1",
-      "length": 78793,
-      "name": "HG280_PATCH",
-      "refseq_ac": "NW_003315911.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383525.1",
-      "length": 65063,
-      "name": "HG991_PATCH",
-      "refseq_ac": "NW_003315912.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159131.1",
-      "length": 393769,
-      "name": "HG1091_PATCH",
-      "refseq_ac": "NW_003871058.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159132.1",
-      "length": 100694,
-      "name": "HG325_PATCH",
-      "refseq_ac": "NW_003871059.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383526.1",
-      "length": 180671,
-      "name": "HSCHR3_1_CTG2_1",
-      "refseq_ac": "NW_003315913.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383528.1",
-      "length": 376187,
-      "name": "HSCHR4_1_CTG6",
-      "refseq_ac": "NW_003315915.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383529.1",
-      "length": 121345,
-      "name": "HSCHR4_2_CTG9",
-      "refseq_ac": "NW_003315916.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582967.1",
-      "length": 248177,
-      "name": "HG706_PATCH",
-      "refseq_ac": "NW_003571035.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383527.1",
-      "length": 164536,
-      "name": "HSCHR4_1_CTG12",
-      "refseq_ac": "NW_003315914.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877872.1",
-      "length": 297485,
-      "name": "HG1032_PATCH",
-      "refseq_ac": "NW_003571034.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL339449.2",
-      "length": 1612928,
-      "name": "HSCHR5_1_CTG1",
-      "refseq_ac": "NW_003315917.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383530.1",
-      "length": 101241,
-      "name": "HSCHR5_1_CTG2",
-      "refseq_ac": "NW_003315918.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383532.1",
-      "length": 82728,
-      "name": "HSCHR5_2_CTG1",
-      "refseq_ac": "NW_003315920.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949742.1",
-      "length": 226852,
-      "name": "HSCHR5_3_CTG1",
-      "refseq_ac": "NW_003571036.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159133.1",
-      "length": 266316,
-      "name": "HG1063_PATCH",
-      "refseq_ac": "NW_003871061.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383531.1",
-      "length": 173459,
-      "name": "HSCHR5_1_CTG5",
-      "refseq_ac": "NW_003315919.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636057.1",
-      "length": 200195,
-      "name": "HG1322_PATCH",
-      "refseq_ac": "NW_003871063.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806576.1",
-      "length": 273386,
-      "name": "HG27_PATCH",
-      "refseq_ac": "NW_004070866.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383533.1",
-      "length": 124736,
-      "name": "HSCHR6_1_CTG5",
-      "refseq_ac": "NW_003315921.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636056.1",
-      "length": 262912,
-      "name": "HG1304_PATCH",
-      "refseq_ac": "NW_003871062.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "KB021644.1",
-      "length": 187824,
-      "name": "HSCHR6_2_CTG5",
-      "refseq_ac": "NW_004166862.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582968.1",
-      "length": 356330,
-      "name": "HG115_PATCH",
-      "refseq_ac": "NW_003571037.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582969.1",
-      "length": 251823,
-      "name": "HG14_PATCH",
-      "refseq_ac": "NW_003571038.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582970.1",
-      "length": 354970,
-      "name": "HG736_PATCH",
-      "refseq_ac": "NW_003571039.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582972.1",
-      "length": 327774,
-      "name": "HG946_PATCH",
-      "refseq_ac": "NW_003571041.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159134.2",
-      "length": 3821770,
-      "name": "HG1257_PATCH",
-      "refseq_ac": "NW_003871064.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636058.1",
-      "length": 716227,
-      "name": "HG1308_PATCH",
-      "refseq_ac": "NW_003871065.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383534.2",
-      "length": 119183,
-      "name": "HSCHR7_1_CTG6",
-      "refseq_ac": "NW_003315922.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582971.1",
-      "length": 1284284,
-      "name": "HG7_PATCH",
-      "refseq_ac": "NW_003571040.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383535.1",
-      "length": 429806,
-      "name": "HG104_HG975_PATCH",
-      "refseq_ac": "NW_003315923.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383536.1",
-      "length": 203777,
-      "name": "HG243_PATCH",
-      "refseq_ac": "NW_003315924.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949743.1",
-      "length": 608579,
-      "name": "HG19_PATCH",
-      "refseq_ac": "NW_003571042.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159135.1",
-      "length": 102251,
-      "name": "HG418_PATCH",
-      "refseq_ac": "NW_003871066.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383539.1",
-      "length": 162988,
-      "name": "HSCHR9_1_CTG1",
-      "refseq_ac": "NW_003315928.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636059.1",
-      "length": 295379,
-      "name": "HG962_PATCH",
-      "refseq_ac": "NW_003871067.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383540.1",
-      "length": 71551,
-      "name": "HSCHR9_1_CTG35",
-      "refseq_ac": "NW_003315929.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383541.1",
-      "length": 171286,
-      "name": "HSCHR9_2_CTG35",
-      "refseq_ac": "NW_003315930.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383542.1",
-      "length": 60032,
-      "name": "HSCHR9_3_CTG35",
-      "refseq_ac": "NW_003315931.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL339450.1",
-      "length": 330164,
-      "name": "HG79_PATCH",
-      "refseq_ac": "NW_003315925.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383537.1",
-      "length": 62435,
-      "name": "HG998_1_PATCH",
-      "refseq_ac": "NW_003315926.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383538.1",
-      "length": 49281,
-      "name": "HG998_2_PATCH",
-      "refseq_ac": "NW_003315927.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806577.1",
-      "length": 22394,
-      "name": "HG1500_PATCH",
-      "refseq_ac": "NW_004070867.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806578.1",
-      "length": 169437,
-      "name": "HG1501_PATCH",
-      "refseq_ac": "NW_004070868.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806579.1",
-      "length": 211307,
-      "name": "HG1502_PATCH",
-      "refseq_ac": "NW_004070869.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383543.1",
-      "length": 392792,
-      "name": "HG544_PATCH",
-      "refseq_ac": "NW_003315932.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877873.1",
-      "length": 168465,
-      "name": "HG905_PATCH",
-      "refseq_ac": "NW_003571043.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636060.1",
-      "length": 437946,
-      "name": "HG871_PATCH",
-      "refseq_ac": "NW_003871071.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383545.1",
-      "length": 179254,
-      "name": "HSCHR10_1_CTG2",
-      "refseq_ac": "NW_003315934.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383546.1",
-      "length": 309802,
-      "name": "HSCHR10_1_CTG5",
-      "refseq_ac": "NW_003315935.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383544.1",
-      "length": 128378,
-      "name": "HG995_PATCH",
-      "refseq_ac": "NW_003315933.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591181.2",
-      "length": 2281126,
-      "name": "HG1211_PATCH",
-      "refseq_ac": "NW_003871068.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591182.1",
-      "length": 196262,
-      "name": "HG311_PATCH",
-      "refseq_ac": "NW_003871069.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591183.1",
-      "length": 177920,
-      "name": "HG339_PATCH",
-      "refseq_ac": "NW_003871070.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806580.1",
-      "length": 93149,
-      "name": "HG1479_PATCH",
-      "refseq_ac": "NW_004070870.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591184.1",
-      "length": 462282,
-      "name": "HG256_PATCH",
-      "refseq_ac": "NW_003871075.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591185.1",
-      "length": 167437,
-      "name": "HG873_PATCH",
-      "refseq_ac": "NW_003871082.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383547.1",
-      "length": 154407,
-      "name": "HSCHR11_1_CTG1_1",
-      "refseq_ac": "NW_003315936.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582973.1",
-      "length": 321004,
-      "name": "HG281_PATCH",
-      "refseq_ac": "NW_003571045.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159136.1",
-      "length": 200998,
-      "name": "HG142_HG150_NOVEL_TEST",
-      "refseq_ac": "NW_003871073.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159137.1",
-      "length": 191409,
-      "name": "HG151_NOVEL_TEST",
-      "refseq_ac": "NW_003871074.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949744.1",
-      "length": 276448,
-      "name": "HG536_PATCH",
-      "refseq_ac": "NW_003571046.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159138.1",
-      "length": 108875,
-      "name": "HG299_PATCH",
-      "refseq_ac": "NW_003871076.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159139.1",
-      "length": 120441,
-      "name": "HG305_PATCH",
-      "refseq_ac": "NW_003871077.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159140.1",
-      "length": 546435,
-      "name": "HG306_PATCH",
-      "refseq_ac": "NW_003871078.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159141.2",
-      "length": 240775,
-      "name": "HG348_PATCH",
-      "refseq_ac": "NW_003871079.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159142.2",
-      "length": 326647,
-      "name": "HG388_HG400_PATCH",
-      "refseq_ac": "NW_003871080.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159143.1",
-      "length": 191402,
-      "name": "HG414_PATCH",
-      "refseq_ac": "NW_003871081.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720443.1",
-      "length": 408430,
-      "name": "HG122_PATCH",
-      "refseq_ac": "NW_003871072.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806581.1",
-      "length": 872115,
-      "name": "HG865_PATCH",
-      "refseq_ac": "NW_004070871.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582974.1",
-      "length": 163298,
-      "name": "HG858_PATCH",
-      "refseq_ac": "NW_003571048.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877875.1",
-      "length": 167313,
-      "name": "HSCHR12_1_CTG1",
-      "refseq_ac": "NW_003571049.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720444.1",
-      "length": 273128,
-      "name": "HG344_PATCH",
-      "refseq_ac": "NW_003871083.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383549.1",
-      "length": 120804,
-      "name": "HSCHR12_1_CTG2",
-      "refseq_ac": "NW_003315938.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383550.1",
-      "length": 169178,
-      "name": "HSCHR12_1_CTG2_1",
-      "refseq_ac": "NW_003315939.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383551.1",
-      "length": 184319,
-      "name": "HSCHR12_1_CTG5",
-      "refseq_ac": "NW_003315940.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383552.1",
-      "length": 138655,
-      "name": "HSCHR12_2_CTG2_1",
-      "refseq_ac": "NW_003315941.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383553.2",
-      "length": 152874,
-      "name": "HSCHR12_3_CTG2_1",
-      "refseq_ac": "NW_003315942.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877876.1",
-      "length": 408271,
-      "name": "HSCHR12_2_CTG2",
-      "refseq_ac": "NW_003571050.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949745.1",
-      "length": 372609,
-      "name": "HG1133_PATCH",
-      "refseq_ac": "NW_003571047.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383548.1",
-      "length": 165247,
-      "name": "HG996_PATCH",
-      "refseq_ac": "NW_003315937.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582975.1",
-      "length": 34662,
-      "name": "HG531_PATCH",
-      "refseq_ac": "NW_003571051.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "KB021645.1",
-      "length": 1523386,
-      "name": "HG1592_PATCH",
-      "refseq_ac": "NW_004166863.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383554.1",
-      "length": 296527,
-      "name": "HSCHR15_1_CTG4",
-      "refseq_ac": "NW_003315943.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383555.1",
-      "length": 388773,
-      "name": "HSCHR15_1_CTG8",
-      "refseq_ac": "NW_003315944.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720445.1",
-      "length": 170033,
-      "name": "HG971_PATCH",
-      "refseq_ac": "NW_003871084.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383556.1",
-      "length": 192462,
-      "name": "HSCHR16_1_CTG3_1",
-      "refseq_ac": "NW_003315945.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720446.1",
-      "length": 97345,
-      "name": "HG1208_PATCH",
-      "refseq_ac": "NW_003871085.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383557.1",
-      "length": 89672,
-      "name": "HSCHR16_2_CTG3_1",
-      "refseq_ac": "NW_003315946.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806582.1",
-      "length": 342635,
-      "name": "HG417_PATCH",
-      "refseq_ac": "NW_004070872.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383563.1",
-      "length": 270261,
-      "name": "HSCHR17_1_CTG1",
-      "refseq_ac": "NW_003315952.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383559.1",
-      "length": 338640,
-      "name": "HG745_PATCH",
-      "refseq_ac": "NW_003315948.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383560.1",
-      "length": 534288,
-      "name": "HG75_PATCH",
-      "refseq_ac": "NW_003315949.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383561.1",
-      "length": 406963,
-      "name": "HG987_PATCH",
-      "refseq_ac": "NW_003315950.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383562.1",
-      "length": 45551,
-      "name": "HG990_PATCH",
-      "refseq_ac": "NW_003315951.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159145.1",
-      "length": 194862,
-      "name": "HG883_PATCH",
-      "refseq_ac": "NW_003871090.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "KB021646.1",
-      "length": 211416,
-      "name": "HG385_PATCH",
-      "refseq_ac": "NW_004166864.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383564.1",
-      "length": 133151,
-      "name": "HSCHR17_1_CTG4",
-      "refseq_ac": "NW_003315953.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159146.1",
-      "length": 278131,
-      "name": "HSCHR17_4_CTG4",
-      "refseq_ac": "NW_003871091.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159147.1",
-      "length": 70345,
-      "name": "HSCHR17_5_CTG4",
-      "refseq_ac": "NW_003871092.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159148.1",
-      "length": 88070,
-      "name": "HSCHR17_6_CTG4",
-      "refseq_ac": "NW_003871093.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383558.1",
-      "length": 457041,
-      "name": "HG183_PATCH",
-      "refseq_ac": "NW_003315947.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582976.1",
-      "length": 412535,
-      "name": "HG185_PATCH",
-      "refseq_ac": "NW_003571052.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159144.1",
-      "length": 388340,
-      "name": "HG747_PATCH",
-      "refseq_ac": "NW_003871088.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720447.1",
-      "length": 454385,
-      "name": "HG1146_PATCH",
-      "refseq_ac": "NW_003871086.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383565.1",
-      "length": 223995,
-      "name": "HSCHR17_2_CTG4",
-      "refseq_ac": "NW_003315954.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383566.1",
-      "length": 90219,
-      "name": "HSCHR17_3_CTG4",
-      "refseq_ac": "NW_003315955.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH591186.1",
-      "length": 376223,
-      "name": "HG748_PATCH",
-      "refseq_ac": "NW_003871089.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH636061.1",
-      "length": 186059,
-      "name": "HG271_PATCH",
-      "refseq_ac": "NW_003871087.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383567.1",
-      "length": 289831,
-      "name": "HSCHR18_1_CTG1_1",
-      "refseq_ac": "NW_003315956.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383568.1",
-      "length": 104552,
-      "name": "HSCHR18_1_CTG2",
-      "refseq_ac": "NW_003315957.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383569.1",
-      "length": 167950,
-      "name": "HSCHR18_1_CTG2_1",
-      "refseq_ac": "NW_003315958.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383570.1",
-      "length": 164789,
-      "name": "HSCHR18_2_CTG1_1",
-      "refseq_ac": "NW_003315959.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383571.1",
-      "length": 198278,
-      "name": "HSCHR18_2_CTG2",
-      "refseq_ac": "NW_003315960.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383572.1",
-      "length": 159547,
-      "name": "HSCHR18_2_CTG2_1",
-      "refseq_ac": "NW_003315961.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582977.1",
-      "length": 580393,
-      "name": "HG730_PATCH",
-      "refseq_ac": "NW_003571053.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159149.1",
-      "length": 245473,
-      "name": "HG729_PATCH",
-      "refseq_ac": "NW_003871094.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383573.1",
-      "length": 385657,
-      "name": "HSCHR19_1_CTG3",
-      "refseq_ac": "NW_003315962.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383574.1",
-      "length": 155864,
-      "name": "HSCHR19_1_CTG3_1",
-      "refseq_ac": "NW_003315963.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383575.2",
-      "length": 170222,
-      "name": "HSCHR19_2_CTG3",
-      "refseq_ac": "NW_003315964.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383576.1",
-      "length": 188024,
-      "name": "HSCHR19_3_CTG3",
-      "refseq_ac": "NW_003315965.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "KB021647.1",
-      "length": 1058686,
-      "name": "HG1079_PATCH",
-      "refseq_ac": "NW_004166865.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949746.1",
-      "length": 987716,
-      "name": "HSCHR19LRC_COX1_CTG1",
-      "refseq_ac": "NW_003571054.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949747.1",
-      "length": 729519,
-      "name": "HSCHR19LRC_COX2_CTG1",
-      "refseq_ac": "NW_003571055.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949748.1",
-      "length": 1064303,
-      "name": "HSCHR19LRC_LRC_I_CTG1",
-      "refseq_ac": "NW_003571056.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949749.1",
-      "length": 1091840,
-      "name": "HSCHR19LRC_LRC_J_CTG1",
-      "refseq_ac": "NW_003571057.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949750.1",
-      "length": 1066389,
-      "name": "HSCHR19LRC_LRC_S_CTG1",
-      "refseq_ac": "NW_003571058.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949751.1",
-      "length": 1002682,
-      "name": "HSCHR19LRC_LRC_T_CTG1",
-      "refseq_ac": "NW_003571059.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949752.1",
-      "length": 987100,
-      "name": "HSCHR19LRC_PGF1_CTG1",
-      "refseq_ac": "NW_003571060.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL949753.1",
-      "length": 796478,
-      "name": "HSCHR19LRC_PGF2_CTG1",
-      "refseq_ac": "NW_003571061.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383577.1",
-      "length": 128385,
-      "name": "HSCHR20_1_CTG1",
-      "refseq_ac": "NW_003315966.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL582979.2",
-      "length": 179899,
-      "name": "HG506_HG507_HG1000_PATCH",
-      "refseq_ac": "NW_003571063.2",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720448.1",
-      "length": 70483,
-      "name": "HG144_PATCH",
-      "refseq_ac": "NW_003871095.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383578.1",
-      "length": 63917,
-      "name": "HSCHR21_1_CTG1_1",
-      "refseq_ac": "NW_003315967.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383579.1",
-      "length": 201198,
-      "name": "HSCHR21_2_CTG1_1",
-      "refseq_ac": "NW_003315968.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383580.1",
-      "length": 74652,
-      "name": "HSCHR21_3_CTG1_1",
-      "refseq_ac": "NW_003315969.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383581.1",
-      "length": 116690,
-      "name": "HSCHR21_4_CTG1_1",
-      "refseq_ac": "NW_003315970.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720449.1",
-      "length": 212298,
-      "name": "HG329_PATCH",
-      "refseq_ac": "NW_003871096.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806583.1",
-      "length": 167183,
-      "name": "HG1486_PATCH",
-      "refseq_ac": "NW_004070873.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806584.1",
-      "length": 70876,
-      "name": "HG1487_PATCH",
-      "refseq_ac": "NW_004070874.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806585.1",
-      "length": 73505,
-      "name": "HG1488_PATCH",
-      "refseq_ac": "NW_004070875.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383582.2",
-      "length": 162811,
-      "name": "HSCHR22_1_CTG1",
-      "refseq_ac": "NW_003315971.2",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL383583.1",
-      "length": 96924,
-      "name": "HSCHR22_1_CTG2",
-      "refseq_ac": "NW_003315972.1",
-      "relationship": "=",
-      "sequence_role": "novel-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806586.1",
-      "length": 43543,
-      "name": "HG497_PATCH",
-      "refseq_ac": "NW_004070876.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "GL877877.1",
-      "length": 284527,
-      "name": "HG480_HG481_PATCH",
-      "refseq_ac": "NW_003571064.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH159150.2",
-      "length": 3150045,
-      "name": "HG1497_PATCH",
-      "refseq_ac": "NW_003871103.2",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720451.1",
-      "length": 898979,
-      "name": "HG1423_PATCH",
-      "refseq_ac": "NW_003871098.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720452.1",
-      "length": 522319,
-      "name": "HG1424_PATCH",
-      "refseq_ac": "NW_003871099.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720453.1",
-      "length": 1461188,
-      "name": "HG1425_PATCH",
-      "refseq_ac": "NW_003871100.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720454.2",
-      "length": 754245,
-      "name": "HG1426_PATCH",
-      "refseq_ac": "NW_003871101.2",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH720455.1",
-      "length": 65034,
-      "name": "HG375_PATCH",
-      "refseq_ac": "NW_003871102.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806587.1",
-      "length": 4110759,
-      "name": "HG1433_PATCH",
-      "refseq_ac": "NW_004070877.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806588.1",
-      "length": 862483,
-      "name": "HG1434_PATCH",
-      "refseq_ac": "NW_004070878.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806589.1",
-      "length": 270630,
-      "name": "HG1435_PATCH",
-      "refseq_ac": "NW_004070879.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806590.2",
-      "length": 2418393,
-      "name": "HG1436_HG1432_PATCH",
-      "refseq_ac": "NW_004070880.2",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806591.1",
-      "length": 882083,
-      "name": "HG1437_PATCH",
-      "refseq_ac": "NW_004070881.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806592.1",
-      "length": 835911,
-      "name": "HG1438_PATCH",
-      "refseq_ac": "NW_004070882.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806593.1",
-      "length": 389631,
-      "name": "HG1439_PATCH",
-      "refseq_ac": "NW_004070883.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806594.1",
-      "length": 390496,
-      "name": "HG1440_PATCH",
-      "refseq_ac": "NW_004070884.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806595.1",
-      "length": 444074,
-      "name": "HG1441_PATCH",
-      "refseq_ac": "NW_004070885.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806596.1",
-      "length": 413927,
-      "name": "HG1442_PATCH",
-      "refseq_ac": "NW_004070886.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806597.1",
-      "length": 1045622,
-      "name": "HG1443_HG1444_PATCH",
-      "refseq_ac": "NW_004070887.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806598.1",
-      "length": 899320,
-      "name": "HG1453_PATCH",
-      "refseq_ac": "NW_004070888.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806599.1",
-      "length": 1214327,
-      "name": "HG1458_PATCH",
-      "refseq_ac": "NW_004070889.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806600.1",
-      "length": 6530008,
-      "name": "HG1459_PATCH",
-      "refseq_ac": "NW_004070890.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806601.1",
-      "length": 1389764,
-      "name": "HG1462_PATCH",
-      "refseq_ac": "NW_004070891.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806602.1",
-      "length": 713266,
-      "name": "HG1463_PATCH",
-      "refseq_ac": "NW_004070892.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "JH806603.1",
-      "length": 182949,
-      "name": "HG1490_PATCH",
-      "refseq_ac": "NW_004070893.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
-    {
-      "aliases": [],
-      "assembly_unit": "PATCHES",
-      "genbank_ac": "KB021648.1",
-      "length": 469972,
-      "name": "HG29_PATCH",
-      "refseq_ac": "NW_004166866.1",
-      "relationship": "=",
-      "sequence_role": "fix-patch"
-    },
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949741.1", 
+      "length": 151551, 
+      "name": "HG989_PATCH", 
+      "refseq_ac": "NW_003571030.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636052.4", 
+      "length": 7283150, 
+      "name": "HG1287_PATCH", 
+      "refseq_ac": "NW_003871055.3", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636053.2", 
+      "length": 1625775, 
+      "name": "HG1292_PATCH", 
+      "refseq_ac": "NW_003871056.2", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806574.1", 
+      "length": 23300, 
+      "name": "HG1472_PATCH", 
+      "refseq_ac": "NW_004070864.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383518.1", 
+      "length": 182439, 
+      "name": "HSCHR1_1_CTG31", 
+      "refseq_ac": "NW_003315905.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383519.1", 
+      "length": 110268, 
+      "name": "HSCHR1_2_CTG31", 
+      "refseq_ac": "NW_003315906.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383520.1", 
+      "length": 366579, 
+      "name": "HSCHR1_3_CTG31", 
+      "refseq_ac": "NW_003315907.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383516.1", 
+      "length": 49316, 
+      "name": "HG999_1_PATCH", 
+      "refseq_ac": "NW_003315903.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383517.1", 
+      "length": 49352, 
+      "name": "HG999_2_PATCH", 
+      "refseq_ac": "NW_003315904.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636054.1", 
+      "length": 758378, 
+      "name": "HG1293_PATCH", 
+      "refseq_ac": "NW_003871057.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806573.1", 
+      "length": 24680, 
+      "name": "HG1471_PATCH", 
+      "refseq_ac": "NW_004070863.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806575.1", 
+      "length": 47409, 
+      "name": "HG1473_PATCH", 
+      "refseq_ac": "NW_004070865.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383521.1", 
+      "length": 143390, 
+      "name": "HSCHR2_1_CTG1", 
+      "refseq_ac": "NW_003315908.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877871.1", 
+      "length": 389939, 
+      "name": "HG686_PATCH", 
+      "refseq_ac": "NW_003571032.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383522.1", 
+      "length": 123821, 
+      "name": "HSCHR2_1_CTG12", 
+      "refseq_ac": "NW_003315909.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582966.2", 
+      "length": 96131, 
+      "name": "HSCHR2_2_CTG12", 
+      "refseq_ac": "NW_003571033.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877870.2", 
+      "length": 66021, 
+      "name": "HG1007_PATCH", 
+      "refseq_ac": "NW_003571031.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636055.1", 
+      "length": 173151, 
+      "name": "HSCHR3_1_CTG1", 
+      "refseq_ac": "NW_003871060.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383523.1", 
+      "length": 171362, 
+      "name": "HG186_PATCH", 
+      "refseq_ac": "NW_003315910.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383524.1", 
+      "length": 78793, 
+      "name": "HG280_PATCH", 
+      "refseq_ac": "NW_003315911.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383525.1", 
+      "length": 65063, 
+      "name": "HG991_PATCH", 
+      "refseq_ac": "NW_003315912.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159131.1", 
+      "length": 393769, 
+      "name": "HG1091_PATCH", 
+      "refseq_ac": "NW_003871058.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159132.1", 
+      "length": 100694, 
+      "name": "HG325_PATCH", 
+      "refseq_ac": "NW_003871059.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383526.1", 
+      "length": 180671, 
+      "name": "HSCHR3_1_CTG2_1", 
+      "refseq_ac": "NW_003315913.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383528.1", 
+      "length": 376187, 
+      "name": "HSCHR4_1_CTG6", 
+      "refseq_ac": "NW_003315915.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383529.1", 
+      "length": 121345, 
+      "name": "HSCHR4_2_CTG9", 
+      "refseq_ac": "NW_003315916.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582967.1", 
+      "length": 248177, 
+      "name": "HG706_PATCH", 
+      "refseq_ac": "NW_003571035.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383527.1", 
+      "length": 164536, 
+      "name": "HSCHR4_1_CTG12", 
+      "refseq_ac": "NW_003315914.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877872.1", 
+      "length": 297485, 
+      "name": "HG1032_PATCH", 
+      "refseq_ac": "NW_003571034.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL339449.2", 
+      "length": 1612928, 
+      "name": "HSCHR5_1_CTG1", 
+      "refseq_ac": "NW_003315917.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383530.1", 
+      "length": 101241, 
+      "name": "HSCHR5_1_CTG2", 
+      "refseq_ac": "NW_003315918.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383532.1", 
+      "length": 82728, 
+      "name": "HSCHR5_2_CTG1", 
+      "refseq_ac": "NW_003315920.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949742.1", 
+      "length": 226852, 
+      "name": "HSCHR5_3_CTG1", 
+      "refseq_ac": "NW_003571036.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159133.1", 
+      "length": 266316, 
+      "name": "HG1063_PATCH", 
+      "refseq_ac": "NW_003871061.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383531.1", 
+      "length": 173459, 
+      "name": "HSCHR5_1_CTG5", 
+      "refseq_ac": "NW_003315919.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636057.1", 
+      "length": 200195, 
+      "name": "HG1322_PATCH", 
+      "refseq_ac": "NW_003871063.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806576.1", 
+      "length": 273386, 
+      "name": "HG27_PATCH", 
+      "refseq_ac": "NW_004070866.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383533.1", 
+      "length": 124736, 
+      "name": "HSCHR6_1_CTG5", 
+      "refseq_ac": "NW_003315921.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636056.1", 
+      "length": 262912, 
+      "name": "HG1304_PATCH", 
+      "refseq_ac": "NW_003871062.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KB021644.1", 
+      "length": 187824, 
+      "name": "HSCHR6_2_CTG5", 
+      "refseq_ac": "NW_004166862.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582968.1", 
+      "length": 356330, 
+      "name": "HG115_PATCH", 
+      "refseq_ac": "NW_003571037.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582969.1", 
+      "length": 251823, 
+      "name": "HG14_PATCH", 
+      "refseq_ac": "NW_003571038.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582970.1", 
+      "length": 354970, 
+      "name": "HG736_PATCH", 
+      "refseq_ac": "NW_003571039.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582972.1", 
+      "length": 327774, 
+      "name": "HG946_PATCH", 
+      "refseq_ac": "NW_003571041.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159134.2", 
+      "length": 3821770, 
+      "name": "HG1257_PATCH", 
+      "refseq_ac": "NW_003871064.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636058.1", 
+      "length": 716227, 
+      "name": "HG1308_PATCH", 
+      "refseq_ac": "NW_003871065.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383534.2", 
+      "length": 119183, 
+      "name": "HSCHR7_1_CTG6", 
+      "refseq_ac": "NW_003315922.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582971.1", 
+      "length": 1284284, 
+      "name": "HG7_PATCH", 
+      "refseq_ac": "NW_003571040.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383535.1", 
+      "length": 429806, 
+      "name": "HG104_HG975_PATCH", 
+      "refseq_ac": "NW_003315923.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383536.1", 
+      "length": 203777, 
+      "name": "HG243_PATCH", 
+      "refseq_ac": "NW_003315924.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949743.1", 
+      "length": 608579, 
+      "name": "HG19_PATCH", 
+      "refseq_ac": "NW_003571042.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159135.1", 
+      "length": 102251, 
+      "name": "HG418_PATCH", 
+      "refseq_ac": "NW_003871066.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383539.1", 
+      "length": 162988, 
+      "name": "HSCHR9_1_CTG1", 
+      "refseq_ac": "NW_003315928.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636059.1", 
+      "length": 295379, 
+      "name": "HG962_PATCH", 
+      "refseq_ac": "NW_003871067.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383540.1", 
+      "length": 71551, 
+      "name": "HSCHR9_1_CTG35", 
+      "refseq_ac": "NW_003315929.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383541.1", 
+      "length": 171286, 
+      "name": "HSCHR9_2_CTG35", 
+      "refseq_ac": "NW_003315930.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383542.1", 
+      "length": 60032, 
+      "name": "HSCHR9_3_CTG35", 
+      "refseq_ac": "NW_003315931.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL339450.1", 
+      "length": 330164, 
+      "name": "HG79_PATCH", 
+      "refseq_ac": "NW_003315925.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383537.1", 
+      "length": 62435, 
+      "name": "HG998_1_PATCH", 
+      "refseq_ac": "NW_003315926.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383538.1", 
+      "length": 49281, 
+      "name": "HG998_2_PATCH", 
+      "refseq_ac": "NW_003315927.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806577.1", 
+      "length": 22394, 
+      "name": "HG1500_PATCH", 
+      "refseq_ac": "NW_004070867.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806578.1", 
+      "length": 169437, 
+      "name": "HG1501_PATCH", 
+      "refseq_ac": "NW_004070868.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806579.1", 
+      "length": 211307, 
+      "name": "HG1502_PATCH", 
+      "refseq_ac": "NW_004070869.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383543.1", 
+      "length": 392792, 
+      "name": "HG544_PATCH", 
+      "refseq_ac": "NW_003315932.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877873.1", 
+      "length": 168465, 
+      "name": "HG905_PATCH", 
+      "refseq_ac": "NW_003571043.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636060.1", 
+      "length": 437946, 
+      "name": "HG871_PATCH", 
+      "refseq_ac": "NW_003871071.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383545.1", 
+      "length": 179254, 
+      "name": "HSCHR10_1_CTG2", 
+      "refseq_ac": "NW_003315934.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383546.1", 
+      "length": 309802, 
+      "name": "HSCHR10_1_CTG5", 
+      "refseq_ac": "NW_003315935.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383544.1", 
+      "length": 128378, 
+      "name": "HG995_PATCH", 
+      "refseq_ac": "NW_003315933.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591181.2", 
+      "length": 2281126, 
+      "name": "HG1211_PATCH", 
+      "refseq_ac": "NW_003871068.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591182.1", 
+      "length": 196262, 
+      "name": "HG311_PATCH", 
+      "refseq_ac": "NW_003871069.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591183.1", 
+      "length": 177920, 
+      "name": "HG339_PATCH", 
+      "refseq_ac": "NW_003871070.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806580.1", 
+      "length": 93149, 
+      "name": "HG1479_PATCH", 
+      "refseq_ac": "NW_004070870.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591184.1", 
+      "length": 462282, 
+      "name": "HG256_PATCH", 
+      "refseq_ac": "NW_003871075.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591185.1", 
+      "length": 167437, 
+      "name": "HG873_PATCH", 
+      "refseq_ac": "NW_003871082.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383547.1", 
+      "length": 154407, 
+      "name": "HSCHR11_1_CTG1_1", 
+      "refseq_ac": "NW_003315936.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582973.1", 
+      "length": 321004, 
+      "name": "HG281_PATCH", 
+      "refseq_ac": "NW_003571045.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159136.1", 
+      "length": 200998, 
+      "name": "HG142_HG150_NOVEL_TEST", 
+      "refseq_ac": "NW_003871073.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159137.1", 
+      "length": 191409, 
+      "name": "HG151_NOVEL_TEST", 
+      "refseq_ac": "NW_003871074.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949744.1", 
+      "length": 276448, 
+      "name": "HG536_PATCH", 
+      "refseq_ac": "NW_003571046.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159138.1", 
+      "length": 108875, 
+      "name": "HG299_PATCH", 
+      "refseq_ac": "NW_003871076.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159139.1", 
+      "length": 120441, 
+      "name": "HG305_PATCH", 
+      "refseq_ac": "NW_003871077.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159140.1", 
+      "length": 546435, 
+      "name": "HG306_PATCH", 
+      "refseq_ac": "NW_003871078.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159141.2", 
+      "length": 240775, 
+      "name": "HG348_PATCH", 
+      "refseq_ac": "NW_003871079.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159142.2", 
+      "length": 326647, 
+      "name": "HG388_HG400_PATCH", 
+      "refseq_ac": "NW_003871080.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159143.1", 
+      "length": 191402, 
+      "name": "HG414_PATCH", 
+      "refseq_ac": "NW_003871081.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720443.1", 
+      "length": 408430, 
+      "name": "HG122_PATCH", 
+      "refseq_ac": "NW_003871072.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806581.1", 
+      "length": 872115, 
+      "name": "HG865_PATCH", 
+      "refseq_ac": "NW_004070871.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582974.1", 
+      "length": 163298, 
+      "name": "HG858_PATCH", 
+      "refseq_ac": "NW_003571048.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877875.1", 
+      "length": 167313, 
+      "name": "HSCHR12_1_CTG1", 
+      "refseq_ac": "NW_003571049.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720444.1", 
+      "length": 273128, 
+      "name": "HG344_PATCH", 
+      "refseq_ac": "NW_003871083.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383549.1", 
+      "length": 120804, 
+      "name": "HSCHR12_1_CTG2", 
+      "refseq_ac": "NW_003315938.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383550.1", 
+      "length": 169178, 
+      "name": "HSCHR12_1_CTG2_1", 
+      "refseq_ac": "NW_003315939.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383551.1", 
+      "length": 184319, 
+      "name": "HSCHR12_1_CTG5", 
+      "refseq_ac": "NW_003315940.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383552.1", 
+      "length": 138655, 
+      "name": "HSCHR12_2_CTG2_1", 
+      "refseq_ac": "NW_003315941.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383553.2", 
+      "length": 152874, 
+      "name": "HSCHR12_3_CTG2_1", 
+      "refseq_ac": "NW_003315942.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877876.1", 
+      "length": 408271, 
+      "name": "HSCHR12_2_CTG2", 
+      "refseq_ac": "NW_003571050.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949745.1", 
+      "length": 372609, 
+      "name": "HG1133_PATCH", 
+      "refseq_ac": "NW_003571047.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383548.1", 
+      "length": 165247, 
+      "name": "HG996_PATCH", 
+      "refseq_ac": "NW_003315937.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582975.1", 
+      "length": 34662, 
+      "name": "HG531_PATCH", 
+      "refseq_ac": "NW_003571051.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KB021645.1", 
+      "length": 1523386, 
+      "name": "HG1592_PATCH", 
+      "refseq_ac": "NW_004166863.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383554.1", 
+      "length": 296527, 
+      "name": "HSCHR15_1_CTG4", 
+      "refseq_ac": "NW_003315943.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383555.1", 
+      "length": 388773, 
+      "name": "HSCHR15_1_CTG8", 
+      "refseq_ac": "NW_003315944.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720445.1", 
+      "length": 170033, 
+      "name": "HG971_PATCH", 
+      "refseq_ac": "NW_003871084.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383556.1", 
+      "length": 192462, 
+      "name": "HSCHR16_1_CTG3_1", 
+      "refseq_ac": "NW_003315945.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720446.1", 
+      "length": 97345, 
+      "name": "HG1208_PATCH", 
+      "refseq_ac": "NW_003871085.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383557.1", 
+      "length": 89672, 
+      "name": "HSCHR16_2_CTG3_1", 
+      "refseq_ac": "NW_003315946.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806582.1", 
+      "length": 342635, 
+      "name": "HG417_PATCH", 
+      "refseq_ac": "NW_004070872.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383563.1", 
+      "length": 270261, 
+      "name": "HSCHR17_1_CTG1", 
+      "refseq_ac": "NW_003315952.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383559.1", 
+      "length": 338640, 
+      "name": "HG745_PATCH", 
+      "refseq_ac": "NW_003315948.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383560.1", 
+      "length": 534288, 
+      "name": "HG75_PATCH", 
+      "refseq_ac": "NW_003315949.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383561.1", 
+      "length": 406963, 
+      "name": "HG987_PATCH", 
+      "refseq_ac": "NW_003315950.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383562.1", 
+      "length": 45551, 
+      "name": "HG990_PATCH", 
+      "refseq_ac": "NW_003315951.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159145.1", 
+      "length": 194862, 
+      "name": "HG883_PATCH", 
+      "refseq_ac": "NW_003871090.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KB021646.1", 
+      "length": 211416, 
+      "name": "HG385_PATCH", 
+      "refseq_ac": "NW_004166864.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383564.1", 
+      "length": 133151, 
+      "name": "HSCHR17_1_CTG4", 
+      "refseq_ac": "NW_003315953.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159146.1", 
+      "length": 278131, 
+      "name": "HSCHR17_4_CTG4", 
+      "refseq_ac": "NW_003871091.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159147.1", 
+      "length": 70345, 
+      "name": "HSCHR17_5_CTG4", 
+      "refseq_ac": "NW_003871092.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159148.1", 
+      "length": 88070, 
+      "name": "HSCHR17_6_CTG4", 
+      "refseq_ac": "NW_003871093.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383558.1", 
+      "length": 457041, 
+      "name": "HG183_PATCH", 
+      "refseq_ac": "NW_003315947.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582976.1", 
+      "length": 412535, 
+      "name": "HG185_PATCH", 
+      "refseq_ac": "NW_003571052.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159144.1", 
+      "length": 388340, 
+      "name": "HG747_PATCH", 
+      "refseq_ac": "NW_003871088.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720447.1", 
+      "length": 454385, 
+      "name": "HG1146_PATCH", 
+      "refseq_ac": "NW_003871086.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383565.1", 
+      "length": 223995, 
+      "name": "HSCHR17_2_CTG4", 
+      "refseq_ac": "NW_003315954.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383566.1", 
+      "length": 90219, 
+      "name": "HSCHR17_3_CTG4", 
+      "refseq_ac": "NW_003315955.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH591186.1", 
+      "length": 376223, 
+      "name": "HG748_PATCH", 
+      "refseq_ac": "NW_003871089.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH636061.1", 
+      "length": 186059, 
+      "name": "HG271_PATCH", 
+      "refseq_ac": "NW_003871087.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383567.1", 
+      "length": 289831, 
+      "name": "HSCHR18_1_CTG1_1", 
+      "refseq_ac": "NW_003315956.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383568.1", 
+      "length": 104552, 
+      "name": "HSCHR18_1_CTG2", 
+      "refseq_ac": "NW_003315957.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383569.1", 
+      "length": 167950, 
+      "name": "HSCHR18_1_CTG2_1", 
+      "refseq_ac": "NW_003315958.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383570.1", 
+      "length": 164789, 
+      "name": "HSCHR18_2_CTG1_1", 
+      "refseq_ac": "NW_003315959.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383571.1", 
+      "length": 198278, 
+      "name": "HSCHR18_2_CTG2", 
+      "refseq_ac": "NW_003315960.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383572.1", 
+      "length": 159547, 
+      "name": "HSCHR18_2_CTG2_1", 
+      "refseq_ac": "NW_003315961.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582977.1", 
+      "length": 580393, 
+      "name": "HG730_PATCH", 
+      "refseq_ac": "NW_003571053.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159149.1", 
+      "length": 245473, 
+      "name": "HG729_PATCH", 
+      "refseq_ac": "NW_003871094.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383573.1", 
+      "length": 385657, 
+      "name": "HSCHR19_1_CTG3", 
+      "refseq_ac": "NW_003315962.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383574.1", 
+      "length": 155864, 
+      "name": "HSCHR19_1_CTG3_1", 
+      "refseq_ac": "NW_003315963.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383575.2", 
+      "length": 170222, 
+      "name": "HSCHR19_2_CTG3", 
+      "refseq_ac": "NW_003315964.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383576.1", 
+      "length": 188024, 
+      "name": "HSCHR19_3_CTG3", 
+      "refseq_ac": "NW_003315965.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KB021647.1", 
+      "length": 1058686, 
+      "name": "HG1079_PATCH", 
+      "refseq_ac": "NW_004166865.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949746.1", 
+      "length": 987716, 
+      "name": "HSCHR19LRC_COX1_CTG1", 
+      "refseq_ac": "NW_003571054.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949747.1", 
+      "length": 729519, 
+      "name": "HSCHR19LRC_COX2_CTG1", 
+      "refseq_ac": "NW_003571055.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949748.1", 
+      "length": 1064303, 
+      "name": "HSCHR19LRC_LRC_I_CTG1", 
+      "refseq_ac": "NW_003571056.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949749.1", 
+      "length": 1091840, 
+      "name": "HSCHR19LRC_LRC_J_CTG1", 
+      "refseq_ac": "NW_003571057.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949750.1", 
+      "length": 1066389, 
+      "name": "HSCHR19LRC_LRC_S_CTG1", 
+      "refseq_ac": "NW_003571058.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949751.1", 
+      "length": 1002682, 
+      "name": "HSCHR19LRC_LRC_T_CTG1", 
+      "refseq_ac": "NW_003571059.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949752.1", 
+      "length": 987100, 
+      "name": "HSCHR19LRC_PGF1_CTG1", 
+      "refseq_ac": "NW_003571060.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL949753.1", 
+      "length": 796478, 
+      "name": "HSCHR19LRC_PGF2_CTG1", 
+      "refseq_ac": "NW_003571061.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383577.1", 
+      "length": 128385, 
+      "name": "HSCHR20_1_CTG1", 
+      "refseq_ac": "NW_003315966.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL582979.2", 
+      "length": 179899, 
+      "name": "HG506_HG507_HG1000_PATCH", 
+      "refseq_ac": "NW_003571063.2", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720448.1", 
+      "length": 70483, 
+      "name": "HG144_PATCH", 
+      "refseq_ac": "NW_003871095.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383578.1", 
+      "length": 63917, 
+      "name": "HSCHR21_1_CTG1_1", 
+      "refseq_ac": "NW_003315967.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383579.1", 
+      "length": 201198, 
+      "name": "HSCHR21_2_CTG1_1", 
+      "refseq_ac": "NW_003315968.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383580.1", 
+      "length": 74652, 
+      "name": "HSCHR21_3_CTG1_1", 
+      "refseq_ac": "NW_003315969.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383581.1", 
+      "length": 116690, 
+      "name": "HSCHR21_4_CTG1_1", 
+      "refseq_ac": "NW_003315970.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720449.1", 
+      "length": 212298, 
+      "name": "HG329_PATCH", 
+      "refseq_ac": "NW_003871096.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806583.1", 
+      "length": 167183, 
+      "name": "HG1486_PATCH", 
+      "refseq_ac": "NW_004070873.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806584.1", 
+      "length": 70876, 
+      "name": "HG1487_PATCH", 
+      "refseq_ac": "NW_004070874.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806585.1", 
+      "length": 73505, 
+      "name": "HG1488_PATCH", 
+      "refseq_ac": "NW_004070875.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383582.2", 
+      "length": 162811, 
+      "name": "HSCHR22_1_CTG1", 
+      "refseq_ac": "NW_003315971.2", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL383583.1", 
+      "length": 96924, 
+      "name": "HSCHR22_1_CTG2", 
+      "refseq_ac": "NW_003315972.1", 
+      "relationship": "=", 
+      "sequence_role": "novel-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806586.1", 
+      "length": 43543, 
+      "name": "HG497_PATCH", 
+      "refseq_ac": "NW_004070876.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "GL877877.1", 
+      "length": 284527, 
+      "name": "HG480_HG481_PATCH", 
+      "refseq_ac": "NW_003571064.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH159150.2", 
+      "length": 3150045, 
+      "name": "HG1497_PATCH", 
+      "refseq_ac": "NW_003871103.2", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720451.1", 
+      "length": 898979, 
+      "name": "HG1423_PATCH", 
+      "refseq_ac": "NW_003871098.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720452.1", 
+      "length": 522319, 
+      "name": "HG1424_PATCH", 
+      "refseq_ac": "NW_003871099.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720453.1", 
+      "length": 1461188, 
+      "name": "HG1425_PATCH", 
+      "refseq_ac": "NW_003871100.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720454.2", 
+      "length": 754245, 
+      "name": "HG1426_PATCH", 
+      "refseq_ac": "NW_003871101.2", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH720455.1", 
+      "length": 65034, 
+      "name": "HG375_PATCH", 
+      "refseq_ac": "NW_003871102.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806587.1", 
+      "length": 4110759, 
+      "name": "HG1433_PATCH", 
+      "refseq_ac": "NW_004070877.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806588.1", 
+      "length": 862483, 
+      "name": "HG1434_PATCH", 
+      "refseq_ac": "NW_004070878.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806589.1", 
+      "length": 270630, 
+      "name": "HG1435_PATCH", 
+      "refseq_ac": "NW_004070879.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806590.2", 
+      "length": 2418393, 
+      "name": "HG1436_HG1432_PATCH", 
+      "refseq_ac": "NW_004070880.2", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806591.1", 
+      "length": 882083, 
+      "name": "HG1437_PATCH", 
+      "refseq_ac": "NW_004070881.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806592.1", 
+      "length": 835911, 
+      "name": "HG1438_PATCH", 
+      "refseq_ac": "NW_004070882.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806593.1", 
+      "length": 389631, 
+      "name": "HG1439_PATCH", 
+      "refseq_ac": "NW_004070883.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806594.1", 
+      "length": 390496, 
+      "name": "HG1440_PATCH", 
+      "refseq_ac": "NW_004070884.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806595.1", 
+      "length": 444074, 
+      "name": "HG1441_PATCH", 
+      "refseq_ac": "NW_004070885.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806596.1", 
+      "length": 413927, 
+      "name": "HG1442_PATCH", 
+      "refseq_ac": "NW_004070886.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806597.1", 
+      "length": 1045622, 
+      "name": "HG1443_HG1444_PATCH", 
+      "refseq_ac": "NW_004070887.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806598.1", 
+      "length": 899320, 
+      "name": "HG1453_PATCH", 
+      "refseq_ac": "NW_004070888.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806599.1", 
+      "length": 1214327, 
+      "name": "HG1458_PATCH", 
+      "refseq_ac": "NW_004070889.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806600.1", 
+      "length": 6530008, 
+      "name": "HG1459_PATCH", 
+      "refseq_ac": "NW_004070890.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806601.1", 
+      "length": 1389764, 
+      "name": "HG1462_PATCH", 
+      "refseq_ac": "NW_004070891.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806602.1", 
+      "length": 713266, 
+      "name": "HG1463_PATCH", 
+      "refseq_ac": "NW_004070892.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "JH806603.1", 
+      "length": 182949, 
+      "name": "HG1490_PATCH", 
+      "refseq_ac": "NW_004070893.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "PATCHES", 
+      "genbank_ac": "KB021648.1", 
+      "length": 469972, 
+      "name": "HG29_PATCH", 
+      "refseq_ac": "NW_004166866.1", 
+      "relationship": "=", 
+      "sequence_role": "fix-patch"
+    }, 
     {
       "aliases": [
         "chr6_apd_hap1"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_1",
-      "genbank_ac": "GL000250.1",
-      "length": 4622290,
-      "name": "HSCHR6_MHC_APD_CTG1",
-      "refseq_ac": "NT_167244.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_1", 
+      "genbank_ac": "GL000250.1", 
+      "length": 4622290, 
+      "name": "HSCHR6_MHC_APD_CTG1", 
+      "refseq_ac": "NT_167244.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_cox_hap2"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_2",
-      "genbank_ac": "GL000251.1",
-      "length": 4795371,
-      "name": "HSCHR6_MHC_COX_CTG1",
-      "refseq_ac": "NT_113891.2",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_2", 
+      "genbank_ac": "GL000251.1", 
+      "length": 4795371, 
+      "name": "HSCHR6_MHC_COX_CTG1", 
+      "refseq_ac": "NT_113891.2", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_dbb_hap3"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_3",
-      "genbank_ac": "GL000252.1",
-      "length": 4610396,
-      "name": "HSCHR6_MHC_DBB_CTG1",
-      "refseq_ac": "NT_167245.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_3", 
+      "genbank_ac": "GL000252.1", 
+      "length": 4610396, 
+      "name": "HSCHR6_MHC_DBB_CTG1", 
+      "refseq_ac": "NT_167245.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_mann_hap4"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_4",
-      "genbank_ac": "GL000253.1",
-      "length": 4683263,
-      "name": "HSCHR6_MHC_MANN_CTG1",
-      "refseq_ac": "NT_167246.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_4", 
+      "genbank_ac": "GL000253.1", 
+      "length": 4683263, 
+      "name": "HSCHR6_MHC_MANN_CTG1", 
+      "refseq_ac": "NT_167246.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_mcf_hap5"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_5",
-      "genbank_ac": "GL000254.1",
-      "length": 4833398,
-      "name": "HSCHR6_MHC_MCF_CTG1",
-      "refseq_ac": "NT_167247.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_5", 
+      "genbank_ac": "GL000254.1", 
+      "length": 4833398, 
+      "name": "HSCHR6_MHC_MCF_CTG1", 
+      "refseq_ac": "NT_167247.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_qbl_hap6"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_6",
-      "genbank_ac": "GL000255.1",
-      "length": 4611984,
-      "name": "HSCHR6_MHC_QBL_CTG1",
-      "refseq_ac": "NT_167248.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_6", 
+      "genbank_ac": "GL000255.1", 
+      "length": 4611984, 
+      "name": "HSCHR6_MHC_QBL_CTG1", 
+      "refseq_ac": "NT_167248.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr6_ssto_hap7"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_7",
-      "genbank_ac": "GL000256.1",
-      "length": 4928567,
-      "name": "HSCHR6_MHC_SSTO_CTG1",
-      "refseq_ac": "NT_167249.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_7", 
+      "genbank_ac": "GL000256.1", 
+      "length": 4928567, 
+      "name": "HSCHR6_MHC_SSTO_CTG1", 
+      "refseq_ac": "NT_167249.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr4_ctg9_hap1"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_8",
-      "genbank_ac": "GL000257.1",
-      "length": 590426,
-      "name": "HSCHR4_1_CTG9",
-      "refseq_ac": "NT_167250.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_8", 
+      "genbank_ac": "GL000257.1", 
+      "length": 590426, 
+      "name": "HSCHR4_1_CTG9", 
+      "refseq_ac": "NT_167250.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chr17_ctg5_hap1"
-      ],
-      "assembly_unit": "ALT_REF_LOCI_9",
-      "genbank_ac": "GL000258.1",
-      "length": 1680828,
-      "name": "HSCHR17_1_CTG5",
-      "refseq_ac": "NT_167251.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "ALT_REF_LOCI_9", 
+      "genbank_ac": "GL000258.1", 
+      "length": 1680828, 
+      "name": "HSCHR17_1_CTG5", 
+      "refseq_ac": "NT_167251.1", 
+      "relationship": "=", 
       "sequence_role": "alt-scaffold"
-    },
+    }, 
     {
       "aliases": [
         "chrM"
-      ],
-      "assembly_unit": "non-nuclear",
-      "genbank_ac": "J01415.2",
-      "length": 16569,
-      "name": "MT",
-      "refseq_ac": "NC_012920.1",
-      "relationship": "=",
+      ], 
+      "assembly_unit": "non-nuclear", 
+      "genbank_ac": "J01415.2", 
+      "length": 16569, 
+      "name": "MT", 
+      "refseq_ac": "NC_012920.1", 
+      "relationship": "=", 
       "sequence_role": "assembled-molecule"
     }
-  ],
+  ], 
   "submitter": "Genome Reference Consortium"
 }

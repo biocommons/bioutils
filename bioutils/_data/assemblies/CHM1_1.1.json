@@ -1,0 +1,250 @@
+{
+  "date": "2013-06-14", 
+  "description": null, 
+  "genbank_ac": "GCA_000306695.2", 
+  "name": "CHM1_1.1", 
+  "refseq_ac": "GCF_000306695.2", 
+  "sequences": [
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001609.2", 
+      "length": 250522664, 
+      "name": "chr1", 
+      "refseq_ac": "NC_018912.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001610.2", 
+      "length": 243205335, 
+      "name": "chr2", 
+      "refseq_ac": "NC_018913.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001611.2", 
+      "length": 197992941, 
+      "name": "chr3", 
+      "refseq_ac": "NC_018914.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001612.2", 
+      "length": 191040880, 
+      "name": "chr4", 
+      "refseq_ac": "NC_018915.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001613.2", 
+      "length": 180347728, 
+      "name": "chr5", 
+      "refseq_ac": "NC_018916.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001614.2", 
+      "length": 171376517, 
+      "name": "chr6", 
+      "refseq_ac": "NC_018917.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001615.2", 
+      "length": 159147065, 
+      "name": "chr7", 
+      "refseq_ac": "NC_018918.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001616.2", 
+      "length": 146399655, 
+      "name": "chr8", 
+      "refseq_ac": "NC_018919.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001617.2", 
+      "length": 141360467, 
+      "name": "chr9", 
+      "refseq_ac": "NC_018920.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001618.2", 
+      "length": 135814614, 
+      "name": "chr10", 
+      "refseq_ac": "NC_018921.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001619.2", 
+      "length": 134889443, 
+      "name": "chr11", 
+      "refseq_ac": "NC_018922.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001620.2", 
+      "length": 133671515, 
+      "name": "chr12", 
+      "refseq_ac": "NC_018923.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001621.2", 
+      "length": 115138643, 
+      "name": "chr13", 
+      "refseq_ac": "NC_018924.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001622.2", 
+      "length": 107278286, 
+      "name": "chr14", 
+      "refseq_ac": "NC_018925.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001623.2", 
+      "length": 102381530, 
+      "name": "chr15", 
+      "refseq_ac": "NC_018926.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001624.2", 
+      "length": 91765909, 
+      "name": "chr16", 
+      "refseq_ac": "NC_018927.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001625.2", 
+      "length": 81289577, 
+      "name": "chr17", 
+      "refseq_ac": "NC_018928.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001626.2", 
+      "length": 78072225, 
+      "name": "chr18", 
+      "refseq_ac": "NC_018929.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001627.2", 
+      "length": 59121989, 
+      "name": "chr19", 
+      "refseq_ac": "NC_018930.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001628.2", 
+      "length": 62914916, 
+      "name": "chr20", 
+      "refseq_ac": "NC_018931.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001629.2", 
+      "length": 47690666, 
+      "name": "chr21", 
+      "refseq_ac": "NC_018932.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001630.2", 
+      "length": 51262586, 
+      "name": "chr22", 
+      "refseq_ac": "NC_018933.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "Primary Assembly", 
+      "genbank_ac": "CM001631.2", 
+      "length": 155181468, 
+      "name": "chrX", 
+      "refseq_ac": "NC_018934.2", 
+      "relationship": "=", 
+      "sequence_role": "assembled-molecule"
+    }, 
+    {
+      "aliases": [], 
+      "assembly_unit": "non-nuclear", 
+      "genbank_ac": "CM001971.1", 
+      "length": 16562, 
+      "name": "chrM", 
+      "refseq_ac": "na", 
+      "relationship": "<>", 
+      "sequence_role": "assembled-molecule"
+    }
+  ], 
+  "submitter": "Washington University School of Medicine"
+}

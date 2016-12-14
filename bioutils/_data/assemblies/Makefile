@@ -6,6 +6,7 @@
 .SUFFIXES:
 .DELETE_ON_ERROR:
 
+SHELL:=/bin/bash -o pipefail
 PATH:=../../../sbin:${PATH}
 
 update:
@@ -15,7 +16,7 @@ update:
 # rsyncs all assembly records into pull/ directory
 pull: FORCE
 	mkdir -p $@
-	rsync -v --no-motd ftp.ncbi.nlm.nih.gov::genomes/ASSEMBLY_REPORTS/All/GCF_000001405.*.assembly.txt $@
+	rsync -L -v --no-motd ftp.ncbi.nlm.nih.gov::genomes/ASSEMBLY_REPORTS/All/{GCF_000001405,GCF_000306695}.*.assembly.txt $@
 
 pull/%.json: pull/%.txt
 	assembly-to-json -p ${@D} $<
