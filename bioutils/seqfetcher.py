@@ -84,13 +84,19 @@ def fetch_seq(ac, start_i=None, end_i=None):
     """
 
     ac_dispatch = [
-        {'re': re.compile('^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d'), 'fetcher': _fetch_seq_ncbi},
-        {'re': re.compile('^ENS[TP]\d+'),                         'fetcher': _fetch_seq_ensembl},
+        {
+            're': re.compile('^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d'),
+            'fetcher': _fetch_seq_ncbi
+        },
+        {
+            're': re.compile('^ENS[TP]\d+'),
+            'fetcher': _fetch_seq_ensembl
+        },
     ]
 
-    eligible_fetchers = [dr['fetcher']
-                         for dr in ac_dispatch
-                         if dr['re'].match(ac)]
+    eligible_fetchers = [
+        dr['fetcher'] for dr in ac_dispatch if dr['re'].match(ac)
+    ]
 
     if len(eligible_fetchers) == 0:
         raise RuntimeError("No sequence fetcher for {ac}".format(ac=ac))
@@ -100,8 +106,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
                      "{ac}; using first".format(ac=ac))
 
     fetcher = eligible_fetchers[0]
-    logger.debug("fetching {ac} with {f}".format(
-        ac=ac, f=fetcher))
+    logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
 
     try:
         return fetcher(ac, start_i, end_i)
@@ -111,6 +116,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
 # ###########################################################################
 # Internal functions
+
 
 def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
     """Fetch the specified sequence slice from Ensembl using the public
@@ -188,7 +194,6 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 # AACGTATCACACTTCTTCTCCATTTCTTTTTCTTACATCTTCTCTCTACAAATTCATTTC
 # Note that we requested .1, got .2.  Implicit behavior bites again.
 
-
-if __name__ == "__main__":      # pragma: nocover
+if __name__ == "__main__":  # pragma: nocover
     import doctest
     doctest.testmod()

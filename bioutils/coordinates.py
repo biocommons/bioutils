@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-, flake8: noqa
 from __future__ import absolute_import, division, print_function, unicode_literals
-
 """provides utilities for interconverting between coordinate systems
 especially as used by the hgvs code.  The three systems are:
  
@@ -34,11 +33,8 @@ For code clarity, this module provides functions that interconvert
 
 """
 
-
-
-PLUS_STRAND  =  1
+PLUS_STRAND = 1
 MINUS_STRAND = -1
-
 
 
 def strand_pm_to_int(s):
@@ -52,6 +48,7 @@ def strand_pm_to_int(s):
     """
     return PLUS_STRAND if s == '+' else MINUS_STRAND if s == '-' else None
 
+
 def strand_int_to_pm(i):
     """
     >>> strand_int_to_pm(1)
@@ -63,9 +60,8 @@ def strand_int_to_pm(i):
     """
     return '+' if i == PLUS_STRAND else '-' if i == MINUS_STRAND else None
 
+
 strand_pm = strand_int_to_pm
-
-
 
 ## <LICENSE>
 ## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)

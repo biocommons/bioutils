@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """simple routines to deal with accessions, identifiers, etc.
 
 """
@@ -36,7 +35,7 @@ def strip_chr(chr):
     '22'
 
     """
-    return chr[3:] if chr[0:3] == 'chr' else chr        
+    return chr[3:] if chr[0:3] == 'chr' else chr
 
 
 def chr22XY(c):
@@ -67,7 +66,7 @@ def chr22XY(c):
         c = c[3:]
     if c == '23': c = 'X'
     if c == '24': c = 'Y'
-    return 'chr'+c
+    return 'chr' + c
 
 
 ## <LICENSE>

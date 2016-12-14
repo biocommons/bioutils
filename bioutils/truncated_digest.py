@@ -84,7 +84,7 @@ def truncated_digest(binary_data, digest_size):
     [5] http://preshing.com/20110504/hash-collision-probabilities/
     [6] https://en.wikipedia.org/wiki/Birthday_problem
 
-    """ 
+    """
     # TODO: Consider relaxing %3 constraint and stripping padding
     if digest_size % 3 != 0:
         raise ValueError("digest_size must be a multiple of 3")
@@ -95,8 +95,7 @@ def truncated_digest(binary_data, digest_size):
     return base64.urlsafe_b64encode(sha512t).decode("ASCII")
 
 
-
-if __name__ == "__main__":      # pragma: nocover
+if __name__ == "__main__":  # pragma: nocover
     import math
     import prettytable
 
@@ -110,5 +109,5 @@ if __name__ == "__main__":      # pragma: nocover
     field_names = ["#m"] + ["P<={P}".format(P=P) for P in P_bins]
     pt = prettytable.PrettyTable(field_names=field_names)
     for n_m in m_bins:
-        pt.add_row(["{:g}".format(n_m)] + [B(P,n_m) for P in P_bins])
+        pt.add_row(["{:g}".format(n_m)] + [B(P, n_m) for P in P_bins])
     print(pt)

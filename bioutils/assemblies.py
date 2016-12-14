@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-, flake8: noqa
 from __future__ import absolute_import, division, print_function, unicode_literals
-
 """Provides dictionaries of genome assembly data as provided by
 ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/*.assembly.txt
 
@@ -26,7 +25,6 @@ verbatim, without prefixes or case changes.
 
 """
 
-
 import json
 import pkg_resources
 
@@ -43,11 +41,12 @@ def get_assembly_names():
     True
 
     """
-    
-    return [n.replace(".json", "")
-            for n in pkg_resources.resource_listdir(__name__, _assy_dir)
-            if n.endswith(".json")
-            ]
+
+    return [
+        n.replace(".json", "")
+        for n in pkg_resources.resource_listdir(__name__, _assy_dir)
+        if n.endswith(".json")
+    ]
 
 
 def get_assembly(name):
@@ -82,7 +81,8 @@ def get_assembly(name):
      'sequence_role': 'assembled-molecule'}
     """
 
-    js = pkg_resources.resource_string(__name__, _assy_path_fmt.format(name=name))
+    js = pkg_resources.resource_string(
+        __name__, _assy_path_fmt.format(name=name))
     return json.loads(js.decode("utf-8"))
 
 
@@ -113,10 +113,11 @@ def make_name_ac_map(assy_name, primary_only=False):
     'NC_000001.11'
 
     """
-    return {s['name']: s['refseq_ac']
-            for s in get_assembly(assy_name)['sequences']
-            if (not primary_only or _is_primary(s))
-            }
+    return {
+        s['name']: s['refseq_ac']
+        for s in get_assembly(assy_name)['sequences']
+        if (not primary_only or _is_primary(s))
+    }
 
 
 def make_ac_name_map(assy_name, primary_only=False):
@@ -128,15 +129,16 @@ def make_ac_name_map(assy_name, primary_only=False):
 
     """
 
-    return {s['refseq_ac']: s['name']
-            for s in get_assembly(assy_name)['sequences']
-            if (not primary_only or _is_primary(s))
-            }
-
+    return {
+        s['refseq_ac']: s['name']
+        for s in get_assembly(assy_name)['sequences']
+        if (not primary_only or _is_primary(s))
+    }
 
 
 ############################################################################
 # Internal functions
+
 
 def _is_primary(s):
     """return True if this sequence record is part of the primary assembly
@@ -149,4 +151,3 @@ def _is_primary(s):
 
     """
     return s['assembly_unit'] == 'Primary Assembly'
-

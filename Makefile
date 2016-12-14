@@ -80,7 +80,7 @@ tox:
 reformat:
 	@if hg sum | grep -qL '^commit:.*modified'; then echo "Repository not clean" 1>&2; exit 1; fi
 	@if hg sum | grep -qL ' applied'; then echo "Repository has applied patches" 1>&2; exit 1; fi
-	yapf -i -r seqrepo tests
+	yapf -i -r bioutils
 	hg commit -m "reformatted with yapf"
 
 #=> docs -- make sphinx docs

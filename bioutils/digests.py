@@ -42,10 +42,11 @@ def seq_seguid(seq, normalize=True):
     >>> seq_seguid('acgt', normalize=False)
     'lII0AoG1/I8qKY271rgv5CFZtsU'
 
-    """ 
+    """
     seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.b64encode(hashlib.sha1(seq).digest()).decode("ascii").rstrip('=')
+    return base64.b64encode(hashlib.sha1(seq).digest()).decode("ascii").rstrip(
+        '=')
 
 
 def seq_seqhash(seq, normalize=True, digest_size=24):
@@ -138,4 +139,3 @@ def seq_sha512(seq, normalize=True):
     seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
     return hashlib.sha512(seq).hexdigest()
-
