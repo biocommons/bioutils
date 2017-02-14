@@ -175,13 +175,15 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     """
 
+    
+    db = "protein" if ac[1] == "P" else "nucleotide"
     url_fmt = ("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?"
-               "db=nucleotide&id={ac}&rettype=fasta")
+               "db={db}&id={ac}&rettype=fasta")
     if (start_i is None or end_i is None):
-        url = url_fmt.format(ac=ac)
+        url = url_fmt.format(db=db, ac=ac)
     else:
         url_fmt += "&seq_start={start}&seq_stop={stop}"
-        url = url_fmt.format(ac=ac, start=start_i + 1, stop=end_i)
+        url = url_fmt.format(db=db, ac=ac, start=start_i + 1, stop=end_i)
     resp = requests.get(url)
     resp.raise_for_status()
     seq = ''.join(resp.text.splitlines()[1:])

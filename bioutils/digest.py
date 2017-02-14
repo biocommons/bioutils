@@ -51,7 +51,7 @@ class Digest(bytes):
     if six.PY2:                 # pragma: nocover
         def __getslice__(self, start, end):
             return Digest(bytes.__getslice__(self, start, end))
-    else:
+    else:                       # pragma: nocover
         def __getitem__(self, key):
             return Digest(bytes.__getitem__(self, key))
 
