@@ -48,7 +48,7 @@ class Digest(bytes):
         """returns digest as URL-safe, base64 encoded digest, as Unicode"""
         return self.as_base64us().decode("ASCII")
 
-    if six.PY2:
+    if six.PY2:                 # pragma: nocover
         def __getslice__(self, start, end):
             return Digest(bytes.__getslice__(self, start, end))
     else:
@@ -65,7 +65,7 @@ class Digest(bytes):
         return Digest(base64.urlsafe_b64decode(d))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":      # pragma: nocover
     import hashlib
     b = hashlib.sha512().digest()
     d = Digest(b)
