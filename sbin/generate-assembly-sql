@@ -1,0 +1,79 @@
+#!/usr/bin/env python
+
+import csv
+import io
+import sys
+
+import bioutils.assemblies
+
+
+
+if __name__ == "__main__":
+    with io.open("assy-seqs.sql", "w") as sql_fh:
+        sql_fh.write("""
+drop table assembly_sequence;
+drop table assembly;
+
+create table assembly (
+    assy text primary key,
+    genbank_ac text,
+    refseq_ac text,
+    description text
+);
+
+create table assembly_sequence (
+        assy text not null references assembly(assy),
+        genbank_ac text,
+        refseq_ac text not null,
+        rel text not null,
+        name text not null,
+        length bigint not null,
+        unit text not null,
+        aliases text[]
+);
+
+create unique index assy_name_unique on assembly_sequence(assy, name);
+
+
+\copy assembly from assy.csv with CSV HEADER DELIMITER '   '
+\copy assembly_sequence from seqs.csv with CSV HEADER DELIMITER '        ' 
+
+""")
+
+
+    assy_fh = csv.DictWriter(
+        io.open("assy.csv", "w"),
+        fieldnames="assy genbank_ac refseq_ac description".split(),
+        delimiter="\t")
+    assy_fh.writeheader()
+
+    seqs_fh = csv.DictWriter(
+        io.open("seqs.csv", "w"),
+        fieldnames="assy genbank_ac refseq_ac rel name length unit aliases".split(),
+        delimiter="\t")
+    seqs_fh.writeheader()
+
+
+    assys = bioutils.assemblies.get_assemblies()
+
+    for an in assys.keys():
+        assy = assys[an]
+        
+        assy_fh.writerow({
+            "assy": an,
+            "genbank_ac": assy["genbank_ac"],
+            "refseq_ac": assy["refseq_ac"],
+            "description": assy["description"],
+            })
+
+        for seq in assy["sequences"]:
+            seqs_fh.writerow({
+                "assy": an,
+                "genbank_ac": seq["genbank_ac"],
+                "refseq_ac": seq["refseq_ac"],
+                "rel": seq["relationship"],
+                "name": seq["name"],
+                "length": seq["length"],
+                "unit": seq["assembly_unit"],
+                "aliases": "{" + ",".join(seq["aliases"]) + "}",
+                })
