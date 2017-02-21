@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import base64
 import hashlib
 
@@ -78,18 +80,18 @@ def truncated_digest(binary_data, digest_size):
 
     [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
     [2] https://tools.ietf.org/html/rfc3548#section-4
-
     [3] http://stackoverflow.com/a/4014407/342839
     [4] http://stackoverflow.com/a/22029380/342839
     [5] http://preshing.com/20110504/hash-collision-probabilities/
     [6] https://en.wikipedia.org/wiki/Birthday_problem
 
-    """
+    """ 
+
     # TODO: Consider relaxing %3 constraint and stripping padding
     if digest_size % 3 != 0:
         raise ValueError("digest_size must be a multiple of 3")
-    if not 1 < digest_size <= 63:
-        raise ValueError("digest_size must be between 1 and 63 (bytes)")
+    if not 0 <= digest_size <= 63:
+        raise ValueError("digest_size must be between 0 and 63 (bytes)")
 
     sha512t = truncated_sha512(binary_data=binary_data, digest_size=24)
     return base64.urlsafe_b64encode(sha512t).decode("ASCII")
@@ -100,7 +102,7 @@ if __name__ == "__main__":  # pragma: nocover
     import prettytable
 
     def B(P, m):
-        """return number of *bytes* needed to achieve a collision probability
+        """return the number of *bytes* needed to achieve a collision probability
         P for m messages"""
         return math.ceil((math.log2(m / P) - 1) / 8 / 3) * 3
 
