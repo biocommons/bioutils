@@ -5,7 +5,8 @@ import six
 
 @six.python_2_unicode_compatible
 class Digest(bytes):
-    """Represents a binary digest, with support for encoding and decoding using printable characters
+    """Represents a sliceable binary digest, with support for encoding and
+    decoding using printable characters.
 
     Stringified representations use URL-safe base64 encodings. See
     https://tools.ietf.org/html/rfc4648#page-7
@@ -45,9 +46,14 @@ class Digest(bytes):
     """
 
     def __str__(self):
-        """returns digest as URL-safe, base64 encoded digest, as Unicode"""
+        """returns digest as URL-safe, base64 encoded digest, as Unicode
+
+        """
         return self.as_base64us().decode("ASCII")
 
+
+    # TODO: Consider requiring slice start == None or 0, and len % 3 == 0
+    # Slicing %3 != 0 => strings will having suffix differences
     if six.PY2:                 # pragma: nocover
         def __getslice__(self, start, end):
             return Digest(bytes.__getslice__(self, start, end))
@@ -55,13 +61,22 @@ class Digest(bytes):
         def __getitem__(self, key):
             return Digest(bytes.__getitem__(self, key))
 
+
     def as_base64us(self):
-        """returns digest as URL-safe, base64-encoded digest, as ASCII-encoded binary"""
+        """returns digest as URL-safe, base64-encoded digest, as ASCII-encoded
+        binary
+
+        """
         return base64.urlsafe_b64encode(self)
+
 
     @staticmethod
     def from_base64us(d):
-        """returns Digest object initialized from ASCII-encoded binary form of URL-safe, base64-encoded digest"""
+        """returns Digest object initialized from ASCII-encoded binary form of
+        URL-safe, base64-encoded digest
+
+        """
+
         return Digest(base64.urlsafe_b64decode(d))
 
 
