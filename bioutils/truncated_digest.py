@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 import base64
 import hashlib
 
-import six
-
 
 def truncated_sha512(binary_data, digest_size):
     """returns SHA-512 *binary* digest, truncated to digest_size
@@ -27,7 +25,7 @@ def truncated_digest(binary_data, digest_size):
     >>> truncated_digest(b"", 66) 
     Traceback (most recent call last):
     ...
-    ValueError: digest_size must be between 1 and 63 (bytes)
+    ValueError: digest_size must be between 0 and 63 (bytes)
 
 
     SHA-512 is 2x faster than SHA1 on modern 64-bit platforms.

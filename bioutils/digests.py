@@ -3,26 +3,9 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import base64
 import hashlib
-import re
 
-import six
-
+from .sequences import normalize_sequence, to_binary
 from .truncated_digest import truncated_digest
-
-
-def _to_binary(s):
-    return s if isinstance(s, six.binary_type) else s.encode()
-
-
-def normalize_sequence(seq):
-    """return normalized representation of sequence for hashing
-
-    This really means ensuring that the sequence is represented as a
-    binary blob and removing whitespace and asterisks and uppercasing.
-
-    """
-
-    return re.sub(b"[\s\*]", b"", _to_binary(seq)).upper()
 
 
 def seq_seguid(seq, normalize=True):
@@ -43,31 +26,10 @@ def seq_seguid(seq, normalize=True):
     'lII0AoG1/I8qKY271rgv5CFZtsU'
 
     """
-    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return base64.b64encode(hashlib.sha1(seq).digest()).decode("ascii").rstrip(
+    bseq = to_binary(seq)
+    return base64.b64encode(hashlib.sha1(bseq).digest()).decode("ascii").rstrip(
         '=')
-
-
-def seq_seqhash(seq, normalize=True, digest_size=24):
-    """returns 24-byte Truncated Digest sequence `seq`
-
-    >>> seq_seqhash("")
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
-
-    >>> seq_seqhash("ACGT")
-    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
-
-    >>> seq_seqhash("acgt")
-    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
-
-    >>> seq_seqhash("acgt", normalize=False)
-    'eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
-
-    """
-
-    seq = normalize_sequence(seq) if normalize else _to_binary(seq)
-    return truncated_digest(seq, digest_size=24)
 
 
 def seq_md5(seq, normalize=True):
@@ -92,9 +54,9 @@ def seq_md5(seq, normalize=True):
     'db516c3913e179338b162b2476d1c23f'
 
     """
-    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.md5(seq).hexdigest()
+    bseq = to_binary(seq)
+    return hashlib.md5(bseq).hexdigest()
 
 
 def seq_sha1(seq, normalize=True):
@@ -114,9 +76,9 @@ def seq_sha1(seq, normalize=True):
 
     """
 
-    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha1(seq).hexdigest()
+    bseq = to_binary(seq)
+    return hashlib.sha1(bseq).hexdigest()
 
 
 def seq_sha512(seq, normalize=True):
@@ -136,6 +98,30 @@ def seq_sha512(seq, normalize=True):
 
     """
 
-    seq = _to_binary(seq)
     seq = normalize_sequence(seq) if normalize else seq
-    return hashlib.sha512(seq).hexdigest()
+    bseq = to_binary(seq)
+    return hashlib.sha512(bseq).hexdigest()
+
+
+def seq_vmc_digest(seq, normalize=True):
+    """returns 24-byte VMC Global Sequence Digest for sequence `seq`
+
+    See https://github.com/ga4gh/vmc
+
+    >>> seq_vmc_digest("")
+    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
+
+    >>> seq_vmc_digest("ACGT")
+    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+
+    >>> seq_vmc_digest("acgt")
+    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+
+    >>> seq_vmc_digest("acgt", normalize=False)
+    'eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
+
+    """
+
+    seq = normalize_sequence(seq) if normalize else seq
+    bseq = to_binary(seq)
+    return truncated_digest(bseq, digest_size=24)
