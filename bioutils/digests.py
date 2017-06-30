@@ -5,7 +5,7 @@ import base64
 import hashlib
 
 from .sequences import normalize_sequence, to_binary
-from .truncated_digest import truncated_digest
+from .vmc_digest import vmc_digest
 
 
 def seq_seguid(seq, normalize=True):
@@ -103,25 +103,24 @@ def seq_sha512(seq, normalize=True):
     return hashlib.sha512(bseq).hexdigest()
 
 
-def seq_vmc_digest(seq, normalize=True):
-    """returns 24-byte VMC Global Sequence Digest for sequence `seq`
+def seq_vmc_id(seq, normalize=True):
+    """returns VMC Digest identifier for sequence `seq`
 
     See https://github.com/ga4gh/vmc
 
-    >>> seq_vmc_digest("")
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
+    >>> seq_vmc_id("")
+    'VMC:GS_z4PhNX7vuL3xVChQ1m2A'
 
-    >>> seq_vmc_digest("ACGT")
-    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+    >>> seq_vmc_id("ACGT")
+    'VMC:GS_aKF498dAxcJAqme6QYQ7'
 
-    >>> seq_vmc_digest("acgt")
-    'aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
+    >>> seq_vmc_id("acgt")
+    'VMC:GS_aKF498dAxcJAqme6QYQ7'
 
-    >>> seq_vmc_digest("acgt", normalize=False)
-    'eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
+    >>> seq_vmc_id("acgt", normalize=False)
+    'VMC:GS_eFwawHHdibaZBDcs9kW3'
 
     """
 
     seq = normalize_sequence(seq) if normalize else seq
-    bseq = to_binary(seq)
-    return truncated_digest(bseq, digest_size=24)
+    return "VMC:GS_" + str(vmc_digest(seq))

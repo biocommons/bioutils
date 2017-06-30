@@ -1,31 +1,37 @@
+# -*- coding: utf-8 -*-, flake8: noqa
 from __future__ import unicode_literals
 
-import base64
 import hashlib
 
-
-def truncated_sha512(binary_data, digest_size):
-    """returns SHA-512 *binary* digest, truncated to digest_size
-    *bytes*"""
-    return hashlib.sha512(binary_data).digest()[:digest_size]
+from .digest import Digest
 
 
-def truncated_digest(binary_data, digest_size):
-    """Returns the URL-safe, Base 64 encoded string representation of a
-    SHA-512 digest truncated to digest_size *bytes*
+ENC = "UTF-8"
+DEFAULT_DIGEST_SIZE = 15
 
-    >>> truncated_digest(b"", 18)
+
+def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
+    """Returns the VMC Digest as a Digest object, which has both bytes and str (
+    URL-safe, Base 64) representations.
+
+    >>> d = vmc_digest("")
+
+    >>> d
+    b'\xcf\x83\xe15~\xef\xb8\xbd\xf1T(P\xd6m\x80'
+
+    >>> str(d)
+    'z4PhNX7vuL3xVChQ1m2A'
+
+    >>> len(d), len(str(d))
+    (15, 20)
+
+    >>> str(vmc_digest("", 24))
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
-    >>> truncated_digest(b"", 17) 
+    >>> vmc_digest("", 17) 
     Traceback (most recent call last):
     ...
     ValueError: digest_size must be a multiple of 3
-
-    >>> truncated_digest(b"", 66) 
-    Traceback (most recent call last):
-    ...
-    ValueError: digest_size must be between 0 and 63 (bytes)
 
 
     SHA-512 is 2x faster than SHA1 on modern 64-bit platforms.
@@ -42,7 +48,7 @@ def truncated_digest(binary_data, digest_size):
     string is not divisible by 3, the output is right-padded with
     equal signs (=), which have no information content. Therefore,
     this function requires that digest_size is evenly divisible by 3.
-    (The resulting truncated_digest will be 4/3*digest_size bytes.)
+    (The resulting vmc_digest will be 4/3*digest_size bytes.)
 
     According to [3], the probability of a collision using b bits with
     m messages (sequences) is:
@@ -73,8 +79,8 @@ def truncated_digest(binary_data, digest_size):
     | 1e+24 |    21    |    21    |    18    |    18    |    15    |    15    |
     +-------+----------+----------+----------+----------+----------+----------+
 
-    For 1e+18 messages and a desired collision probability < 1e-15, we
-    use digest_size = 15.
+    For example, given 1e+18 expected messages and a desired collision
+    probability < 1e-15, we use digest_size = 15 (bytes).
 
     [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
     [2] https://tools.ietf.org/html/rfc3548#section-4
@@ -91,23 +97,5 @@ def truncated_digest(binary_data, digest_size):
     if not 0 <= digest_size <= 63:
         raise ValueError("digest_size must be between 0 and 63 (bytes)")
 
-    sha512t = truncated_sha512(binary_data=binary_data, digest_size=24)
-    return base64.urlsafe_b64encode(sha512t).decode("ASCII")
-
-
-if __name__ == "__main__":  # pragma: nocover
-    import math
-    import prettytable
-
-    def B(P, m):
-        """return the number of *bytes* needed to achieve a collision probability
-        P for m messages"""
-        return math.ceil((math.log2(m / P) - 1) / 8 / 3) * 3
-
-    m_bins = [1E6, 1E9, 1E12, 1E15, 1E18, 1E21, 1E24]
-    P_bins = [1E-24, 1E-21, 1E-18, 1E-15, 1E-12, 1E-9]
-    field_names = ["#m"] + ["P<={P}".format(P=P) for P in P_bins]
-    pt = prettytable.PrettyTable(field_names=field_names)
-    for n_m in m_bins:
-        pt.add_row(["{:g}".format(n_m)] + [B(P, n_m) for P in P_bins])
-    print(pt)
+    sha512 = Digest(hashlib.sha512(data.encode(ENC)).digest())
+    return sha512[:digest_size]
