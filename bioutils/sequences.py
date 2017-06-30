@@ -35,13 +35,15 @@ aa3_to_aa1_lut = {
 aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
 
 
-if six.PY2:  # flake8: noqa; pragma: no cover
+if six.PY2:                     # pragma: no cover
+    # flake8: noqa
 
     import string
     from string import ascii_lowercase
     complement_transtable = {ord(f): ord(t) for f, t in zip("ACGT", "TGCA")}
 
-elif six.PY3:  # pragma: no cover
+elif six.PY3:                   # pragma: no cover
+    # flake8: noqa
 
     from string import ascii_lowercase
     complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")

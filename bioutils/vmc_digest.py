@@ -33,6 +33,11 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
     ...
     ValueError: digest_size must be a multiple of 3
 
+    >>> vmc_digest("", 66) 
+    Traceback (most recent call last):
+    ...
+    ValueError: digest_size must be between 0 and 63 (bytes)
+
 
     SHA-512 is 2x faster than SHA1 on modern 64-bit platforms.
     However, few appliations require 512 bits (64 bytes) of keyspace.
