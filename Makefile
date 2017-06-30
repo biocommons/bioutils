@@ -7,6 +7,9 @@
 SHELL:=/bin/bash -o pipefail
 SELF:=$(firstword $(MAKEFILE_LIST))
 
+PKG=bioutils
+PKGD=$(subst .,/,${PKG})
+
 
 ############################################################################
 #= BASIC USAGE
@@ -63,7 +66,7 @@ upload_%:
 #=> test: execute tests
 .PHONY: test
 test:
-	python setup.py pytest --addopts="--cov=bioutils"
+	python setup.py pytest --addopts="--cov=${PKG} ${PKGD} tests"
 
 #=> tox: execute tests via tox
 .PHONY: tox
