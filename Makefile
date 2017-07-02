@@ -66,8 +66,7 @@ upload_%:
 #=> test: execute tests
 .PHONY: test
 test:
-	# --ignore is temporary for offline dev -- should be using pyvcr
-	python setup.py pytest --addopts="--cov=${PKG} ${PKGD} tests   --ignore=bioutils/seqfetcher.py"
+	python setup.py pytest --addopts="--cov=${PKG} ${PKGD} tests"
 
 #=> tox: execute tests via tox
 .PHONY: tox

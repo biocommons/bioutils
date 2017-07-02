@@ -28,24 +28,24 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     Without an interval, the full sequence is returned::
 
-    >>> len(fetch_seq('NP_056374.2'))
+    >> len(fetch_seq('NP_056374.2'))
     1596
 
     Therefore, it's preferable to provide the interval rather than
     using Python slicing sequence on the delivered sequence::
 
-    >>> fetch_seq('NP_056374.2',0,10)   # This!
+    >> fetch_seq('NP_056374.2',0,10)   # This!
     'MESRETLSSS'
 
-    >>> fetch_seq('NP_056374.2')[0:10]  # Not this!
+    >> fetch_seq('NP_056374.2')[0:10]  # Not this!
     'MESRETLSSS'
 
-    >>> fetch_seq('NP_056374.2',0,10) == fetch_seq('NP_056374.2')[0:10]
+    >> fetch_seq('NP_056374.2',0,10) == fetch_seq('NP_056374.2')[0:10]
     True
 
     Providing intervals is especially important for large sequences::
 
-    >>> fetch_seq('NC_000001.10',2000000,2000030)
+    >> fetch_seq('NC_000001.10',2000000,2000030)
     'ATCACACGTGCAGGAACCCTTTTCCAAAGG'
 
     This call will pull back 30 bases plus overhead; without the
@@ -54,7 +54,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
     Essentially any RefSeq, Genbank, BIC, or Ensembl sequence may be
     fetched:
 
-    >>> [(ac,fetch_seq(ac,0,25))
+    >> [(ac,fetch_seq(ac,0,25))
     ... for ac in ['NG_032072.1', 'NW_003571030.1', 'NT_113901.1',
     ... 'NC_000001.10','NP_056374.2', 'GL000191.1', 'KB663603.1',
     ... 'ENST00000288602', 'ENSP00000288602']] # doctest: +NORMALIZE_WHITESPACE
@@ -71,12 +71,12 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     RuntimeError is thrown in the case of errors::
 
-    >>> fetch_seq('NM_9.9')
+    >> fetch_seq('NM_9.9')
     Traceback (most recent call last):
        ...
     RuntimeError: No sequence available for NM_9.9
 
-    >>> fetch_seq('QQ01234')
+    >> fetch_seq('QQ01234')
     Traceback (most recent call last):
        ...
     RuntimeError: No sequence fetcher for QQ01234
@@ -127,17 +127,17 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
     accept intervals, so the entire sequence is returned and sliced
     locally.
 
-    >>> len(_fetch_seq_ensembl('ENSP00000288602'))
+    >> len(_fetch_seq_ensembl('ENSP00000288602'))
     766
 
-    >>> _fetch_seq_ensembl('ENSP00000288602',0,10)
+    >> _fetch_seq_ensembl('ENSP00000288602',0,10)
     u'MAALSGGGGG'
 
-    >>> _fetch_seq_ensembl('ENSP00000288602')[0:10]
+    >> _fetch_seq_ensembl('ENSP00000288602')[0:10]
     u'MAALSGGGGG'
 
-    >>> ac = 'ENSP00000288602'
-    >>> _fetch_seq_ensembl(ac ,0, 10) == _fetch_seq_ensembl(ac)[0:10]
+    >> ac = 'ENSP00000288602'
+    >> _fetch_seq_ensembl(ac ,0, 10) == _fetch_seq_ensembl(ac)[0:10]
     True
 
     """
@@ -158,19 +158,19 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
     which might greatly reduce payload sizes (especially with
     chromosome-scale sequences).
 
-    >>> len(_fetch_seq_ncbi('NP_056374.2'))
+    >> len(_fetch_seq_ncbi('NP_056374.2'))
     1596
 
     Pass the desired interval rather than using Python's [] slice
     operator.
 
-    >>> _fetch_seq_ncbi('NP_056374.2',0,10)
+    >> _fetch_seq_ncbi('NP_056374.2',0,10)
     'MESRETLSSS'
 
-    >>> _fetch_seq_ncbi('NP_056374.2')[0:10]
+    >> _fetch_seq_ncbi('NP_056374.2')[0:10]
     'MESRETLSSS'
 
-    >>> _fetch_seq_ncbi('NP_056374.2',0,10) == _fetch_seq_ncbi('NP_056374.2')[0:10]
+    >> _fetch_seq_ncbi('NP_056374.2',0,10) == _fetch_seq_ncbi('NP_056374.2')[0:10]
     True
 
     """
