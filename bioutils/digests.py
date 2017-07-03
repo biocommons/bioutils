@@ -26,7 +26,7 @@ def seq_seqhash(seq, normalize=True):
     """
 
     seq = normalize_sequence(seq) if normalize else seq
-    return vmc_digest(seq, digest_size=24).as_base64us()
+    return str(vmc_digest(seq, digest_size=24))
 
 
 def seq_seguid(seq, normalize=True):
