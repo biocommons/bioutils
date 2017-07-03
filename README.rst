@@ -19,5 +19,5 @@ notice).
   :align: middle
 
 .. |ci_rel| image:: https://travis-ci.org/biocommons/bioutils.png?branch=master
-  :target: https://travis-ci.org/biocommons/bioutils.png?branch=master
+  :target: https://travis-ci.org/biocommons/bioutils
   :align: middle 
