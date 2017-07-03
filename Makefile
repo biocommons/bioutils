@@ -71,6 +71,7 @@ upload_%:
 
 ############################################################################
 #= TESTING
+# see test configuration in setup.cfg
 
 #=> test: execute tests
 .PHONY: test
@@ -92,7 +93,7 @@ tox:
 reformat:
 	@if hg sum | grep -qL '^commit:.*modified'; then echo "Repository not clean" 1>&2; exit 1; fi
 	@if hg sum | grep -qL ' applied'; then echo "Repository has applied patches" 1>&2; exit 1; fi
-	yapf -i -r bioutils
+	yapf -i -r ${PKGD} tests
 	hg commit -m "reformatted with yapf"
 
 #=> docs -- make sphinx docs
