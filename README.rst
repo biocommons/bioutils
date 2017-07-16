@@ -4,7 +4,7 @@ bioutils -- simple bioinformatics utilities and lookup tables
 |ci_rel| | |pypi_rel| | |issues_badge|
 
 bioutils provides some common tools and lookup tables used primarly by
-hg stthe `hgvs <https://github.com/biocommons/hgvs/>`_ and `uta
+the `hgvs <https://github.com/biocommons/hgvs/>`_ and `uta
 <https://github.com/biocommons/uta/>`_ packages.  This package is
 not really intended for broader use (read: it may change without
 notice).
