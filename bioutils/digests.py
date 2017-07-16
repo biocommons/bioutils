@@ -130,7 +130,7 @@ def seq_sha512(seq, normalize=True):
 
 
 def seq_vmc_id(seq, normalize=True):
-    """returns VMC Digest identifier for sequence `seq`
+    """returns VMC id for sequence `seq`
 
     See https://github.com/ga4gh/vmc
 
@@ -147,7 +147,28 @@ def seq_vmc_id(seq, normalize=True):
     'VMC:GS_eFwawHHdibaZBDcs9kW3'
 
     """
+    return "{ir[namespace]}:{ir[accession]}".format(
+        ir=seq_vmc_identifier(seq, normalize))
 
+
+def seq_vmc_identifier(seq, normalize=True):
+    """returns VMC identifier (record) for sequence `seq`
+
+    See https://github.com/ga4gh/vmc
+
+    >>> seq_vmc_identifier("") == {'namespace': 'VMC', 'accession': 'GS_z4PhNX7vuL3xVChQ1m2A'}
+    True
+
+    >>> seq_vmc_identifier("ACGT") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7'}
+    True
+
+    >>> seq_vmc_identifier("acgt") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7'}
+    True
+
+    >>> seq_vmc_identifier("acgt", normalize=False) == {'namespace': 'VMC', 'accession': 'GS_eFwawHHdibaZBDcs9kW3'}
+    True
+
+    """
     seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
-    return "VMC:GS_" + str(vmc_digest(seq))
+    return {"namespace": "VMC", "accession": "GS_" + str(vmc_digest(seq))}
