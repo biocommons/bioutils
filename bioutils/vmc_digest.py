@@ -7,7 +7,7 @@ from .digest import Digest
 
 
 ENC = "UTF-8"
-DEFAULT_DIGEST_SIZE = 15
+DEFAULT_DIGEST_SIZE = 24
 
 
 def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
@@ -21,10 +21,10 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
     b'\xcf\x83\xe15~\xef\xb8\xbd\xf1T(P\xd6m\x80'
 
     >>> str(d)
-    'z4PhNX7vuL3xVChQ1m2A'
+    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
     >>> len(d), len(str(d))
-    (15, 20)
+    (24, 32)
 
     >>> str(vmc_digest("", 24))
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'

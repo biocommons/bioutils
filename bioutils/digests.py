@@ -135,16 +135,16 @@ def seq_vmc_id(seq, normalize=True):
     See https://github.com/ga4gh/vmc
 
     >>> seq_vmc_id("")
-    'VMC:GS_z4PhNX7vuL3xVChQ1m2A'
+    'VMC:GS_z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
     >>> seq_vmc_id("ACGT")
-    'VMC:GS_aKF498dAxcJAqme6QYQ7'
+    'VMC:GS_aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
 
     >>> seq_vmc_id("acgt")
-    'VMC:GS_aKF498dAxcJAqme6QYQ7'
+    'VMC:GS_aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'
 
     >>> seq_vmc_id("acgt", normalize=False)
-    'VMC:GS_eFwawHHdibaZBDcs9kW3'
+    'VMC:GS_eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
 
     """
     return "{ir[namespace]}:{ir[accession]}".format(
@@ -156,16 +156,16 @@ def seq_vmc_identifier(seq, normalize=True):
 
     See https://github.com/ga4gh/vmc
 
-    >>> seq_vmc_identifier("") == {'namespace': 'VMC', 'accession': 'GS_z4PhNX7vuL3xVChQ1m2A'}
+    >>> seq_vmc_identifier("") == {'namespace': 'VMC', 'accession': 'GS_z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'}
     True
 
-    >>> seq_vmc_identifier("ACGT") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7'}
+    >>> seq_vmc_identifier("ACGT") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'}
     True
 
-    >>> seq_vmc_identifier("acgt") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7'}
+    >>> seq_vmc_identifier("acgt") == {'namespace': 'VMC', 'accession': 'GS_aKF498dAxcJAqme6QYQ7EZ07-fiw8Kw2'}
     True
 
-    >>> seq_vmc_identifier("acgt", normalize=False) == {'namespace': 'VMC', 'accession': 'GS_eFwawHHdibaZBDcs9kW3'}
+    >>> seq_vmc_identifier("acgt", normalize=False) == {'namespace': 'VMC', 'accession': 'GS_eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'}
     True
 
     """
