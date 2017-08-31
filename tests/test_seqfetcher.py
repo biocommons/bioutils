@@ -11,16 +11,19 @@ def test_fetch_seq():
     assert 'MESRETLSSS' == fetch_seq('NP_056374.2',0,10)
     assert 'MESRETLSSS' == fetch_seq('NP_056374.2')[0:10]  # NOT RECOMMENDED
 
-    assert 'ATCACACGTGCAGGAACCCTTTTCC' == fetch_seq('NC_000001.10',2000000,2000025)
-    assert 'AAAATTAAATTAAAATAAATAAAAA' == fetch_seq('NG_032072.1', 0, 25)
-    assert 'TTGTGTGTTAGGGTGCTCTAAGCAA' == fetch_seq('NW_003571030.1', 0, 25)
-    assert 'GAATTCCTCGTTCACACAGTTTCTT' == fetch_seq('NT_113901.1', 0, 25)
-    assert 'NNNNNNNNNNNNNNNNNNNNNNNNN' == fetch_seq('NC_000001.10', 0, 25)
-    assert 'MESRETLSSSRQRGGESDFLPVSSA' == fetch_seq('NP_056374.2', 0, 25)
-    assert 'GATCCACCTGCCTCAGCCTCCCAGA' == fetch_seq('GL000191.1', 0, 25)
-    assert 'TTTATTTATTTTAGATACTTATCTC' == fetch_seq('KB663603.1', 0, 25)
-    assert 'CGCCTCCCTTCCCCCTCCCCGCCCG' == fetch_seq('ENST00000288602', 0, 25)
-    assert 'MAALSGGGGGGAEPGQALFNGDMEP' == fetch_seq('ENSP00000288602', 0, 25)
+    email = "tests@biocommons.org"
+    tool = "bioutils"
+
+    assert 'ATCACACGTGCAGGAACCCTTTTCC' == fetch_seq('NC_000001.10', 2000000, 2000025, email=email, tool=tool)
+    assert 'AAAATTAAATTAAAATAAATAAAAA' == fetch_seq('NG_032072.1', 0, 25, email=email, tool=tool)
+    assert 'TTGTGTGTTAGGGTGCTCTAAGCAA' == fetch_seq('NW_003571030.1', 0, 25, email=email, tool=tool)
+    assert 'GAATTCCTCGTTCACACAGTTTCTT' == fetch_seq('NT_113901.1', 0, 25, email=email, tool=tool)
+    assert 'NNNNNNNNNNNNNNNNNNNNNNNNN' == fetch_seq('NC_000001.10', 0, 25, email=email, tool=tool)
+    assert 'MESRETLSSSRQRGGESDFLPVSSA' == fetch_seq('NP_056374.2', 0, 25, email=email, tool=tool)
+    assert 'GATCCACCTGCCTCAGCCTCCCAGA' == fetch_seq('GL000191.1', 0, 25, email=email, tool=tool)
+    assert 'TTTATTTATTTTAGATACTTATCTC' == fetch_seq('KB663603.1', 0, 25, email=email, tool=tool)
+    assert 'CGCCTCCCTTCCCCCTCCCCGCCCG' == fetch_seq('ENST00000288602', 0, 25, email=email, tool=tool)
+    assert 'MAALSGGGGGGAEPGQALFNGDMEP' == fetch_seq('ENSP00000288602', 0, 25, email=email, tool=tool)
     
 
 def test_fetch_seq_errors():

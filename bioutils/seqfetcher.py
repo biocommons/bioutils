@@ -13,13 +13,16 @@ import requests
 logger = logging.getLogger(__name__)
 
 
-def fetch_seq(ac, start_i=None, end_i=None):
+def fetch_seq(ac, start_i=None, end_i=None, email=None, tool=None):
     """Fetches sequences and subsequences from NCBI eutils and Ensembl
     REST interfaces.
 
     :param string ac: accession of sequence to fetch
     :param int start_i: start position of *interbase* interval
     :param int end_i: end position of *interbase* interval
+    :param email valid email address to be sent to NCBI eutils api
+    :param tool name of tool to be sent to NCBI eutils api
+
 
     **IMPORTANT** start_i and end_i specify 0-based interbase
     coordinates, which refer to junctions between nucleotides.  This
@@ -109,7 +112,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
     logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
 
     try:
-        return fetcher(ac, start_i, end_i)
+        return fetcher(ac, start_i, end_i, email, tool)
     except requests.HTTPError:
         raise RuntimeError("No sequence available for {ac}".format(ac=ac))
 
@@ -118,9 +121,12 @@ def fetch_seq(ac, start_i=None, end_i=None):
 # Internal functions
 
 
-def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
+def _fetch_seq_ensembl(ac, start_i=None, end_i=None, email=None, tool=None):
     """Fetch the specified sequence slice from Ensembl using the public
     REST interface.
+
+    email and tool are currently placeholder arguments for registering API keys,
+    should ensembl require those in the future. (see NCBI eutils API for comparison).
 
     An interbase interval may be optionally provided with start_i and
     end_i. However, the Ensembl REST interface does not currently
@@ -150,8 +156,11 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
     return seq if (start_i is None or end_i is None) else seq[start_i:end_i]
 
 
-def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
+def _fetch_seq_ncbi(ac, start_i=None, end_i=None, email=None, tool=None):
     """Fetch sequences from NCBI using the eutils interface.
+
+    It is strongly recommended to provide the email and tool arguments, to properly register the API request with
+    NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/
 
     An interbase interval may be optionally provided with start_i and
     end_i. NCBI eutils will return just the requested subsequence,
@@ -175,15 +184,19 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     """
 
-    
     db = "protein" if ac[1] == "P" else "nucleotide"
     url_fmt = ("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?"
                "db={db}&id={ac}&rettype=fasta")
-    if (start_i is None or end_i is None):
+
+    if start_i is None or end_i is None:
         url = url_fmt.format(db=db, ac=ac)
     else:
         url_fmt += "&seq_start={start}&seq_stop={stop}"
         url = url_fmt.format(db=db, ac=ac, start=start_i + 1, stop=end_i)
+
+    if email and tool:
+        url += "&tool={tool}&email={email}".format(tool=tool, email=email)
+
     resp = requests.get(url)
     resp.raise_for_status()
     seq = ''.join(resp.text.splitlines()[1:])
