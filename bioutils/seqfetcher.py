@@ -7,6 +7,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import logging
 import re
+import os
 
 import requests
 
@@ -203,10 +204,27 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     url += "&tool={tool}&email={email}".format(tool=ncbi_tool, email=ncbi_email)
 
+    url = _add_eutils_api_key(url)
+
     resp = requests.get(url)
     resp.raise_for_status()
     seq = ''.join(resp.text.splitlines()[1:])
     return seq
+
+
+
+def _add_eutils_api_key(url):
+    """Adds eutils api key to the query
+
+    :param url: eutils url with a query string
+    :return: url with api_key parameter set to the value of environment
+    variable 'ncbi_api_key' if available
+    """
+    apikey = os.environ.get('ncbi_api_key')
+    if apikey:
+        url += '&api_key={apikey}'.format(apikey=apikey)
+    return url
+
 
 
 # So that I don't forget why I didn't use ebi too:
