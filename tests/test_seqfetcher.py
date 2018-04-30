@@ -1,10 +1,6 @@
 import pytest
 import vcr
 import os
-try:
-    import mock
-except ImportError:
-    import unittest.mock as mock
 
 from bioutils.seqfetcher import fetch_seq, _fetch_seq_ensembl, _fetch_seq_ncbi, _add_eutils_api_key
 
