@@ -3,9 +3,13 @@
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import six
+import logging
 import re
 
+import six
+
+
+_logger = logging.getLogger(__name__)
 
 aa3_to_aa1_lut = {
     "Ala": "A",
@@ -32,6 +36,7 @@ aa3_to_aa1_lut = {
     "Ter": "*",
     "Sec": "",
 }
+
 aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
 
 
@@ -180,14 +185,18 @@ def normalize_sequence(seq):
     >>> normalize_sequence("ACGT1")
     Traceback (most recent call last):
     ...
-    RuntimeError: normalized sequence contains non-alphabetic characters
+    RuntimeError: Normalized sequence contains non-alphabetic characters
 
     """
 
     assert isinstance(seq, six.text_type)
     nseq = re.sub("[\s\*]", "", seq).upper()
-    if re.search("[^A-Z]", nseq):
-        raise RuntimeError("normalized sequence contains non-alphabetic characters")
+    m = re.search("[^A-Z]", nseq)
+    if m:
+        _logger.debug("Original sequence: " + seq)
+        _logger.debug("Normalized sequence: " + nseq)
+        _logger.debug("First non-[A-Z] at {}".format(m.start()))
+        raise RuntimeError("Normalized sequence contains non-alphabetic characters")
     return nseq
 
 
