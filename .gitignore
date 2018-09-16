@@ -95,3 +95,4 @@ doc/_build
 .eggs
 bioutils/_data/assemblies/pull
 .pytest_cache
+.vscode
