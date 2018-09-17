@@ -96,3 +96,4 @@ doc/_build
 bioutils/_data/assemblies/pull
 .pytest_cache
 .vscode
+misc
