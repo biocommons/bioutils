@@ -1,6 +1,26 @@
 # -*- coding: utf-8 -*-
 """simple routines to deal with accessions, identifiers, etc.
 
+biocommons terminology: an identifier is composed of a *namespace* and
+an *accession*. The namespace is a string, composed of any character
+other than colon (:). The accession is a string without character set
+restriction.  An accession is expected to be unique within the
+namespace; there is no expectation of uniqueness of accessions across
+namespaces.
+
+Identifier := <Namespace, Accession>
+Namespace := [^:]+
+Accession := \w+
+
+Some sample serializations of Identifiers:
+
+json: {"namespace": "RefSeq", "accession": "NM_000551.3"}
+xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>
+string: "RefSeq:NM_000551.3"
+
+The string form may be used as a CURIE, in which case the document in
+which the CURIE is used must contain a map of {namespace => uri}.
+
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
@@ -30,28 +50,31 @@ _ensembl_feature_types_re = r"E|FM|G|GT|P|R|T"
 _ensembl_re = r"^(?:{})(?:{}){}$".format(
     _ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?")
 
+# map of regexp => namespace
+# TODO: make this namespace => [regexps] for clarity
+# namespaces follow convention of identifiers.org
 ac_namespace_regexps = {
     # https://uswest.ensembl.org/info/genome/stable_ids/prefixes.html
     # [species prefix][feature type prefix][a unique eleven digit number]
     # N.B. The regexp at http://identifiers.org/ensembl appears broken:
     # 1) Human only; 2) escaped backslashes (\\d rather than \d).
-    _ensembl_re: "Ensembl",
+    _ensembl_re: "ensembl",
 
     # http://identifiers.org/insdc/
     # P12345, a UniProtKB accession matches the miriam regexp but shouldn't (I think)
     r"^([A-Z]\d{5}|[A-Z]{2}\d{6}|[A-Z]{4}\d{8}|[A-J][A-Z]{2}\d{5})(\.\d+)?$":
-    "INSDC",
+    "insdc",
 
     # http://identifiers.org/refseq/
     # https://www.ncbi.nlm.nih.gov/books/NBK21091/table/ch18.T.refseq_accession_numbers_and_mole/
     r"^((AC|AP|NC|NG|NM|NP|NR|NT|NW|XM|XP|XR|YP|ZP)_\d+|(NZ\_[A-Z]{4}\d+))(\.\d+)?$":
-    "RefSeq",
+    "refseq",
 
-    # UniProtKB
+    # Uniprot
     # http://identifiers.org/uniprot/
     # https://www.uniprot.org/help/accession_numbers
     r"^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$":
-    "UniProtKB",
+    "uniprot",
 }
 
 ac_namespace_regexps = {re.compile(k): v for k, v in iteritems(ac_namespace_regexps)}
@@ -100,13 +123,13 @@ def infer_namespace(ac):
       * Raises an exception if more than one namespace is inferred
 
     >>> infer_namespace("ENST00000530893.6")
-    'Ensembl'
+    'ensembl'
 
     >>> infer_namespace("NM_01234.5")
-    'RefSeq'
+    'refseq'
 
     >>> infer_namespace("A2BC19")
-    'UniProtKB'
+    'uniprot'
 
     >>> infer_namespace("P12345")
     Traceback (most recent call last):
@@ -131,23 +154,23 @@ def infer_namespaces(ac):
     Always returns a list, possibly empty
 
     >>> infer_namespaces("ENST00000530893.6")
-    ['Ensembl']
+    ['ensembl']
     >>> infer_namespaces("ENST00000530893")
-    ['Ensembl']
+    ['ensembl']
     >>> infer_namespaces("ENSQ00000530893")
     []
     >>> infer_namespaces("NM_01234")
-    ['RefSeq']
+    ['refseq']
     >>> infer_namespaces("NM_01234.5")
-    ['RefSeq']
+    ['refseq']
     >>> infer_namespaces("NQ_01234.5")
     []
     >>> infer_namespaces("A2BC19")
-    ['UniProtKB']
+    ['uniprot']
     >>> sorted(infer_namespaces("P12345"))
-    ['INSDC', 'UniProtKB']
+    ['insdc', 'uniprot']
     >>> infer_namespaces("A0A022YWF9")
-    ['UniProtKB']
+    ['uniprot']
 
 
     """
