@@ -319,12 +319,9 @@ def to_ascii(s):
     return s if isinstance(s, six.binary_type) else s.encode("ASCII")
 
 
-def translate_cds(seq, no_ambiguity=False, full_codons=True):
+def translate_cds(seq, full_codons=True):
     """translate a DNA or RNA sequence into a single-letter amino acid sequence
     using the standard translation table
-
-    if no_ambiguity is True, raise a ValueError if non-ACGT (or ACGU) bases are
-    encountered; codons with ambiguous bases are translated as '?'
 
     if full_codons is True, a sequence whose length isn't a multiple of three
     generates a ValueError; else partial codons are ignored
@@ -355,14 +352,11 @@ def translate_cds(seq, no_ambiguity=False, full_codons=True):
     seq = seq.upper()
 
     protein_seq = list()
-    for i in range(0, len(seq), 3):
+    for i in range(0, len(seq) - len(seq) % 3, 3):
         try:
             aa = dna_to_aa1_lut[seq[i:i + 3]]
         except KeyError:
-            if no_ambiguity:
-                raise ValueError("failed to translate due to ambiguous base")
-            else:
-                aa = '?'
+            raise ValueError("failed to translate due to ambiguous base")
         protein_seq.append(aa)
 
     return ''.join(protein_seq)
