@@ -9,6 +9,8 @@ the `hgvs <https://github.com/biocommons/hgvs/>`_ and `uta
 not really intended for broader use (read: it may change without
 notice).
 
+To use an E-Utilities API key run add it to an environment variable called `ncbi_api_key`
+and it will be used in the E-Utilities request.
 
 .. |issues_badge| image:: https://img.shields.io/github/issues/biocommons/bioutils.png
   :target: https://github.com/biocommons/bioutils/issues

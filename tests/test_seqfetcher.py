@@ -1,7 +1,8 @@
 import pytest
 import vcr
+import os
 
-from bioutils.seqfetcher import fetch_seq, _fetch_seq_ensembl, _fetch_seq_ncbi
+from bioutils.seqfetcher import fetch_seq, _fetch_seq_ensembl, _fetch_seq_ncbi, _add_eutils_api_key
 
 
 @vcr.use_cassette
@@ -21,7 +22,20 @@ def test_fetch_seq():
     assert 'TTTATTTATTTTAGATACTTATCTC' == fetch_seq('KB663603.1', 0, 25)
     assert 'CGCCTCCCTTCCCCCTCCCCGCCCG' == fetch_seq('ENST00000288602', 0, 25)
     assert 'MAALSGGGGGGAEPGQALFNGDMEP' == fetch_seq('ENSP00000288602', 0, 25)
-    
+
+
+def test_add_eutils_api_key():
+    try:
+        url = 'http://test.com?boo=bar'
+        assert _add_eutils_api_key(url) == url
+        os.environ['ncbi_api_key'] = 'test-api-key'
+        assert _add_eutils_api_key(url) == url + '&api_key=test-api-key'
+    finally:
+        try:
+            os.environ.pop('ncbi_api_key')
+        except KeyError:
+            pass
+
 
 def test_fetch_seq_errors():
     # Traceback (most recent call last):
