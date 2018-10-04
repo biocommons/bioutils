@@ -8,6 +8,7 @@ import re
 
 import six
 
+from six.moves import range
 
 _logger = logging.getLogger(__name__)
 
@@ -38,6 +39,73 @@ aa3_to_aa1_lut = {
 }
 
 aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
+
+dna_to_aa1_lut = {      # NCBI standard translation table
+    'AAA': 'K',
+    'AAC': 'N',
+    'AAG': 'K',
+    'AAT': 'N',
+    'ACA': 'T',
+    'ACC': 'T',
+    'ACG': 'T',
+    'ACT': 'T',
+    'AGA': 'R',
+    'AGC': 'S',
+    'AGG': 'R',
+    'AGT': 'S',
+    'ATA': 'I',
+    'ATC': 'I',
+    'ATG': 'M',
+    'ATT': 'I',
+    'CAA': 'Q',
+    'CAC': 'H',
+    'CAG': 'Q',
+    'CAT': 'H',
+    'CCA': 'P',
+    'CCC': 'P',
+    'CCG': 'P',
+    'CCT': 'P',
+    'CGA': 'R',
+    'CGC': 'R',
+    'CGG': 'R',
+    'CGT': 'R',
+    'CTA': 'L',
+    'CTC': 'L',
+    'CTG': 'L',
+    'CTT': 'L',
+    'GAA': 'E',
+    'GAC': 'D',
+    'GAG': 'E',
+    'GAT': 'D',
+    'GCA': 'A',
+    'GCC': 'A',
+    'GCG': 'A',
+    'GCT': 'A',
+    'GGA': 'G',
+    'GGC': 'G',
+    'GGG': 'G',
+    'GGT': 'G',
+    'GTA': 'V',
+    'GTC': 'V',
+    'GTG': 'V',
+    'GTT': 'V',
+    'TAA': '*',
+    'TAC': 'Y',
+    'TAG': '*',
+    'TAT': 'Y',
+    'TCA': 'S',
+    'TCC': 'S',
+    'TCG': 'S',
+    'TCT': 'S',
+    'TGA': '*',
+    'TGC': 'C',
+    'TGG': 'W',
+    'TGT': 'C',
+    'TTA': 'L',
+    'TTC': 'F',
+    'TTG': 'L',
+    'TTT': 'F',
+}
 
 
 if six.PY2:                     # pragma: no cover
@@ -249,6 +317,55 @@ def to_unicode(s):
 
 def to_ascii(s):
     return s if isinstance(s, six.binary_type) else s.encode("ASCII")
+
+
+def translate_cds(seq, no_ambiguity=False, full_codons=True):
+    """translate a DNA or RNA sequence into a single-letter amino acid sequence
+    using the standard translation table
+
+    if no_ambiguity is True, raise a ValueError if non-ACGT (or ACGU) bases are
+    encountered; codons with ambiguous bases are translated as '?'
+
+    if full_codons is True, a sequence whose length isn't a multiple of three
+    generates a ValueError; else partial codons are ignored
+
+    >>> translate_cds("ATGCGA")
+    'MR'
+
+    >>> translate_cds("AUGCGA")
+    'MR'
+
+    >>> translate_cds(None)
+
+
+    >>> translate_cds("")
+    ''
+
+    """
+    if seq is None:
+        return None
+
+    if len(seq) == 0:
+        return ""
+
+    if full_codons and len(seq) % 3 != 0:
+        raise ValueError("sequence length must be a multiple of three")
+
+    seq = replace_u_to_t(seq)
+    seq = seq.upper()
+
+    protein_seq = list()
+    for i in range(0, len(seq), 3):
+        try:
+            aa = dna_to_aa1_lut[seq[i:i + 3]]
+        except KeyError:
+            if no_ambiguity:
+                raise ValueError("failed to translate due to ambiguous base")
+            else:
+                aa = '?'
+        protein_seq.append(aa)
+
+    return ''.join(protein_seq)
 
 
 # legacy equivalents
