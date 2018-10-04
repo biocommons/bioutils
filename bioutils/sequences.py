@@ -323,8 +323,9 @@ def translate_cds(seq, full_codons=True):
     """translate a DNA or RNA sequence into a single-letter amino acid sequence
     using the standard translation table
 
-    if full_codons is True, a sequence whose length isn't a multiple of three
-    generates a ValueError; else partial codons are ignored
+    If full_codons is True, a sequence whose length isn't a multiple of three
+    generates a ValueError; else an 'X' will be added as the last amino acid.
+    This matches biopython's behaviour when padding the last codon with 'N's.
 
     >>> translate_cds("ATGCGA")
     'MR'
@@ -358,6 +359,10 @@ def translate_cds(seq, full_codons=True):
         except KeyError:
             raise ValueError("failed to translate due to ambiguous base")
         protein_seq.append(aa)
+
+    # check for trailing bases and add the extra 'X' if required
+    if not full_codons and len(seq) % 3 != 0:
+        protein_seq.append('X')
 
     return ''.join(protein_seq)
 
