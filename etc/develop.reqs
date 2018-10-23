@@ -1,5 +1,6 @@
 flake8
 ipython
+lxml
 pytest
 pytest-cov
 tox

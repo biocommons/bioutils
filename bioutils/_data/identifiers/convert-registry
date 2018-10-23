@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+# convert identifiers.org registry xml to json
+# The json file is then committed with the bioutils repo and available as a package resource
+
+import json
+import logging
+import re
+import sys
+
+import dateutil.parser
+from lxml import etree
+
+_logger = logging.getLogger()
+
+
+def get_urischeme_type(n, t):
+    sn = n.xpath("urischemes/urischeme[@type='{}' and @deprecated='false']".format(t))
+    assert len(sn) <= 1, "expected max 1 urischeme of type {}".format(t)
+    return sn[0].text if sn else None
+    
+def node_to_dict(n):
+    assert n.tag == "collection"
+    rv = {
+        "definition": n.findtext("definition"),
+        "id": n.get("id"),
+        "name": n.findtext("name"),
+        "namespace": n.findtext("namespace"),
+        "obsolete": n.get("obsolete") == "true",
+        "pattern": n.findtext("pattern"),
+        "prefixed": n.get("prefixed") == "true",
+        "url": get_urischeme_type(n, "URL"),
+        "urn": get_urischeme_type(n, "URN"),
+        }
+    return rv
+
+if __name__ == "__main__":
+    fh = open(sys.argv[1]) if len(sys.argv) >= 2 else sys.stdin
+    xml = etree.parse(fh)
+    root = xml.getroot()
+    assert root.tag == "miriam", "isn't a miriam xml file"
+
+    collections = []
+    for cn in root.iterfind("collection"):
+        try:
+            re.compile(cn.findtext("pattern"))
+        except re.sre_parse.error:
+            _logger.error("pattern {} for namespace {} is malformed; filtering out".format(
+                cn.findtext("pattern"), cn.findtext("namespace")))
+            continue
+        collections.append(node_to_dict(cn))
+
+    #collections = {cn.findtext("namespace"): node_to_dict(cn) for cn in }
+    
+    mirim_dict = {
+        "date": int(dateutil.parser.parse(root.get("date")).timestamp()),
+        "last_modified": int(dateutil.parser.parse(root.get("last_modified")).timestamp()),
+        "collections": {c["namespace"]: c for c in collections}
+        }
+    print(json.dumps(mirim_dict, sort_keys=True, indent=2))
+    
