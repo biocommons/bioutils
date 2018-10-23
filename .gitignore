@@ -29,6 +29,9 @@ coverage.xml
 develop-eggs/
 dist/
 doc/_build
+doc/changelog/*/.tags
+doc/changelog/*/.tags.mk
+doc/changelog/*/hg-git-remap.pl
 docs/_build/
 downloads/
 eggs/
