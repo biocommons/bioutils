@@ -319,7 +319,7 @@ def to_ascii(s):
     return s if isinstance(s, six.binary_type) else s.encode("ASCII")
 
 
-def translate_cds(seq, full_codons=True):
+def translate_cds(seq, full_codons=True, ter_symbol="*"):
     """translate a DNA or RNA sequence into a single-letter amino acid sequence
     using the standard translation table
 
@@ -342,15 +342,15 @@ def translate_cds(seq, full_codons=True):
     >>> translate_cds("AUGCG")
     Traceback (most recent call last):
     ...
-    ValueError: sequence length must be a multiple of three
+    ValueError: Sequence length must be a multiple of three
 
     >>> translate_cds("AUGCG", full_codons=False)
-    'MX'
+    'M*'
 
     >>> translate_cds("AUGCGQ")
     Traceback (most recent call last):
     ...
-    ValueError: failed to translate due to ambiguous base
+    ValueError: Codon CGQ at position 4..6 is undefined in codon table
 
     """
     if seq is None:
@@ -360,7 +360,7 @@ def translate_cds(seq, full_codons=True):
         return ""
 
     if full_codons and len(seq) % 3 != 0:
-        raise ValueError("sequence length must be a multiple of three")
+        raise ValueError("Sequence length must be a multiple of three")
 
     seq = replace_u_to_t(seq)
     seq = seq.upper()
@@ -370,12 +370,13 @@ def translate_cds(seq, full_codons=True):
         try:
             aa = dna_to_aa1_lut[seq[i:i + 3]]
         except KeyError:
-            raise ValueError("failed to translate due to ambiguous base")
+            raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
+                seq[i:i + 3], i+1, i+3))
         protein_seq.append(aa)
 
-    # check for trailing bases and add the extra 'X' if required
+    # check for trailing bases and add the ter symbol if required
     if not full_codons and len(seq) % 3 != 0:
-        protein_seq.append('X')
+        protein_seq.append(ter_symbol)
 
     return ''.join(protein_seq)
 
