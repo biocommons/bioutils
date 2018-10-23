@@ -339,6 +339,19 @@ def translate_cds(seq, full_codons=True):
     >>> translate_cds("")
     ''
 
+    >>> translate_cds("AUGCG")
+    Traceback (most recent call last):
+    ...
+    ValueError: sequence length must be a multiple of three
+
+    >>> translate_cds("AUGCG", full_codons=False)
+    'MX'
+
+    >>> translate_cds("AUGCGQ")
+    Traceback (most recent call last):
+    ...
+    ValueError: failed to translate due to ambiguous base
+
     """
     if seq is None:
         return None
