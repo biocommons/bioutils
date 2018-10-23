@@ -9,10 +9,6 @@ $$$$$$$$$$$$$
 
 * Closes `#10 <https://github.com/biocommons/hgvs/issues/10/>`_: Support NCBI API keys (and NCBI_API_KEY env variable) [`8739c98 <https://github.com/biocommons/hgvs/commit/8739c98>`_] (@timothyjlaurent)
 * Closes `#12 <https://github.com/biocommons/hgvs/issues/12/>`_: add infer_namespaces and infer_namespace functions [`2a53c7f <https://github.com/biocommons/hgvs/commit/2a53c7f>`_]
+* Dropped biopython dependency [`5611d79ec042 <https://github.com/biocommons/hgvs/commit/5611d79ec042>`_] (@afrubin)
 * Added bioutils.sequences.py:elide_sequence() function [`018a762 <https://github.com/biocommons/hgvs/commit/018a762>`_]
 * Added GRCh38.p12 [`3876f36 <https://github.com/biocommons/hgvs/commit/3876f36>`_]
-
-Other Changes
-$$$$$$$$$$$$$$
-
-* Merged drop-biopython branch into master; removes biopython dependency [`5611d79ec042 <https://github.com/biocommons/hgvs/commit/5611d79ec042>`_]
