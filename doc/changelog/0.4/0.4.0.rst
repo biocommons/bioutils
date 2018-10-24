@@ -4,6 +4,12 @@
 
 Changes since 0.3.3 (2017-09-03).
 
+Important Notice
+$$$$$$$$$$$$$$$$$
+
+Support for Python <3.6 will be dropped on 2019-03-31. See
+https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6
+
 New Features
 $$$$$$$$$$$$$
 
