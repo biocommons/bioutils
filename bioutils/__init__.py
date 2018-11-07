@@ -2,8 +2,6 @@ import pkg_resources
 import re
 import warnings
 
-import sys
-
 
 try:
     __version__ = pkg_resources.get_distribution(__name__).version
@@ -15,5 +13,4 @@ except pkg_resources.DistributionNotFound as e:  # pragma: no cover
     __version__ = None
 
 
-if sys.version_info < (3,5):
-    warnings.warn("Support for Python <3.6 will be dropped on 2019-03-31. See https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6", category=DeprecationWarning)
+from ._versionwarning import warnings
