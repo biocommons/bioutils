@@ -1,7 +1,7 @@
 bioutils -- simple bioinformatics utilities and lookup tables
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-|ci_rel| | |pypi_rel| | |issues_badge|
+|ci_rel| | |pypi_rel| | |issues_badge| | ChangeLog_
 
 bioutils provides some common tools and lookup tables used primarly by
 the `hgvs <https://github.com/biocommons/hgvs/>`_ and `uta
@@ -23,3 +23,5 @@ and it will be used in the E-Utilities request.
 .. |ci_rel| image:: https://travis-ci.org/biocommons/bioutils.png?branch=master
   :target: https://travis-ci.org/biocommons/bioutils
   :align: middle 
+
+.. _ChangeLog: https://github.com/biocommons/bioutils/tree/master/doc/changelog
