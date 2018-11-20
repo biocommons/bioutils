@@ -16,7 +16,6 @@ and it will be used in the E-Utilities request.
 
 .. |build_status| image:: https://travis-ci.org/biocommons/bioutils.svg?branch=master
   :target: https://travis-ci.org/biocommons/bioutils
-  :align: middle 
 
 .. |changelog| image:: https://img.shields.io/badge/docs-changelog-green.svg
    :target: https://github.com/biocommons/bioutils/tree/master/doc/changelog
@@ -29,13 +28,11 @@ and it will be used in the E-Utilities request.
 
 .. |issues_badge| image:: https://img.shields.io/github/issues/biocommons/bioutils.png
   :target: https://github.com/biocommons/bioutils/issues
-  :align: middle
 
 .. |license| image:: https://img.shields.io/github/license/biocommons/bioutils.svg
   :target: https://github.com/biocommons/bioutils/blob/master/LICENSE
 
-.. |pypi_badge| image:: https://badge.fury.io/py/bioutils.png
-  :target: https://pypi.python.org/pypi?name=bioutils
-  :align: middle
+.. |pypi_badge| image:: https://img.shields.io/pypi/v/bioutils.svg
+  :target: https://pypi.org/project/bioutils/
 
 	   
