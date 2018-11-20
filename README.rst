@@ -21,6 +21,9 @@ and it will be used in the E-Utilities request.
 .. |changelog| image:: https://img.shields.io/badge/docs-changelog-green.svg
    :target: https://github.com/biocommons/bioutils/tree/master/doc/changelog
 
+.. |contributors| image:: https://img.shields.io/github/contributors/biocommons/bioutils.svg
+  :target: https://github.com/biocommons/bioutils
+
 .. |docs| image:: https://img.shields.io/badge/docs-readthedocs-green.svg
    :target: http://bioutils.readthedocs.io/
 
