@@ -2,6 +2,7 @@
 
 .DELETE_ON_ERROR:
 .PHONY: FORCE
+.PRECIOUS:
 .SUFFIXES:
 
 SHELL:=/bin/bash -e -o pipefail
@@ -42,9 +43,10 @@ ${VEDIR}:
 
 #=> setup: setup/upgrade packages *in current environment*
 .PHONY: setup
-setup: etc/develop.reqs etc/install.reqs
+setup: etc/develop.reqs etc/test.reqs etc/install.reqs
 	if [ -s $(word 1,$^) ]; then pip install --upgrade -r $(word 1,$^); fi
 	if [ -s $(word 2,$^) ]; then pip install --upgrade -r $(word 2,$^); fi
+	if [ -s $(word 3,$^) ]; then pip install --upgrade -r $(word 3,$^); fi
 
 #=> devready: create venv, install prerequisites, install pkg in develop mode
 .PHONY: devready
@@ -93,14 +95,17 @@ tox:
 reformat:
 	@if hg sum | grep -qL '^commit:.*modified'; then echo "Repository not clean" 1>&2; exit 1; fi
 	@if hg sum | grep -qL ' applied'; then echo "Repository has applied patches" 1>&2; exit 1; fi
-	yapf -i -r ${PKGD} tests
+	yapf -i -r "${PKGD}" tests
 	hg commit -m "reformatted with yapf"
 
 #=> docs -- make sphinx docs
-.PHONY: doc docs
-doc docs: develop
+.PHONY: docs
+docs: develop
 	# RTD makes json. Build here to ensure that it works.
 	make -C doc html json
+
+############################################################################
+#= CLEANUP
 
 #=> clean: remove temporary and backup files
 .PHONY: clean
@@ -110,14 +115,13 @@ clean:
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
 cleaner: clean
-	rm -f devready.log
 	rm -fr .cache *.egg-info build dist doc/_build htmlcov
 	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
 	find . -name __pycache__ -print0 | xargs -0r rm -fr
 
-#=> cleaner: remove files and directories that require more time/network fetches to rebuild
-.PHONY: cleanest distclean
-cleanest distclean: cleaner
+#=> cleanest: remove files and directories that require more time/network fetches to rebuild
+.PHONY: cleanest
+cleanest: cleaner
 	rm -fr .eggs .tox venv
 
 
