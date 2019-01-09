@@ -117,7 +117,8 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     try:
         return fetcher(ac, start_i, end_i)
-    except requests.HTTPError:
+    except requests.HTTPError as ex:
+        logger.error(ex)
         raise RuntimeError("No sequence available for {ac}".format(ac=ac))
 
 
