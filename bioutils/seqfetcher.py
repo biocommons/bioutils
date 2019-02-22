@@ -117,7 +117,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     try:
         return fetcher(ac, start_i, end_i)
-    except requests.HTTPError as ex:
+    except requests.RequestException as ex:
         raise RuntimeError("Failed to fetch {ac} ({ex})".format(ac=ac, ex=ex))
 
 
