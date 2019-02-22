@@ -1,0 +1,19 @@
+
+0.4.1 (2019-02-21)
+###################
+
+Changes since 0.4.0 (2018-11-11).
+
+Other Changes
+$$$$$$$$$$$$$$
+
+* expose underlying exception on http failure [`536b961f5cac <https://github.com/biocommons/hgvs/commit/536b961f5cac>`_]
+
+Internal and Developer Changes
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+* updated badges [`8f91ed1 <https://github.com/biocommons/hgvs/commit/8f91ed1>`_]
+* added LICENSE [`b3d6d64 <https://github.com/biocommons/hgvs/commit/b3d6d64>`_]
+* added missing |contributors| definition [`97f78b3 <https://github.com/biocommons/hgvs/commit/97f78b3>`_]
+* updated badge list [`de2bf15 <https://github.com/biocommons/hgvs/commit/de2bf15>`_]
+* sync'd project files with eutils [`3102695 <https://github.com/biocommons/hgvs/commit/3102695>`_]
