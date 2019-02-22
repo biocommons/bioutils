@@ -11,7 +11,7 @@ import os
 
 import requests
 
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 
 # Reece requested registration on 2017-09-03
@@ -109,17 +109,16 @@ def fetch_seq(ac, start_i=None, end_i=None):
         raise RuntimeError("No sequence fetcher for {ac}".format(ac=ac))
 
     if len(eligible_fetchers) >= 1:  # pragma: nocover (no way to test)
-        logger.debug("Multiple sequence fetchers found for "
+        _logger.debug("Multiple sequence fetchers found for "
                      "{ac}; using first".format(ac=ac))
 
     fetcher = eligible_fetchers[0]
-    logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
+    _logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
 
     try:
         return fetcher(ac, start_i, end_i)
     except requests.HTTPError as ex:
-        logger.error(ex)
-        raise RuntimeError("No sequence available for {ac}".format(ac=ac))
+        raise RuntimeError("Failed to fetch {ac} ({ex})".format(ac=ac, ex=ex))
 
 
 # ###########################################################################
