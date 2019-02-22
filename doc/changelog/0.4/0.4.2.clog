@@ -1,0 +1,5 @@
+clog format: 1; -*-outline-*-
+* 0.4.2 (2019-02-21)
+Changes since 0.4.1 (2019-02-21).
+** Internal and Developer Changes
+*** reraise all requests exceptions (not just HTTPError) as RuntimeError [da69b5ff5ee0]
