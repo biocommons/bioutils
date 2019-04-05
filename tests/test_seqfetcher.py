@@ -1,6 +1,8 @@
+import multiprocessing
+import os
+
 import pytest
 import vcr
-import os
 
 from bioutils.seqfetcher import fetch_seq, _fetch_seq_ensembl, _fetch_seq_ncbi, _add_eutils_api_key
 
@@ -49,3 +51,15 @@ def test_fetch_seq_errors():
     # RuntimeError: No sequence fetcher for QQ01234
     with pytest.raises(RuntimeError):
         fetch_seq('QQ01234')
+
+
+def _check1(_x):
+    # small, fast query
+    assert 'MESRETLSSS' == fetch_seq('NP_056374.2',0,10)
+
+# no vcr!
+@pytest.mark.network
+def test_rate_limit():
+    num_requests = num_threads = 5
+    p = multiprocessing.Pool(num_threads)
+    p.map(_check1, range(num_requests))

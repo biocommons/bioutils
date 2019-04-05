@@ -8,6 +8,8 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import logging
 import re
 import os
+import random
+import time
 
 import requests
 
@@ -17,7 +19,7 @@ _logger = logging.getLogger(__name__)
 # Reece requested registration on 2017-09-03
 ncbi_tool = "bioutils"
 ncbi_email = 'biocommons-dev@googlegroups.com'
-
+retry_limit = 3
 
 def fetch_seq(ac, start_i=None, end_i=None):
     """Fetches sequences and subsequences from NCBI eutils and Ensembl
@@ -206,11 +208,22 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     url = _add_eutils_api_key(url)
 
-    resp = requests.get(url)
+    n_retries = 0
+    while True:
+        resp = requests.get(url)
+        if resp.ok:
+            seq = ''.join(resp.text.splitlines()[1:])
+            return seq
+        if n_retries >= retry_limit:
+            break
+        if n_retries == 0:
+            _logger.warn("Failed to fetch {}".format(url))
+        sleeptime = random.randint(n_retries,3) ** n_retries
+        _logger.warn("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
+        time.sleep(sleeptime)
+        n_retries += 1
+    # Falls through only on failure
     resp.raise_for_status()
-    seq = ''.join(resp.text.splitlines()[1:])
-    return seq
-
 
 
 def _add_eutils_api_key(url):
