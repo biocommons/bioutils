@@ -237,7 +237,7 @@ def normalize_sequence(seq):
 
     """
 
-    nseq = re.sub("[\s\*]", "", seq).upper()
+    nseq = re.sub(r"[\s\*]", "", seq).upper()
     m = re.search("[^A-Z]", nseq)
     if m:
         _logger.debug("Original sequence: " + seq)

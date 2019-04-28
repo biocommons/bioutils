@@ -57,12 +57,6 @@ devready:
 bdist bdist_egg bdist_wheel build sdist install develop: %:
 	python setup.py $@
 
-#=> upload: upload to pypi
-#=> upload_*: upload to named pypi service (requires config in ~/.pypirc)
-.PHONY: upload upload_%
-upload: upload_pypi
-upload_%:
-	python setup.py bdist_egg bdist_wheel sdist upload -r $*
 
 
 ############################################################################
@@ -72,7 +66,7 @@ upload_%:
 #=> test: execute tests
 .PHONY: test
 test:
-	python setup.py pytest --addopts="--cov=${PKG} ${PKGD} tests"
+	python setup.py pytest
 
 #=> tox: execute tests via tox
 .PHONY: tox
