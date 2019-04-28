@@ -94,7 +94,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     ac_dispatch = [
         {
-            "re": re.compile(f"^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d"),
+            "re": re.compile(r"^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d"),
             "fetcher": _fetch_seq_ncbi
         },
         {
