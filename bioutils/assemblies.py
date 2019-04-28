@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-, flake8: noqa
-from __future__ import absolute_import, division, print_function, unicode_literals
 """Provides dictionaries of genome assembly data as provided by
 ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/*.assembly.txt
 
@@ -25,11 +23,12 @@ verbatim, without prefixes or case changes.
 
 """
 
+import gzip
 import json
 import pkg_resources
 
 _assy_dir = '_data/assemblies'
-_assy_path_fmt = _assy_dir + '/' + '{name}.json'
+_assy_path_fmt = _assy_dir + '/' + '{name}.json.gz'
 
 
 def get_assembly_names():
@@ -43,9 +42,9 @@ def get_assembly_names():
     """
 
     return [
-        n.replace(".json", "")
+        n.replace(".json.gz", "")
         for n in pkg_resources.resource_listdir(__name__, _assy_dir)
-        if n.endswith(".json")
+        if n.endswith(".json.gz")
     ]
 
 
@@ -81,9 +80,9 @@ def get_assembly(name):
      'sequence_role': 'assembled-molecule'}
     """
 
-    js = pkg_resources.resource_string(
+    fn = pkg_resources.resource_filename(
         __name__, _assy_path_fmt.format(name=name))
-    return json.loads(js.decode("utf-8"))
+    return json.load(gzip.open(fn, mode="rt", encoding="utf-8"))
 
 
 def get_assemblies(names=[]):
