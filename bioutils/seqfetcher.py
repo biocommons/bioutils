@@ -18,7 +18,7 @@ _logger = logging.getLogger(__name__)
 
 # Reece requested registration on 2017-09-03
 ncbi_tool = "bioutils"
-ncbi_email = 'biocommons-dev@googlegroups.com'
+ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
 
 def fetch_seq(ac, start_i=None, end_i=None):
@@ -94,17 +94,17 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     ac_dispatch = [
         {
-            're': re.compile('^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d'),
-            'fetcher': _fetch_seq_ncbi
+            "re": re.compile(f"^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d"),
+            "fetcher": _fetch_seq_ncbi
         },
         {
-            're': re.compile('^ENS[TP]\d+'),
-            'fetcher': _fetch_seq_ensembl
+            "re": re.compile(r"^ENS[TP]\d+"),
+            "fetcher": _fetch_seq_ensembl
         },
     ]
 
     eligible_fetchers = [
-        dr['fetcher'] for dr in ac_dispatch if dr['re'].match(ac)
+        dr["fetcher"] for dr in ac_dispatch if dr["re"].match(ac)
     ]
 
     if len(eligible_fetchers) == 0:
@@ -155,7 +155,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
     url = url_fmt.format(ac=ac)
     r = requests.get(url, headers={"Content-Type": "application/json"})
     r.raise_for_status()
-    seq = r.json()['seq']
+    seq = r.json()["seq"]
     return seq if (start_i is None or end_i is None) else seq[start_i:end_i]
 
 
@@ -212,14 +212,14 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
     while True:
         resp = requests.get(url)
         if resp.ok:
-            seq = ''.join(resp.text.splitlines()[1:])
+            seq = "".join(resp.text.splitlines()[1:])
             return seq
         if n_retries >= retry_limit:
             break
         if n_retries == 0:
-            _logger.warn("Failed to fetch {}".format(url))
+            _logger.warning("Failed to fetch {}".format(url))
         sleeptime = random.randint(n_retries,3) ** n_retries
-        _logger.warn("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
+        _logger.warning("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
         time.sleep(sleeptime)
         n_retries += 1
     # Falls through only on failure
@@ -233,9 +233,9 @@ def _add_eutils_api_key(url):
     :return: url with api_key parameter set to the value of environment
     variable 'NCBI_API_KEY' if available
     """
-    apikey = os.environ.get('NCBI_API_KEY')
+    apikey = os.environ.get("NCBI_API_KEY")
     if apikey:
-        url += '&api_key={apikey}'.format(apikey=apikey)
+        url += "&api_key={apikey}".format(apikey=apikey)
     return url
 
 

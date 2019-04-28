@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
 
 import base64
 import hashlib
 
-from .sequences import normalize_sequence, to_binary, to_unicode
+from .sequences import normalize_sequence
 from .vmc_digest import vmc_digest
 
 
@@ -25,7 +24,6 @@ def seq_seqhash(seq, normalize=True):
 
     """
 
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
     return str(vmc_digest(seq, digest_size=24))
 
@@ -48,9 +46,8 @@ def seq_seguid(seq, normalize=True):
     'lII0AoG1/I8qKY271rgv5CFZtsU'
 
     """
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
-    bseq = to_binary(seq)
+    bseq = seq.encode("ascii")
     return base64.b64encode(hashlib.sha1(bseq).digest()).decode("ascii").rstrip(
         '=')
 
@@ -77,9 +74,8 @@ def seq_md5(seq, normalize=True):
     'db516c3913e179338b162b2476d1c23f'
 
     """
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
-    bseq = to_binary(seq)
+    bseq = seq.encode("ascii")
     return hashlib.md5(bseq).hexdigest()
 
 
@@ -100,9 +96,8 @@ def seq_sha1(seq, normalize=True):
 
     """
 
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
-    bseq = to_binary(seq)
+    bseq = seq.encode("ascii")
     return hashlib.sha1(bseq).hexdigest()
 
 
@@ -123,9 +118,8 @@ def seq_sha512(seq, normalize=True):
 
     """
 
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
-    bseq = to_binary(seq)
+    bseq = seq.encode("ascii")
     return hashlib.sha512(bseq).hexdigest()
 
 
@@ -169,6 +163,5 @@ def seq_vmc_identifier(seq, normalize=True):
     True
 
     """
-    seq = to_unicode(seq)       # coerce to unicode if needed
     seq = normalize_sequence(seq) if normalize else seq
     return {"namespace": "VMC", "accession": "GS_" + str(vmc_digest(seq))}

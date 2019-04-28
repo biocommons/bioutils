@@ -10,7 +10,7 @@ namespaces.
 
 Identifier := <Namespace, Accession>
 Namespace := [^:]+
-Accession := \w+
+Accession := \\w+
 
 Some sample serializations of Identifiers:
 
@@ -26,8 +26,6 @@ which the CURIE is used must contain a map of {namespace => uri}.
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import re
-
-from six import iteritems
 
 from .exceptions import BioutilsError
 
@@ -77,7 +75,7 @@ ac_namespace_regexps = {
     "uniprot",
 }
 
-ac_namespace_regexps = {re.compile(k): v for k, v in iteritems(ac_namespace_regexps)}
+ac_namespace_regexps = {re.compile(k): v for k, v in ac_namespace_regexps.items()}
 
 
 def chr22XY(c):
@@ -176,7 +174,7 @@ def infer_namespaces(ac):
 
 
     """
-    return [v for k, v in iteritems(ac_namespace_regexps) if k.match(ac)]
+    return [v for k, v in ac_namespace_regexps.items() if k.match(ac)]
 
 
 def prepend_chr(chr):

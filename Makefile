@@ -10,6 +10,8 @@ SELF:=$(firstword $(MAKEFILE_LIST))
 
 PKG=bioutils
 PKGD=$(subst .,/,${PKG})
+PYV:=3
+VEDIR=venv/${PYV}
 
 VEDIR=venv/3.6
 
@@ -27,16 +29,8 @@ help:
 #= SETUP, INSTALLATION, PACKAGING
 
 #=> venv: make a Python 3 virtual environment
-.PHONY: venv/2.7
-venv/2.7:
-	virtualenv -p $$(type -p python2.7) $@; \
-	source $@/bin/activate; \
-	pip install --upgrade pip setuptools
-
-#=> venv: make a Python 3 virtual environment
-.PHONY: ${VEDIR}
-${VEDIR}:
-	pyvenv $@; \
+venv/3 venv/3.5 venv/3.6 venv/3.7: venv/%:
+	python$* -mvenv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools

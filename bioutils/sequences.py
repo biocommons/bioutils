@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 """simple functions and lookup tables for nucleic acid and amino acid sequences"""
 
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 import logging
 import re
+from string import ascii_lowercase
 
-import six
-
-from six.moves import range
 
 _logger = logging.getLogger(__name__)
 
@@ -38,7 +34,7 @@ aa3_to_aa1_lut = {
     "Sec": "",
 }
 
-aa1_to_aa3_lut = {v: k for k, v in six.iteritems(aa3_to_aa1_lut)}
+aa1_to_aa3_lut = {v: k for k, v in aa3_to_aa1_lut.items()}
 
 dna_to_aa1_lut = {      # NCBI standard translation table
     'AAA': 'K',
@@ -108,18 +104,7 @@ dna_to_aa1_lut = {      # NCBI standard translation table
 }
 
 
-if six.PY2:                     # pragma: no cover
-    # flake8: noqa
-
-    import string
-    from string import ascii_lowercase
-    complement_transtable = {ord(f): ord(t) for f, t in zip("ACGT", "TGCA")}
-
-elif six.PY3:                   # pragma: no cover
-    # flake8: noqa
-
-    from string import ascii_lowercase
-    complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
+complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
 def aa_to_aa1(seq):
@@ -136,7 +121,6 @@ def aa_to_aa1(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return aa3_to_aa1(seq) if looks_like_aa3_p(seq) else seq
 
 
@@ -154,7 +138,6 @@ def aa_to_aa3(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return aa1_to_aa3(seq) if not looks_like_aa3_p(seq) else seq
 
 
@@ -169,7 +152,6 @@ def aa1_to_aa3(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return "".join(aa1_to_aa3_lut[aa1] for aa1 in seq)
 
 
@@ -184,7 +166,6 @@ def aa3_to_aa1(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return "".join(aa3_to_aa1_lut[aa3]
                    for aa3 in [seq[i:i + 3] for i in range(0, len(seq), 3)])
 
@@ -201,7 +182,6 @@ def complement(seq):
 
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return seq.translate(complement_transtable)
 
 
@@ -257,7 +237,6 @@ def normalize_sequence(seq):
 
     """
 
-    assert isinstance(seq, six.text_type)
     nseq = re.sub("[\s\*]", "", seq).upper()
     m = re.search("[^A-Z]", nseq)
     if m:
@@ -279,7 +258,6 @@ def reverse_complement(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return "".join(reversed(complement(seq)))
 
 
@@ -293,7 +271,6 @@ def replace_t_to_u(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return seq.replace("T", "U").replace("t", "u")
 
 
@@ -307,16 +284,7 @@ def replace_u_to_t(seq):
     """
     if seq is None:
         return None
-    seq = to_unicode(seq)
     return seq.replace("U", "T").replace("u", "t")
-
-
-def to_unicode(s):
-    return s if isinstance(s, six.text_type) else s.decode("ASCII")
-
-
-def to_ascii(s):
-    return s if isinstance(s, six.binary_type) else s.encode("ASCII")
 
 
 def translate_cds(seq, full_codons=True, ter_symbol="*"):
@@ -381,16 +349,8 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
     return ''.join(protein_seq)
 
 
-# legacy equivalents
-_looks_like_aa3_p = looks_like_aa3_p
-_to_unicode = to_unicode
-_to_binary = to_ascii
-to_binary = to_ascii
-
-
-
 ## <LICENSE>
-## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
+## Copyright 2014 Bioutils Contributors
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -404,3 +364,4 @@ to_binary = to_ascii
 ## See the License for the specific language governing permissions and
 ## limitations under the License.
 ## </LICENSE>
+

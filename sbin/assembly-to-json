@@ -18,8 +18,6 @@ import os
 import re
 import sys
 
-import six
-
 
 class AssemblyParser(object):
     """Parse an assembly file from NCBI, like this one:
@@ -68,13 +66,13 @@ class AssemblyParser(object):
     @property
     def assembly_units(self):
         block = re.search("## Assembly-Units:\n(.+?)\n#\n", self._body, flags=re.DOTALL).group(1).replace("## ","")
-        dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
+        dr = csv.DictReader(io.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
     @property
     def sequences(self):
         block = re.search("# (Sequence-Name.+)", self._body, flags=re.DOTALL).group(1)
-        dr = csv.DictReader(six.StringIO(block), delimiter=str("\t"))
+        dr = csv.DictReader(io.StringIO(block), delimiter=str("\t"))
         return list(dr)
 
 
