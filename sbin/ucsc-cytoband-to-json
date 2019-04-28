@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+import collections
+import csv
+import gzip
+import json
+import sys
+
+
+def open_any(fn):
+    if fn == "-":
+        return sys.stdin
+    if fn.endswith(".gz"):
+        return gzip.open(fn, mode="rt", encoding="utf-8")
+    return open(fn, mode="rt")
+
+
+chr_band_map = collections.defaultdict(dict)
+
+rdr = csv.reader(open_any(sys.argv[1]), delimiter="\t")
+for row in rdr:
+    chr, start, end, band, stain = row
+    if chr.startswith("chr"):
+        chr = chr[3:] 
+    chr_band_map[chr][band] = (int(start),int(end),stain)
+
+
+json.dump(chr_band_map, sys.stdout, indent=None, sort_keys=True)
