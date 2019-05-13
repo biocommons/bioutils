@@ -1,0 +1,11 @@
+
+0.4.4 (2019-05-13)
+###################
+
+Changes since 0.4.3 (2019-04-05).
+
+.. note:: This is the last release in the 0.4 series. Future
+	  biocommons packages will be tested and supported only on
+	  Python >= 3.6. See
+	  https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6
+	  for more information.

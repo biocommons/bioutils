@@ -6,10 +6,9 @@ This module may be used by other biocommons packages
 
 import logging
 import sys
-import warnings
 
-version_warning = """biocommons tools are supported only on Python >= 3.6
-(https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6)"""
+version_warning = ("biocommons packages are tested and supported only on Python >= 3.6"
+                   " (https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6)")
 
 _logger = logging.getLogger(__package__)
 
