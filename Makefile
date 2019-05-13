@@ -10,10 +10,9 @@ SELF:=$(firstword $(MAKEFILE_LIST))
 
 PKG=bioutils
 PKGD=$(subst .,/,${PKG})
-PYV:=3
-VEDIR=venv/${PYV}
 
-VEDIR=venv/3.6
+PYV=3.7
+VEDIR=venv/${PYV}
 
 
 ############################################################################
