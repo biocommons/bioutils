@@ -13,4 +13,4 @@ except pkg_resources.DistributionNotFound as e:  # pragma: no cover
     __version__ = None
 
 
-from ._versionwarning import warnings
+from ._versionwarning import *
