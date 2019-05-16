@@ -27,6 +27,14 @@ help:
 ############################################################################
 #= SETUP, INSTALLATION, PACKAGING
 
+#=> devready: create venv and install pkg in develop mode
+.PHONY: devready
+devready:
+	make ${VEDIR} && source ${VEDIR}/bin/activate && make develop
+	@echo '#################################################################################'
+	@echo '###  Do not forget to `source ${VEDIR}/bin/activate` to use this environment  ###'
+	@echo '#################################################################################'
+
 #=> venv: make a Python 3 virtual environment
 venv/3 venv/3.5 venv/3.6 venv/3.7: venv/%:
 	python$* -mvenv $@; \
@@ -34,26 +42,14 @@ venv/3 venv/3.5 venv/3.6 venv/3.7: venv/%:
 	python -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools
 
-#=> setup: setup/upgrade packages *in current environment*
-.PHONY: setup
-setup: etc/develop.reqs etc/test.reqs etc/install.reqs
-	if [ -s $(word 1,$^) ]; then pip install --upgrade -r $(word 1,$^); fi
-	if [ -s $(word 2,$^) ]; then pip install --upgrade -r $(word 2,$^); fi
-	if [ -s $(word 3,$^) ]; then pip install --upgrade -r $(word 3,$^); fi
-
-#=> devready: create venv, install prerequisites, install pkg in develop mode
-.PHONY: devready
-devready:
-	make ${VEDIR} && source ${VEDIR}/bin/activate && make setup develop
-	@echo '#################################################################################'
-	@echo '###  Do not forget to `source ${VEDIR}/bin/activate` to use this environment  ###'
-	@echo '#################################################################################'
-
 #=> develop: install package in develop mode
+develop:
+	pip install -e .[dev]
+
 #=> install: install package
 #=> bdist bdist_egg bdist_wheel build sdist: distribution options
-.PHONY: bdist bdist_egg bdist_wheel build build_sphinx sdist install develop
-bdist bdist_egg bdist_wheel build sdist install develop: %:
+.PHONY: bdist bdist_egg bdist_wheel build build_sphinx sdist install
+bdist bdist_egg bdist_wheel build sdist install: %:
 	python setup.py $@
 
 
