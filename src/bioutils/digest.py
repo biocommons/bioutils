@@ -1,12 +1,24 @@
 import base64
+import binascii
+
+_enc = "ascii"
 
 
 class Digest(bytes):
     """Represents a sliceable binary digest, with support for encoding and
     decoding using printable characters.
 
-    Stringified representations use URL-safe base64 encodings. See
-    https://tools.ietf.org/html/rfc4648#page-7
+    Supported encoding and decodings are::
+        * base64
+        * base64url
+        * hex (aka base16)
+
+    The Base64 specification
+    (https://tools.ietf.org/html/rfc4648#page-7) defines base64 and a
+    URL-safe variant called base64url.
+
+    "Stringified" Digest objects use URL-safe base64 encodings.
+    
 
     >>> import hashlib
 
@@ -14,39 +26,38 @@ class Digest(bytes):
     >>> len(b)
     64
 
+    # creation
     >>> d = Digest(b)
-    >>> len(d)
-    64
-    >>> len(d.as_base64us())
-    88
-    >>> d.as_base64us()
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
-    >>> str(d)
+    >>> str(d)                  # returns base64url
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
 
+    # slice binary digest at first 24 bytes
     >>> d24 = d[:24]
-    >>> len(d24)
-    24
-    >>> len(d24.as_base64us())
-    32
-    >>> d24.as_base64us()
+    >>> str(d24)                                                                                                                                                     
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
-    >>> e = Digest.from_base64us(d.as_base64us())
-    >>> e == d
-    True
+    # encoding
+    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=='
+    >>> d.as_base64url()
+    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
+    >>> d.as_hex()
+    'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
 
-    >>> e24 = Digest.from_base64us(d24.as_base64us())
-    >>> e24 == d24
+    # decoding
+    >>> d == Digest.from_base64(d.as_base64())
     True
-
+    >>> d == Digest.from_base64url(d.as_base64url())
+    True
+    >>> d == Digest.from_hex(d.as_hex())
+    True
+    
     """
 
     def __str__(self):
-        """returns digest as URL-safe, base64 encoded digest, as Unicode
+        """returns digest as base64url string
 
         """
-        return self.as_base64us().decode("ASCII")
+        return self.as_base64url()
 
 
     # TODO: Consider requiring slice start == None or 0, and len % 3 == 0
@@ -55,22 +66,61 @@ class Digest(bytes):
         return Digest(bytes.__getitem__(self, key))
 
 
-    def as_base64us(self):
-        """returns digest as URL-safe, base64-encoded digest, as ASCII-encoded
-        binary
+    # base64
+    def as_base64(self):
+        """returns digest as base64-encoded digest string
 
         """
-        return base64.urlsafe_b64encode(self)
+        return base64.b64encode(self).decode(_enc)
 
 
     @staticmethod
-    def from_base64us(d):
-        """returns Digest object initialized from ASCII-encoded binary form of
-        URL-safe, base64-encoded digest
+    def from_base64(s):
+        """returns Digest object initialized from base64-encoded digest
 
         """
 
-        return Digest(base64.urlsafe_b64decode(d))
+        return Digest(base64.b64decode(s))
+
+
+    # base64url
+    def as_base64url(self):
+        """returns digest as URL-safe, base64-encoded string
+
+        """
+        return base64.urlsafe_b64encode(self).decode(_enc)
+
+
+    @staticmethod
+    def from_base64url(s):
+        """returns Digest object initialized from base64url string
+
+        """
+
+        return Digest(base64.urlsafe_b64decode(s))
+
+
+    # for backward compatibility with earlier versions
+    # ("base64url" is the official name for the encoding)
+    as_base64us = as_base64url
+    from_base64us = from_base64url
+
+
+    # hex
+    def as_hex(self):
+        """returns digest as hex string
+
+        """
+        return binascii.hexlify(self).decode(_enc)
+
+
+    @staticmethod
+    def from_hex(s):
+        """returns Digest object initialized from hex string
+
+        """
+
+        return Digest(binascii.unhexlify(s))
 
 
 if __name__ == "__main__":      # pragma: nocover
@@ -80,5 +130,5 @@ if __name__ == "__main__":      # pragma: nocover
     assert isinstance(d, Digest), "d isn't a Digest"
     d24 = d[:24]
     assert isinstance(d24, Digest), "d24 isn't a Digest"
-    e = Digest.from_base64us(d.as_base64us())
-    e24 = Digest.from_base64us(d24.as_base64us())
+    e = Digest.from_base64url(d.as_base64url())
+    e24 = Digest.from_base64url(d24.as_base64url())
