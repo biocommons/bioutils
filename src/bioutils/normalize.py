@@ -21,7 +21,7 @@ import attr
 _logger = logging.getLogger(__name__)
 debug = False
 
-NormalizationMode = enum.Enum("Mode", "TRIMONLY LEFTSHUFFLE RIGHTSHUFFLE EXPAND VCF")
+NormalizationMode = enum.Enum("NormalizationMode", "TRIMONLY LEFTSHUFFLE RIGHTSHUFFLE EXPAND VCF")
 
 
 def normalize(
@@ -56,6 +56,9 @@ def normalize(
         bounds = Interval(*bounds)
 
     left_anchor = right_anchor = anchor_length
+
+    if not isinstance(mode, NormalizationMode):
+        mode = NormalizationMode[mode]  # e.g., mode="LEFTSHUFFLE" OK
 
     if mode == NormalizationMode.VCF:
         if left_anchor:

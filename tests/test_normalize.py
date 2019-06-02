@@ -39,6 +39,14 @@ def test_anchor():
     assert ((26, 29), ('GCA', 'GCCA')) == normalize_trim(interval=(28,28), alleles=(None, "C"), anchor_length=2)
 
 
+def test_mode_string():
+    "test that mode=string is accepted"
+    _normalize = partial(normalize_seq, interval=(28,28), alleles=(None, "C"))
+    vcf_out = ((26, 27), ('G', 'GC'))
+    assert vcf_out != _normalize(), "not VCF output by default"
+    assert vcf_out == _normalize(mode="VCF"), "mode as string recognized"
+
+
 def test_error_distinct():
     """Must have at least two distinct allele sequences (incl. ref) to normalize"""
     with pytest.raises(ValueError):
