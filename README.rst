@@ -1,17 +1,20 @@
-bioutils -- simple bioinformatics utilities and lookup tables
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+bioutils -- bioinformatics utilities and lookup tables
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 |pypi_badge| |build_status| |issues_badge| |contributors| |license| |changelog|
 
 
-bioutils provides some common tools and lookup tables used primarly by
-the `hgvs <https://github.com/biocommons/hgvs/>`_ and `uta
-<https://github.com/biocommons/uta/>`_ packages.  This package is
-not really intended for broader use (read: it may change without
-notice).
+bioutils provides some common utilities and lookup tables for bioinformatics.
 
-To use an E-Utilities API key run add it to an environment variable called `ncbi_api_key`
-and it will be used in the E-Utilities request.
+* bioutils.accessions -- parse accessions, infer namespaces 
+* bioutils.assemblies -- Human assembly information (from NCBI/GRCh)
+* bioutils.cytobands -- map cytobands to coordinates (from UCSC cytoband tables)
+* bioutils.digests -- implementations of various digests
+* bioutils.normalize -- allele normalization (left shuffle, right shuffle, expanded, vcf)
+  
+
+To use an E-Utilities API key run add it to an environment variable
+called `ncbi_api_key` and it will be used in the E-Utilities request.
 
 
 .. |build_status| image:: https://travis-ci.org/biocommons/bioutils.svg?branch=master
