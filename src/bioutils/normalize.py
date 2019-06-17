@@ -276,10 +276,12 @@ if __name__ == "__main__":    # pragma: no cover
         #{"interval": (5,5), "alleles": [None, "C"]},
         #{"interval": (5,6), "alleles": [None, "CC"]},
         #{"interval": (5,6), "alleles": [None, ""]},
-        {"interval": (13,13), "alleles": [None, "CA"]},
+        #{"interval": (13,13), "alleles": [None, "CA"]},
         #{"interval": (14,14), "alleles": [None, "AC"]},
         #{"interval": (13,15), "alleles": [None, ""]},
         {"interval": (22,22), "alleles": [None, "AGC"]},
+        {"interval": (22,22), "alleles": [None, "AGCT"]},
+        {"interval": (22,22), "alleles": [None, "AGC", "AGCT"]},
         #{"interval": (22,25), "alleles": [None, ""]},
         #{"interval": (22,25), "alleles": [None, "", "AGC"]},
         #{"interval": (22,25), "alleles": [None, "", "AGCAGC"]},
@@ -303,11 +305,11 @@ if __name__ == "__main__":    # pragma: no cover
 
     for test in tests:
         print("############################################################################")
-        for mode in ("LEFTSHUFFLE", "RIGHTSHUFFLE", "EXPAND"):
-            test1(mode=mode, **test)
-              
-        #for bm in (None, 2):
-        #    if bm is None:
-        #        bounds = None
-        #    else:
-        #        bounds = (test["interval"][0]-bm, test["interval"][1]+bm)
+        for mode in ("EXPAND", ): # "LEFTSHUFFLE", "RIGHTSHUFFLE", "EXPAND"):
+            for bm in (None, ):
+                if bm is None:
+                    bounds = None
+                else:
+                    bounds = (test["interval"][0]-bm, test["interval"][1]+bm)
+                test["bounds"] = bounds
+                test1(mode=mode, **test)

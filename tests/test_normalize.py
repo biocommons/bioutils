@@ -39,12 +39,40 @@ def test_anchor():
     assert ((26, 29), ('GCA', 'GCCA')) == normalize_trim(interval=(28,28), alleles=(None, "C"), anchor_length=2)
 
 
+def test_trinuc():
+    """LEFTSHUFFLE, RIGHTSHUFFLE, EXPAND normalization for trinucleotide"""
+    # 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+    #  C C C C C C C C A C A C A C A C A C T A G C A G C A G C A T
+    #                                             ^ [22,22): ['', 'AGC']   | Starting alleles
+    #      LEFTSHUFFLE                      ^ [19,19): ['', 'AGC']
+    #      RIGHTSHUFFLE                                         ^ [29,29): ['', 'GCA']
+    #      EXPAND                           ^-------------------^ [19,29): ['AGCAGCAGCA', 'AGCAGCAGCAGCA']
+    assert ((19, 19), ('', 'AGC')) == normalize_left(interval=(22, 22), alleles=(None, 'AGC'))
+    assert ((29, 29), ('', 'GCA')) == normalize_right(interval=(22, 22), alleles=(None, 'AGC'))
+    assert ((19, 29), ('AGCAGCAGCA', 'AGCAGCAGCAGCA')) == normalize_expand(interval=(22, 22), alleles=(None, 'AGC'))
+
+
+def test_bounds():
+    """ensure that bounds are honored"""
+    assert ((20, 24), ('GCAG', 'GCAGCAG')) == normalize_expand(interval=(22, 22), alleles=(None, 'AGC'), bounds=(20,24))
+
+
+#TODO: def test_multiallele():
+
+
 def test_mode_string():
-    "test that mode=string is accepted"
+    "test that mode as string is accepted"
     _normalize = partial(normalize_seq, interval=(28,28), alleles=(None, "C"))
     vcf_out = ((26, 27), ('G', 'GC'))
     assert vcf_out != _normalize(), "not VCF output by default"
     assert vcf_out == _normalize(mode="VCF"), "mode as string recognized"
+
+
+def test_input_alleles_not_modified():
+    """ensure that alleles list is not modified"""
+    alleles = (None, "AGCAC")
+    normalize_trim(interval=(22,25), alleles=alleles)
+    assert (None, "AGCAC") == alleles
 
 
 def test_error_distinct():
@@ -52,13 +80,8 @@ def test_error_distinct():
     with pytest.raises(ValueError):
         normalize_trim(interval=(22,25), alleles=(None, "AGC"))
 
+
 def test_error_ref_allele():
     "First allele is ref allele and must be None"
     with pytest.raises(ValueError):
         normalize_trim(interval=(22,25), alleles=("foo", "AGC"))
-    
-
-#def test_partial():
-#def test_multiallele():
-#def test_bounds_honored():
-#def test_input_alleles_not_modified
