@@ -72,7 +72,7 @@ def normalize(
     if debug:
         _print_state(interval, bounds, sequence=sequence, alleles=alleles, comment="Starting state")
 
-    # Trim: remove common suffix, prefix, and advance start
+    # Trim: remove common suffix, prefix, and adjust interval to match
     l_trimmed, alleles = trim_left(alleles)
     interval.start += l_trimmed
     r_trimmed, alleles = trim_right(alleles)
@@ -82,24 +82,21 @@ def normalize(
 
     lens = [len(a) for a in alleles]
 
-    # Left shuffle/expand
     if mode == NormalizationMode.LEFTSHUFFLE:
         dist = roll_left(sequence, alleles, interval.start - 1, bounds.start)
-        # splice alleles and update interval
         for i, a in enumerate(alleles):
             if lens[i]:
-                cdist = -dist % lens[i]
-                alleles[i] = a[cdist:] + a[:cdist]
+                adist = -dist % lens[i]
+                alleles[i] = a[adist:] + a[:adist]
         interval.start -= dist
         interval.end -= dist
 
     elif mode == NormalizationMode.RIGHTSHUFFLE:
-        # splice alleles and update interval
         dist = roll_right(sequence, alleles, interval.end, bounds.end - 1)
         for i, a in enumerate(alleles):
             if lens[i]:
-                cdist = dist % lens[i]
-                alleles[i] = a[cdist:] + a[:cdist]
+                adist = dist % lens[i]
+                alleles[i] = a[adist:] + a[:adist]
         interval.start += dist
         interval.end += dist
 
