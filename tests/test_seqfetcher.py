@@ -26,6 +26,7 @@ def test_fetch_seq():
     assert 'MAALSGGGGGGAEPGQALFNGDMEP' == fetch_seq('ENSP00000288602', 0, 25)
 
 
+@vcr.use_cassette
 def test_add_eutils_api_key():
     try:
         url = 'http://test.com?boo=bar'
@@ -39,6 +40,8 @@ def test_add_eutils_api_key():
             pass
 
 
+@vcr.use_cassette
+@pytest.mark.network
 def test_fetch_seq_errors():
     # Traceback (most recent call last):
     #    ...
@@ -56,10 +59,11 @@ def test_fetch_seq_errors():
 def _check1(_x):
     # small, fast query
     assert 'MESRETLSSS' == fetch_seq('NP_056374.2',0,10)
-
+ 
 # no vcr!
 @pytest.mark.network
 def test_rate_limit():
+    assert False
     num_requests = num_threads = 5
     p = multiprocessing.Pool(num_threads)
     p.map(_check1, range(num_requests))
