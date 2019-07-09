@@ -63,7 +63,6 @@ def _check1(_x):
 # no vcr!
 @pytest.mark.network
 def test_rate_limit():
-    assert False
     num_requests = num_threads = 5
     p = multiprocessing.Pool(num_threads)
     p.map(_check1, range(num_requests))
