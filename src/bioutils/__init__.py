@@ -1,16 +1,14 @@
-import pkg_resources
-import re
-import warnings
-
+from pkg_resources import get_distribution, DistributionNotFound
 
 try:
-    __version__ = pkg_resources.get_distribution(__name__).version
-    if re.match(r"^\d+\.\d+\.\d+$", __version__) is not None:
-        _is_released_version = True  # pragma: no cover
-except pkg_resources.DistributionNotFound as e:  # pragma: no cover
-    warnings.warning("can't get __version__ because %s package isn't installed" %
-                  __package__, Warning)
-    __version__ = None
-
+    # Change here if project is renamed and does not equal the package name
+    dist_name = __name__
+    __version__ = get_distribution(dist_name).version
+except DistributionNotFound:
+    __version__ = 'unknown'
+finally:
+    del get_distribution, DistributionNotFound
 
 from ._versionwarning import *
+
+
