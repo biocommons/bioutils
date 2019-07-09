@@ -61,7 +61,7 @@ bdist bdist_egg bdist_wheel build sdist install: %:
 #=> test: execute tests
 .PHONY: test
 test:
-	python setup.py pytest
+	python setup.py test 
 
 #=> tox: execute tests via tox
 .PHONY: tox
