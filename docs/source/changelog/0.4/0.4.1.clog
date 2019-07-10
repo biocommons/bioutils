@@ -6,6 +6,6 @@ Changes since 0.4.0 (2018-11-11).
 ** Internal and Developer Changes
 *** updated badges [8f91ed1]
 *** added LICENSE [b3d6d64]
-*** added missing |contributors| definition [97f78b3]
+*** added missing contributors definition [97f78b3]
 *** updated badge list [de2bf15]
 *** sync'd project files with eutils [3102695]

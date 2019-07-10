@@ -14,6 +14,6 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 * updated badges [`8f91ed1 <https://github.com/biocommons/hgvs/commit/8f91ed1>`_]
 * added LICENSE [`b3d6d64 <https://github.com/biocommons/hgvs/commit/b3d6d64>`_]
-* added missing |contributors| definition [`97f78b3 <https://github.com/biocommons/hgvs/commit/97f78b3>`_]
+* added missing contributors definition [`97f78b3 <https://github.com/biocommons/hgvs/commit/97f78b3>`_]
 * updated badge list [`de2bf15 <https://github.com/biocommons/hgvs/commit/de2bf15>`_]
 * sync'd project files with eutils [`3102695 <https://github.com/biocommons/hgvs/commit/3102695>`_]
