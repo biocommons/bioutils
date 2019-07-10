@@ -4,25 +4,11 @@
 # list see the documentation:
 # http://www.sphinx-doc.org/en/master/config
 
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-import os
-import sys
-import inspect
-
-__location__ = os.path.join(os.getcwd(), os.path.dirname(
-    inspect.getfile(inspect.currentframe())))
-sys.path.insert(0, os.path.join(__location__, '../src'))
-
 # -- Project information -----------------------------------------------------
 
 project = 'bioutils'
-copyright = '2019, Contributors'
-author = 'Contributors'
+copyright = '2019, bioutils Contributors'
+author = 'bioutils Contributors'
 
 
 # -- General configuration ---------------------------------------------------
