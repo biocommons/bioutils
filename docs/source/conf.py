@@ -12,7 +12,11 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../src'))
+import inspect
+
+__location__ = os.path.join(os.getcwd(), os.path.dirname(
+    inspect.getfile(inspect.currentframe())))
+sys.path.insert(0, os.path.join(__location__, '../src'))
 
 # -- Project information -----------------------------------------------------
 
