@@ -1,7 +1,7 @@
 bioutils -- bioinformatics utilities and lookup tables
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-|pypi_badge| |build_status| |issues_badge| |contributors| |license| |changelog|
+|pypi_badge| |build_status| |cc_badge| |issues_badge| |contributors| |license| |changelog|
 
 
 bioutils provides some common utilities and lookup tables for bioinformatics.
@@ -39,3 +39,6 @@ called `ncbi_api_key` and it will be used in the E-Utilities request.
   :target: https://pypi.org/project/bioutils/
 
 	   
+.. |cc_badge| image:: https://api.codeclimate.com/v1/badges/3a99e06ad0a842174b0a/maintainability
+   :target: https://codeclimate.com/github/biocommons/bioutils/maintainability
+   :alt: Maintainability
