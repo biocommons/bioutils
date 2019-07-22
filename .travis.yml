@@ -9,15 +9,15 @@ cache: pip
 before_install:
 
 install:
-  - pip install tox-travis coveralls
+  - pip install pytest pytest-cov tox-travis coveralls
 
 script:
   - make tox
 
 # requires COVERALLS_REPO_TOKEN to be obtained from
-# https://coveralls.io/github/biocommons/bioutils
+# https://coveralls.io/github/biocommons/<pkg>
 # and set at
-# at https://travis-ci.org/biocommons/bioutils/settings
+# at https://travis-ci.org/biocommons/<pkg>/settings
 after_success:
   - coveralls
 
