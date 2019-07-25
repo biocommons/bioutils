@@ -45,3 +45,4 @@ called `ncbi_api_key` and it will be used in the E-Utilities request.
 
 .. |cov_badge| image:: https://coveralls.io/repos/github/biocommons/bioutils/badge.svg?branch=master
    :target: https://coveralls.io/github/biocommons/bioutils?branch=master
+
