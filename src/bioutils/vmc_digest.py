@@ -89,12 +89,12 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
     For example, given 1e+18 expected messages and a desired collision
     probability < 1e-15, we use digest_size = 15 (bytes).
 
-    [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
-    [2] https://tools.ietf.org/html/rfc3548#section-4
-    [3] http://stackoverflow.com/a/4014407/342839
-    [4] http://stackoverflow.com/a/22029380/342839
-    [5] http://preshing.com/20110504/hash-collision-probabilities/
-    [6] https://en.wikipedia.org/wiki/Birthday_problem
+    [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf  
+    [2] https://tools.ietf.org/html/rfc3548#section-4  
+    [3] http://stackoverflow.com/a/4014407/342839  
+    [4] http://stackoverflow.com/a/22029380/342839  
+    [5] http://preshing.com/20110504/hash-collision-probabilities/  
+    [6] https://en.wikipedia.org/wiki/Birthday_problem  
 
     """ 
 

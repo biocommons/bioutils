@@ -13,9 +13,9 @@ namespaces.
 
 Some sample serializations of Identifiers:
 
-`json: {"namespace": "RefSeq", "accession": "NM_000551.3"}`
-`xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>`
-`string: "RefSeq:NM_000551.3"`
+`json: {"namespace": "RefSeq", "accession": "NM_000551.3"}`  
+`xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>`  
+`string: "RefSeq:NM_000551.3"`  
 
 The string form may be used as a CURIE, in which case the document in
 which the CURIE is used must contain a map of `{namespace : uri}`.
