@@ -1,25 +1,24 @@
-"""simple routines to deal with accessions, identifiers, etc.
+"""Simple routines to deal with accessions, identifiers, etc.
 
-biocommons terminology: an identifier is composed of a *namespace* and
+Biocommons terminology: an identifier is composed of a *namespace* and
 an *accession*. The namespace is a string, composed of any character
 other than colon (:). The accession is a string without character set
 restriction.  An accession is expected to be unique within the
 namespace; there is no expectation of uniqueness of accessions across
 namespaces.
 
-Identifier := <Namespace, Accession>
-Namespace := [^:]+
-Accession := \\w+
+`Identifier := <Namespace, Accession>`
+`Namespace := [^:]+`
+`Accession := \\w+`
 
 Some sample serializations of Identifiers:
 
-json: {"namespace": "RefSeq", "accession": "NM_000551.3"}
-xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>
-string: "RefSeq:NM_000551.3"
+`json: {"namespace": "RefSeq", "accession": "NM_000551.3"}`
+`xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>`
+`string: "RefSeq:NM_000551.3"`
 
 The string form may be used as a CURIE, in which case the document in
-which the CURIE is used must contain a map of {namespace => uri}.
-
+which the CURIE is used must contain a map of `{namespace : uri}`.
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
@@ -181,8 +180,8 @@ def infer_namespace(ac):
         >>> infer_namespace("A2BC19")
         'uniprot'
 
-        # N.B. The following test is disabled because Python 2 and Python 3
-        # handle doctest exceptions differently. :-(
+        Disbled because Python 2 and 3 handles exceptions differently.
+
         >>> infer_namespace("P12345")  # doctest: +SKIP
         Traceback (most recent call last):
         ...

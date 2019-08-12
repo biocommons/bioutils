@@ -1,8 +1,9 @@
-"""Provides dictionaries of genome assembly data as provided by
+"""Provides dictionaries of genome assembly data as provided by  
+
 ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/*.assembly.txt
 
 Assemblies are stored in json files with the package in
-_data/assemblies/.  (Those files are built with sbin/assembly-to-json,
+`_data/assemblies/`. (Those files are built with sbin/assembly-to-json,
 also in this package.)
 
 Definitions:
@@ -13,14 +14,13 @@ Definitions:
 * chromosome (chr): subset of names that refer to chromosomes 1..22, X, Y, MT
 * aliases: list of other names; uniqueness unknown
 
-.. note:: Some users prefer using a 'chr' prefix for chromosomes and
-some don't.  Some prefer upper case and others prefer lower.  This
-rift is unfortunate and creates unnecessary friction in sharing data.
-You say TO-my-to and I say TO-mah-to doesn't apply here.  This code
-favors using the authoritative names exactly as defined in the
-assembly records.  Users are encouraged to use sequence names
-verbatim, without prefixes or case changes.
-
+Note: Some users prefer using a 'chr' prefix for chromosomes and
+    some don't.  Some prefer upper case and others prefer lower.  This
+    rift is unfortunate and creates unnecessary friction in sharing data.
+    You say TO-my-to and I say TO-mah-to doesn't apply here.  This code
+    favors using the authoritative names exactly as defined in the
+    assembly records.  Users are encouraged to use sequence names
+    verbatim, without prefixes or case changes.
 """
 
 import gzip

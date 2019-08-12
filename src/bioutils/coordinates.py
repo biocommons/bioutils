@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-, flake8: noqa
-from __future__ import absolute_import, division, print_function, unicode_literals
-"""provides utilities for interconverting between coordinate systems
+"""Provides utilities for interconverting between coordinate systems
 especially as used by the hgvs code.  The three systems are:
  
                   : A : C : G : T : A : C :
@@ -30,8 +29,9 @@ suffixes are often used to clarify variables.
 
 For code clarity, this module provides functions that interconvert
 *intervals* specified in each of the coordinate systems.
-
 """
+
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 PLUS_STRAND = 1
 MINUS_STRAND = -1
@@ -41,7 +41,7 @@ def strand_pm_to_int(s):
     """Converts '+' and '-' to 1 and -1, respectively.
 
     Args:
-        s (string): either '+' or '-' (or any other string).
+        s (string)
         
     Returns:
         int: 1 if s == '+', -1 if s == '-', otherwise None. 
@@ -60,7 +60,7 @@ def strand_int_to_pm(i):
     """Converts 1 and -1 to '+' and '-' respectively.
 
     Args:
-        i (int): either 1 or -1 (or any other number).
+        i (int)
         
     Returns:    
         str: '+' if i == 1, '-' if i == -1, otherwise None.
@@ -72,7 +72,7 @@ def strand_int_to_pm(i):
         '-'
         >>> strand_int_to_pm(42)
     """
-    
+
     return '+' if i == PLUS_STRAND else '-' if i == MINUS_STRAND else None
 
 

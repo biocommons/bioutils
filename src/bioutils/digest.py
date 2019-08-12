@@ -26,31 +26,31 @@ class Digest(bytes):
     >>> len(b)
     64
 
-    # creation
+    creation
     >>> d = Digest(b)
     >>> str(d)                  # returns base64url
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
 
-    # slice binary digest at first 24 bytes
+    slice binary digest at first 24 bytes
     >>> d24 = d[:24]
     >>> str(d24)                                                                                                                                                     
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
-    # encoding
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=='
-    >>> d.as_base64url()
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
-    >>> d.as_hex()
-    'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+    Examples:
+        encoding
+        'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=='
+        >>> d.as_base64url()
+        'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
+        >>> d.as_hex()
+        'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
 
-    # decoding
-    >>> d == Digest.from_base64(d.as_base64())
-    True
-    >>> d == Digest.from_base64url(d.as_base64url())
-    True
-    >>> d == Digest.from_hex(d.as_hex())
-    True
-    
+        # decoding
+        >>> d == Digest.from_base64(d.as_base64())
+        True
+        >>> d == Digest.from_base64url(d.as_base64url())
+        True
+        >>> d == Digest.from_hex(d.as_hex())
+        True
     """
 
     def __str__(self):

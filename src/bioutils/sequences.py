@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""simple functions and lookup tables for nucleic acid and amino acid sequences"""
+"""Simple functions and lookup tables for nucleic acid and amino acid sequences"""
 
 import logging
 import re
@@ -156,9 +156,9 @@ def aa_to_aa3(seq):
 
 
 def aa1_to_aa3(seq):
-    """Converts string of 1-letter amino acids to one of 3-letter amino acids.
+    """Converts string of 1-letter amino acids to 3-letter amino acids.
 
-    Should only be used if the format of the sequence is known; otherwise use aa_to_aa3().
+    Should only be used if the format of the sequence is known; otherwise use `aa_to_aa3()`.
 
     Args:
         seq (str): An amino acid sequence as 1-letter amino acids.
@@ -182,9 +182,9 @@ def aa1_to_aa3(seq):
 
 
 def aa3_to_aa1(seq):
-    """Converts string of 3-letter amino acids one of to 1-letter amino acids.
+    """Converts string of 3-letter amino acids to 1-letter amino acids.
 
-    Should only be used if the format of the sequence is known; otherwise use aa_to_aa1().
+    Should only be used if the format of the sequence is known; otherwise use `aa_to_aa1()`.
 
     Args:
         seq (str): An amino acid sequence as 3-letter amino acids.
@@ -424,7 +424,7 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
         ...
         ValueError: Codon CGQ at position 4..6 is undefined in codon table
     """
-    
+
     if seq is None:
         return None
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""provides sequencing fetching from NCBI and Ensembl
+"""Provides sequencing fetching from NCBI and Ensembl
 
 """
 
@@ -22,7 +22,7 @@ ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
 
 def fetch_seq(ac, start_i=None, end_i=None):
-    """Fetches (sub)sequences from NCBI eutils and Ensembl REST interfaces.
+    """Fetches sequences and subsequences from NCBI eutils and Ensembl REST interfaces.
 
     Args:
         ac (str): The accession of the sequence to fetch.
@@ -37,22 +37,22 @@ def fetch_seq(ac, start_i=None, end_i=None):
         str: The requested sequence.    
     
     Raises:
-        RuntimeError: If the sytax doesn't match that of any of the databases.
+        RuntimeError: If the syntax doesn't match that of any of the databases.
         RuntimeError: If the request to the database fails.
         
     Examples:
-        >> len(fetch_seq('NP_056374.2'))
+        >>> len(fetch_seq('NP_056374.2'))
         1596
     
-        >> fetch_seq('NP_056374.2',0,10)   # This!
+        >>> fetch_seq('NP_056374.2',0,10)   # This!
         'MESRETLSSS'
     
-        >> fetch_seq('NP_056374.2')[0:10]  # Not this!
+        >>> fetch_seq('NP_056374.2')[0:10]  # Not this!
         'MESRETLSSS'
         
         # Providing intervals is especially important for large sequences:
 
-        >> fetch_seq('NC_000001.10',2000000,2000030)
+        >>> fetch_seq('NC_000001.10',2000000,2000030)
         'ATCACACGTGCAGGAACCCTTTTCCAAAGG'
 
         # This call will pull back 30 bases plus overhead; without the
@@ -61,7 +61,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
         # Essentially any RefSeq, Genbank, BIC, or Ensembl sequence may be
         # fetched:
 
-        >> [(ac,fetch_seq(ac,0,25))
+        >>> [(ac,fetch_seq(ac,0,25))
         ... for ac in ['NG_032072.1', 'NW_003571030.1', 'NT_113901.1',
         ... 'NC_000001.10','NP_056374.2', 'GL000191.1', 'KB663603.1',
         ... 'ENST00000288602', 'ENSP00000288602']] # doctest: +NORMALIZE_WHITESPACE
@@ -75,12 +75,12 @@ def fetch_seq(ac, start_i=None, end_i=None):
         ('ENST00000288602', u'CGCCTCCCTTCCCCCTCCCCGCCCG'),
         ('ENSP00000288602', u'MAALSGGGGGGAEPGQALFNGDMEP')]
 
-        >> fetch_seq('NM_9.9')
+        >>> fetch_seq('NM_9.9')
         Traceback (most recent call last):
         ...
         RuntimeError: No sequence available for NM_9.9
 
-        >> fetch_seq('QQ01234')
+        >>> fetch_seq('QQ01234')
         Traceback (most recent call last):
         ...
         RuntimeError: No sequence fetcher for QQ01234

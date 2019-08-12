@@ -13,7 +13,16 @@ import attr
 _logger = logging.getLogger(__name__)
 debug = False
 
-NormalizationMode = enum.Enum("NormalizationMode", "TRIMONLY LEFTSHUFFLE RIGHTSHUFFLE EXPAND VCF")
+NormalizationMode = enum.Enum("NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF")
+"""Enum passed to normalize to select the normalization mode.
+
+Attributes:
+    EXPAND: Normalize alleles to maximal extent both left and right.
+    LEFTSHUFFLE: Normalize alleles to maximal extent left.
+    RIGHTSHUFFLE: Normalize alleles to maximal extent right.
+    TRIMONLY: Only trim the common prefix and suffix of alleles.
+    VCF: 
+"""
 
 
 def normalize(
@@ -33,10 +42,10 @@ def normalize(
         alleles (iterable of str): The sequences to be normalized. The first element 
             corresponds to the reference sequence being unchanged and must be None.
         bounds (2-tuple of int, optional): Maximal extent of normalization left and right. 
-            Must be provided if sequence doesn't support __len__. Defaults to (0, len(sequence)).
-        mode (NormalizationMode Enum or string): One of TRIMONLY, LEFTSHUFFLE, RIGHTSHUFFLE, EXPAND, VCF.
-            Defaults to EXPAND.
-        anchor (int): number of flanking residues left and right. Defaults to 0.
+            Must be provided if sequence doesn't support __len__. Defaults to `(0, len(sequence))`.
+        mode (NormalizationMode Enum or string): One of `TRIMONLY`, `LEFTSHUFFLE`, `RIGHTSHUFFLE`, `EXPAND`, `VCF`.
+            Defaults to `EXPAND`.
+        anchor (int): number of flanking residues left and right. Defaults to `0`.
 
     Returns: 
         tuple: (new interval, [new alleles])
@@ -44,7 +53,7 @@ def normalize(
     Raises:
         ValueError: If normalization mode is VCF and `anchor_length` is nonzero.
         ValueError: If the interval start is greater than the end.
-        ValueError: If the first (reference) allele is not None
+        ValueError: If the first (reference) allele is not `None`.
         ValueError: If there are not at least two distinct alleles.
     
     Examples:
