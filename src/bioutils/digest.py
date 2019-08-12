@@ -68,16 +68,23 @@ class Digest(bytes):
 
     # base64
     def as_base64(self):
-        """returns digest as base64-encoded digest string
-
+        """Returns Digest as a base64-encoded string.
+    
+        Returns:
+            str: base64 encoding of Digest.    
         """
         return base64.b64encode(self).decode(_enc)
 
 
     @staticmethod
     def from_base64(s):
-        """returns Digest object initialized from base64-encoded digest
+        """Returns Digest object initialized from a base64-encoded string.
 
+        Args:
+            s (str): A base64-encoded digest string.
+            
+        Returns:
+            Digest: A Digest object initialized from s.    
         """
 
         return Digest(base64.b64decode(s))
@@ -85,16 +92,23 @@ class Digest(bytes):
 
     # base64url
     def as_base64url(self):
-        """returns digest as URL-safe, base64-encoded string
-
+        """Returns Digest as URL-safe, base64-encoded string.
+    
+        Returns:    
+            str: URL-safe base64 encoding of Digest.
         """
         return base64.urlsafe_b64encode(self).decode(_enc)
 
 
     @staticmethod
     def from_base64url(s):
-        """returns Digest object initialized from base64url string
+        """Returns Digest object initialized from a base64url string.
 
+        Args:
+            s (str): A base64url-encoded digest string.
+
+        Returns:
+            Digest: A Digest object initialized from s.    
         """
 
         return Digest(base64.urlsafe_b64decode(s))
@@ -108,16 +122,24 @@ class Digest(bytes):
 
     # hex
     def as_hex(self):
-        """returns digest as hex string
+        """Returns Digest as hex string.
 
+        Returns:
+            str: A hex-encoding of Digest.
         """
+
         return binascii.hexlify(self).decode(_enc)
 
 
     @staticmethod
     def from_hex(s):
-        """returns Digest object initialized from hex string
+        """returns Digest object initialized from hex string.
 
+        Args:
+            s (str): A hex-encoded digest string.
+            
+        Returns:
+            Digest: A Digest object initialized from s.      
         """
 
         return Digest(binascii.unhexlify(s))

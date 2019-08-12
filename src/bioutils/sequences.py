@@ -108,62 +108,100 @@ complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
 def aa_to_aa1(seq):
-    """coerce string of 1- or 3-letter amino acids to 1-letter
+    """Coerces string of 1- or 3-letter amino acids to 1-letter representation.
 
-    >>> aa_to_aa1("CATSARELAME")
-    'CATSARELAME'
+    Args:
+        seq (str): An amino acid sequence.
+        
+    Returns:
+        str: The sequence as one of 1-letter amino acids.    
 
-    >>> aa_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
-    'CATSARELAME'
+    Examples:
+        >>> aa_to_aa1("CATSARELAME")
+        'CATSARELAME'
 
-    >>> aa_to_aa1(None)
+        >>> aa_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
+        'CATSARELAME'
 
+        >>> aa_to_aa1(None)
     """
+
     if seq is None:
         return None
     return aa3_to_aa1(seq) if looks_like_aa3_p(seq) else seq
 
 
 def aa_to_aa3(seq):
-    """coerce string of 1- or 3-letter amino acids to 3-letter
+    """Coerces string of 1- or 3-letter amino acids to 3-letter representation.
 
-    >>> aa_to_aa3("CATSARELAME")
-    'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+    Args:
+        seq (str): An amino acid sequence.
+        
+    Returns:   
+        str: The sequence as one of 3-letter amino acids.    
 
-    >>> aa_to_aa3("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
-    'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+    Examples:
+        >>> aa_to_aa3("CATSARELAME")
+        'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
-    >>> aa_to_aa3(None)
+        >>> aa_to_aa3("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
+        'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
+        >>> aa_to_aa3(None)
     """
+
     if seq is None:
         return None
     return aa1_to_aa3(seq) if not looks_like_aa3_p(seq) else seq
 
 
 def aa1_to_aa3(seq):
-    """convert string of 1-letter amino acids to 3-letter amino acids
+    """Converts string of 1-letter amino acids to one of 3-letter amino acids.
 
-    >>> aa1_to_aa3("CATSARELAME")
-    'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
+    Should only be used if the format of the sequence is known; otherwise use aa_to_aa3().
 
-    >>> aa1_to_aa3(None)
+    Args:
+        seq (str): An amino acid sequence as 1-letter amino acids.
+        
+    Returns:  
+        str: The sequence as 3-letter amino acids.  
+    
+    Raises:
+        KeyError: If the sequence is not of 1-letter amino acids.
+        
+    Examples:
+        >>> aa1_to_aa3("CATSARELAME")
+        'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
+        >>> aa1_to_aa3(None)
     """
+
     if seq is None:
         return None
     return "".join(aa1_to_aa3_lut[aa1] for aa1 in seq)
 
 
 def aa3_to_aa1(seq):
-    """convert string of 3-letter amino acids to 1-letter amino acids
+    """Converts string of 3-letter amino acids one of to 1-letter amino acids.
 
-    >>> aa3_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
-    'CATSARELAME'
+    Should only be used if the format of the sequence is known; otherwise use aa_to_aa1().
 
-    >>> aa3_to_aa1(None)
+    Args:
+        seq (str): An amino acid sequence as 3-letter amino acids.
+        
+    Returns:   
+        str: The sequence as 1-letter amino acids.   
+    
+    Raises:
+        KeyError: If the sequence is not of 3-letter amino acids.
+    
+    Examples:
+        >>> aa3_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
+        'CATSARELAME'
 
+        >>> aa3_to_aa1(None)
     """
+
     if seq is None:
         return None
     return "".join(aa3_to_aa1_lut[aa3]
@@ -171,13 +209,19 @@ def aa3_to_aa1(seq):
 
 
 def complement(seq):
-    """return the complement of a sequence
+    """Retrieves the complement of a sequence.
 
-    >>> complement("ATCG")
-    'TAGC'
+    Args:
+        seq (str): A nucleotide sequence.
+        
+    Returns:    
+        str: The complement of the sequence.
+        
+    Examples:
+        >>> complement("ATCG")
+        'TAGC'
 
-    >>> complement(None)
-
+        >>> complement(None)
     """
 
     if seq is None:
@@ -186,24 +230,31 @@ def complement(seq):
 
 
 def elide_sequence(s, flank=5, elision="..."):
-    """trim a sequence to include the left and right flanking sequences of
-    size `flank`, with the intervening sequence elided by `elision`.
+    """Trims the middle of the sequence, leaving the right and left flanks.
 
-    >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    'ABCDE...VWXYZ'
+    Args:
+        s (str): A sequence.
+        flank (int, optional): The length of each flank. Defaults to five.
+        elision (str, optional): The symbol used to represent the part trimmed. Defaults to '...'.
+    
+        Returns:    
+            str: The sequence with the middle replaced by `elision`.
+        
+    Examples:
+        >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        'ABCDE...VWXYZ'
 
-    >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=3)
-    'ABC...XYZ'
+        >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=3)
+        'ABC...XYZ'
 
-    >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", elision="..")
-    'ABCDE..VWXYZ'
+        >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", elision="..")
+        'ABCDE..VWXYZ'
 
-    >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=12)
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=12)
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=12, elision=".")
-    'ABCDEFGHIJKL.OPQRSTUVWXYZ'
-
+        >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=12, elision=".")
+        'ABCDEFGHIJKL.OPQRSTUVWXYZ'
     """
 
     elided_sequence_len = flank + flank + len(elision)
@@ -213,28 +264,43 @@ def elide_sequence(s, flank=5, elision="..."):
 
 
 def looks_like_aa3_p(seq):
-    """string looks like a 3-letter AA string"""
+    """Indicates whether a string looks like a 3-letter AA string.
+
+    Args:
+        seq (str): A sequence.
+        
+    Returns:
+        bool: Whether the string is of the format of a 3-letter AA string.
+    """
     return (seq is not None and (len(seq) % 3 == 0) and
             (len(seq) == 0 or seq[1] in ascii_lowercase))
 
 
 def normalize_sequence(seq):
-    """return normalized representation of sequence for hashing
+    """Converts sequence to normalized representation for hashing.
 
-    This really means ensuring that the sequence is represented as a
-    binary blob and removing whitespace and asterisks and uppercasing.
+    Essentially, removes whitespace and asterisks, and uppercases the string.
 
-    >>> normalize_sequence("ACGT")
-    'ACGT'
+    Args:
+        seq (str): The sequence to be normalized.
+        
+    Returns:
+        str: The sequence as a string of uppercase letters.    
+    
+    Raises:
+        RuntimeError: If the sequence contains non-alphabetic characters (besides '*').
+        
+    Examples:
+        >>> normalize_sequence("ACGT")
+        'ACGT'
 
-    >>> normalize_sequence("  A C G T * ")
-    'ACGT'
+        >>> normalize_sequence("  A C G T * ")
+        'ACGT'
 
-    >>> normalize_sequence("ACGT1")
-    Traceback (most recent call last):
-    ...
-    RuntimeError: Normalized sequence contains non-alphabetic characters
-
+        >>> normalize_sequence("ACGT1")
+        Traceback (most recent call last):
+        ...
+        RuntimeError: Normalized sequence contains non-alphabetic characters
     """
 
     nseq = re.sub(r"[\s\*]", "", seq).upper()
@@ -248,79 +314,117 @@ def normalize_sequence(seq):
 
 
 def reverse_complement(seq):
-    """return the reverse complement of a sequence
+    """Converts a sequence to its reverse complement.
 
-    >>> reverse_complement("ATCG")
-    'CGAT'
+    Args:
+        seq (str): A nucleotide sequence.
+        
+    Returns:    
+        str: The reverse complement of the sequence.
+    
+    Examples:
+        >>> reverse_complement("ATCG")
+        'CGAT'
 
-    >>> reverse_complement(None)
-
+        >>> reverse_complement(None)  
     """
+
     if seq is None:
         return None
     return "".join(reversed(complement(seq)))
 
 
 def replace_t_to_u(seq):
-    """
-    >>> replace_t_to_u("ACGT")
-    'ACGU'
+    """Replaces the T's in a sequence with U's.
 
-    >>> replace_t_to_u(None)
+    Args:
+        seq (str): A nucleotide sequence.
+        
+    Returns:    
+        str: The sequence with the T's replaced by U's.
+        
+    Examples:
+        >>> replace_t_to_u("ACGT")
+        'ACGU'
 
+        >>> replace_t_to_u(None)
     """
+
     if seq is None:
         return None
     return seq.replace("T", "U").replace("t", "u")
 
 
 def replace_u_to_t(seq):
-    """
-    >>> replace_u_to_t("ACGU")
-    'ACGT'
+    """Replaces the U's in a sequence with T's.
 
-    >>> replace_u_to_t(None)
+    Args:
+        seq (str): A nucleotide sequence.
+        
+    Returns: 
+        str: The sequence with the U's replaced by T's.   
+    
+    Examples:
+        >>> replace_u_to_t("ACGU")
+        'ACGT'
 
+        >>> replace_u_to_t(None)
     """
+
     if seq is None:
         return None
     return seq.replace("U", "T").replace("u", "t")
 
 
 def translate_cds(seq, full_codons=True, ter_symbol="*"):
-    """translate a DNA or RNA sequence into a single-letter amino acid sequence
-    using the standard translation table
+    """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
+    
+    Uses the NCBI standard translation table.
 
-    If full_codons is True, a sequence whose length isn't a multiple of three
-    generates a ValueError; else an 'X' will be added as the last amino acid.
-    This matches biopython's behaviour when padding the last codon with 'N's.
+    Args:
+        seq (str): A nucleotide sequence.
+        full_codons (bool, optional): If True, forces sequence to have length 
+            that is a multiple of 3 and raises an error otherwise. 
+            If False, ter_symbol will be added as the last amino acid.
+            This corresponds to biopython's behavior of padding the last codon with 'N's.
+            Defaults to True.
+        ter_symbol (str, optional): Placeholder for the last amino acid if 
+            sequence length is not divisible by three and `full_codons` is False. 
+            Defaults to '*'
 
-    >>> translate_cds("ATGCGA")
-    'MR'
+    Returns:
+        str: The corresponding single letter amino acid sequence.    
+    
+    Raises:
+        ValueError: If `full_codons` and the sequence is not a multiple of three.
+        ValueError: If a codon is undefined in the table.
+        
+    Examples:
+        >>> translate_cds("ATGCGA")
+        'MR'
 
-    >>> translate_cds("AUGCGA")
-    'MR'
+        >>> translate_cds("AUGCGA")
+        'MR'
 
-    >>> translate_cds(None)
+        >>> translate_cds(None)
 
+        >>> translate_cds("")
+        ''
 
-    >>> translate_cds("")
-    ''
+        >>> translate_cds("AUGCG")
+        Traceback (most recent call last):
+        ...
+        ValueError: Sequence length must be a multiple of three
 
-    >>> translate_cds("AUGCG")
-    Traceback (most recent call last):
-    ...
-    ValueError: Sequence length must be a multiple of three
+        >>> translate_cds("AUGCG", full_codons=False)
+        'M*'
 
-    >>> translate_cds("AUGCG", full_codons=False)
-    'M*'
-
-    >>> translate_cds("AUGCGQ")
-    Traceback (most recent call last):
-    ...
-    ValueError: Codon CGQ at position 4..6 is undefined in codon table
-
+        >>> translate_cds("AUGCGQ")
+        Traceback (most recent call last):
+        ...
+        ValueError: Codon CGQ at position 4..6 is undefined in codon table
     """
+    
     if seq is None:
         return None
 

@@ -38,26 +38,41 @@ MINUS_STRAND = -1
 
 
 def strand_pm_to_int(s):
-    """
-    >>> strand_pm_to_int('+')
-    1
-    >>> strand_pm_to_int('-')
-    -1
-    >>> strand_pm_to_int('arglefargle')
+    """Converts '+' and '-' to 1 and -1, respectively.
 
+    Args:
+        s (string): either '+' or '-' (or any other string).
+        
+    Returns:
+        int: 1 if s == '+', -1 if s == '-', otherwise None. 
+    
+    Examples:
+        >>> strand_pm_to_int('+')
+        1
+        >>> strand_pm_to_int('-')
+        -1
+        >>> strand_pm_to_int('arglefargle')
     """
     return PLUS_STRAND if s == '+' else MINUS_STRAND if s == '-' else None
 
 
 def strand_int_to_pm(i):
-    """
-    >>> strand_int_to_pm(1)
-    '+'
-    >>> strand_int_to_pm(-1)
-    '-'
-    >>> strand_int_to_pm(42)
+    """Converts 1 and -1 to '+' and '-' respectively.
 
+    Args:
+        i (int): either 1 or -1 (or any other number).
+        
+    Returns:    
+        str: '+' if i == 1, '-' if i == -1, otherwise None.
+       
+    Examples:
+        >>> strand_int_to_pm(1)
+        '+'
+        >>> strand_int_to_pm(-1)
+        '-'
+        >>> strand_int_to_pm(42)
     """
+    
     return '+' if i == PLUS_STRAND else '-' if i == MINUS_STRAND else None
 
 

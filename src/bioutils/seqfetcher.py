@@ -22,74 +22,68 @@ ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
 
 def fetch_seq(ac, start_i=None, end_i=None):
-    """Fetches sequences and subsequences from NCBI eutils and Ensembl
-    REST interfaces.
+    """Fetches (sub)sequences from NCBI eutils and Ensembl REST interfaces.
 
-    :param string ac: accession of sequence to fetch
-    :param int start_i: start position of *interbase* interval
-    :param int end_i: end position of *interbase* interval
+    Args:
+        ac (str): The accession of the sequence to fetch.
+        start_i (int, optional): The start index (interbase coordinates) of the subsequence to fetch. Defaults to None.
+            It is recommended to retrieve a subsequence by providing an index here, rather than by
+            Python slicing the whole sequence.
+        end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch. Defaults to None.
+            It is recommended to retrieve a subsequence by providing an index here, rather than by
+            Python slicing the whole sequence.
+        
+    Returns:
+        str: The requested sequence.    
+    
+    Raises:
+        RuntimeError: If the sytax doesn't match that of any of the databases.
+        RuntimeError: If the request to the database fails.
+        
+    Examples:
+        >> len(fetch_seq('NP_056374.2'))
+        1596
+    
+        >> fetch_seq('NP_056374.2',0,10)   # This!
+        'MESRETLSSS'
+    
+        >> fetch_seq('NP_056374.2')[0:10]  # Not this!
+        'MESRETLSSS'
+        
+        # Providing intervals is especially important for large sequences:
 
+        >> fetch_seq('NC_000001.10',2000000,2000030)
+        'ATCACACGTGCAGGAACCCTTTTCCAAAGG'
 
-    **IMPORTANT** start_i and end_i specify 0-based interbase
-    coordinates, which refer to junctions between nucleotides.  This
-    is numerically equivalent to 0-based, right-open nucleotide
-    coordinates.
+        # This call will pull back 30 bases plus overhead; without the
+        # interval, one would receive 250MB of chr1 plus overhead!
 
-    Without an interval, the full sequence is returned::
+        # Essentially any RefSeq, Genbank, BIC, or Ensembl sequence may be
+        # fetched:
 
-    >> len(fetch_seq('NP_056374.2'))
-    1596
+        >> [(ac,fetch_seq(ac,0,25))
+        ... for ac in ['NG_032072.1', 'NW_003571030.1', 'NT_113901.1',
+        ... 'NC_000001.10','NP_056374.2', 'GL000191.1', 'KB663603.1',
+        ... 'ENST00000288602', 'ENSP00000288602']] # doctest: +NORMALIZE_WHITESPACE
+        [('NG_032072.1', 'AAAATTAAATTAAAATAAATAAAAA'),
+        ('NW_003571030.1', 'TTGTGTGTTAGGGTGCTCTAAGCAA'),
+        ('NT_113901.1', 'GAATTCCTCGTTCACACAGTTTCTT'),
+        ('NC_000001.10', 'NNNNNNNNNNNNNNNNNNNNNNNNN'),
+        ('NP_056374.2', 'MESRETLSSSRQRGGESDFLPVSSA'),
+        ('GL000191.1', 'GATCCACCTGCCTCAGCCTCCCAGA'),
+        ('KB663603.1', 'TTTATTTATTTTAGATACTTATCTC'),
+        ('ENST00000288602', u'CGCCTCCCTTCCCCCTCCCCGCCCG'),
+        ('ENSP00000288602', u'MAALSGGGGGGAEPGQALFNGDMEP')]
 
-    Therefore, it's preferable to provide the interval rather than
-    using Python slicing sequence on the delivered sequence::
+        >> fetch_seq('NM_9.9')
+        Traceback (most recent call last):
+        ...
+        RuntimeError: No sequence available for NM_9.9
 
-    >> fetch_seq('NP_056374.2',0,10)   # This!
-    'MESRETLSSS'
-
-    >> fetch_seq('NP_056374.2')[0:10]  # Not this!
-    'MESRETLSSS'
-
-    >> fetch_seq('NP_056374.2',0,10) == fetch_seq('NP_056374.2')[0:10]
-    True
-
-    Providing intervals is especially important for large sequences::
-
-    >> fetch_seq('NC_000001.10',2000000,2000030)
-    'ATCACACGTGCAGGAACCCTTTTCCAAAGG'
-
-    This call will pull back 30 bases plus overhead; without the
-    interval, one would receive 250MB of chr1 plus overhead!
-
-    Essentially any RefSeq, Genbank, BIC, or Ensembl sequence may be
-    fetched:
-
-    >> [(ac,fetch_seq(ac,0,25))
-    ... for ac in ['NG_032072.1', 'NW_003571030.1', 'NT_113901.1',
-    ... 'NC_000001.10','NP_056374.2', 'GL000191.1', 'KB663603.1',
-    ... 'ENST00000288602', 'ENSP00000288602']] # doctest: +NORMALIZE_WHITESPACE
-    [('NG_032072.1', 'AAAATTAAATTAAAATAAATAAAAA'),
-     ('NW_003571030.1', 'TTGTGTGTTAGGGTGCTCTAAGCAA'),
-     ('NT_113901.1', 'GAATTCCTCGTTCACACAGTTTCTT'),
-     ('NC_000001.10', 'NNNNNNNNNNNNNNNNNNNNNNNNN'),
-     ('NP_056374.2', 'MESRETLSSSRQRGGESDFLPVSSA'),
-     ('GL000191.1', 'GATCCACCTGCCTCAGCCTCCCAGA'),
-     ('KB663603.1', 'TTTATTTATTTTAGATACTTATCTC'),
-     ('ENST00000288602', u'CGCCTCCCTTCCCCCTCCCCGCCCG'),
-     ('ENSP00000288602', u'MAALSGGGGGGAEPGQALFNGDMEP')]
-
-
-    RuntimeError is thrown in the case of errors::
-
-    >> fetch_seq('NM_9.9')
-    Traceback (most recent call last):
-       ...
-    RuntimeError: No sequence available for NM_9.9
-
-    >> fetch_seq('QQ01234')
-    Traceback (most recent call last):
-       ...
-    RuntimeError: No sequence fetcher for QQ01234
-
+        >> fetch_seq('QQ01234')
+        Traceback (most recent call last):
+        ...
+        RuntimeError: No sequence fetcher for QQ01234
     """
 
     ac_dispatch = [
@@ -128,28 +122,39 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
 
 def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
-    """Fetch the specified sequence slice from Ensembl using the public
-    REST interface.
+    """Fetch sequence slice from Ensembl public REST interface.
 
-    An interbase interval may be optionally provided with start_i and
-    end_i. However, the Ensembl REST interface does not currently
-    accept intervals, so the entire sequence is returned and sliced
-    locally.
+    Args:
+        ac (str): The accession of the sequence to fetch.
+        start_i (int, optional): The start index (interbase coordinates) of the subsequence to fetch.
+            Defaults to None.
+        end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch. 
+            Defaults to None.
 
-    >> len(_fetch_seq_ensembl('ENSP00000288602'))
-    766
+    Returns:
+        str: The requested (sub)sequence
+    
+    Raises:
+        RequestException: if request is unsuccessful.
+    
+    Note:
+        The Ensembl REST interface does not currently accept intervals, so this method
+        slices the sequence locally.
 
-    >> _fetch_seq_ensembl('ENSP00000288602',0,10)
-    u'MAALSGGGGG'
+    Examples:
+        >> len(_fetch_seq_ensembl('ENSP00000288602'))
+        766
 
-    >> _fetch_seq_ensembl('ENSP00000288602')[0:10]
-    u'MAALSGGGGG'
+        >> _fetch_seq_ensembl('ENSP00000288602',0,10)
+        u'MAALSGGGGG'
 
-    >> ac = 'ENSP00000288602'
-    >> _fetch_seq_ensembl(ac ,0, 10) == _fetch_seq_ensembl(ac)[0:10]
-    True
+        >> _fetch_seq_ensembl('ENSP00000288602')[0:10]
+        u'MAALSGGGGG'
 
-    """
+        >> ac = 'ENSP00000288602'
+        >> _fetch_seq_ensembl(ac ,0, 10) == _fetch_seq_ensembl(ac)[0:10]
+        True
+    """ 
 
     url_fmt = "http://rest.ensembl.org/sequence/id/{ac}"
     url = url_fmt.format(ac=ac)
@@ -160,38 +165,51 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
 
 
 def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
-    """Fetch sequences from NCBI using the eutils interface.
+    """Fetches sequences from NCBI using the eutils interface.
 
-    An interbase interval may be optionally provided with start_i and
-    end_i. NCBI eutils will return just the requested subsequence,
-    which might greatly reduce payload sizes (especially with
-    chromosome-scale sequences).
+    Args:
+        ac (str): The accession of the sequence to fetch.
+        start_i (int, optional): The start index (interbase coordinates) of the subsequence to fetch.
+            Defaults to None.
+        end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch. 
+            Defaults to None.
 
-    The request includes `tool` and `email` arguments to identify the
-    caller as the bioutils package.  According to
-    https://www.ncbi.nlm.nih.gov/books/NBK25497/, these values should
-    correspond to the library, not the library client.  Using the
-    defaults is recommended.  Nonetheless, callers may set
-    `bioutils.seqfetcher.ncbi_tool` and
-    `bioutils.seqfetcher.ncbi_email` to custom values if that is
-    desired.
+    Returns:
+        str: The requested (sub)sequence
 
+    Raises:
+        RequestException: if request is unsuccessful.
 
-    >> len(_fetch_seq_ncbi('NP_056374.2'))
-    1596
+    Notes:
+        An interbase interval may be optionally provided with start_i and
+        end_i. NCBI eutils will return just the requested subsequence,
+        which might greatly reduce payload sizes (especially with
+        chromosome-scale sequences).
 
-    Pass the desired interval rather than using Python's [] slice
-    operator.
+        The request includes `tool` and `email` arguments to identify the
+        caller as the bioutils package.  According to
+        https://www.ncbi.nlm.nih.gov/books/NBK25497/, these values should
+        correspond to the library, not the library client.  Using the
+        defaults is recommended.  Nonetheless, callers may set
+        `bioutils.seqfetcher.ncbi_tool` and
+        `bioutils.seqfetcher.ncbi_email` to custom values if that is
+        desired.
 
-    >> _fetch_seq_ncbi('NP_056374.2',0,10)
-    'MESRETLSSS'
+    Examples:
+        >> len(_fetch_seq_ncbi('NP_056374.2'))
+        1596
 
-    >> _fetch_seq_ncbi('NP_056374.2')[0:10]
-    'MESRETLSSS'
+        Pass the desired interval rather than using Python's [] slice
+        operator.
 
-    >> _fetch_seq_ncbi('NP_056374.2',0,10) == _fetch_seq_ncbi('NP_056374.2')[0:10]
-    True
+        >> _fetch_seq_ncbi('NP_056374.2',0,10)
+        'MESRETLSSS'
 
+        >> _fetch_seq_ncbi('NP_056374.2')[0:10]
+        'MESRETLSSS'
+
+        >> _fetch_seq_ncbi('NP_056374.2',0,10) == _fetch_seq_ncbi('NP_056374.2')[0:10]
+        True
     """
 
     db = "protein" if ac[1] == "P" else "nucleotide"
@@ -227,12 +245,16 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
 
 def _add_eutils_api_key(url):
-    """Adds eutils api key to the query
+    """Adds an eutils api key to the query.
 
-    :param url: eutils url with a query string
-    :return: url with api_key parameter set to the value of environment
-    variable 'NCBI_API_KEY' if available
+    Args:
+        url (str): The query url without the api key.
+
+    Returns:
+        str: The query url with the api key, if one is stored in the environment variable
+            'NCBI_API_KEY', otherwise it is unaltered.
     """
+    
     apikey = os.environ.get("NCBI_API_KEY")
     if apikey:
         url += "&api_key={apikey}".format(apikey=apikey)
