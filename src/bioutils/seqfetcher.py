@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Provides sequencing fetching from NCBI and Ensembl
+"""Provides sequence fetching from NCBI and Ensembl.
 
 """
 
@@ -26,10 +26,10 @@ def fetch_seq(ac, start_i=None, end_i=None):
 
     Args:
         ac (str): The accession of the sequence to fetch.
-        start_i (int, optional): The start index (interbase coordinates) of the subsequence to fetch. Defaults to None.
+        start_i (int, optional): The start index (interbase coordinates) of the subsequence to fetch. Defaults to ``None``.
             It is recommended to retrieve a subsequence by providing an index here, rather than by
             Python slicing the whole sequence.
-        end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch. Defaults to None.
+        end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch. Defaults to ``None``.
             It is recommended to retrieve a subsequence by providing an index here, rather than by
             Python slicing the whole sequence.
         
@@ -191,8 +191,8 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         https://www.ncbi.nlm.nih.gov/books/NBK25497/, these values should
         correspond to the library, not the library client.  Using the
         defaults is recommended.  Nonetheless, callers may set
-        `bioutils.seqfetcher.ncbi_tool` and
-        `bioutils.seqfetcher.ncbi_email` to custom values if that is
+        ``bioutils.seqfetcher.ncbi_tool`` and
+        ``bioutils.seqfetcher.ncbi_email`` to custom values if that is
         desired.
 
     Examples:
@@ -252,7 +252,7 @@ def _add_eutils_api_key(url):
 
     Returns:
         str: The query url with the api key, if one is stored in the environment variable
-            'NCBI_API_KEY', otherwise it is unaltered.
+            ``NCBI_API_KEY``, otherwise it is unaltered.
     """
     
     apikey = os.environ.get("NCBI_API_KEY")

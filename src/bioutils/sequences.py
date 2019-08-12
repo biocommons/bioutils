@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Simple functions and lookup tables for nucleic acid and amino acid sequences"""
+"""Simple functions and lookup tables for nucleic acid and amino acid sequences.
+"""
 
 import logging
 import re
@@ -158,7 +159,7 @@ def aa_to_aa3(seq):
 def aa1_to_aa3(seq):
     """Converts string of 1-letter amino acids to 3-letter amino acids.
 
-    Should only be used if the format of the sequence is known; otherwise use `aa_to_aa3()`.
+    Should only be used if the format of the sequence is known; otherwise use ``aa_to_aa3()``.
 
     Args:
         seq (str): An amino acid sequence as 1-letter amino acids.
@@ -184,7 +185,7 @@ def aa1_to_aa3(seq):
 def aa3_to_aa1(seq):
     """Converts string of 3-letter amino acids to 1-letter amino acids.
 
-    Should only be used if the format of the sequence is known; otherwise use `aa_to_aa1()`.
+    Should only be used if the format of the sequence is known; otherwise use ``aa_to_aa1()``.
 
     Args:
         seq (str): An amino acid sequence as 3-letter amino acids.
@@ -238,7 +239,7 @@ def elide_sequence(s, flank=5, elision="..."):
         elision (str, optional): The symbol used to represent the part trimmed. Defaults to '...'.
     
         Returns:    
-            str: The sequence with the middle replaced by `elision`.
+            str: The sequence with the middle replaced by ``elision``.
         
     Examples:
         >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -383,20 +384,20 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
 
     Args:
         seq (str): A nucleotide sequence.
-        full_codons (bool, optional): If True, forces sequence to have length 
+        full_codons (bool, optional): If ``True``, forces sequence to have length 
             that is a multiple of 3 and raises an error otherwise. 
-            If False, ter_symbol will be added as the last amino acid.
-            This corresponds to biopython's behavior of padding the last codon with 'N's.
-            Defaults to True.
+            If False, ``ter_symbol`` will be added as the last amino acid.
+            This corresponds to biopython's behavior of padding the last codon with ``N``s.
+            Defaults to ``True``.
         ter_symbol (str, optional): Placeholder for the last amino acid if 
-            sequence length is not divisible by three and `full_codons` is False. 
-            Defaults to '*'
+            sequence length is not divisible by three and ``full_codons`` is False. 
+            Defaults to ``'*'``
 
     Returns:
         str: The corresponding single letter amino acid sequence.    
     
     Raises:
-        ValueError: If `full_codons` and the sequence is not a multiple of three.
+        ValueError: If ``full_codons`` and the sequence is not a multiple of three.
         ValueError: If a codon is undefined in the table.
         
     Examples:

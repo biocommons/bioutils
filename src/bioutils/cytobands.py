@@ -1,5 +1,5 @@
 """
-`./sbin/ucsc-cytoband-to-json cytoband-hg38.txt.gz | gzip -c >bioutils/_data/cytobands/ucsc-hg38.json.gz`
+``./sbin/ucsc-cytoband-to-json cytoband-hg38.txt.gz | gzip -c >bioutils/_data/cytobands/ucsc-hg38.json.gz``
 """
 
 import gzip
@@ -11,7 +11,7 @@ _data_path_fmt = _data_dir + '/' + '{name}.json.gz'
 
 
 def get_cytoband_names():
-    """Retrieves available cytobands from the '_data/cytobands' directory.
+    """Retrieves available cytobands from the ``_data/cytobands`` directory.
 
     Returns:    
         list of str: The names of the available cytobands. 
@@ -58,7 +58,7 @@ def get_cytoband_maps(names=[]):
         names (list of str, optional): The names of cytobands to retrieve data for.
         
     Returns:    
-        dict: A dictionary of the form `{cytoband_name, cytoband_data}`.
+        dict: A dictionary of the form ``{cytoband_name, cytoband_data}``.
     
     Examples:
         >>> maps = get_cytoband_maps()

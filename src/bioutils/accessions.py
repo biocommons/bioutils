@@ -7,18 +7,23 @@ restriction.  An accession is expected to be unique within the
 namespace; there is no expectation of uniqueness of accessions across
 namespaces.
 
-`Identifier := <Namespace, Accession>`
-`Namespace := [^:]+`
-`Accession := \\w+`
+``Identifier := <Namespace, Accession>``
+
+``Namespace := [^:]+``
+
+``Accession := \\w+``
+
 
 Some sample serializations of Identifiers:
 
-`json: {"namespace": "RefSeq", "accession": "NM_000551.3"}`  
-`xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>`  
-`string: "RefSeq:NM_000551.3"`  
+``json: {"namespace": "RefSeq", "accession": "NM_000551.3"}``
+
+``xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>``
+
+``string: "RefSeq:NM_000551.3"``  
 
 The string form may be used as a CURIE, in which case the document in
-which the CURIE is used must contain a map of `{namespace : uri}`.
+which the CURIE is used must contain a map of ``{namespace : uri}``.
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals

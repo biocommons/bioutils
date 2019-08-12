@@ -21,7 +21,7 @@ Attributes:
     LEFTSHUFFLE: Normalize alleles to maximal extent left.
     RIGHTSHUFFLE: Normalize alleles to maximal extent right.
     TRIMONLY: Only trim the common prefix and suffix of alleles.
-    VCF: 
+    VCF: Normalize with VCF. 
 """
 
 
@@ -36,19 +36,19 @@ def normalize(
     """Normalizes the alleles that co-occur on sequence at interval, ensuring comparable representations.
 
     Args:
-        sequence (str or iterable): The reference sequence; must support indexing and __getitem__.
-        interval (2-tuple of int): The location of alleles in the reference sequence as (start, end). 
+        sequence (str or iterable): The reference sequence; must support indexing and ``__getitem__``.
+        interval (2-tuple of int): The location of alleles in the reference sequence as ``(start, end)``. 
             Interbase coordinates. 
         alleles (iterable of str): The sequences to be normalized. The first element 
             corresponds to the reference sequence being unchanged and must be None.
         bounds (2-tuple of int, optional): Maximal extent of normalization left and right. 
-            Must be provided if sequence doesn't support __len__. Defaults to `(0, len(sequence))`.
-        mode (NormalizationMode Enum or string): One of `TRIMONLY`, `LEFTSHUFFLE`, `RIGHTSHUFFLE`, `EXPAND`, `VCF`.
-            Defaults to `EXPAND`.
-        anchor (int): number of flanking residues left and right. Defaults to `0`.
+            Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
+        mode (NormalizationMode Enum or string): A NormalizationMode Enum or the corresponding string.
+            Defaults to ``EXPAND``.
+        anchor (int): number of flanking residues left and right. Defaults to ``0``.
 
     Returns: 
-        tuple: (new interval, [new alleles])
+        tuple: ``(new_interval, [new_alleles])``
 
     Raises:
         ValueError: If normalization mode is VCF and `anchor_length` is nonzero.
@@ -174,7 +174,7 @@ def trim_left(alleles):
         alleles (list of str): A list of alleles.
         
     Returns:
-        tuple: (number_trimmed, [new_alleles]).
+        tuple: ``(number_trimmed, [new_alleles])``.
 
     Examples:
         >>> trim_left(["","AA"])
@@ -211,7 +211,7 @@ def trim_right(alleles):
         alleles (list of str): A list of alleles.
 
     Returns:
-        tuple: (number_trimmed, [new_alleles])
+        tuple: ``(number_trimmed, [new_alleles])``.
 
     Examples:
         >>> trim_right(["","AA"])
@@ -252,7 +252,7 @@ def roll_left(sequence, alleles, ref_pos, bound):
         bound (int): The lower bound index in the reference sequence for normalization, hence also for rolling.
     
     Returns:
-        int: the distance that the alleles can be rolled.
+        int: The distance that the alleles can be rolled.
     """
 
     # circularly permute sequence d steps, using modulo arithmetic
@@ -274,7 +274,7 @@ def roll_right(sequence, alleles, ref_pos, bound):
         ref_pos (int): The start index for rolling.
         bound (int): The upper bound index in the reference sequence for normalization, hence also for rolling.
     Returns:
-        int: the distance that the alleles can be rolled
+        int: The distance that the alleles can be rolled
     """
     
     # circularly permute sequence d steps, using modulo arithmetic

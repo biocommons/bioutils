@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-, flake8: noqa
 """Provides utilities for interconverting between coordinate systems
 especially as used by the hgvs code.  The three systems are:
- 
+
+.. parsed-literal::
                   : A : C : G : T : A : C :
   human/hgvs  h   :-3 :-2 :-1 : 1 : 2 : 3 :
   continuous  c   :-2 :-1 : 0 : 1 : 2 : 3 :
@@ -24,7 +25,7 @@ to nucleotides themselves.  Numerically, interbase intervals are
 interbase coordinate is not particularly meaningful, interbase
 coordinates are always passed as start,end pairs.
 
-Because it's easy to confuse these coordinates in code, _h, _c, and _i
+Because it's easy to confuse these coordinates in code, ``_h``, ``_c``, and ``_i``
 suffixes are often used to clarify variables.
 
 For code clarity, this module provides functions that interconvert

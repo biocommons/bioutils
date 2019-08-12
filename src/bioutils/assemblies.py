@@ -3,18 +3,18 @@
 ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/*.assembly.txt
 
 Assemblies are stored in json files with the package in
-`_data/assemblies/`. (Those files are built with sbin/assembly-to-json,
-also in this package.)
+``_data/assemblies/``. Those files are built with sbin/assembly-to-json,
+also in this package.
 
 Definitions:
 
-* accession (ac): symbol used to refer to a sequence (e.g., NC_000001.10)
+* accession ``ac``: symbol used to refer to a sequence (e.g., NC_000001.10)
 * name: human-label (e.g., '1', 'MT', 'HSCHR6_MHC_APD_CTG1') that
   refers to a sequence, unique within some domain (e.g., GRCh37.p10)
 * chromosome (chr): subset of names that refer to chromosomes 1..22, X, Y, MT
 * aliases: list of other names; uniqueness unknown
 
-Note: Some users prefer using a 'chr' prefix for chromosomes and
+.. note:: Some users prefer using a 'chr' prefix for chromosomes and
     some don't.  Some prefer upper case and others prefer lower.  This
     rift is unfortunate and creates unnecessary friction in sharing data.
     You say TO-my-to and I say TO-mah-to doesn't apply here.  This code
@@ -32,7 +32,7 @@ _assy_path_fmt = _assy_dir + '/' + '{name}.json.gz'
 
 
 def get_assembly_names():
-    """Retrieves available assemblies from the '_data/assemblies' directory.
+    """Retrieves available assemblies from the ``_data/assemblies`` directory.
 
     Returns:    
         list of str: The names of the available assemblies.    
@@ -105,8 +105,8 @@ def get_assemblies(names=[]):
         names (list of str, optional): The names of the assemblies to retrieve data for.
         
     Returns:
-        dict: A dictionary of the form {assembly_name, : assembly_data}, where the values
-            are the dictionaries of assembly data as described in get_assembly().
+        dict: A dictionary of the form ``{assembly_name, : assembly_data}``, where the values
+            are the dictionaries of assembly data as described in ``get_assembly()``.
     
     Examples:
         >>> assemblies = get_assemblies(names=['GRCh37.p13'])
@@ -123,7 +123,7 @@ def get_assemblies(names=[]):
 
 
 def make_name_ac_map(assy_name, primary_only=False):
-    """Creates a dictionary map from sequence name (str) to accession (str) for a given assembly.
+    """Creates a map from sequence names to accessions for a given assembly.
 
     Args:
         assy_name (str): The name of the assembly to make a map for.
@@ -131,8 +131,8 @@ def make_name_ac_map(assy_name, primary_only=False):
             Defaults to False.
         
     Returns:  
-        dict: A dictionary of the form {sequence_name : accession} for sequences in the given assembly.
-            Where type(key) == type(value) == str.
+        dict: A dictionary of the form ``{sequence_name : accession}`` for sequences in the given assembly,
+            Where sequence_name and accession are both strings.
     
     Examples:
         >>> grch38p5_name_ac_map = make_name_ac_map('GRCh38.p5')
@@ -148,7 +148,7 @@ def make_name_ac_map(assy_name, primary_only=False):
 
 
 def make_ac_name_map(assy_name, primary_only=False):
-    """Creates a dictionary map from accession (str) to sequence name (str) for a given assembly.
+    """Creates a map from accessions to sequence names for a given assembly.
 
     Args:
         assy_name (str): The name of the assembly to make a map for.
@@ -156,8 +156,8 @@ def make_ac_name_map(assy_name, primary_only=False):
             Defaults to False.
     
     Returns:    
-        dict: A dictionary of the form {accesssion : sequence_name} for accessions in the given assembly.
-            Where type(key) == type(value) == str.
+        dict: A dictionary of the form ``{accesssion : sequence_name}`` for accessions in the given assembly,
+            where accession and sequence_name are strings.
 
         
     Examples:

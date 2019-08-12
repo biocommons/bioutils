@@ -14,7 +14,7 @@ def seq_seqhash(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:
         str: 24-byte Truncated Digest representation of sequence.
@@ -46,7 +46,7 @@ def seq_seguid(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:
         str: seguid representation of sequence.
@@ -78,7 +78,7 @@ def seq_md5(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:    
         str: Unicode md5 hex digest representation of sequence.
@@ -115,7 +115,7 @@ def seq_sha1(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks before encoding.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:    
         str: Unicode sha1 hexdigest representation of sequence.
@@ -146,7 +146,7 @@ def seq_sha512(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:    
         str: Unicode sha512 hexdigest representation of sequence.
@@ -179,7 +179,7 @@ def seq_vmc_id(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:    
         str: VMC id representation of sequence.    
@@ -211,7 +211,7 @@ def seq_vmc_identifier(seq, normalize=True):
         seq (str): A sequence.
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
-            Defaults to True.
+            Defaults to ``True``.
         
     Returns:    
         str: VMC identifier (record) representation of sequnce.
