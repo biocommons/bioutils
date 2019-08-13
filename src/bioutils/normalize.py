@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""normalize an allele on a reference sequence
+"""Provides functionality for normalizing alleles, ensuring comparable representations.
 
 """
 
@@ -43,9 +43,9 @@ def normalize(
             corresponds to the reference sequence being unchanged and must be None.
         bounds (2-tuple of int, optional): Maximal extent of normalization left and right. 
             Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
-        mode (NormalizationMode Enum or string): A NormalizationMode Enum or the corresponding string.
+        mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
             Defaults to ``EXPAND``.
-        anchor (int): number of flanking residues left and right. Defaults to ``0``.
+        anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
 
     Returns: 
         tuple: ``(new_interval, [new_alleles])``
@@ -58,13 +58,13 @@ def normalize(
     
     Examples:
         >>> sequence = "CCCCCCCCACACACACACTAGCAGCAGCA"
-        >>>  == normalize(sequence, interval=(22,25), alleles=(None, "GC", "AGCAC"), mode='TRIMONLY')
+        >>> normalize(sequence, interval=(22,25), alleles=(None, "GC", "AGCAC"), mode='TRIMONLY')
         ((22, 24), ('AG', 'G', 'AGCA'))
 
-        >>>  == normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='RIGHTSHUFFLE')
+        >>> normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='RIGHTSHUFFLE')
         ((29, 29), ('', 'GCA'))
 
-        >>>  == normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='EXPAND')
+        >>> normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='EXPAND')
         ((19, 29), ('AGCAGCAGCA', 'AGCAGCAGCAGCA'))
     """
 

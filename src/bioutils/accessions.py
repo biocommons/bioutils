@@ -251,7 +251,6 @@ def prepend_chr(chr):
     'chr' prefix results in a name that is not consistent
     with authoritative assembly records.
 
-
     Args:
         chr (str): The chromosome.
         
@@ -260,9 +259,6 @@ def prepend_chr(chr):
         
     Examples:
         >>> prepend_chr('22')
-        'chr22'
-
-        >>> prepend_chr(22)
         'chr22'
 
         >>> prepend_chr('chr22')
@@ -282,9 +278,6 @@ def strip_chr(chr):
         
     Examples:
         >>> strip_chr('22')
-        '22'
-
-        >>> strip_chr(22)
         '22'
 
         >>> strip_chr('chr22')

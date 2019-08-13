@@ -18,7 +18,7 @@ def get_cytoband_names():
 
     Examples:
         >>> get_cytoband_names()  
-        ['ucsc-hg38', 'ucsc-hg19']
+        ['ucsc-hg19', 'ucsc-hg38']
     """
 
     return [

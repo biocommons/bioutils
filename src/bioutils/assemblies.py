@@ -1,4 +1,4 @@
-"""Provides dictionaries of genome assembly data as provided by  
+"""Creates dictionaries of genome assembly data as provided by  
 
 ftp://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/All/*.assembly.txt
 
