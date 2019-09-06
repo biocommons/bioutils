@@ -26,31 +26,30 @@ class Digest(bytes):
     >>> len(b)
     64
 
-    # creation
-    >>> d = Digest(b)
+    
+    >>> d = Digest(b)           # creation
     >>> str(d)                  # returns base64url
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
-
-    # slice binary digest at first 24 bytes
-    >>> d24 = d[:24]
+    
+    >>> d24 = d[:24]            # slice binary digest at first 24 bytes
     >>> str(d24)                                                                                                                                                     
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
-    # encoding
-    'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=='
-    >>> d.as_base64url()
+    # encoding  
+
+    >>> d.as_base64url()        
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg_SpIdNs6c5H0NE8XYXysP-DGNKHfuwvY7kxvUdBeoGlODJ6-SfaPg=='
     >>> d.as_hex()
     'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
 
-    # decoding
-    >>> d == Digest.from_base64(d.as_base64())
+    # decoding  
+
+    >>> d == Digest.from_base64(d.as_base64())      
     True
     >>> d == Digest.from_base64url(d.as_base64url())
     True
     >>> d == Digest.from_hex(d.as_hex())
     True
-    
     """
 
     def __str__(self):
@@ -68,16 +67,23 @@ class Digest(bytes):
 
     # base64
     def as_base64(self):
-        """returns digest as base64-encoded digest string
-
+        """Returns Digest as a base64-encoded string.
+    
+        Returns:
+            str: base64 encoding of Digest.    
         """
         return base64.b64encode(self).decode(_enc)
 
 
     @staticmethod
     def from_base64(s):
-        """returns Digest object initialized from base64-encoded digest
+        """Returns Digest object initialized from a base64-encoded string.
 
+        Args:
+            s (str): A base64-encoded digest string.
+            
+        Returns:
+            Digest: A Digest object initialized from s.    
         """
 
         return Digest(base64.b64decode(s))
@@ -85,16 +91,23 @@ class Digest(bytes):
 
     # base64url
     def as_base64url(self):
-        """returns digest as URL-safe, base64-encoded string
-
+        """Returns Digest as URL-safe, base64-encoded string.
+    
+        Returns:    
+            str: URL-safe base64 encoding of Digest.
         """
         return base64.urlsafe_b64encode(self).decode(_enc)
 
 
     @staticmethod
     def from_base64url(s):
-        """returns Digest object initialized from base64url string
+        """Returns Digest object initialized from a base64url string.
 
+        Args:
+            s (str): A base64url-encoded digest string.
+
+        Returns:
+            Digest: A Digest object initialized from s.    
         """
 
         return Digest(base64.urlsafe_b64decode(s))
@@ -108,16 +121,24 @@ class Digest(bytes):
 
     # hex
     def as_hex(self):
-        """returns digest as hex string
+        """Returns Digest as hex string.
 
+        Returns:
+            str: A hex-encoding of Digest.
         """
+
         return binascii.hexlify(self).decode(_enc)
 
 
     @staticmethod
     def from_hex(s):
-        """returns Digest object initialized from hex string
+        """returns Digest object initialized from hex string.
 
+        Args:
+            s (str): A hex-encoded digest string.
+            
+        Returns:
+            Digest: A Digest object initialized from s.      
         """
 
         return Digest(binascii.unhexlify(s))

@@ -1,25 +1,29 @@
-"""simple routines to deal with accessions, identifiers, etc.
+"""Simple routines to deal with accessions, identifiers, etc.
 
-biocommons terminology: an identifier is composed of a *namespace* and
+Biocommons terminology: an identifier is composed of a *namespace* and
 an *accession*. The namespace is a string, composed of any character
 other than colon (:). The accession is a string without character set
 restriction.  An accession is expected to be unique within the
 namespace; there is no expectation of uniqueness of accessions across
 namespaces.
 
-Identifier := <Namespace, Accession>
-Namespace := [^:]+
-Accession := \\w+
+``Identifier := <Namespace, Accession>``
+
+``Namespace := [^:]+``
+
+``Accession := \\w+``
+
 
 Some sample serializations of Identifiers:
 
-json: {"namespace": "RefSeq", "accession": "NM_000551.3"}
-xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>
-string: "RefSeq:NM_000551.3"
+``json: {"namespace": "RefSeq", "accession": "NM_000551.3"}``
+
+``xml: <Identifier namespace="RefSeq" accession="NM_000551.3"/>``
+
+``string: "RefSeq:NM_000551.3"``  
 
 The string form may be used as a CURIE, in which case the document in
-which the CURIE is used must contain a map of {namespace => uri}.
-
+which the CURIE is used must contain a map of ``{namespace : uri}``.
 """
 
 from __future__ import absolute_import, division, print_function, unicode_literals
@@ -78,27 +82,38 @@ ac_namespace_regexps = {re.compile(k): v for k, v in ac_namespace_regexps.items(
 
 
 def chr22XY(c):
-    """force to name from 1..22, 23, 24, X, Y, M 
-    to in chr1..chr22, chrX, chrY, chrM
-    str or ints accepted
+    """Reformats chromosome to be of the form Chr1, ..., Chr22, ChrX, ChrY, etc. 
 
-    >>> chr22XY('1')
-    'chr1'
-    >>> chr22XY(1)
-    'chr1'
-    >>> chr22XY('chr1')
-    'chr1'
-    >>> chr22XY(23)
-    'chrX'
-    >>> chr22XY(24)
-    'chrY'
-    >>> chr22XY("X")
-    'chrX'
-    >>> chr22XY("23")
-    'chrX'
-    >>> chr22XY("M")
-    'chrM'
+    Args:  
+        c (str or int): A chromosome.
+    
+    Returns:    
+        str: The reformatted chromosome.
 
+    Examples:
+        >>> chr22XY('1')
+        'chr1'
+
+        >>> chr22XY(1)
+        'chr1'
+
+        >>> chr22XY('chr1')
+        'chr1'
+
+        >>> chr22XY(23)
+        'chrX'
+
+        >>> chr22XY(24)
+        'chrY'
+
+        >>> chr22XY("X")
+        'chrX'
+
+        >>> chr22XY("23")
+        'chrX'
+
+        >>> chr22XY("M")
+        'chrM'
     """
     c = str(c)
     if c[0:3] == 'chr':
@@ -111,25 +126,33 @@ def chr22XY(c):
 
 
 def coerce_namespace(ac):
-    """given an accession, prefix with inferred namespace if not present
+    """Prefixes accession with inferred namespace if not present.
 
-    This function is intended to be used to promote an unqualified
-    identifier to one that is guaranteed to have an identifier.
+    Intended to be used to promote consistent and unambiguous accession identifiers.
+    
+    Args:
+        ac (str): The accession, with or without namespace prefixed.
+        
+    Returns:    
+        str: An identifier of the form "{namespace}:{acession}"
 
-    >>> coerce_namespace("refseq:NM_01234.5")
-    'refseq:NM_01234.5'
+    Raises:
+        ValueError: if accession sytax does not match the syntax of any namespace.
+    
+    Examples:
+        >>> coerce_namespace("refseq:NM_01234.5")
+        'refseq:NM_01234.5'
 
-    >>> coerce_namespace("NM_01234.5")
-    'refseq:NM_01234.5'
+        >>> coerce_namespace("NM_01234.5")
+        'refseq:NM_01234.5'
 
-    >>> coerce_namespace("bogus:QQ_01234.5")
-    'bogus:QQ_01234.5'
+        >>> coerce_namespace("bogus:QQ_01234.5")
+        'bogus:QQ_01234.5'
 
-    >>> coerce_namespace("QQ_01234.5")
-    Traceback (most recent call last):
-    ...
-    ValueError: Could not infer namespace for QQ_01234.5
-
+        >>> coerce_namespace("QQ_01234.5")
+        Traceback (most recent call last):
+        ...
+        ValueError: Could not infer namespace for QQ_01234.5
     """
     if ":" not in ac:
         ns = infer_namespace(ac)
@@ -140,33 +163,37 @@ def coerce_namespace(ac):
 
 
 def infer_namespace(ac):
-    """Infer the single namespace of the given accession
+    """Infers a unique namespace from an accession, if one exists.
 
-    This function is convenience wrapper around infer_namespaces().
+    Args:
+        ac (str): An accession, without the namespace prefix.
+        
     Returns:
-      * None if no namespaces are inferred
-      * The (single) namespace if only one namespace is inferred
-      * Raises an exception if more than one namespace is inferred
+        str or None: The unique namespace corresponding to accession syntax, if only one is inferred.
+            None if the accesssion sytax does not match any namespace.
 
-    >>> infer_namespace("ENST00000530893.6")
-    'ensembl'
+    Raises:
+        BioutilsError: If multiple namespaces match the syntax of the accession.
+        
+    Examples:
+        >>> infer_namespace("ENST00000530893.6")
+        'ensembl'
 
-    >>> infer_namespace("NM_01234.5")
-    'refseq'
+        >>> infer_namespace("NM_01234.5")
+        'refseq'
 
-    >>> infer_namespace("A2BC19")
-    'uniprot'
+        >>> infer_namespace("A2BC19")
+        'uniprot'
 
-    N.B. The following test is disabled because Python 2 and Python 3
-    handle doctest exceptions differently. :-(
-    X>>> infer_namespace("P12345")
-    Traceback (most recent call last):
-    ...
-    bioutils.exceptions.BioutilsError: Multiple namespaces possible for P12345
+        Disbled because Python 2 and 3 handles exceptions differently.
 
-    >>> infer_namespace("BOGUS99") is None
-    True
+        >>> infer_namespace("P12345")  # doctest: +SKIP
+        Traceback (most recent call last):
+        ...
+        bioutils.exceptions.BioutilsError: Multiple namespaces possible for P12345
 
+        >>> infer_namespace("BOGUS99") is None
+        True
     """
 
     namespaces = infer_namespaces(ac)
@@ -178,59 +205,83 @@ def infer_namespace(ac):
 
 
 def infer_namespaces(ac):
-    """infer possible namespaces of given accession based on syntax
-    Always returns a list, possibly empty
+    """Infers namespaces possible for a given accession, based on syntax.
 
-    >>> infer_namespaces("ENST00000530893.6")
-    ['ensembl']
-    >>> infer_namespaces("ENST00000530893")
-    ['ensembl']
-    >>> infer_namespaces("ENSQ00000530893")
-    []
-    >>> infer_namespaces("NM_01234")
-    ['refseq']
-    >>> infer_namespaces("NM_01234.5")
-    ['refseq']
-    >>> infer_namespaces("NQ_01234.5")
-    []
-    >>> infer_namespaces("A2BC19")
-    ['uniprot']
-    >>> sorted(infer_namespaces("P12345"))
-    ['insdc', 'uniprot']
-    >>> infer_namespaces("A0A022YWF9")
-    ['uniprot']
+    Args:
+        ac (str): An accession, without the namespace prefix.
 
+    Returns:
+        list of str: A list of namespaces matching the accession, possibly empty.
 
+    Examples:
+        >>> infer_namespaces("ENST00000530893.6")
+        ['ensembl']
+
+        >>> infer_namespaces("ENST00000530893")
+        ['ensembl']
+
+        >>> infer_namespaces("ENSQ00000530893")
+        []
+
+        >>> infer_namespaces("NM_01234")
+        ['refseq']
+
+        >>> infer_namespaces("NM_01234.5")
+        ['refseq']
+
+        >>> infer_namespaces("NQ_01234.5")
+        []
+
+        >>> infer_namespaces("A2BC19")
+        ['uniprot']
+
+        >>> sorted(infer_namespaces("P12345"))
+        ['insdc', 'uniprot']
+
+        >>> infer_namespaces("A0A022YWF9")
+        ['uniprot']
     """
     return [v for k, v in ac_namespace_regexps.items() if k.match(ac)]
 
 
 def prepend_chr(chr):
-    """prefix chr with 'chr' if not present
+    """Prepends chromosome with 'chr' if not present.
 
-    Users are strongly encouraged to NOT use this function. Added a
-    'chr' prefix means that you're using a name that is not consistent
+    Users are strongly discouraged from using this function. Adding a
+    'chr' prefix results in a name that is not consistent
     with authoritative assembly records.
 
-    >>> prepend_chr('22')
-    'chr22'
+    Args:
+        chr (str): The chromosome.
+        
+    Returns:    
+        str: The chromosome with 'chr' prepended.
+        
+    Examples:
+        >>> prepend_chr('22')
+        'chr22'
 
-    >>> prepend_chr('chr22')
-    'chr22'
-
+        >>> prepend_chr('chr22')
+        'chr22'
     """
     return chr if chr[0:3] == 'chr' else 'chr' + chr
 
 
 def strip_chr(chr):
-    """remove 'chr' prefix if it exists
+    """Removes the 'chr' prefix if present.
 
-    >>> strip_chr('22')
-    '22'
+    Args:
+        chr (str): The chromosome.
+        
+    Returns:    
+        str: The chromosome without a 'chr' prefix.
+        
+    Examples:
+        >>> strip_chr('22')
+        '22'
 
-    >>> strip_chr('chr22')
-    '22'
-
+        >>> strip_chr('chr22')
+        '22'
     """
     return chr[3:] if chr[0:3] == 'chr' else chr
 

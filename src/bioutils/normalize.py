@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""normalize an allele on a reference sequence
+"""Provides functionality for normalizing alleles, ensuring comparable representations.
 
 """
 
@@ -13,7 +13,16 @@ import attr
 _logger = logging.getLogger(__name__)
 debug = False
 
-NormalizationMode = enum.Enum("NormalizationMode", "TRIMONLY LEFTSHUFFLE RIGHTSHUFFLE EXPAND VCF")
+NormalizationMode = enum.Enum("NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF")
+"""Enum passed to normalize to select the normalization mode.
+
+Attributes:
+    EXPAND: Normalize alleles to maximal extent both left and right.
+    LEFTSHUFFLE: Normalize alleles to maximal extent left.
+    RIGHTSHUFFLE: Normalize alleles to maximal extent right.
+    TRIMONLY: Only trim the common prefix and suffix of alleles.
+    VCF: Normalize with VCF. 
+"""
 
 
 def normalize(
@@ -24,26 +33,39 @@ def normalize(
         bounds=None,
         anchor_length=0,
 ):
-    """Normalizes the alleles that co-occur on sequence at interval, returning a new interval and alleles.
+    """Normalizes the alleles that co-occur on sequence at interval, ensuring comparable representations.
 
     Args:
-        sequence: The reference sequence; must support indexing and __getitem__
-        interval: The location of alleles as (start, end) tuple, interbase coordinates
-        alleles[]: An array of sequence strings; first element is the reference sequence and must be None
-        bounds: Maximal extent of normalization left and right; defaults to
-            (0, len(sequence)); must be provided if sequence doesn't support __len__
-        Mode: A NormalizationMode Enum or string; one of TRIM, LEFTSHUFFLE, RIGHTSHUFFLE, EXPAND, VCF
-        anchor: number of flanking residues left and right (default: 0)
+        sequence (str or iterable): The reference sequence; must support indexing and ``__getitem__``.
+        interval (2-tuple of int): The location of alleles in the reference sequence as ``(start, end)``. 
+            Interbase coordinates. 
+        alleles (iterable of str): The sequences to be normalized. The first element 
+            corresponds to the reference sequence being unchanged and must be None.
+        bounds (2-tuple of int, optional): Maximal extent of normalization left and right. 
+            Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
+        mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
+            Defaults to ``EXPAND``.
+        anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
 
     Returns: 
-        A tuple of (new interval, new alleles[])
+        tuple: ``(new_interval, [new_alleles])``
 
     Raises:
-        ValueError: May not provide non-zero anchor size with VCF normalization mode
-        ValueError: Interval start > end; must be start <= end
-        ValueError: First allele, the reference allele, must be None
-        ValueError: Must have at least two distinct alleles to normalize
+        ValueError: If normalization mode is VCF and `anchor_length` is nonzero.
+        ValueError: If the interval start is greater than the end.
+        ValueError: If the first (reference) allele is not `None`.
+        ValueError: If there are not at least two distinct alleles.
+    
+    Examples:
+        >>> sequence = "CCCCCCCCACACACACACTAGCAGCAGCA"
+        >>> normalize(sequence, interval=(22,25), alleles=(None, "GC", "AGCAC"), mode='TRIMONLY')
+        ((22, 24), ('AG', 'G', 'AGCA'))
 
+        >>> normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='RIGHTSHUFFLE')
+        ((29, 29), ('', 'GCA'))
+
+        >>> normalize(sequence, interval=(22, 22), alleles=(None, 'AGC'), mode='EXPAND')
+        ((19, 29), ('AGCAGCAGCA', 'AGCAGCAGCAGCA'))
     """
 
     interval = _Interval(*interval)
@@ -146,30 +168,31 @@ class _Interval:
 
 # TODO: Rewrite trim_* code -- no need to modify array each time!
 def trim_left(alleles):
-    """Remove common prefix from left of all alleles, returning
-    (number_trimmed, [new_alleles])
+    """Removes common prefix of given alleles.
 
     Args:
-        alleles: A list of alleles to have the common left prefix trimmed.
+        alleles (list of str): A list of alleles.
         
     Returns:
-        A tuple of (the number of alleles trimmed, list of the alleles after trimming).
+        tuple: ``(number_trimmed, [new_alleles])``.
 
     Examples:
         >>> trim_left(["","AA"])
         (0, ['', 'AA'])
+
         >>> trim_left(["A","AA"])
         (1, ['', 'A'])
+
         >>> trim_left(["AT","AA"])
         (1, ['T', 'A'])
+
         >>> trim_left(["AA","AA"])
         (2, ['', ''])
+
         >>> trim_left(["CAG","CG"])
         (1, ['AG', 'G'])
-
-
-
     """
+
     trimmed = 0
     while all(len(a) > 0 for a in alleles):
         a0 = alleles[0]
@@ -182,28 +205,31 @@ def trim_left(alleles):
 
 
 def trim_right(alleles):
-    """Remove common suffix from right of all alleles, returning
-    (number_trimmed, [new_alleles])
+    """Removes common suffix of given alleles.
 
     Args:
-        alleles: A list of alleles to have the common right suffix trimmed.
+        alleles (list of str): A list of alleles.
 
     Returns:
-        A tuple of (the number of alleles trimmed, list of the alleles after trimming).
+        tuple: ``(number_trimmed, [new_alleles])``.
 
     Examples:
         >>> trim_right(["","AA"])
         (0, ['', 'AA'])
+
         >>> trim_right(["A","AA"])
         (1, ['', 'A'])
+
         >>> trim_right(["AT","AA"])
         (0, ['AT', 'AA'])
+
         >>> trim_right(["AA","AA"])
         (2, ['', ''])
+
         >>> trim_right(["CAG","CG"])
         (1, ['CA', 'C'])
-
     """
+
     trimmed = 0
     while all(len(a) > 0 for a in alleles):
         a0 = alleles[0]
@@ -216,18 +242,19 @@ def trim_right(alleles):
 
 
 def roll_left(sequence, alleles, ref_pos, bound):
-    """circularly permute ('roll') alleles left
+    """Determines common distance all alleles can be rolled (circularly permuted) left 
+    within the reference sequence without altering it.
 
     Args:
-        sequence: The reference sequence to be normalized against.
-        alleles: The sequences to be normalized.
-        ref_pos: The beginning normalization index.
-        bound: The lower bound index in the reference sequence for normalization.
+        sequence (str): The reference sequence.
+        alleles (list of str): The sequences to be normalized.
+        ref_pos (int): The beginning index for rolling.
+        bound (int): The lower bound index in the reference sequence for normalization, hence also for rolling.
     
     Returns:
-        d: the distance that the alleles can be rolled.
-
+        int: The distance that the alleles can be rolled.
     """
+
     # circularly permute sequence d steps, using modulo arithmetic
     lens = [len(a) for a in alleles]
     d = 0
@@ -238,20 +265,18 @@ def roll_left(sequence, alleles, ref_pos, bound):
 
 
 def roll_right(sequence, alleles, ref_pos, bound):
-    """circularly permute ('roll') alleles right
+    """Determines common distance all alleles can be rolled (circularly permuted) right 
+    within the reference sequence without altering it.
 
     Args:
-        sequence: The reference sequence to be normalized against.
-        alleles: The sequences to be normalized.
-        ref_pos: The beginning normalization index. The terminal index in the reference sequence 
-            for the alleles to be normalized.
-        bound: The lower upper bound index in the reference sequence for normalization.
-
+        sequence (str): The reference sequence.
+        alleles (list of str): The sequences to be normalized.
+        ref_pos (int): The start index for rolling.
+        bound (int): The upper bound index in the reference sequence for normalization, hence also for rolling.
     Returns:
-        d: the distance that the alleles can be rolled
-
-
+        int: The distance that the alleles can be rolled
     """
+    
     # circularly permute sequence d steps, using modulo arithmetic
     lens = [len(a) for a in alleles]
     d = 0

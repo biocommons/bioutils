@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-, flake8: noqa
-from __future__ import absolute_import, division, print_function, unicode_literals
-"""provides utilities for interconverting between coordinate systems
+"""Provides utilities for interconverting between coordinate systems
 especially as used by the hgvs code.  The three systems are:
- 
+
+.. parsed-literal::
                   : A : C : G : T : A : C :
   human/hgvs  h   :-3 :-2 :-1 : 1 : 2 : 3 :
   continuous  c   :-2 :-1 : 0 : 1 : 2 : 3 :
@@ -25,39 +25,55 @@ to nucleotides themselves.  Numerically, interbase intervals are
 interbase coordinate is not particularly meaningful, interbase
 coordinates are always passed as start,end pairs.
 
-Because it's easy to confuse these coordinates in code, _h, _c, and _i
+Because it's easy to confuse these coordinates in code, ``_h``, ``_c``, and ``_i``
 suffixes are often used to clarify variables.
 
 For code clarity, this module provides functions that interconvert
 *intervals* specified in each of the coordinate systems.
-
 """
+
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 PLUS_STRAND = 1
 MINUS_STRAND = -1
 
 
 def strand_pm_to_int(s):
-    """
-    >>> strand_pm_to_int('+')
-    1
-    >>> strand_pm_to_int('-')
-    -1
-    >>> strand_pm_to_int('arglefargle')
+    """Converts '+' and '-' to 1 and -1, respectively.
 
+    Args:
+        s (string)
+        
+    Returns:
+        int: 1 if s == '+', -1 if s == '-', otherwise None. 
+    
+    Examples:
+        >>> strand_pm_to_int('+')
+        1
+        >>> strand_pm_to_int('-')
+        -1
+        >>> strand_pm_to_int('arglefargle')
     """
     return PLUS_STRAND if s == '+' else MINUS_STRAND if s == '-' else None
 
 
 def strand_int_to_pm(i):
-    """
-    >>> strand_int_to_pm(1)
-    '+'
-    >>> strand_int_to_pm(-1)
-    '-'
-    >>> strand_int_to_pm(42)
+    """Converts 1 and -1 to '+' and '-' respectively.
 
+    Args:
+        i (int)
+        
+    Returns:    
+        str: '+' if i == 1, '-' if i == -1, otherwise None.
+       
+    Examples:
+        >>> strand_int_to_pm(1)
+        '+'
+        >>> strand_int_to_pm(-1)
+        '-'
+        >>> strand_int_to_pm(42)
     """
+
     return '+' if i == PLUS_STRAND else '-' if i == MINUS_STRAND else None
 
 
