@@ -1,0 +1,5 @@
+clog format: 1; -*-outline-*-
+* 0.5.1 (2019-07-31)
+Changes since 0.5.0 (2019-07-22).
+** Internal and Developer Changes
+*** Closes #26: Fix LICENSE filename typo that prevented wheel builds :-( [df2fe4a] (Reece Hart)

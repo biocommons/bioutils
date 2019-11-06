@@ -1,0 +1,19 @@
+clog format: 1; -*-outline-*-
+* 0.5.0 (2019-07-22)
+Changes since 0.4.4 (2019-05-13).
+** Special Attention
+*** All biocommons packages now require Python >= 3.6. See https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6
+** New Features
+*** #18: Implemented comprehensive sequence normalization (trim, left, right, expand/voca, vcf) [36785fa] (Reece Hart)
+*** #20: implement hex-based digests à la refget [140a20e] (Reece Hart)
+*** Add support for cytobands, incl data files from UCSC [0ba4361] (Reece Hart)
+*** Added accessions.py:coerce_namespace() [e31e592] (Reece Hart)
+** Internal and Developer Changes
+*** Added pytest-optional-tests; use test alias in Makefile [ba9b993] (Reece Hart)
+*** Added trinuc normalization tests [cfe3a68] (Reece Hart)
+*** Added vcrpy to test requirements [95893f1] (Reece Hart)
+*** Moved source to src/; updated setup.cfg [ff45fb0] (Reece Hart)
+*** Removed pip install from tox in favor of deps [8c8f91a] (Reece Hart)
+*** Renamed doc → docs [1612e5c] (Reece Hart)
+*** Store assemblies as compressed json [ea79e71] (Reece Hart)
+*** Update tests to use new vcr cassettes on optional tests (much faster!) [2001745] (Reece Hart)
