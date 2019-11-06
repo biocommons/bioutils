@@ -7,3 +7,4 @@ Change Log
    :maxdepth: 2
    
    0.4/index
+   0.5/index
