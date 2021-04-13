@@ -420,6 +420,18 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
         >>> translate_cds("AUGCG", full_codons=False)
         'M*'
 
+        >>> translate_cds("ATGTAN")
+        'MX'
+
+        >>> translate_cds("CCN")
+        'X'
+
+        >>> translate_cds("TRA")
+        'X'
+
+        >>> translate_cds("TRATA", full_codons=False)
+        'X*'
+
         >>> translate_cds("AUGCGQ")
         Traceback (most recent call last):
         ...
@@ -441,7 +453,12 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
     protein_seq = list()
     for i in range(0, len(seq) - len(seq) % 3, 3):
         try:
-            aa = dna_to_aa1_lut[seq[i:i + 3]]
+            the_seq = seq[i:i + 3]
+            wildcard_nucleotides = ["B", "D", "H", "V", "N", "U", "W", "S", "M", "K", "R", "Y", "Z"]
+            if any([wildcard_base in the_seq for wildcard_base in wildcard_nucleotides]):
+                aa = "X"
+            else:
+                aa = dna_to_aa1_lut[the_seq]
         except KeyError:
             raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
                 seq[i:i + 3], i+1, i+3))
