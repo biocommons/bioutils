@@ -1,0 +1,10 @@
+clog format: 1; -*-outline-*-
+* 0.5.3 (2021-04-14)
+Changes since 0.5.2 (2019-11-06).
+** New Features
+*** #29: Support ambiguity codes in translation [669a653] (kayleeyuhas)
+*** added bin/fasta-ga4gh-identifier [63d1078] (Reece Hart)
+** Internal and Developer Changes
+*** updated Makefile for Python 3.8 [29eecf5] (Reece Hart)
+*** fix failing test and reformat [7cc5ebb] (kayleeyuhas)
+*** improve variable names and use string instead of list [5d7484b] (kayleeyuhas)
