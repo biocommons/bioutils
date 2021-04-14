@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+"""compute and display ga4gh sequence identifiers for sequences in a fasta file
+
+snafu$ ./bin/fasta-ga4gh-identifier ~/Downloads/GCA_000001405.28_GRCh38.p13_genomic.fna.gz 
+ga4gh:SQ.Ya6Rs7DHhDeg7YaOSg1EoNi3U_nQ9SvO	CM000663.2	CM000663.2 Homo sapiens chromosome 1, GRCh38 reference primary assembly
+ga4gh:SQ.pnAqCRBrTsUoBghSD1yp_jXWSmlbdh4g	CM000664.2	CM000664.2 Homo sapiens chromosome 2, GRCh38 reference primary assembly
+ga4gh:SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX	CM000665.2	CM000665.2 Homo sapiens chromosome 3, GRCh38 reference primary assembly
+
+snafu$ ./bin/fasta-ga4gh-identifier ~/Downloads/Homo_sapiens.GRCh38.dna.toplevel.fa.gz 
+ga4gh:SQ.2YnepKM7OkBoOrKmvHbGqguVfF9amCST	1	1 dna:chromosome chromosome:GRCh38:1:1:248956422:1 REF
+ga4gh:SQ.lwDyBi432Py-7xnAISyQlnlhWDEaBPv2	2	2 dna:chromosome chromosome:GRCh38:2:1:242193529:1 REF
+ga4gh:SQ.Eqk6_SvMMDCc6C-uEfickOUWTatLMDQZ	3	3 dna:chromosome chromosome:GRCh38:3:1:198295559:1 REF
+
+
+Sigh. Ensembl modifies GRCh38 sequences.
+
+"""
+
+
+import gzip
+import sys
+
+from Bio import SeqIO
+from bioutils.digests import seq_seqhash
+
+
+def anyopen(path, encoding=None):
+    if path == "-":
+        # decoding is automatic in Python 3 based on locale
+        # https://docs.python.org/3/library/sys.html#sys.stdin
+        return sys.stdin
+    elif path.endswith(".gz"):
+        return gzip.open(path, mode="rt", encoding=encoding)
+    else:
+        return open(path, mode="r", encoding=encoding)
+
+
+if __name__ == "__main__":
+    for path in sys.argv[1:]:
+        with anyopen(path) as fp:
+            for rec in SeqIO.parse(fp, "fasta"):
+                digest = seq_seqhash(str(rec.seq))
+                ga4gh_ir = "ga4gh:SQ." + digest
+                print(ga4gh_ir + "\t" + rec.id + "\t" + rec.description)
