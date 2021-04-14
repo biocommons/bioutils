@@ -453,12 +453,12 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
     protein_seq = list()
     for i in range(0, len(seq) - len(seq) % 3, 3):
         try:
-            the_seq = seq[i:i + 3]
-            wildcard_nucleotides = ["B", "D", "H", "V", "N", "U", "W", "S", "M", "K", "R", "Y", "Z"]
-            if any([wildcard_base in the_seq for wildcard_base in wildcard_nucleotides]):
+            codon = seq[i:i + 3]
+            iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
+            if any([iupac_ambiguity_code in codon for iupac_ambiguity_code in iupac_ambiguity_codes]):
                 aa = "X"
             else:
-                aa = dna_to_aa1_lut[the_seq]
+                aa = dna_to_aa1_lut[codon]
         except KeyError:
             raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
                 seq[i:i + 3], i+1, i+3))
