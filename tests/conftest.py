@@ -4,7 +4,6 @@ import os
 import pytest
 import vcr
 
-
 # set vcr logging level
 logging.basicConfig()
 logger = logging.getLogger("vcr")
@@ -19,5 +18,5 @@ vcr.default_vcr = vcr.VCR(
     filter_headers=["Authorization"],
     filter_post_data_parameters=["Authorization"],
     record_mode=os.environ.get("VCR_RECORD_MODE", "once"),
-    )
+)
 vcr.use_cassette = vcr.default_vcr.use_cassette

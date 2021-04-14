@@ -11,8 +11,8 @@ from bioutils.seqfetcher import fetch_seq, _fetch_seq_ensembl, _fetch_seq_ncbi, 
 def test_fetch_seq():
     assert 1596 == len(fetch_seq('NP_056374.2'))
 
-    assert 'MESRETLSSS' == fetch_seq('NP_056374.2',0,10)
-    assert 'MESRETLSSS' == fetch_seq('NP_056374.2')[0:10]  # NOT RECOMMENDED
+    assert 'MESRETLSSS' == fetch_seq('NP_056374.2', 0, 10)
+    assert 'MESRETLSSS' == fetch_seq('NP_056374.2')[0:10]    # NOT RECOMMENDED
 
     assert 'ATCACACGTGCAGGAACCCTTTTCC' == fetch_seq('NC_000001.10', 2000000, 2000025)
     assert 'AAAATTAAATTAAAATAAATAAAAA' == fetch_seq('NG_032072.1', 0, 25)
@@ -58,8 +58,9 @@ def test_fetch_seq_errors():
 
 def _check1(_x):
     # small, fast query
-    assert 'MESRETLSSS' == fetch_seq('NP_056374.2',0,10)
- 
+    assert 'MESRETLSSS' == fetch_seq('NP_056374.2', 0, 10)
+
+
 # no vcr!
 @pytest.mark.network
 def test_rate_limit():

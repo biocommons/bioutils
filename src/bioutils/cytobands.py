@@ -17,7 +17,7 @@ def get_cytoband_names():
         list of str: The names of the available cytobands. 
 
     Examples:
-        >>> get_cytoband_names()  
+        >>> sorted(get_cytoband_names())
         ['ucsc-hg19', 'ucsc-hg38']
     """
 
