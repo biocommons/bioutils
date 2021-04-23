@@ -102,6 +102,119 @@ dna_to_aa1_lut = {      # NCBI standard translation table
     'TTC': 'F',
     'TTG': 'L',
     'TTT': 'F',
+    # degenerate codons
+    'AAR': 'K',
+    'AAY': 'N',
+    'ACB': 'T',
+    'ACD': 'T',
+    'ACH': 'T',
+    'ACK': 'T',
+    'ACM': 'T',
+    'ACN': 'T',
+    'ACR': 'T',
+    'ACS': 'T',
+    'ACV': 'T',
+    'ACW': 'T',
+    'ACY': 'T',
+    'AGR': 'R',
+    'AGY': 'S',
+    'ATH': 'I',
+    'ATM': 'I',
+    'ATW': 'I',
+    'ATY': 'I',
+    'CAR': 'Q',
+    'CAY': 'H',
+    'CCB': 'P',
+    'CCD': 'P',
+    'CCH': 'P',
+    'CCK': 'P',
+    'CCM': 'P',
+    'CCN': 'P',
+    'CCR': 'P',
+    'CCS': 'P',
+    'CCV': 'P',
+    'CCW': 'P',
+    'CCY': 'P',
+    'CGB': 'R',
+    'CGD': 'R',
+    'CGH': 'R',
+    'CGK': 'R',
+    'CGM': 'R',
+    'CGN': 'R',
+    'CGR': 'R',
+    'CGS': 'R',
+    'CGV': 'R',
+    'CGW': 'R',
+    'CGY': 'R',
+    'CTB': 'L',
+    'CTD': 'L',
+    'CTH': 'L',
+    'CTK': 'L',
+    'CTM': 'L',
+    'CTN': 'L',
+    'CTR': 'L',
+    'CTS': 'L',
+    'CTV': 'L',
+    'CTW': 'L',
+    'CTY': 'L',
+    'GAR': 'E',
+    'GAY': 'D',
+    'GCB': 'A',
+    'GCD': 'A',
+    'GCH': 'A',
+    'GCK': 'A',
+    'GCM': 'A',
+    'GCN': 'A',
+    'GCR': 'A',
+    'GCS': 'A',
+    'GCV': 'A',
+    'GCW': 'A',
+    'GCY': 'A',
+    'GGB': 'G',
+    'GGD': 'G',
+    'GGH': 'G',
+    'GGK': 'G',
+    'GGM': 'G',
+    'GGN': 'G',
+    'GGR': 'G',
+    'GGS': 'G',
+    'GGV': 'G',
+    'GGW': 'G',
+    'GGY': 'G',
+    'GTB': 'V',
+    'GTD': 'V',
+    'GTH': 'V',
+    'GTK': 'V',
+    'GTM': 'V',
+    'GTN': 'V',
+    'GTR': 'V',
+    'GTS': 'V',
+    'GTV': 'V',
+    'GTW': 'V',
+    'GTY': 'V',
+    'MGA': 'R',
+    'MGG': 'R',
+    'MGR': 'R',
+    'TAR': '*',
+    'TAY': 'Y',
+    'TCB': 'S',
+    'TCD': 'S',
+    'TCH': 'S',
+    'TCK': 'S',
+    'TCM': 'S',
+    'TCN': 'S',
+    'TCR': 'S',
+    'TCS': 'S',
+    'TCV': 'S',
+    'TCW': 'S',
+    'TCY': 'S',
+    'TGY': 'C',
+    'TRA': '*',
+    'TTR': 'L',
+    'TTY': 'F',
+    'YTA': 'L',
+    'YTG': 'L',
+    'YTR': 'L',
 }
 
 
@@ -424,13 +537,25 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
         'MX'
 
         >>> translate_cds("CCN")
-        'X'
+        'P'
 
         >>> translate_cds("TRA")
+        '*'
+
+        >>> translate_cds("TTNTA", full_codons=False)
+        'X*'
+
+        >>> translate_cds("CTB")
+        'L'
+
+        >>> translate_cds("AGM")
         'X'
 
-        >>> translate_cds("TRATA", full_codons=False)
-        'X*'
+        >>> translate_cds("GAS")
+        'X'
+
+        >>> translate_cds("CUN")
+        'L'
 
         >>> translate_cds("AUGCGQ")
         Traceback (most recent call last):
@@ -452,16 +577,17 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
 
     protein_seq = list()
     for i in range(0, len(seq) - len(seq) % 3, 3):
+        codon = seq[i:i + 3]
         try:
-            codon = seq[i:i + 3]
+            aa = dna_to_aa1_lut[codon]
+        except KeyError:
+            # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
             if any([iupac_ambiguity_code in codon for iupac_ambiguity_code in iupac_ambiguity_codes]):
                 aa = "X"
             else:
-                aa = dna_to_aa1_lut[codon]
-        except KeyError:
-            raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
-                seq[i:i + 3], i+1, i+3))
+                raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
+                    codon, i + 1, i + 3))
         protein_seq.append(aa)
 
     # check for trailing bases and add the ter symbol if required
