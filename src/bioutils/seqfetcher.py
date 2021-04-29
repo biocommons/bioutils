@@ -218,6 +218,10 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         if resp.ok:
             seq = "".join(resp.text.splitlines()[1:])
             return seq
+        elif resp.status_code == 400:
+            # Invalid sequence or start/stop position for that sequence
+            raise Exception("Fetching sequence {} with start index {} and end index {} failed, invalid sequence "
+                            "or start or end position".format(ac, start_i, end_i))
         if n_retries >= retry_limit:
             break
         if n_retries == 0:
