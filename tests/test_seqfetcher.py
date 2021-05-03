@@ -27,9 +27,8 @@ def test_fetch_seq():
 
 @vcr.use_cassette
 def test_fetch_seq_ncbi_invalid_positions():
-    with pytest.raises(Exception) as excinfo:
+    with pytest.raises(RuntimeError):
         _fetch_seq_ncbi("NP_001230161.1", "3190", "3190")
-    assert "invalid sequence or start or end position" in str(excinfo.value)
 
 @vcr.use_cassette
 def test_add_eutils_api_key():
