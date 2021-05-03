@@ -25,6 +25,11 @@ def test_fetch_seq():
     assert 'CGCCTCCCTTCCCCCTCCCCGCCCG' == fetch_seq('ENST00000288602', 0, 25)
     assert 'MAALSGGGGGGAEPGQALFNGDMEP' == fetch_seq('ENSP00000288602', 0, 25)
 
+@vcr.use_cassette
+def test_fetch_seq_ncbi_invalid_positions():
+    with pytest.raises(RuntimeError) as excinfo:
+        _fetch_seq_ncbi("NP_001230161.1", 3190, 3190)
+    assert "invalid sequence or start or end position" in str(excinfo.value)
 
 @vcr.use_cassette
 def test_add_eutils_api_key():
