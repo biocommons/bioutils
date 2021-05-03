@@ -15,7 +15,6 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
-
 # Reece requested registration on 2017-09-03
 ncbi_tool = "bioutils"
 ncbi_email = "biocommons-dev@googlegroups.com"
@@ -218,7 +217,11 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         if resp.ok:
             seq = "".join(resp.text.splitlines()[1:])
             return seq
-        if resp.status_code == 400 or n_retries >= retry_limit:
+        elif resp.status_code == 400:
+            # Invalid sequence or start/stop position for that sequence
+            raise RuntimeError("Fetching sequence {} with start index {} and end index {} failed, invalid sequence "
+                               "or start or end position".format(ac, start_i, end_i))
+        if n_retries >= retry_limit:
             break
         if n_retries == 0:
             _logger.warning("Failed to fetch {}".format(url))
@@ -245,7 +248,6 @@ def _add_eutils_api_key(url):
     if apikey:
         url += "&api_key={apikey}".format(apikey=apikey)
     return url
-
 
 
 # So that I don't forget why I didn't use ebi too:
