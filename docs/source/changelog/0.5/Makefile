@@ -16,8 +16,8 @@ next.clog::
 # TODO: use git-mapfile to map commits
 %.rst: %.clog
 	clogger-fmt \
-		-I '`#{issue_id} <https://github.com/biocommons/biocommons.seqrepo/issues/{issue_id}/>`_' \
-		-C '`{cset} <https://github.com/biocommons/biocommons.seqrepo/commit/{cset}>`_' \
+		-I '`#{issue_id} <https://github.com/biocommons/bioutils/issues/{issue_id}/>`_' \
+		-C '`{cset} <https://github.com/biocommons/bioutils/commit/{cset}>`_' \
 		<$< >$@.tmp
 	mv $@.tmp $@
 

@@ -14,5 +14,5 @@ Other Changes
 $$$$$$$$$$$$$$
 
 * Added changelogs for 0.5.0 and 0.5.1, which @reece forgot to include :-(
-* `#22 <https://github.com/biocommons/biocommons.seqrepo/issues/22/>`_ added function docs for all modules [`c0090ed <https://github.com/biocommons/biocommons.seqrepo/commit/c0090ed>`_] (trentwatt)
-* `#23 <https://github.com/biocommons/biocommons.seqrepo/issues/23/>`_: fix setup.cfg description tags (`description` → `long-description`) [`8945c04 <https://github.com/biocommons/biocommons.seqrepo/commit/8945c04>`_] (Reece Hart)
+* `#22 <https://github.com/biocommons/bioutils/issues/22/>`_ added function docs for all modules [`c0090ed <https://github.com/biocommons/bioutils/commit/c0090ed>`_] (trentwatt)
+* `#23 <https://github.com/biocommons/bioutils/issues/23/>`_: fix setup.cfg description tags (`description` → `long-description`) [`8945c04 <https://github.com/biocommons/bioutils/commit/8945c04>`_] (Reece Hart)
