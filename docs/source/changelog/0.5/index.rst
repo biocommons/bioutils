@@ -6,4 +6,4 @@
    :glob:
    :reversed:
 
-   0.5.*
+   0.*
