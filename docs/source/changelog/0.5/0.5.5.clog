@@ -1,0 +1,5 @@
+clog format: 1; -*-outline-*-
+* 0.5.5 (2021-05-03)
+Changes since 0.5.4 (2021-05-02).
+** Bug Fixes
+*** Don't retry sequence fetch with invalid coordinates [94e80cd] (pjcoenen)
