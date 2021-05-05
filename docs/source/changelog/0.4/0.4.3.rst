@@ -7,4 +7,4 @@ Changes since 0.4.2 (2019-02-21).
 New Features
 $$$$$$$$$$$$$
 
-* Fixes `#16 <https://github.com/biocommons/bioutils/issues/16/>`_: Retry seqfetcher when rate limit exceeded [`46850d4fc7e6 <https://github.com/biocommons/bioutils/commit/46850d4fc7e6>`_]
+* Fixes `#16 <https://github.com/biocommons/bioutils/issues/16/>`_: Retry seqfetcher when rate limit exceeded [`92d7210 <https://github.com/biocommons/bioutils/commit/92d7210>`_]
