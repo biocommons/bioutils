@@ -32,7 +32,7 @@ aa3_to_aa1_lut = {
     "Val": "V",
     "Xaa": "X",
     "Ter": "*",
-    "Sec": "",
+    "Sec": "U",
 }
 
 aa1_to_aa3_lut = {v: k for k, v in aa3_to_aa1_lut.items()}
@@ -217,6 +217,9 @@ dna_to_aa1_lut = {      # NCBI standard translation table
     'YTR': 'L',
 }
 
+# translation table for selenocysteine
+dna_to_aa1_sec = dna_to_aa1_lut.copy()
+dna_to_aa1_sec['TGA'] = 'U'
 
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
@@ -490,10 +493,11 @@ def replace_u_to_t(seq):
     return seq.replace("U", "T").replace("u", "t")
 
 
-def translate_cds(seq, full_codons=True, ter_symbol="*"):
+def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=dna_to_aa1_lut):
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
     
-    Uses the NCBI standard translation table.
+    By default uses the NCBI standard translation table. To enable translation for selenoproteins,
+    the dna_to_aa1_sec table can get used.
 
     Args:
         seq (str): A nucleotide sequence.
@@ -579,7 +583,7 @@ def translate_cds(seq, full_codons=True, ter_symbol="*"):
     for i in range(0, len(seq) - len(seq) % 3, 3):
         codon = seq[i:i + 3]
         try:
-            aa = dna_to_aa1_lut[codon]
+            aa = translation_table[codon]
         except KeyError:
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
