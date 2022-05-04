@@ -502,9 +502,6 @@ def translate_cds(
 ):
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
 
-    By default uses the NCBI standard translation table. To enable translation for selenoproteins,
-    the dna_to_aa1_sec table can get used.
-
     Args:
         seq (str): A nucleotide sequence.
         full_codons (bool, optional): If ``True``, forces sequence to have length
@@ -515,6 +512,9 @@ def translate_cds(
         ter_symbol (str, optional): Placeholder for the last amino acid if
             sequence length is not divisible by three and ``full_codons`` is False.
             Defaults to ``'*'``
+        translation_table (dict, optional): the codon to amino acid translation table to use.
+            By default will use the standard translation table for humans. To enable translation for selenoproteins,
+            the dna_to_aa1_sec table can get used
 
     Returns:
         str: The corresponding single letter amino acid sequence.
