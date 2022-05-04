@@ -585,7 +585,7 @@ def translate_cds(
     seq = replace_u_to_t(seq)
     seq = seq.upper()
 
-    protein_seq = list()
+    protein_seq = []
     for i in range(0, len(seq) - len(seq) % 3, 3):
         codon = seq[i : i + 3]
         try:
@@ -594,10 +594,8 @@ def translate_cds(
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
             if any(
-                [
-                    iupac_ambiguity_code in codon
-                    for iupac_ambiguity_code in iupac_ambiguity_codes
-                ]
+                iupac_ambiguity_code in codon
+                for iupac_ambiguity_code in iupac_ambiguity_codes
             ):
                 aa = "X"
             else:
