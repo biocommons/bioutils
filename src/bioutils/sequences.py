@@ -37,189 +37,189 @@ aa3_to_aa1_lut = {
 
 aa1_to_aa3_lut = {v: k for k, v in aa3_to_aa1_lut.items()}
 
-dna_to_aa1_lut = {      # NCBI standard translation table
-    'AAA': 'K',
-    'AAC': 'N',
-    'AAG': 'K',
-    'AAT': 'N',
-    'ACA': 'T',
-    'ACC': 'T',
-    'ACG': 'T',
-    'ACT': 'T',
-    'AGA': 'R',
-    'AGC': 'S',
-    'AGG': 'R',
-    'AGT': 'S',
-    'ATA': 'I',
-    'ATC': 'I',
-    'ATG': 'M',
-    'ATT': 'I',
-    'CAA': 'Q',
-    'CAC': 'H',
-    'CAG': 'Q',
-    'CAT': 'H',
-    'CCA': 'P',
-    'CCC': 'P',
-    'CCG': 'P',
-    'CCT': 'P',
-    'CGA': 'R',
-    'CGC': 'R',
-    'CGG': 'R',
-    'CGT': 'R',
-    'CTA': 'L',
-    'CTC': 'L',
-    'CTG': 'L',
-    'CTT': 'L',
-    'GAA': 'E',
-    'GAC': 'D',
-    'GAG': 'E',
-    'GAT': 'D',
-    'GCA': 'A',
-    'GCC': 'A',
-    'GCG': 'A',
-    'GCT': 'A',
-    'GGA': 'G',
-    'GGC': 'G',
-    'GGG': 'G',
-    'GGT': 'G',
-    'GTA': 'V',
-    'GTC': 'V',
-    'GTG': 'V',
-    'GTT': 'V',
-    'TAA': '*',
-    'TAC': 'Y',
-    'TAG': '*',
-    'TAT': 'Y',
-    'TCA': 'S',
-    'TCC': 'S',
-    'TCG': 'S',
-    'TCT': 'S',
-    'TGA': '*',
-    'TGC': 'C',
-    'TGG': 'W',
-    'TGT': 'C',
-    'TTA': 'L',
-    'TTC': 'F',
-    'TTG': 'L',
-    'TTT': 'F',
+dna_to_aa1_lut = {  # NCBI standard translation table
+    "AAA": "K",
+    "AAC": "N",
+    "AAG": "K",
+    "AAT": "N",
+    "ACA": "T",
+    "ACC": "T",
+    "ACG": "T",
+    "ACT": "T",
+    "AGA": "R",
+    "AGC": "S",
+    "AGG": "R",
+    "AGT": "S",
+    "ATA": "I",
+    "ATC": "I",
+    "ATG": "M",
+    "ATT": "I",
+    "CAA": "Q",
+    "CAC": "H",
+    "CAG": "Q",
+    "CAT": "H",
+    "CCA": "P",
+    "CCC": "P",
+    "CCG": "P",
+    "CCT": "P",
+    "CGA": "R",
+    "CGC": "R",
+    "CGG": "R",
+    "CGT": "R",
+    "CTA": "L",
+    "CTC": "L",
+    "CTG": "L",
+    "CTT": "L",
+    "GAA": "E",
+    "GAC": "D",
+    "GAG": "E",
+    "GAT": "D",
+    "GCA": "A",
+    "GCC": "A",
+    "GCG": "A",
+    "GCT": "A",
+    "GGA": "G",
+    "GGC": "G",
+    "GGG": "G",
+    "GGT": "G",
+    "GTA": "V",
+    "GTC": "V",
+    "GTG": "V",
+    "GTT": "V",
+    "TAA": "*",
+    "TAC": "Y",
+    "TAG": "*",
+    "TAT": "Y",
+    "TCA": "S",
+    "TCC": "S",
+    "TCG": "S",
+    "TCT": "S",
+    "TGA": "*",
+    "TGC": "C",
+    "TGG": "W",
+    "TGT": "C",
+    "TTA": "L",
+    "TTC": "F",
+    "TTG": "L",
+    "TTT": "F",
     # degenerate codons
-    'AAR': 'K',
-    'AAY': 'N',
-    'ACB': 'T',
-    'ACD': 'T',
-    'ACH': 'T',
-    'ACK': 'T',
-    'ACM': 'T',
-    'ACN': 'T',
-    'ACR': 'T',
-    'ACS': 'T',
-    'ACV': 'T',
-    'ACW': 'T',
-    'ACY': 'T',
-    'AGR': 'R',
-    'AGY': 'S',
-    'ATH': 'I',
-    'ATM': 'I',
-    'ATW': 'I',
-    'ATY': 'I',
-    'CAR': 'Q',
-    'CAY': 'H',
-    'CCB': 'P',
-    'CCD': 'P',
-    'CCH': 'P',
-    'CCK': 'P',
-    'CCM': 'P',
-    'CCN': 'P',
-    'CCR': 'P',
-    'CCS': 'P',
-    'CCV': 'P',
-    'CCW': 'P',
-    'CCY': 'P',
-    'CGB': 'R',
-    'CGD': 'R',
-    'CGH': 'R',
-    'CGK': 'R',
-    'CGM': 'R',
-    'CGN': 'R',
-    'CGR': 'R',
-    'CGS': 'R',
-    'CGV': 'R',
-    'CGW': 'R',
-    'CGY': 'R',
-    'CTB': 'L',
-    'CTD': 'L',
-    'CTH': 'L',
-    'CTK': 'L',
-    'CTM': 'L',
-    'CTN': 'L',
-    'CTR': 'L',
-    'CTS': 'L',
-    'CTV': 'L',
-    'CTW': 'L',
-    'CTY': 'L',
-    'GAR': 'E',
-    'GAY': 'D',
-    'GCB': 'A',
-    'GCD': 'A',
-    'GCH': 'A',
-    'GCK': 'A',
-    'GCM': 'A',
-    'GCN': 'A',
-    'GCR': 'A',
-    'GCS': 'A',
-    'GCV': 'A',
-    'GCW': 'A',
-    'GCY': 'A',
-    'GGB': 'G',
-    'GGD': 'G',
-    'GGH': 'G',
-    'GGK': 'G',
-    'GGM': 'G',
-    'GGN': 'G',
-    'GGR': 'G',
-    'GGS': 'G',
-    'GGV': 'G',
-    'GGW': 'G',
-    'GGY': 'G',
-    'GTB': 'V',
-    'GTD': 'V',
-    'GTH': 'V',
-    'GTK': 'V',
-    'GTM': 'V',
-    'GTN': 'V',
-    'GTR': 'V',
-    'GTS': 'V',
-    'GTV': 'V',
-    'GTW': 'V',
-    'GTY': 'V',
-    'MGA': 'R',
-    'MGG': 'R',
-    'MGR': 'R',
-    'TAR': '*',
-    'TAY': 'Y',
-    'TCB': 'S',
-    'TCD': 'S',
-    'TCH': 'S',
-    'TCK': 'S',
-    'TCM': 'S',
-    'TCN': 'S',
-    'TCR': 'S',
-    'TCS': 'S',
-    'TCV': 'S',
-    'TCW': 'S',
-    'TCY': 'S',
-    'TGY': 'C',
-    'TRA': '*',
-    'TTR': 'L',
-    'TTY': 'F',
-    'YTA': 'L',
-    'YTG': 'L',
-    'YTR': 'L',
+    "AAR": "K",
+    "AAY": "N",
+    "ACB": "T",
+    "ACD": "T",
+    "ACH": "T",
+    "ACK": "T",
+    "ACM": "T",
+    "ACN": "T",
+    "ACR": "T",
+    "ACS": "T",
+    "ACV": "T",
+    "ACW": "T",
+    "ACY": "T",
+    "AGR": "R",
+    "AGY": "S",
+    "ATH": "I",
+    "ATM": "I",
+    "ATW": "I",
+    "ATY": "I",
+    "CAR": "Q",
+    "CAY": "H",
+    "CCB": "P",
+    "CCD": "P",
+    "CCH": "P",
+    "CCK": "P",
+    "CCM": "P",
+    "CCN": "P",
+    "CCR": "P",
+    "CCS": "P",
+    "CCV": "P",
+    "CCW": "P",
+    "CCY": "P",
+    "CGB": "R",
+    "CGD": "R",
+    "CGH": "R",
+    "CGK": "R",
+    "CGM": "R",
+    "CGN": "R",
+    "CGR": "R",
+    "CGS": "R",
+    "CGV": "R",
+    "CGW": "R",
+    "CGY": "R",
+    "CTB": "L",
+    "CTD": "L",
+    "CTH": "L",
+    "CTK": "L",
+    "CTM": "L",
+    "CTN": "L",
+    "CTR": "L",
+    "CTS": "L",
+    "CTV": "L",
+    "CTW": "L",
+    "CTY": "L",
+    "GAR": "E",
+    "GAY": "D",
+    "GCB": "A",
+    "GCD": "A",
+    "GCH": "A",
+    "GCK": "A",
+    "GCM": "A",
+    "GCN": "A",
+    "GCR": "A",
+    "GCS": "A",
+    "GCV": "A",
+    "GCW": "A",
+    "GCY": "A",
+    "GGB": "G",
+    "GGD": "G",
+    "GGH": "G",
+    "GGK": "G",
+    "GGM": "G",
+    "GGN": "G",
+    "GGR": "G",
+    "GGS": "G",
+    "GGV": "G",
+    "GGW": "G",
+    "GGY": "G",
+    "GTB": "V",
+    "GTD": "V",
+    "GTH": "V",
+    "GTK": "V",
+    "GTM": "V",
+    "GTN": "V",
+    "GTR": "V",
+    "GTS": "V",
+    "GTV": "V",
+    "GTW": "V",
+    "GTY": "V",
+    "MGA": "R",
+    "MGG": "R",
+    "MGR": "R",
+    "TAR": "*",
+    "TAY": "Y",
+    "TCB": "S",
+    "TCD": "S",
+    "TCH": "S",
+    "TCK": "S",
+    "TCM": "S",
+    "TCN": "S",
+    "TCR": "S",
+    "TCS": "S",
+    "TCV": "S",
+    "TCW": "S",
+    "TCY": "S",
+    "TGY": "C",
+    "TRA": "*",
+    "TTR": "L",
+    "TTY": "F",
+    "YTA": "L",
+    "YTG": "L",
+    "YTR": "L",
 }
 
 # translation table for selenocysteine
 dna_to_aa1_sec = dna_to_aa1_lut.copy()
-dna_to_aa1_sec['TGA'] = 'U'
+dna_to_aa1_sec["TGA"] = "U"
 
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
@@ -229,9 +229,9 @@ def aa_to_aa1(seq):
 
     Args:
         seq (str): An amino acid sequence.
-        
+
     Returns:
-        str: The sequence as one of 1-letter amino acids.    
+        str: The sequence as one of 1-letter amino acids.
 
     Examples:
         >>> aa_to_aa1("CATSARELAME")
@@ -253,9 +253,9 @@ def aa_to_aa3(seq):
 
     Args:
         seq (str): An amino acid sequence.
-        
-    Returns:   
-        str: The sequence as one of 3-letter amino acids.    
+
+    Returns:
+        str: The sequence as one of 3-letter amino acids.
 
     Examples:
         >>> aa_to_aa3("CATSARELAME")
@@ -279,13 +279,13 @@ def aa1_to_aa3(seq):
 
     Args:
         seq (str): An amino acid sequence as 1-letter amino acids.
-        
-    Returns:  
-        str: The sequence as 3-letter amino acids.  
-    
+
+    Returns:
+        str: The sequence as 3-letter amino acids.
+
     Raises:
         KeyError: If the sequence is not of 1-letter amino acids.
-        
+
     Examples:
         >>> aa1_to_aa3("CATSARELAME")
         'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
@@ -305,13 +305,13 @@ def aa3_to_aa1(seq):
 
     Args:
         seq (str): An amino acid sequence as 3-letter amino acids.
-        
-    Returns:   
-        str: The sequence as 1-letter amino acids.   
-    
+
+    Returns:
+        str: The sequence as 1-letter amino acids.
+
     Raises:
         KeyError: If the sequence is not of 3-letter amino acids.
-    
+
     Examples:
         >>> aa3_to_aa1("CysAlaThrSerAlaArgGluLeuAlaMetGlu")
         'CATSARELAME'
@@ -321,8 +321,9 @@ def aa3_to_aa1(seq):
 
     if seq is None:
         return None
-    return "".join(aa3_to_aa1_lut[aa3]
-                   for aa3 in [seq[i:i + 3] for i in range(0, len(seq), 3)])
+    return "".join(
+        aa3_to_aa1_lut[aa3] for aa3 in [seq[i : i + 3] for i in range(0, len(seq), 3)]
+    )
 
 
 def complement(seq):
@@ -330,10 +331,10 @@ def complement(seq):
 
     Args:
         seq (str): A nucleotide sequence.
-        
-    Returns:    
+
+    Returns:
         str: The complement of the sequence.
-        
+
     Examples:
         >>> complement("ATCG")
         'TAGC'
@@ -353,10 +354,10 @@ def elide_sequence(s, flank=5, elision="..."):
         s (str): A sequence.
         flank (int, optional): The length of each flank. Defaults to five.
         elision (str, optional): The symbol used to represent the part trimmed. Defaults to '...'.
-    
-        Returns:    
+
+        Returns:
             str: The sequence with the middle replaced by ``elision``.
-        
+
     Examples:
         >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         'ABCDE...VWXYZ'
@@ -385,12 +386,15 @@ def looks_like_aa3_p(seq):
 
     Args:
         seq (str): A sequence.
-        
+
     Returns:
         bool: Whether the string is of the format of a 3-letter AA string.
     """
-    return (seq is not None and (len(seq) % 3 == 0) and
-            (len(seq) == 0 or seq[1] in ascii_lowercase))
+    return (
+        seq is not None
+        and (len(seq) % 3 == 0)
+        and (len(seq) == 0 or seq[1] in ascii_lowercase)
+    )
 
 
 def normalize_sequence(seq):
@@ -400,13 +404,13 @@ def normalize_sequence(seq):
 
     Args:
         seq (str): The sequence to be normalized.
-        
+
     Returns:
-        str: The sequence as a string of uppercase letters.    
-    
+        str: The sequence as a string of uppercase letters.
+
     Raises:
         RuntimeError: If the sequence contains non-alphabetic characters (besides '*').
-        
+
     Examples:
         >>> normalize_sequence("ACGT")
         'ACGT'
@@ -435,15 +439,15 @@ def reverse_complement(seq):
 
     Args:
         seq (str): A nucleotide sequence.
-        
-    Returns:    
+
+    Returns:
         str: The reverse complement of the sequence.
-    
+
     Examples:
         >>> reverse_complement("ATCG")
         'CGAT'
 
-        >>> reverse_complement(None)  
+        >>> reverse_complement(None)
     """
 
     if seq is None:
@@ -456,10 +460,10 @@ def replace_t_to_u(seq):
 
     Args:
         seq (str): A nucleotide sequence.
-        
-    Returns:    
+
+    Returns:
         str: The sequence with the T's replaced by U's.
-        
+
     Examples:
         >>> replace_t_to_u("ACGT")
         'ACGU'
@@ -477,10 +481,10 @@ def replace_u_to_t(seq):
 
     Args:
         seq (str): A nucleotide sequence.
-        
-    Returns: 
-        str: The sequence with the U's replaced by T's.   
-    
+
+    Returns:
+        str: The sequence with the U's replaced by T's.
+
     Examples:
         >>> replace_u_to_t("ACGU")
         'ACGT'
@@ -493,30 +497,32 @@ def replace_u_to_t(seq):
     return seq.replace("U", "T").replace("u", "t")
 
 
-def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=dna_to_aa1_lut):
+def translate_cds(
+    seq, full_codons=True, ter_symbol="*", translation_table=dna_to_aa1_lut
+):
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
-    
+
     By default uses the NCBI standard translation table. To enable translation for selenoproteins,
     the dna_to_aa1_sec table can get used.
 
     Args:
         seq (str): A nucleotide sequence.
-        full_codons (bool, optional): If ``True``, forces sequence to have length 
-            that is a multiple of 3 and raises an error otherwise. 
+        full_codons (bool, optional): If ``True``, forces sequence to have length
+            that is a multiple of 3 and raises an error otherwise.
             If False, ``ter_symbol`` will be added as the last amino acid.
             This corresponds to biopython's behavior of padding the last codon with ``N``s.
             Defaults to ``True``.
-        ter_symbol (str, optional): Placeholder for the last amino acid if 
-            sequence length is not divisible by three and ``full_codons`` is False. 
+        ter_symbol (str, optional): Placeholder for the last amino acid if
+            sequence length is not divisible by three and ``full_codons`` is False.
             Defaults to ``'*'``
 
     Returns:
-        str: The corresponding single letter amino acid sequence.    
-    
+        str: The corresponding single letter amino acid sequence.
+
     Raises:
         ValueError: If ``full_codons`` and the sequence is not a multiple of three.
         ValueError: If a codon is undefined in the table.
-        
+
     Examples:
         >>> translate_cds("ATGCGA")
         'MR'
@@ -581,39 +587,46 @@ def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=dna_t
 
     protein_seq = list()
     for i in range(0, len(seq) - len(seq) % 3, 3):
-        codon = seq[i:i + 3]
+        codon = seq[i : i + 3]
         try:
             aa = translation_table[codon]
         except KeyError:
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
-            if any([iupac_ambiguity_code in codon for iupac_ambiguity_code in iupac_ambiguity_codes]):
+            if any(
+                [
+                    iupac_ambiguity_code in codon
+                    for iupac_ambiguity_code in iupac_ambiguity_codes
+                ]
+            ):
                 aa = "X"
             else:
-                raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(
-                    codon, i + 1, i + 3))
+                raise ValueError(
+                    "Codon {} at position {}..{} is undefined in codon table".format(
+                        codon, i + 1, i + 3
+                    )
+                )
         protein_seq.append(aa)
 
     # check for trailing bases and add the ter symbol if required
     if not full_codons and len(seq) % 3 != 0:
         protein_seq.append(ter_symbol)
 
-    return ''.join(protein_seq)
+    return "".join(protein_seq)
 
 
 ## <LICENSE>
 ## Copyright 2014 Bioutils Contributors
-## 
+##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
 ## You may obtain a copy of the License at
-## 
+##
 ##     http://www.apache.org/licenses/LICENSE-2.0
-## 
+##
 ## Unless required by applicable law or agreed to in writing, software
 ## distributed under the License is distributed on an "AS IS" BASIS,
 ## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ## See the License for the specific language governing permissions and
 ## limitations under the License.
 ## </LICENSE>
-
