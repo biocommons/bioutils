@@ -33,7 +33,8 @@ import re
 from .exceptions import BioutilsError
 
 
-_ensembl_species_prefixes = "|".join("""ENS ENSACA ENSAME ENSAMX
+_ensembl_species_prefixes = "|".join(
+    """ENS ENSACA ENSAME ENSAMX
 ENSANA ENSAPL ENSBTA ENSCAF ENSCAN ENSCAP ENSCAT ENSCCA ENSCEL ENSCGR
 ENSCGR ENSCHI ENSCHO ENSCIN ENSCJA ENSCLA ENSCPO ENSCSA ENSCSAV ENSDAR
 ENSDNO ENSDOR ENSEBU ENSECA ENSEEU ENSETE ENSFAL ENSFCA ENSFDA ENSGAC
@@ -46,10 +47,12 @@ ENSSBO ENSSCE ENSSHA ENSSSC ENSSTO ENSTBE ENSTGU ENSTNI ENSTRU ENSTSY
 ENSTTR ENSVPA ENSXET ENSXMA FB MGP_129S1SvImJ_ MGP_AJ_ MGP_AKRJ_
 MGP_BALBcJ_ MGP_C3HHeJ_ MGP_C57BL6NJ_ MGP_CAROLIEiJ_ MGP_CASTEiJ_
 MGP_CBAJ_ MGP_DBA2J_ MGP_FVBNJ_ MGP_LPJ_ MGP_NODShiLtJ_ MGP_NZOHlLtJ_
-MGP_PWKPhJ_ MGP_PahariEiJ_ MGP_SPRETEiJ_ MGP_WSBEiJ_""".split())
+MGP_PWKPhJ_ MGP_PahariEiJ_ MGP_SPRETEiJ_ MGP_WSBEiJ_""".split()
+)
 _ensembl_feature_types_re = r"E|FM|G|GT|P|R|T"
 _ensembl_re = r"^(?:{})(?:{}){}$".format(
-    _ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?")
+    _ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?"
+)
 
 # map of regexp => namespace
 # TODO: make this namespace => [regexps] for clarity
@@ -60,34 +63,28 @@ ac_namespace_regexps = {
     # N.B. The regexp at http://identifiers.org/ensembl appears broken:
     # 1) Human only; 2) escaped backslashes (\\d rather than \d).
     _ensembl_re: "ensembl",
-
     # http://identifiers.org/insdc/
     # P12345, a UniProtKB accession matches the miriam regexp but shouldn't (I think)
-    r"^([A-Z]\d{5}|[A-Z]{2}\d{6}|[A-Z]{4}\d{8}|[A-J][A-Z]{2}\d{5})(\.\d+)?$":
-    "insdc",
-
+    r"^([A-Z]\d{5}|[A-Z]{2}\d{6}|[A-Z]{4}\d{8}|[A-J][A-Z]{2}\d{5})(\.\d+)?$": "insdc",
     # http://identifiers.org/refseq/
     # https://www.ncbi.nlm.nih.gov/books/NBK21091/table/ch18.T.refseq_accession_numbers_and_mole/
-    r"^((AC|AP|NC|NG|NM|NP|NR|NT|NW|XM|XP|XR|YP|ZP)_\d+|(NZ\_[A-Z]{4}\d+))(\.\d+)?$":
-    "refseq",
-
+    r"^((AC|AP|NC|NG|NM|NP|NR|NT|NW|XM|XP|XR|YP|ZP)_\d+|(NZ\_[A-Z]{4}\d+))(\.\d+)?$": "refseq",
     # Uniprot
     # http://identifiers.org/uniprot/
     # https://www.uniprot.org/help/accession_numbers
-    r"^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$":
-    "uniprot",
+    r"^(?:[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$": "uniprot",
 }
 
 ac_namespace_regexps = {re.compile(k): v for k, v in ac_namespace_regexps.items()}
 
 
 def chr22XY(c):
-    """Reformats chromosome to be of the form Chr1, ..., Chr22, ChrX, ChrY, etc. 
+    """Reformats chromosome to be of the form Chr1, ..., Chr22, ChrX, ChrY, etc.
 
-    Args:  
+    Args:
         c (str or int): A chromosome.
-    
-    Returns:    
+
+    Returns:
         str: The reformatted chromosome.
 
     Examples:
@@ -116,29 +113,29 @@ def chr22XY(c):
         'chrM'
     """
     c = str(c)
-    if c[0:3] == 'chr':
+    if c[0:3] == "chr":
         c = c[3:]
-    if c == '23':
-        c = 'X'
-    if c == '24':
-        c = 'Y'
-    return 'chr' + c
+    if c == "23":
+        c = "X"
+    if c == "24":
+        c = "Y"
+    return "chr" + c
 
 
 def coerce_namespace(ac):
     """Prefixes accession with inferred namespace if not present.
 
     Intended to be used to promote consistent and unambiguous accession identifiers.
-    
+
     Args:
         ac (str): The accession, with or without namespace prefixed.
-        
-    Returns:    
+
+    Returns:
         str: An identifier of the form "{namespace}:{acession}"
 
     Raises:
         ValueError: if accession sytax does not match the syntax of any namespace.
-    
+
     Examples:
         >>> coerce_namespace("refseq:NM_01234.5")
         'refseq:NM_01234.5'
@@ -167,14 +164,14 @@ def infer_namespace(ac):
 
     Args:
         ac (str): An accession, without the namespace prefix.
-        
+
     Returns:
         str or None: The unique namespace corresponding to accession syntax, if only one is inferred.
             None if the accesssion sytax does not match any namespace.
 
     Raises:
         BioutilsError: If multiple namespaces match the syntax of the accession.
-        
+
     Examples:
         >>> infer_namespace("ENST00000530893.6")
         'ensembl'
@@ -253,10 +250,10 @@ def prepend_chr(chr):
 
     Args:
         chr (str): The chromosome.
-        
-    Returns:    
+
+    Returns:
         str: The chromosome with 'chr' prepended.
-        
+
     Examples:
         >>> prepend_chr('22')
         'chr22'
@@ -264,7 +261,7 @@ def prepend_chr(chr):
         >>> prepend_chr('chr22')
         'chr22'
     """
-    return chr if chr[0:3] == 'chr' else 'chr' + chr
+    return chr if chr[0:3] == "chr" else "chr" + chr
 
 
 def strip_chr(chr):
@@ -272,10 +269,10 @@ def strip_chr(chr):
 
     Args:
         chr (str): The chromosome.
-        
-    Returns:    
+
+    Returns:
         str: The chromosome without a 'chr' prefix.
-        
+
     Examples:
         >>> strip_chr('22')
         '22'
@@ -283,7 +280,7 @@ def strip_chr(chr):
         >>> strip_chr('chr22')
         '22'
     """
-    return chr[3:] if chr[0:3] == 'chr' else chr
+    return chr[3:] if chr[0:3] == "chr" else chr
 
 
 ## <LICENSE>

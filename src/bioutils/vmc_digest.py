@@ -11,12 +11,12 @@ DEFAULT_DIGEST_SIZE = 24
 
 
 def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
-    """Returns the VMC Digest as a Digest object, which has both bytes and 
+    """Returns the VMC Digest as a Digest object, which has both bytes and
     string (URL-safe, Base 64) representations.
 
     >>> d = vmc_digest("")
 
-    .. # I can't figure out how to make this test work on Py 2 and 3 :-(  
+    .. # I can't figure out how to make this test work on Py 2 and 3 :-(
 
     .. >>> d                       # doctest: +SKIP
     .. b'\xcf\x83\xe15~\xef\xb8\xbd\xf1T(P\xd6m\x80'
@@ -30,12 +30,12 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
     >>> str(vmc_digest("", 24))
     'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
 
-    >>> vmc_digest("", 17) 
+    >>> vmc_digest("", 17)
     Traceback (most recent call last):
     ...
     ValueError: digest_size must be a multiple of 3
 
-    >>> vmc_digest("", 66) 
+    >>> vmc_digest("", 66)
     Traceback (most recent call last):
     ...
     ValueError: digest_size must be between 0 and 63 (bytes)
@@ -74,36 +74,36 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
     For various values of ``m`` and ``P``, the number of *bytes* required
     according to ``b(m,P)`` rounded to next multiple of 3 is:
 
-    +---------+-----------+-----------+-----------+-----------+-----------+-----------+  
-    |    #m   |``P<1e-24``|``P<1e-21``|``P<1e-18``|``P<1e-15``|``P<1e-12``|``P<1e-09``|   
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
-    |``1e+06``|     15    |     12    |     12    |     9     |     9     |     9     |  
-    +---------+-----------+-----------+-----------+-----------+-----------+-----------+ 
-    |``1e+09``|     15    |     15    |     12    |     12    |     9     |     9     |  
+    |    #m   |``P<1e-24``|``P<1e-21``|``P<1e-18``|``P<1e-15``|``P<1e-12``|``P<1e-09``|
+    +---------+-----------+-----------+-----------+-----------+-----------+-----------+
+    |``1e+06``|     15    |     12    |     12    |     9     |     9     |     9     |
+    +---------+-----------+-----------+-----------+-----------+-----------+-----------+
+    |``1e+09``|     15    |     15    |     12    |     12    |     9     |     9     |
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
     |``1e+12``|     15    |     15    |     15    |     12    |     12    |     9     |
-    +---------+-----------+-----------+-----------+-----------+-----------+-----------+ 
+    +---------+-----------+-----------+-----------+-----------+-----------+-----------+
     |``1e+15``|     18    |     15    |     15    |     15    |     12    |     12    |
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
     |``1e+18``|     18    |     18    |     15    |     15    |     15    |     12    |
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
     |``1e+21``|     21    |     18    |     18    |     15    |     15    |     15    |
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
-    |``1e+24``|     21    |     21    |     18    |     18    |     15    |     15    |  
+    |``1e+24``|     21    |     21    |     18    |     18    |     15    |     15    |
     +---------+-----------+-----------+-----------+-----------+-----------+-----------+
 
     For example, given ``1e+18`` expected messages and a desired collision
     probability ``< 1e-15``, we use ``digest_size = 15`` (bytes).
-    
-    References:
-        - [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf  
-        - [2] https://tools.ietf.org/html/rfc3548#section-4  
-        - [3] http://stackoverflow.com/a/4014407/342839  
-        - [4] http://stackoverflow.com/a/22029380/342839  
-        - [5] http://preshing.com/20110504/hash-collision-probabilities/  
-        - [6] https://en.wikipedia.org/wiki/Birthday_problem  
 
-    """ 
+    References:
+        - [1] http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
+        - [2] https://tools.ietf.org/html/rfc3548#section-4
+        - [3] http://stackoverflow.com/a/4014407/342839
+        - [4] http://stackoverflow.com/a/22029380/342839
+        - [5] http://preshing.com/20110504/hash-collision-probabilities/
+        - [6] https://en.wikipedia.org/wiki/Birthday_problem
+
+    """
 
     # TODO: Consider relaxing %3 constraint and stripping padding
     if digest_size % 3 != 0:
