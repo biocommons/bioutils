@@ -4,6 +4,7 @@
 
 import gzip
 import json
+
 import pkg_resources
 
 _data_dir = "_data/cytobands"

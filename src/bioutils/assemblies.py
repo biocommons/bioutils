@@ -25,6 +25,7 @@ Definitions:
 
 import gzip
 import json
+
 import pkg_resources
 
 _assy_dir = "_data/assemblies"

@@ -4,8 +4,8 @@
 
 import logging
 import re
-from string import ascii_lowercase
 from enum import Enum
+from string import ascii_lowercase
 
 _logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 from functools import partial
 
-from bioutils.normalize import NormalizationMode, normalize
-
 import pytest
+
+from bioutils.normalize import NormalizationMode, normalize
 
 sequence = "CCCCCCCCACACACACACTAGCAGCAGCA"
 

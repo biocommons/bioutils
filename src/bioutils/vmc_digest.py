@@ -5,7 +5,6 @@ import hashlib
 
 from .digest import Digest
 
-
 ENC = "UTF-8"
 DEFAULT_DIGEST_SIZE = 24
 

@@ -1,4 +1,5 @@
 import pytest
+
 from bioutils.sequences import translate_cds
 from src.bioutils.sequences import TranslationTable
 
