@@ -498,6 +498,8 @@ def replace_u_to_t(seq):
 
 
 class StrEnum(str, Enum):
+    """utility class"""
+
     def __str__(self) -> str:
         return str.__str__(self)
 
@@ -506,6 +508,8 @@ class StrEnum(str, Enum):
 
 
 class TranslationTable(StrEnum):
+    """An enum that controls switching between standard and selenocysteine translation tables."""
+
     standard = "standard"
     selenocysteine = "sec"
 
