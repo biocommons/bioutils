@@ -32,7 +32,8 @@ For code clarity, this module provides functions that interconvert
 *intervals* specified in each of the coordinate systems.
 """
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 PLUS_STRAND = 1
 MINUS_STRAND = -1
@@ -43,10 +44,10 @@ def strand_pm_to_int(s):
 
     Args:
         s (string)
-        
+
     Returns:
-        int: 1 if s == '+', -1 if s == '-', otherwise None. 
-    
+        int: 1 if s == '+', -1 if s == '-', otherwise None.
+
     Examples:
         >>> strand_pm_to_int('+')
         1
@@ -54,7 +55,7 @@ def strand_pm_to_int(s):
         -1
         >>> strand_pm_to_int('arglefargle')
     """
-    return PLUS_STRAND if s == '+' else MINUS_STRAND if s == '-' else None
+    return PLUS_STRAND if s == "+" else MINUS_STRAND if s == "-" else None
 
 
 def strand_int_to_pm(i):
@@ -62,10 +63,10 @@ def strand_int_to_pm(i):
 
     Args:
         i (int)
-        
-    Returns:    
+
+    Returns:
         str: '+' if i == 1, '-' if i == -1, otherwise None.
-       
+
     Examples:
         >>> strand_int_to_pm(1)
         '+'
@@ -74,20 +75,20 @@ def strand_int_to_pm(i):
         >>> strand_int_to_pm(42)
     """
 
-    return '+' if i == PLUS_STRAND else '-' if i == MINUS_STRAND else None
+    return "+" if i == PLUS_STRAND else "-" if i == MINUS_STRAND else None
 
 
 strand_pm = strand_int_to_pm
 
 ## <LICENSE>
 ## Copyright 2014 Bioutils Contributors (https://bitbucket.org/biocommons/bioutils)
-## 
+##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
 ## You may obtain a copy of the License at
-## 
+##
 ##     http://www.apache.org/licenses/LICENSE-2.0
-## 
+##
 ## Unless required by applicable law or agreed to in writing, software
 ## distributed under the License is distributed on an "AS IS" BASIS,
 ## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

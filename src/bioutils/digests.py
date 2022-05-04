@@ -15,10 +15,10 @@ def seq_seqhash(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
+
     Returns:
         str: 24-byte Truncated Digest representation of sequence.
-   
+
     Examples:
         >>> seq_seqhash("")
         'z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'
@@ -47,10 +47,10 @@ def seq_seguid(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
+
     Returns:
         str: seguid representation of sequence.
-   
+
     Examples:
         >>> seq_seguid('')
         '2jmj7l5rSw0yVb/vlWAYkK/YBwk'
@@ -67,8 +67,7 @@ def seq_seguid(seq, normalize=True):
 
     seq = normalize_sequence(seq) if normalize else seq
     bseq = seq.encode("ascii")
-    return base64.b64encode(hashlib.sha1(bseq).digest()).decode("ascii").rstrip(
-        '=')
+    return base64.b64encode(hashlib.sha1(bseq).digest()).decode("ascii").rstrip("=")
 
 
 def seq_md5(seq, normalize=True):
@@ -79,10 +78,10 @@ def seq_md5(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
-    Returns:    
+
+    Returns:
         str: Unicode md5 hex digest representation of sequence.
- 
+
     Examples:
         >>> seq_md5('')
         'd41d8cd98f00b204e9800998ecf8427e'
@@ -116,10 +115,10 @@ def seq_sha1(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks before encoding.
             Defaults to ``True``.
-        
-    Returns:    
+
+    Returns:
         str: Unicode sha1 hexdigest representation of sequence.
- 
+
     Examples:
         >>> seq_sha1('')
         'da39a3ee5e6b4b0d3255bfef95601890afd80709'
@@ -147,8 +146,8 @@ def seq_sha512(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
-    Returns:    
+
+    Returns:
         str: Unicode sha512 hexdigest representation of sequence.
 
     Examples:
@@ -180,9 +179,9 @@ def seq_vmc_id(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
-    Returns:    
-        str: VMC id representation of sequence.    
+
+    Returns:
+        str: VMC id representation of sequence.
 
     Examples:
         >>> seq_vmc_id("")
@@ -199,7 +198,8 @@ def seq_vmc_id(seq, normalize=True):
     """
 
     return "{ir[namespace]}:{ir[accession]}".format(
-        ir=seq_vmc_identifier(seq, normalize))
+        ir=seq_vmc_identifier(seq, normalize)
+    )
 
 
 def seq_vmc_identifier(seq, normalize=True):
@@ -212,10 +212,10 @@ def seq_vmc_identifier(seq, normalize=True):
         normalize (bool, optional): Whether to normalize the sequence before conversion,
             i.e. to ensure representation as uppercase letters without whitespace or asterisks.
             Defaults to ``True``.
-        
-    Returns:    
+
+    Returns:
         str: VMC identifier (record) representation of sequnce.
-        
+
     Examples:
         >>> seq_vmc_identifier("") == {'namespace': 'VMC', 'accession': 'GS_z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXc'}
         True
@@ -229,6 +229,6 @@ def seq_vmc_identifier(seq, normalize=True):
         >>> seq_vmc_identifier("acgt", normalize=False) == {'namespace': 'VMC', 'accession': 'GS_eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'}
         True
     """
-    
+
     seq = normalize_sequence(seq) if normalize else seq
     return {"namespace": "VMC", "accession": "GS_" + str(vmc_digest(seq))}

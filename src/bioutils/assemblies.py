@@ -25,18 +25,19 @@ Definitions:
 
 import gzip
 import json
+
 import pkg_resources
 
-_assy_dir = '_data/assemblies'
-_assy_path_fmt = _assy_dir + '/' + '{name}.json.gz'
+_assy_dir = "_data/assemblies"
+_assy_path_fmt = _assy_dir + "/" + "{name}.json.gz"
 
 
 def get_assembly_names():
     """Retrieves available assemblies from the ``_data/assemblies`` directory.
 
-    Returns:    
-        list of str: The names of the available assemblies.    
-   
+    Returns:
+        list of str: The names of the available assemblies.
+
     Examples:
         >>> assy_names = get_assembly_names()
 
@@ -56,11 +57,11 @@ def get_assembly(name):
 
     Args:
         name (str): The name of the assembly to retrieve data for.
-        
-    Returns:    
+
+    Returns:
         dict: A dictionary of the assembly data. See examples for details.
 
-        
+
     Examples:
         >>> assy = get_assembly('GRCh37.p13')
 
@@ -91,8 +92,7 @@ def get_assembly(name):
         'sequence_role': 'assembled-molecule'}
     """
 
-    fn = pkg_resources.resource_filename(
-        __name__, _assy_path_fmt.format(name=name))
+    fn = pkg_resources.resource_filename(__name__, _assy_path_fmt.format(name=name))
     return json.load(gzip.open(fn, mode="rt", encoding="utf-8"))
 
 
@@ -103,11 +103,11 @@ def get_assemblies(names=[]):
 
     Args:
         names (list of str, optional): The names of the assemblies to retrieve data for.
-        
+
     Returns:
         dict: A dictionary of the form ``{assembly_name, : assembly_data}``, where the values
             are the dictionaries of assembly data as described in ``get_assembly()``.
-    
+
     Examples:
         >>> assemblies = get_assemblies(names=['GRCh37.p13'])
         >>> assy = assemblies['GRCh37.p13']
@@ -119,7 +119,7 @@ def get_assemblies(names=[]):
 
     if names == []:
         names = get_assembly_names()
-    return {a['name']: a for a in (get_assembly(n) for n in names)}
+    return {a["name"]: a for a in (get_assembly(n) for n in names)}
 
 
 def make_name_ac_map(assy_name, primary_only=False):
@@ -129,20 +129,20 @@ def make_name_ac_map(assy_name, primary_only=False):
         assy_name (str): The name of the assembly to make a map for.
         primary_only (bool, optional): Whether to include only primary sequences.
             Defaults to False.
-        
-    Returns:  
+
+    Returns:
         dict: A dictionary of the form ``{sequence_name : accession}`` for sequences in the given assembly,
             Where sequence_name and accession are both strings.
-    
+
     Examples:
         >>> grch38p5_name_ac_map = make_name_ac_map('GRCh38.p5')
         >>> grch38p5_name_ac_map['1']
         'NC_000001.11'
     """
-    
+
     return {
-        s['name']: s['refseq_ac']
-        for s in get_assembly(assy_name)['sequences']
+        s["name"]: s["refseq_ac"]
+        for s in get_assembly(assy_name)["sequences"]
         if (not primary_only or _is_primary(s))
     }
 
@@ -154,12 +154,12 @@ def make_ac_name_map(assy_name, primary_only=False):
         assy_name (str): The name of the assembly to make a map for.
         primary_only (bool, optional): Whether to include only primary sequences.
             Defaults to False.
-    
-    Returns:    
+
+    Returns:
         dict: A dictionary of the form ``{accesssion : sequence_name}`` for accessions in the given assembly,
             where accession and sequence_name are strings.
 
-        
+
     Examples:
         >>> grch38p5_ac_name_map = make_ac_name_map('GRCh38.p5')
         >>> grch38p5_ac_name_map['NC_000001.11']
@@ -167,8 +167,8 @@ def make_ac_name_map(assy_name, primary_only=False):
     """
 
     return {
-        s['refseq_ac']: s['name']
-        for s in get_assembly(assy_name)['sequences']
+        s["refseq_ac"]: s["name"]
+        for s in get_assembly(assy_name)["sequences"]
         if (not primary_only or _is_primary(s))
     }
 
@@ -182,17 +182,17 @@ def _is_primary(s):
 
     Args:
         s (dict): A dictionary of sequence data, e.g. those in assembly['sequences'].
-        
+
     Returns:
         bool: True if the sequence is part of the primary assembly, False otherwise.
-    
+
 
     Examples:
         >>> _is_primary({'assembly_unit': 'Primary Assembly'})
         True
-        
+
         >>> _is_primary({'assembly_unit': 'Something else entirely'})
         False
     """
 
-    return s['assembly_unit'] == 'Primary Assembly'
+    return s["assembly_unit"] == "Primary Assembly"

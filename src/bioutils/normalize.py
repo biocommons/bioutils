@@ -5,15 +5,17 @@
 
 import copy
 import enum
-import math
 import logging
+import math
 
 import attr
 
 _logger = logging.getLogger(__name__)
 debug = False
 
-NormalizationMode = enum.Enum("NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF")
+NormalizationMode = enum.Enum(
+    "NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF"
+)
 """Enum passed to normalize to select the normalization mode.
 
 Attributes:
@@ -26,28 +28,28 @@ Attributes:
 
 
 def normalize(
-        sequence,
-        interval,
-        alleles,
-        mode=NormalizationMode.EXPAND,
-        bounds=None,
-        anchor_length=0,
+    sequence,
+    interval,
+    alleles,
+    mode=NormalizationMode.EXPAND,
+    bounds=None,
+    anchor_length=0,
 ):
     """Normalizes the alleles that co-occur on sequence at interval, ensuring comparable representations.
 
     Args:
         sequence (str or iterable): The reference sequence; must support indexing and ``__getitem__``.
-        interval (2-tuple of int): The location of alleles in the reference sequence as ``(start, end)``. 
-            Interbase coordinates. 
-        alleles (iterable of str): The sequences to be normalized. The first element 
+        interval (2-tuple of int): The location of alleles in the reference sequence as ``(start, end)``.
+            Interbase coordinates.
+        alleles (iterable of str): The sequences to be normalized. The first element
             corresponds to the reference sequence being unchanged and must be None.
-        bounds (2-tuple of int, optional): Maximal extent of normalization left and right. 
+        bounds (2-tuple of int, optional): Maximal extent of normalization left and right.
             Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
         mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
             Defaults to ``EXPAND``.
         anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
 
-    Returns: 
+    Returns:
         tuple: ``(new_interval, [new_alleles])``
 
     Raises:
@@ -55,7 +57,7 @@ def normalize(
         ValueError: If the interval start is greater than the end.
         ValueError: If the first (reference) allele is not `None`.
         ValueError: If there are not at least two distinct alleles.
-    
+
     Examples:
         >>> sequence = "CCCCCCCCACACACACACTAGCAGCAGCA"
         >>> normalize(sequence, interval=(22,25), alleles=(None, "GC", "AGCAC"), mode='TRIMONLY')
@@ -80,24 +82,32 @@ def normalize(
     left_anchor = right_anchor = anchor_length
 
     if not isinstance(mode, NormalizationMode):
-        mode = NormalizationMode[mode]    # e.g., mode="LEFTSHUFFLE" OK
+        mode = NormalizationMode[mode]  # e.g., mode="LEFTSHUFFLE" OK
 
     if mode == NormalizationMode.VCF:
         if anchor_length:
-            raise ValueError("May not provide non-zero anchor size with VCF normalization mode")
+            raise ValueError(
+                "May not provide non-zero anchor size with VCF normalization mode"
+            )
         mode = NormalizationMode.LEFTSHUFFLE
         left_anchor = 1
         right_anchor = 0
 
     if alleles[0] is not None:
         raise ValueError("First allele, the reference allele, must be None")
-    alleles = list(alleles)    # in case tuple
-    alleles[0] = sequence[interval.start:interval.end]
+    alleles = list(alleles)  # in case tuple
+    alleles[0] = sequence[interval.start : interval.end]
     if len(set(alleles)) < 2:
         raise ValueError("Must have at least two distinct alleles to normalize")
 
     if debug:
-        _print_state(interval, bounds, sequence=sequence, alleles=alleles, comment="Starting state")
+        _print_state(
+            interval,
+            bounds,
+            sequence=sequence,
+            alleles=alleles,
+            comment="Starting state",
+        )
 
     # Trim: remove common suffix, prefix, and adjust interval to match
     l_trimmed, alleles = trim_left(alleles)
@@ -105,7 +115,13 @@ def normalize(
     r_trimmed, alleles = trim_right(alleles)
     interval.end -= r_trimmed
     if debug:
-        _print_state(interval, bounds, sequence=sequence, alleles=alleles, comment="After trimming")
+        _print_state(
+            interval,
+            bounds,
+            sequence=sequence,
+            alleles=alleles,
+            comment="After trimming",
+        )
 
     lens = [len(a) for a in alleles]
 
@@ -131,27 +147,39 @@ def normalize(
         ldist = roll_left(sequence, alleles, interval.start - 1, bounds.start)
         rdist = roll_right(sequence, alleles, interval.end, bounds.end - 1)
 
-        lseq = sequence[interval.start - ldist:interval.start]
-        rseq = sequence[interval.end:interval.end + rdist]
+        lseq = sequence[interval.start - ldist : interval.start]
+        rseq = sequence[interval.end : interval.end + rdist]
         alleles = [lseq + a + rseq for a in alleles]
 
         interval.start -= ldist
         interval.end += rdist
 
     if debug:
-        _print_state(interval, bounds, sequence=sequence, alleles=alleles, comment=f"After {mode}")
+        _print_state(
+            interval,
+            bounds,
+            sequence=sequence,
+            alleles=alleles,
+            comment=f"After {mode}",
+        )
 
     # Add left and/or right flanking sequence
     if left_anchor or right_anchor:
         anchor_left = max(bounds.start, interval.start - left_anchor)
         anchor_right = min(bounds.end, interval.end + right_anchor)
-        left_anchor_seq = sequence[anchor_left:interval.start]
-        right_anchor_seq = sequence[interval.end:anchor_right]
+        left_anchor_seq = sequence[anchor_left : interval.start]
+        right_anchor_seq = sequence[interval.end : anchor_right]
         interval.start = anchor_left
         interval.end = anchor_right
         alleles = [left_anchor_seq + a + right_anchor_seq for a in alleles]
         if debug:
-            _print_state(interval, bounds, sequence=sequence, alleles=alleles, comment="After anchoring")
+            _print_state(
+                interval,
+                bounds,
+                sequence=sequence,
+                alleles=alleles,
+                comment="After anchoring",
+            )
 
     return (interval.start, interval.end), tuple(alleles)
 
@@ -172,7 +200,7 @@ def trim_left(alleles):
 
     Args:
         alleles (list of str): A list of alleles.
-        
+
     Returns:
         tuple: ``(number_trimmed, [new_alleles])``.
 
@@ -242,7 +270,7 @@ def trim_right(alleles):
 
 
 def roll_left(sequence, alleles, ref_pos, bound):
-    """Determines common distance all alleles can be rolled (circularly permuted) left 
+    """Determines common distance all alleles can be rolled (circularly permuted) left
     within the reference sequence without altering it.
 
     Args:
@@ -250,7 +278,7 @@ def roll_left(sequence, alleles, ref_pos, bound):
         alleles (list of str): The sequences to be normalized.
         ref_pos (int): The beginning index for rolling.
         bound (int): The lower bound index in the reference sequence for normalization, hence also for rolling.
-    
+
     Returns:
         int: The distance that the alleles can be rolled.
     """
@@ -259,13 +287,16 @@ def roll_left(sequence, alleles, ref_pos, bound):
     lens = [len(a) for a in alleles]
     d = 0
     max_d = ref_pos - bound
-    while (d <= max_d and not any(a and a[-(d + 1) % lens[i]] != sequence[ref_pos - d] for i, a in enumerate(alleles))):
+    while d <= max_d and not any(
+        a and a[-(d + 1) % lens[i]] != sequence[ref_pos - d]
+        for i, a in enumerate(alleles)
+    ):
         d += 1
     return d
 
 
 def roll_right(sequence, alleles, ref_pos, bound):
-    """Determines common distance all alleles can be rolled (circularly permuted) right 
+    """Determines common distance all alleles can be rolled (circularly permuted) right
     within the reference sequence without altering it.
 
     Args:
@@ -276,12 +307,14 @@ def roll_right(sequence, alleles, ref_pos, bound):
     Returns:
         int: The distance that the alleles can be rolled
     """
-    
+
     # circularly permute sequence d steps, using modulo arithmetic
     lens = [len(a) for a in alleles]
     d = 0
     max_d = bound - ref_pos
-    while (d <= max_d and not any(a and a[d % lens[i]] != sequence[ref_pos + d] for i, a in enumerate(alleles))):
+    while d <= max_d and not any(
+        a and a[d % lens[i]] != sequence[ref_pos + d] for i, a in enumerate(alleles)
+    ):
         d += 1
     return d
 
@@ -293,13 +326,7 @@ pfx = "        "
 
 
 def _print_state(interval, bounds, sequence, alleles, comment):
-    """
-    
-    
-    
-    
-    
-    """
+    """ """
     line = pfx + "  " * interval.start + "^"
     if interval.end > interval.start:
         line += "-" * ((interval.end - interval.start - 1) * 2 + 1) + "^"
@@ -307,14 +334,20 @@ def _print_state(interval, bounds, sequence, alleles, comment):
     return
 
     margin = 15
-    leftseq = sequence[max(0, interval.start - margin):interval.start]
-    rightseq = sequence[interval.end:interval.end + margin]
+    leftseq = sequence[max(0, interval.start - margin) : interval.start]
+    rightseq = sequence[interval.end : interval.end + margin]
 
     row_fmt = "{:>20.20s}{:>20.20s}{:^20.20s}{:<20.20s}{:<20.20s}"
     rows = [
-        row_fmt.format(str(bounds.start), "", f"[{interval.start},{interval.end})", "", str(bounds.end)),
+        row_fmt.format(
+            str(bounds.start),
+            "",
+            f"[{interval.start},{interval.end})",
+            "",
+            str(bounds.end),
+        ),
         row_fmt.format("//", "|", "", "|", "//"),
-        row_fmt.format("", leftseq, alleles[0], rightseq, "")
+        row_fmt.format("", leftseq, alleles[0], rightseq, ""),
     ] + [row_fmt.format("", "", a, "", "") for a in alleles[1:]]
     print("\n".join(rows))
 
@@ -324,7 +357,7 @@ def _print_seq_row(sequence):
     print(pfx + " " + " ".join(sequence))
 
 
-if __name__ == "__main__":    # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     from functools import partial
 
     if debug:
@@ -336,27 +369,18 @@ if __name__ == "__main__":    # pragma: no cover
     #     C C C C C C C C A C A C A C A C A C T A G C A G C A G C A T
 
     tests = [
-    #{"interval": (5,5), "alleles": [None, "C"]},
-    #{"interval": (5,6), "alleles": [None, "CC"]},
-    #{"interval": (5,6), "alleles": [None, ""]},
-    #{"interval": (13,13), "alleles": [None, "CA"]},
-    #{"interval": (14,14), "alleles": [None, "AC"]},
-    #{"interval": (13,15), "alleles": [None, ""]},
-        {
-            "interval": (22, 22),
-            "alleles": [None, "AGC"]
-        },
-        {
-            "interval": (22, 22),
-            "alleles": [None, "AGCT"]
-        },
-        {
-            "interval": (22, 22),
-            "alleles": [None, "AGC", "AGCT"]
-        },
-    #{"interval": (22,25), "alleles": [None, ""]},
-    #{"interval": (22,25), "alleles": [None, "", "AGC"]},
-    #{"interval": (22,25), "alleles": [None, "", "AGCAGC"]},
+        # {"interval": (5,5), "alleles": [None, "C"]},
+        # {"interval": (5,6), "alleles": [None, "CC"]},
+        # {"interval": (5,6), "alleles": [None, ""]},
+        # {"interval": (13,13), "alleles": [None, "CA"]},
+        # {"interval": (14,14), "alleles": [None, "AC"]},
+        # {"interval": (13,15), "alleles": [None, ""]},
+        {"interval": (22, 22), "alleles": [None, "AGC"]},
+        {"interval": (22, 22), "alleles": [None, "AGCT"]},
+        {"interval": (22, 22), "alleles": [None, "AGC", "AGCT"]},
+        # {"interval": (22,25), "alleles": [None, ""]},
+        # {"interval": (22,25), "alleles": [None, "", "AGC"]},
+        # {"interval": (22,25), "alleles": [None, "", "AGCAGC"]},
     ]
 
     normalize_seq = partial(normalize, sequence=sequence)
@@ -376,9 +400,11 @@ if __name__ == "__main__":    # pragma: no cover
         print(f"assert {result} == normalize_seq({kwargs})")
 
     for test in tests:
-        print("############################################################################")
-        for mode in ("EXPAND", ):    # "LEFTSHUFFLE", "RIGHTSHUFFLE", "EXPAND"):
-            for bm in (None, ):
+        print(
+            "############################################################################"
+        )
+        for mode in ("EXPAND",):  # "LEFTSHUFFLE", "RIGHTSHUFFLE", "EXPAND"):
+            for bm in (None,):
                 if bm is None:
                     bounds = None
                 else:
