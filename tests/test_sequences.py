@@ -33,3 +33,10 @@ def test_translate_selenoproteins():
     assert translate_cds("AUGTGATAA") == "M**"
     assert translate_cds("AUGTGATAA", translation_table=dna_to_aa1_lut) == "M**"
     assert translate_cds("AUGTGATAA", translation_table=dna_to_aa1_sec) == "MU*"
+    assert (
+        translate_cds("AUGTGATA", translation_table=dna_to_aa1_sec, full_codons=False)
+        == "MU*"
+    )
+
+    with pytest.raises(ValueError):
+        translate_cds("AUGTGATA", translation_table=dna_to_aa1_sec)
