@@ -1,9 +1,5 @@
-import os
 import pytest
-from bioutils.sequences import translate_cds, normalize_sequence
-from bioutils.sequences import dna_to_aa1_lut
-from bioutils.sequences import dna_to_aa1_sec
-
+from bioutils.sequences import translate_cds
 from src.bioutils.sequences import TranslationTable
 
 
