@@ -5,7 +5,7 @@
 import logging
 import re
 from string import ascii_lowercase
-
+from enum import Enum
 
 _logger = logging.getLogger(__name__)
 
@@ -497,8 +497,21 @@ def replace_u_to_t(seq):
     return seq.replace("U", "T").replace("u", "t")
 
 
+class StrEnum(str, Enum):
+    def __str__(self) -> str:
+        return str.__str__(self)
+
+    def __repr__(self) -> str:
+        return str.__repr__(self)
+
+
+class TranslationTable(StrEnum):
+    standard = "standard"
+    selenocysteine = "sec"
+
+
 def translate_cds(
-    seq, full_codons=True, ter_symbol="*", translation_table=dna_to_aa1_lut
+    seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard
 ):
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
 
@@ -512,9 +525,10 @@ def translate_cds(
         ter_symbol (str, optional): Placeholder for the last amino acid if
             sequence length is not divisible by three and ``full_codons`` is False.
             Defaults to ``'*'``
-        translation_table (dict, optional): the codon to amino acid translation table to use.
-            By default will use the standard translation table for humans. To enable translation for selenoproteins,
-            the dna_to_aa1_sec table can get used
+        translation_table (TranslationTable, optional): One of the options from the TranslationTable. It indicates
+            which codon to amino acid translation table to use.
+            By default we will use the standard translation table for humans. To enable translation for selenoproteins,
+            the TranslationTable.selenocysteine table can get used
 
     Returns:
         str: The corresponding single letter amino acid sequence.
@@ -582,6 +596,12 @@ def translate_cds(
     if full_codons and len(seq) % 3 != 0:
         raise ValueError("Sequence length must be a multiple of three")
 
+    if translation_table == TranslationTable.standard:
+        trans_table = dna_to_aa1_lut
+    elif translation_table == TranslationTable.selenocysteine:
+        trans_table = dna_to_aa1_sec
+    else:
+        raise ValueError("Unsupported translation table {}".format(translation_table))
     seq = replace_u_to_t(seq)
     seq = seq.upper()
 
@@ -589,7 +609,7 @@ def translate_cds(
     for i in range(0, len(seq) - len(seq) % 3, 3):
         codon = seq[i : i + 3]
         try:
-            aa = translation_table[codon]
+            aa = trans_table[codon]
         except KeyError:
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"

@@ -4,6 +4,8 @@ from bioutils.sequences import translate_cds, normalize_sequence
 from bioutils.sequences import dna_to_aa1_lut
 from bioutils.sequences import dna_to_aa1_sec
 
+from src.bioutils.sequences import TranslationTable
+
 
 def test_translate_examples():
     """test for standard translation table"""
@@ -31,12 +33,21 @@ def test_translate_examples():
 def test_translate_selenoproteins():
     """unit test for sec codon"""
     assert translate_cds("AUGTGATAA") == "M**"
-    assert translate_cds("AUGTGATAA", translation_table=dna_to_aa1_lut) == "M**"
-    assert translate_cds("AUGTGATAA", translation_table=dna_to_aa1_sec) == "MU*"
     assert (
-        translate_cds("AUGTGATA", translation_table=dna_to_aa1_sec, full_codons=False)
+        translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**"
+    )
+    assert (
+        translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine)
+        == "MU*"
+    )
+    assert (
+        translate_cds(
+            "AUGTGATA",
+            translation_table=TranslationTable.selenocysteine,
+            full_codons=False,
+        )
         == "MU*"
     )
 
     with pytest.raises(ValueError):
-        translate_cds("AUGTGATA", translation_table=dna_to_aa1_sec)
+        translate_cds("AUGTGATA", translation_table=TranslationTable.selenocysteine)
