@@ -1,7 +1,7 @@
 import pytest
 
 from bioutils.sequences import translate_cds
-from src.bioutils.sequences import TranslationTable
+from bioutils.sequences import TranslationTable
 
 
 def test_translate_examples():
@@ -30,21 +30,13 @@ def test_translate_examples():
 def test_translate_selenoproteins():
     """unit test for sec codon"""
     assert translate_cds("AUGTGATAA") == "M**"
-    assert (
-        translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**"
-    )
-    assert (
-        translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine)
-        == "MU*"
-    )
-    assert (
-        translate_cds(
-            "AUGTGATA",
-            translation_table=TranslationTable.selenocysteine,
-            full_codons=False,
-        )
-        == "MU*"
-    )
+    assert (translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**")
+    assert (translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine) == "MU*")
+    assert (translate_cds(
+        "AUGTGATA",
+        translation_table=TranslationTable.selenocysteine,
+        full_codons=False,
+    ) == "MU*")
 
     with pytest.raises(ValueError):
         translate_cds("AUGTGATA", translation_table=TranslationTable.selenocysteine)

@@ -11,8 +11,9 @@ SELF:=$(firstword $(MAKEFILE_LIST))
 PKG=bioutils
 PKGD=$(subst .,/,${PKG})
 
+
 PYV=3.8
-VEDIR=venv/${PYV}
+VE_DIR=venv/${PYV}
 
 
 ############################################################################
@@ -21,37 +22,40 @@ default: help
 
 #=> help -- display this help message
 help:
-	@sbin/makefile-extract-documentation "${SELF}"
+	@sbin/makefile-extract-documentation "$(firstword $(MAKEFILE_LIST))"
 
 
 ############################################################################
 #= SETUP, INSTALLATION, PACKAGING
 
-#=> devready: create venv and install pkg in develop mode
+#=> devready: create venv, install prerequisites, install pkg in develop mode
 .PHONY: devready
 devready:
-	make ${VEDIR} && source ${VEDIR}/bin/activate && make develop
+	make ${VE_DIR} && source ${VE_DIR}/bin/activate && make develop
 	@echo '#################################################################################'
-	@echo '###  Do not forget to `source ${VEDIR}/bin/activate` to use this environment  ###'
+	@echo '###  Do not forget to `source ${VE_DIR}/bin/activate` to use this environment  ###'
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
-venv/3 venv/3.5 venv/3.6 venv/3.7 venv/3.8: venv/%:
+${VE_DIR}: venv/%:
 	python$* -mvenv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
-	pip install --upgrade pip setuptools
-
-#=> develop: install package in develop mode
-develop:
-	pip install -e .[dev]
+	pip install --upgrade pip setuptools wheel
 
 #=> install: install package
-#=> bdist bdist_egg bdist_wheel build sdist: distribution options
-.PHONY: bdist bdist_egg bdist_wheel build build_sphinx sdist install
-bdist bdist_egg bdist_wheel build sdist install: %:
-	python setup.py $@
+#=> develop: install package in develop mode
+.PHONY: develop install
+develop:
+	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
+	pip install -e .[dev]
+install:
+	pip install .
 
+#=> build: make sdist and wheel
+.PHONY: build
+build: %:
+	python -m build
 
 
 ############################################################################
@@ -59,12 +63,17 @@ bdist bdist_egg bdist_wheel build sdist install: %:
 # see test configuration in setup.cfg
 
 #=> test: execute tests
-.PHONY: test
+#=> test-code: test code (including embedded doctests)
+#=> test-docs: test example code in docs
+.PHONY: test test-code test-docs
 test:
-	python setup.py test 
+	pytest
+test-code:
+	pytest src
+test-docs:
+	pytest docs
 
-#=> tox: execute tests via tox
-.PHONY: tox
+#=> tox -- run all tox tests
 tox:
 	tox
 
@@ -76,16 +85,17 @@ tox:
 #=> reformat: reformat code with yapf and commit
 .PHONY: reformat
 reformat:
-	@if hg sum | grep -qL '^commit:.*modified'; then echo "Repository not clean" 1>&2; exit 1; fi
-	@if hg sum | grep -qL ' applied'; then echo "Repository has applied patches" 1>&2; exit 1; fi
-	yapf -i -r "${PKGD}" tests
-	hg commit -m "reformatted with yapf"
+	@if ! git diff --cached --exit-code >/dev/null; then echo "Repository not clean" 1>&2; exit 1; fi
+	black src tests
+	isort src tests
+	git commit -a -m "reformatted with black and isort"
 
 #=> docs -- make sphinx docs
 .PHONY: docs
 docs: develop
 	# RTD makes json. Build here to ensure that it works.
 	make -C doc html json
+
 
 ############################################################################
 #= CLEANUP
@@ -98,7 +108,7 @@ clean:
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
 cleaner: clean
-	rm -fr .cache *.egg-info build dist doc/_build htmlcov
+	rm -fr .cache *.egg-info build dist docs/_build htmlcov
 	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
 	find . -name __pycache__ -print0 | xargs -0r rm -fr
 
