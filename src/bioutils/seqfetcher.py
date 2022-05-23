@@ -119,6 +119,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
 
     Raises:
         RequestException: if request is unsuccessful.
+        KeyError: if Ensembl API returns a different version than requested
 
     Note:
         The Ensembl REST interface does not currently accept intervals, so this method
@@ -139,11 +140,25 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
         True
     """
 
-    url_fmt = "http://rest.ensembl.org/sequence/id/{ac}"
-    url = url_fmt.format(ac=ac)
+    # Ensembl API only takes transcript IDs (without version) and returns the latest one
+    # So we need to strip the transcript version, then check if what was returned was the one we requested
+    version = None
+    m = re.match(r"^(ENST\d+)\.(\d+)$", ac)
+    if m:
+        ac, version = m.groups()
+        version = int(version)
+
+    url = f"http://rest.ensembl.org/sequence/id/{ac}"
     r = requests.get(url, headers={"Content-Type": "application/json"})
     r.raise_for_status()
-    seq = r.json()["seq"]
+    data = r.json()
+    if version is not None:
+        latest_version = data["version"]
+        if version != latest_version:
+            msg = f"Ensembl API only provides {ac} version ({latest_version}), requested: {version}"
+            raise KeyError(msg)
+
+    seq = data["seq"]
     return seq if (start_i is None or end_i is None) else seq[start_i:end_i]
 
 
