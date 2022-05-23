@@ -119,6 +119,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
 
     Raises:
         RequestException: if request is unsuccessful.
+        KeyError: if Ensembl API returns a different version than requested
 
     Note:
         The Ensembl REST interface does not currently accept intervals, so this method
@@ -155,7 +156,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
         latest_version = data["version"]
         if version != latest_version:
             msg = f"Ensembl API only provides {ac} version ({latest_version}), requested: {version}"
-            raise requests.RequestException(msg)
+            raise KeyError(msg)
 
     seq = data["seq"]
     return seq if (start_i is None or end_i is None) else seq[start_i:end_i]
