@@ -80,7 +80,7 @@ jobs:
       run: |
         echo "::group::Environment info"
         echo github.event_name = ${{ github.event_name }}
-        ehco tags = ${{ startsWith(github.ref, 'refs/tags') }}
+        echo tags = ${{ startsWith(github.ref, 'refs/tags') }}
         echo "::endgroup::"
 
     - uses: actions/checkout@v3
