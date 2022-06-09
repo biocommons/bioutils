@@ -4,8 +4,12 @@ import os
 import pytest
 import vcr
 
-from bioutils.seqfetcher import (_add_eutils_api_key, _fetch_seq_ensembl,
-                                 _fetch_seq_ncbi, fetch_seq)
+from bioutils.seqfetcher import (
+    _add_eutils_api_key,
+    _fetch_seq_ensembl,
+    _fetch_seq_ncbi,
+    fetch_seq,
+)
 
 
 @vcr.use_cassette
