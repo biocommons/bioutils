@@ -12,7 +12,7 @@ PKG=bioutils
 PKGD=$(subst .,/,${PKG})
 
 
-PYV=3.8
+PYV=3.10
 VE_DIR=venv/${PYV}
 
 
@@ -56,6 +56,7 @@ install:
 .PHONY: build
 build: %:
 	python -m build
+
 
 
 ############################################################################
