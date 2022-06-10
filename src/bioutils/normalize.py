@@ -7,6 +7,7 @@ import copy
 import enum
 import logging
 import math
+from typing import Optional
 
 import attr
 
@@ -22,7 +23,7 @@ Attributes:
     EXPAND: Normalize alleles to maximal extent both left and right.
     LEFTSHUFFLE: Normalize alleles to maximal extent left.
     RIGHTSHUFFLE: Normalize alleles to maximal extent right.
-    TRIMONLY: Only trim the common prefix and suffix of alleles.
+    TRIMONLY: Only trim the common prefix and suffix of alleles. Deprecated -- use `mode=None` with `trim=True` instead.
     VCF: Normalize with VCF. 
 """
 
@@ -31,7 +32,7 @@ def normalize(
     sequence,
     interval,
     alleles,
-    mode=NormalizationMode.EXPAND,
+    mode: Optional[NormalizationMode] = NormalizationMode.EXPAND,
     bounds=None,
     anchor_length=0,
     trim: bool = True,
