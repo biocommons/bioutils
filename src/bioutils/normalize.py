@@ -34,8 +34,14 @@ def normalize(
     mode=NormalizationMode.EXPAND,
     bounds=None,
     anchor_length=0,
+    trim: bool = True,
 ):
     """Normalizes the alleles that co-occur on sequence at interval, ensuring comparable representations.
+
+    Normalization performs three operations:
+    - trimming
+    - shuffling
+    - anchoring
 
     Args:
         sequence (str or iterable): The reference sequence; must support indexing and ``__getitem__``.
@@ -48,6 +54,7 @@ def normalize(
         mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
             Defaults to ``EXPAND``.
         anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
+        trim (bool): indicates whether to trim the common prefix and suffix of alleles. Defaults to True.
 
     Returns:
         tuple: ``(new_interval, [new_alleles])``
@@ -109,19 +116,20 @@ def normalize(
             comment="Starting state",
         )
 
-    # Trim: remove common suffix, prefix, and adjust interval to match
-    l_trimmed, alleles = trim_left(alleles)
-    interval.start += l_trimmed
-    r_trimmed, alleles = trim_right(alleles)
-    interval.end -= r_trimmed
-    if debug:
-        _print_state(
-            interval,
-            bounds,
-            sequence=sequence,
-            alleles=alleles,
-            comment="After trimming",
-        )
+    if trim:
+        # Trim: remove common suffix, prefix, and adjust interval to match
+        l_trimmed, alleles = trim_left(alleles)
+        interval.start += l_trimmed
+        r_trimmed, alleles = trim_right(alleles)
+        interval.end -= r_trimmed
+        if debug:
+            _print_state(
+                interval,
+                bounds,
+                sequence=sequence,
+                alleles=alleles,
+                comment="After trimming",
+            )
 
     lens = [len(a) for a in alleles]
 
