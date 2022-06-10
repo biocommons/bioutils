@@ -14,9 +14,9 @@ normalize_left = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE)
 normalize_right = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE)
 normalize_expand = partial(normalize_seq, mode=NormalizationMode.EXPAND)
 normalize_vcf = partial(normalize_seq, mode=NormalizationMode.VCF)
-# normalize_left_no_trim = partial(normalize_seq, mode=None, trim=True)
-# normalize_right_no_trim = partial(normalize_seq, mode=None, trim=True)
-# normalize_expand_no_trim = partial(normalize_seq, mode=None, trim=True)
+normalize_left_no_trim = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False)
+normalize_right_no_trim = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False)
+normalize_expand_no_trim = partial(normalize_seq, mode=NormalizationMode.EXPAND, trim=False)
 
 
 @pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])
@@ -35,6 +35,18 @@ def test_no_trim_no_shuffle():
     )
     assert ((22, 25), ("AGC", "AGCT")) == normalize_no_trim_no_shuffle(
         interval=(22, 25), alleles=(None, "AGCT")
+    )
+
+
+def test_shuffle_no_trim():
+    assert ((19, 22), ("AGC", "AGC")) == normalize_left_no_trim(
+        interval=(22, 25), alleles=(None, "AGC")
+    )
+    assert ((26, 29), ("GCA", "GCA")) == normalize_right_no_trim(
+        interval=(22, 25), alleles=(None, "AGC")
+    )
+    assert ((19, 29), ("AGCAGCAGCA", "AGCAGCAGCA")) == normalize_expand_no_trim(
+        interval=(22, 25), alleles=(None, "AGC")
     )
 
 
