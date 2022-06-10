@@ -19,15 +19,6 @@ normalize_right_no_trim = partial(normalize_seq, mode=NormalizationMode.RIGHTSHU
 normalize_expand_no_trim = partial(normalize_seq, mode=NormalizationMode.EXPAND, trim=False)
 
 
-@pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])
-def test_trim_matching_alleles_error(normalize_trim):
-    """Should raise error when trimming allele that matches reference allele."""
-    with pytest.raises(ValueError) as exc_info:
-        # (22, 25) on sequence is AGC
-        normalize_trim(interval=(22, 25), alleles=(None, "AGC"))
-    assert str(exc_info.value) == "Must have at least two distinct alleles to trim"
-
-
 def test_no_trim_no_shuffle():
     """Should not trim or shuffle when mode=None, trim=False."""
     assert ((22, 25), ("AGC", "AGC")) == normalize_no_trim_no_shuffle(
@@ -145,7 +136,8 @@ def test_input_alleles_not_modified():
     assert (None, "AGCAC") == alleles
 
 
-def test_error_distinct():
+@pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])
+def test_error_distinct(normalize_trim):
     """Must have at least two distinct allele sequences (incl. ref) to normalize"""
     with pytest.raises(ValueError):
         normalize_trim(interval=(22, 25), alleles=(None, "AGC"))
