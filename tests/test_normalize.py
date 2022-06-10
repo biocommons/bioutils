@@ -29,6 +29,7 @@ def test_trim_matching_alleles_error(normalize_trim):
 
 
 def test_no_trim_no_shuffle():
+    """Should not trim or shuffle when mode=None, trim=False."""
     assert ((22, 25), ("AGC", "AGC")) == normalize_no_trim_no_shuffle(
         interval=(22, 25), alleles=(None, "AGC")
     )
@@ -39,6 +40,7 @@ def test_no_trim_no_shuffle():
 
 @pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])
 def test_trim(normalize_trim):
+    """Should trim common prefix and suffix when trim=True."""
     assert ((25, 25), ("", "AC")) == normalize_trim(
         interval=(22, 25), alleles=(None, "AGCAC")
     )
