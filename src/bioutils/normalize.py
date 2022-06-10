@@ -90,7 +90,7 @@ def normalize(
 
     left_anchor = right_anchor = anchor_length
 
-    if not isinstance(mode, NormalizationMode):
+    if mode is not None and not isinstance(mode, NormalizationMode):
         mode = NormalizationMode[mode]  # e.g., mode="LEFTSHUFFLE" OK
 
     if mode == NormalizationMode.VCF:
@@ -170,7 +170,7 @@ def normalize(
             bounds,
             sequence=sequence,
             alleles=alleles,
-            comment=f"After {mode}",
+            comment=f"After mode: {mode}",
         )
 
     # Add left and/or right flanking sequence
