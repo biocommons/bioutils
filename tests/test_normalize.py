@@ -9,10 +9,23 @@ sequence = "CCCCCCCCACACACACACTAGCAGCAGCA"
 normalize_seq = partial(normalize, sequence=sequence)
 normalize_trim = partial(normalize_seq, mode=NormalizationMode.TRIMONLY)
 normalize_trim_no_shuffle = partial(normalize_seq, mode=None, trim=True)
+normalize_no_trim_no_shuffle = partial(normalize_seq, mode=None, trim=False)
 normalize_left = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE)
 normalize_right = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE)
 normalize_expand = partial(normalize_seq, mode=NormalizationMode.EXPAND)
 normalize_vcf = partial(normalize_seq, mode=NormalizationMode.VCF)
+# normalize_left_no_trim = partial(normalize_seq, mode=None, trim=True)
+# normalize_right_no_trim = partial(normalize_seq, mode=None, trim=True)
+# normalize_expand_no_trim = partial(normalize_seq, mode=None, trim=True)
+
+
+def test_no_trim_no_shuffle():
+    assert ((22, 25), ("AGC", "AGC")) == normalize_no_trim_no_shuffle(
+        interval=(22, 25), alleles=(None, "AGC")
+    )
+    assert ((22, 25), ("AGC", "AGCT")) == normalize_no_trim_no_shuffle(
+        interval=(22, 25), alleles=(None, "AGCT")
+    )
 
 
 @pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])

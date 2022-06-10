@@ -106,8 +106,6 @@ def normalize(
         raise ValueError("First allele, the reference allele, must be None")
     alleles = list(alleles)  # in case tuple
     alleles[0] = sequence[interval.start : interval.end]
-    if len(set(alleles)) < 2:
-        raise ValueError("Must have at least two distinct alleles to normalize")
 
     if debug:
         _print_state(
@@ -119,6 +117,9 @@ def normalize(
         )
 
     if trim:
+        if len(set(alleles)) < 2:
+            raise ValueError("Must have at least two distinct alleles to trim")
+
         # Trim: remove common suffix, prefix, and adjust interval to match
         l_trimmed, alleles = trim_left(alleles)
         interval.start += l_trimmed
