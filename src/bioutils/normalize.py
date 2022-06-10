@@ -53,9 +53,10 @@ def normalize(
         bounds (2-tuple of int, optional): Maximal extent of normalization left and right.
             Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
         mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
-            Defaults to ``EXPAND``.
+            Defaults to ``EXPAND``. Set to None to skip shuffling. Does not affect trimming or anchoring.
         anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
         trim (bool): indicates whether to trim the common prefix and suffix of alleles. Defaults to True.
+            Set to False to skip trimming. Does not affect shuffling or anchoring.
 
     Returns:
         tuple: ``(new_interval, [new_alleles])``
