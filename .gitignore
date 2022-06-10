@@ -12,6 +12,7 @@
 .coverage.*
 .eggs/
 .env
+.idea
 .installed.cfg
 .ipynb_checkpoints
 .pytest_cache
