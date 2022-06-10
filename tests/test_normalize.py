@@ -30,6 +30,7 @@ def test_no_trim_no_shuffle():
 
 
 def test_shuffle_no_trim():
+    """Should shuffle but not trim when mode!=None and trim=False."""
     assert ((19, 22), ("AGC", "AGC")) == normalize_left_no_trim(
         interval=(22, 25), alleles=(None, "AGC")
     )
