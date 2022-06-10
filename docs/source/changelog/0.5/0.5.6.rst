@@ -1,0 +1,23 @@
+
+0.5.6 (2022-06-09)
+###################
+
+Changes since 0.5.5 (2021-05-05).
+
+Bug Fixes
+$$$$$$$$$$
+
+* fix `#36 <https://github.com/biocommons/bioutils/issues/36/>`_ by adding a new translation table ... (`#37 <https://github.com/biocommons/bioutils/issues/37/>`_) [`b5d4d0f <https://github.com/biocommons/bioutils/commit/b5d4d0f>`_] (Andreas Prlic)
+* Fix test warnings and a new failure from `#36 <https://github.com/biocommons/bioutils/issues/36/>`_ [`22b5556 <https://github.com/biocommons/bioutils/commit/22b5556>`_] (Reece Hart)
+
+New Features
+$$$$$$$$$$$$$
+
+* Handle Ensembl transcript versions [`b3eaf83 <https://github.com/biocommons/bioutils/commit/b3eaf83>`_] (Dave Lawrence)
+
+Internal and Developer Changes
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+* Update Makefile to support newer bioutils conventions [`ed6eaf6 <https://github.com/biocommons/bioutils/commit/ed6eaf6>`_] (Reece Hart)
+* Adopt GitHub Actions for testing and deployment [`35c6a7f <https://github.com/biocommons/bioutils/commit/35c6a7f>`_] (Reece Hart)
+* Switch to Python 3.10 by default [`5895087 <https://github.com/biocommons/bioutils/commit/5895087>`_] (Reece Hart)
