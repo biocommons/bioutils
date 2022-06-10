@@ -60,7 +60,8 @@ def test_trim(normalize_trim):
     )
 
 
-def test_anchor():
+@pytest.mark.parametrize('normalize_trim', [normalize_trim, normalize_trim_no_shuffle])
+def test_anchor(normalize_trim):
     assert ((23, 25), ("GC", "")) == normalize_trim(
         interval=(22, 25), alleles=(None, "A"), anchor_length=0
     )
