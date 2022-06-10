@@ -17,6 +17,7 @@ normalize_vcf = partial(normalize_seq, mode=NormalizationMode.VCF)
 normalize_left_no_trim = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False)
 normalize_right_no_trim = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False)
 normalize_expand_no_trim = partial(normalize_seq, mode=NormalizationMode.EXPAND, trim=False)
+normalize_vcf_no_trim = partial(normalize_seq, mode=NormalizationMode.VCF, trim=False)
 
 
 def test_no_trim_no_shuffle():
@@ -148,3 +149,10 @@ def test_error_ref_allele():
     "First allele is ref allele and must be None"
     with pytest.raises(ValueError):
         normalize_trim(interval=(22, 25), alleles=("foo", "AGC"))
+
+
+def test_error_vcf_mode_no_trim():
+    """Should raise error when mode=VCF, trim=False."""
+    with pytest.raises(ValueError) as exc_info:
+        normalize_vcf_no_trim(interval=(22, 25), alleles=(None, "AGC"))
+    assert str(exc_info.value) == "May not disable trimming with VCF normalization mode"

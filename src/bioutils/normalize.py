@@ -98,6 +98,8 @@ def normalize(
             raise ValueError(
                 "May not provide non-zero anchor size with VCF normalization mode"
             )
+        if not trim:
+            raise ValueError("May not disable trimming with VCF normalization mode")
         mode = NormalizationMode.LEFTSHUFFLE
         left_anchor = 1
         right_anchor = 0
