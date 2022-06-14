@@ -7,6 +7,7 @@ import copy
 import enum
 import logging
 import math
+from typing import Optional
 
 import attr
 
@@ -22,7 +23,7 @@ Attributes:
     EXPAND: Normalize alleles to maximal extent both left and right.
     LEFTSHUFFLE: Normalize alleles to maximal extent left.
     RIGHTSHUFFLE: Normalize alleles to maximal extent right.
-    TRIMONLY: Only trim the common prefix and suffix of alleles.
+    TRIMONLY: Only trim the common prefix and suffix of alleles. Deprecated -- use `mode=None` with `trim=True` instead.
     VCF: Normalize with VCF. 
 """
 
@@ -31,11 +32,17 @@ def normalize(
     sequence,
     interval,
     alleles,
-    mode=NormalizationMode.EXPAND,
+    mode: Optional[NormalizationMode] = NormalizationMode.EXPAND,
     bounds=None,
     anchor_length=0,
+    trim: bool = True,
 ):
     """Normalizes the alleles that co-occur on sequence at interval, ensuring comparable representations.
+
+    Normalization performs three operations:
+    - trimming
+    - shuffling
+    - anchoring
 
     Args:
         sequence (str or iterable): The reference sequence; must support indexing and ``__getitem__``.
@@ -46,8 +53,10 @@ def normalize(
         bounds (2-tuple of int, optional): Maximal extent of normalization left and right.
             Must be provided if sequence doesn't support ``__len__``. Defaults to ``(0, len(sequence))``.
         mode (NormalizationMode Enum or string, optional): A NormalizationMode Enum or the corresponding string.
-            Defaults to ``EXPAND``.
+            Defaults to ``EXPAND``. Set to None to skip shuffling. Does not affect trimming or anchoring.
         anchor (int, optional): number of flanking residues left and right. Defaults to ``0``.
+        trim (bool): indicates whether to trim the common prefix and suffix of alleles. Defaults to True.
+            Set to False to skip trimming. Does not affect shuffling or anchoring.
 
     Returns:
         tuple: ``(new_interval, [new_alleles])``
@@ -81,7 +90,7 @@ def normalize(
 
     left_anchor = right_anchor = anchor_length
 
-    if not isinstance(mode, NormalizationMode):
+    if mode is not None and not isinstance(mode, NormalizationMode):
         mode = NormalizationMode[mode]  # e.g., mode="LEFTSHUFFLE" OK
 
     if mode == NormalizationMode.VCF:
@@ -89,6 +98,8 @@ def normalize(
             raise ValueError(
                 "May not provide non-zero anchor size with VCF normalization mode"
             )
+        if not trim:
+            raise ValueError("May not disable trimming with VCF normalization mode")
         mode = NormalizationMode.LEFTSHUFFLE
         left_anchor = 1
         right_anchor = 0
@@ -97,8 +108,6 @@ def normalize(
         raise ValueError("First allele, the reference allele, must be None")
     alleles = list(alleles)  # in case tuple
     alleles[0] = sequence[interval.start : interval.end]
-    if len(set(alleles)) < 2:
-        raise ValueError("Must have at least two distinct alleles to normalize")
 
     if debug:
         _print_state(
@@ -109,19 +118,23 @@ def normalize(
             comment="Starting state",
         )
 
-    # Trim: remove common suffix, prefix, and adjust interval to match
-    l_trimmed, alleles = trim_left(alleles)
-    interval.start += l_trimmed
-    r_trimmed, alleles = trim_right(alleles)
-    interval.end -= r_trimmed
-    if debug:
-        _print_state(
-            interval,
-            bounds,
-            sequence=sequence,
-            alleles=alleles,
-            comment="After trimming",
-        )
+    if trim:
+        if len(set(alleles)) < 2:
+            raise ValueError("Must have at least two distinct alleles to trim")
+
+        # Trim: remove common suffix, prefix, and adjust interval to match
+        l_trimmed, alleles = trim_left(alleles)
+        interval.start += l_trimmed
+        r_trimmed, alleles = trim_right(alleles)
+        interval.end -= r_trimmed
+        if debug:
+            _print_state(
+                interval,
+                bounds,
+                sequence=sequence,
+                alleles=alleles,
+                comment="After trimming",
+            )
 
     lens = [len(a) for a in alleles]
 
@@ -160,7 +173,7 @@ def normalize(
             bounds,
             sequence=sequence,
             alleles=alleles,
-            comment=f"After {mode}",
+            comment=f"After mode: {mode}",
         )
 
     # Add left and/or right flanking sequence
