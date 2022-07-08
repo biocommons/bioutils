@@ -14,13 +14,19 @@ normalize_left = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE)
 normalize_right = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE)
 normalize_expand = partial(normalize_seq, mode=NormalizationMode.EXPAND)
 normalize_vcf = partial(normalize_seq, mode=NormalizationMode.VCF)
-normalize_left_no_trim = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False)
-normalize_right_no_trim = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False)
-normalize_expand_no_trim = partial(normalize_seq, mode=NormalizationMode.EXPAND, trim=False)
+normalize_left_no_trim = partial(
+    normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False
+)
+normalize_right_no_trim = partial(
+    normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False
+)
+normalize_expand_no_trim = partial(
+    normalize_seq, mode=NormalizationMode.EXPAND, trim=False
+)
 normalize_vcf_no_trim = partial(normalize_seq, mode=NormalizationMode.VCF, trim=False)
 
 
-@pytest.mark.parametrize('normalize_fn', [normalize_trim, normalize_trim_no_shuffle])
+@pytest.mark.parametrize("normalize_fn", [normalize_trim, normalize_trim_no_shuffle])
 def test_trim(normalize_fn):
     """Should trim common prefix and suffix when trim=True."""
     assert ((25, 25), ("", "AC")) == normalize_fn(
@@ -37,7 +43,7 @@ def test_trim(normalize_fn):
     )
 
 
-@pytest.mark.parametrize('normalize_fn', [normalize_trim, normalize_trim_no_shuffle])
+@pytest.mark.parametrize("normalize_fn", [normalize_trim, normalize_trim_no_shuffle])
 def test_anchor(normalize_fn):
     assert ((23, 25), ("GC", "")) == normalize_fn(
         interval=(22, 25), alleles=(None, "A"), anchor_length=0
@@ -139,7 +145,7 @@ def test_input_alleles_not_modified():
     assert (None, "AGCAC") == alleles
 
 
-@pytest.mark.parametrize('normalize_fn', [normalize_trim, normalize_trim_no_shuffle])
+@pytest.mark.parametrize("normalize_fn", [normalize_trim, normalize_trim_no_shuffle])
 def test_error_distinct(normalize_fn):
     """Must have at least two distinct allele sequences (incl. ref) to normalize"""
     with pytest.raises(ValueError):
