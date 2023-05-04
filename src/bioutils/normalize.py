@@ -233,6 +233,8 @@ def trim_left(alleles):
         >>> trim_left(["CAG","CG"])
         (1, ['AG', 'G'])
     """
+    if len(alleles) == 0:
+        return (0, [])
     trimmed = 0
     lens = [len(x) for x in alleles]
     while trimmed < min(lens):
@@ -269,6 +271,8 @@ def trim_right(alleles):
         >>> trim_right(["CAG","CG"])
         (1, ['CA', 'C'])
     """
+    if len(alleles) == 0:
+        return (0, [])
     trimmed = 0
     lens = [len(x) for x in alleles]
     while trimmed < min(lens):
