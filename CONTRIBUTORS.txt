@@ -1,6 +1,13 @@
 Reece Hart <reecehart@gmail.com>
+Ryan Gomoto <7393416+gomoto@users.noreply.github.com>
+trentwatt <trentwatson1@gmail.com>
 Alan Rubin <alan.rubin@wehi.edu.au>
+kayleeyuhas <kaylee@genomoncology.com>
 Andreas Prlic <andreas.prlic@invitae.com>
+Dave Lawrence <davmlaw@gmail.com>
+Kyle Ferriter <kferrite@broadinstitute.org>
 Timothy Laurent <timothyjlaurent@gmail.com>
 Ben Robinson <ben.robinson@invitae.com>
 Lucas Wiman <lucas.wiman@gmail.com>
+Trent Watson <trentwatson1@gmail.com>
+pjcoenen <64436780+pjcoenen@users.noreply.github.com>
