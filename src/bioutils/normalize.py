@@ -24,7 +24,7 @@ Attributes:
     LEFTSHUFFLE: Normalize alleles to maximal extent left.
     RIGHTSHUFFLE: Normalize alleles to maximal extent right.
     TRIMONLY: Only trim the common prefix and suffix of alleles. Deprecated -- use `mode=None` with `trim=True` instead.
-    VCF: Normalize with VCF. 
+    VCF: Normalize with VCF.
 """
 
 
@@ -207,9 +207,9 @@ class _Interval:
     end = attr.ib(int)
 
 
-# TODO: Rewrite trim_* code -- no need to modify array each time!
 def trim_left(alleles):
-    """Removes common prefix of given alleles.
+    """
+    Removes common prefix of given alleles.
 
     Args:
         alleles (list of str): A list of alleles.
@@ -233,20 +233,21 @@ def trim_left(alleles):
         >>> trim_left(["CAG","CG"])
         (1, ['AG', 'G'])
     """
-
+    if len(alleles) == 0:
+        return (0, [])
     trimmed = 0
-    while all(len(a) > 0 for a in alleles):
-        a0 = alleles[0]
-        for a in alleles[1:]:
-            if a0[0] != a[0]:
-                return trimmed, alleles
-        alleles = [a[1:] for a in alleles]
-        trimmed += 1
-    return (trimmed, alleles)
-
+    lens = [len(x) for x in alleles]
+    while trimmed < min(lens):
+        nexts = [x[trimmed] for x in alleles]
+        if nexts.count(nexts[0]) == len(nexts):
+            trimmed += 1
+        else:
+            break
+    return (trimmed, [x[trimmed:] for x in alleles])
 
 def trim_right(alleles):
-    """Removes common suffix of given alleles.
+    """
+    Removes common suffix of given alleles.
 
     Args:
         alleles (list of str): A list of alleles.
@@ -270,17 +271,17 @@ def trim_right(alleles):
         >>> trim_right(["CAG","CG"])
         (1, ['CA', 'C'])
     """
-
+    if len(alleles) == 0:
+        return (0, [])
     trimmed = 0
-    while all(len(a) > 0 for a in alleles):
-        a0 = alleles[0]
-        for a in alleles[1:]:
-            if a0[-1] != a[-1]:
-                return trimmed, alleles
-        alleles = [a[:-1] for a in alleles]
-        trimmed += 1
-    return (trimmed, alleles)
-
+    lens = [len(x) for x in alleles]
+    while trimmed < min(lens):
+        nexts = [x[len(x) - trimmed - 1] for x in alleles]
+        if nexts.count(nexts[0]) == len(nexts):
+            trimmed += 1
+        else:
+            break
+    return (trimmed, [x[:(len(x) - trimmed)] for x in alleles])
 
 def roll_left(sequence, alleles, ref_pos, bound):
     """Determines common distance all alleles can be rolled (circularly permuted) left
