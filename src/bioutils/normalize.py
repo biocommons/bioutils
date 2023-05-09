@@ -14,9 +14,7 @@ import attr
 _logger = logging.getLogger(__name__)
 debug = False
 
-NormalizationMode = enum.Enum(
-    "NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF"
-)
+NormalizationMode = enum.Enum("NormalizationMode", "EXPAND LEFTSHUFFLE RIGHTSHUFFLE TRIMONLY VCF")
 """Enum passed to normalize to select the normalization mode.
 
 Attributes:
@@ -95,9 +93,7 @@ def normalize(
 
     if mode == NormalizationMode.VCF:
         if anchor_length:
-            raise ValueError(
-                "May not provide non-zero anchor size with VCF normalization mode"
-            )
+            raise ValueError("May not provide non-zero anchor size with VCF normalization mode")
         if not trim:
             raise ValueError("May not disable trimming with VCF normalization mode")
         mode = NormalizationMode.LEFTSHUFFLE
@@ -245,6 +241,7 @@ def trim_left(alleles):
             break
     return (trimmed, [x[trimmed:] for x in alleles])
 
+
 def trim_right(alleles):
     """
     Removes common suffix of given alleles.
@@ -281,7 +278,8 @@ def trim_right(alleles):
             trimmed += 1
         else:
             break
-    return (trimmed, [x[:(len(x) - trimmed)] for x in alleles])
+    return (trimmed, [x[: (len(x) - trimmed)] for x in alleles])
+
 
 def roll_left(sequence, alleles, ref_pos, bound):
     """Determines common distance all alleles can be rolled (circularly permuted) left
@@ -301,10 +299,7 @@ def roll_left(sequence, alleles, ref_pos, bound):
     lens = [len(a) for a in alleles]
     d = 0
     max_d = ref_pos - bound
-    while d <= max_d and not any(
-        a and a[-(d + 1) % lens[i]] != sequence[ref_pos - d]
-        for i, a in enumerate(alleles)
-    ):
+    while d <= max_d and not any(a and a[-(d + 1) % lens[i]] != sequence[ref_pos - d] for i, a in enumerate(alleles)):
         d += 1
     return d
 
@@ -326,9 +321,7 @@ def roll_right(sequence, alleles, ref_pos, bound):
     lens = [len(a) for a in alleles]
     d = 0
     max_d = bound - ref_pos
-    while d <= max_d and not any(
-        a and a[d % lens[i]] != sequence[ref_pos + d] for i, a in enumerate(alleles)
-    ):
+    while d <= max_d and not any(a and a[d % lens[i]] != sequence[ref_pos + d] for i, a in enumerate(alleles)):
         d += 1
     return d
 
@@ -414,9 +407,7 @@ if __name__ == "__main__":  # pragma: no cover
         print(f"assert {result} == normalize_seq({kwargs})")
 
     for test in tests:
-        print(
-            "############################################################################"
-        )
+        print("############################################################################")
         for mode in ("EXPAND",):  # "LEFTSHUFFLE", "RIGHTSHUFFLE", "EXPAND"):
             for bm in (None,):
                 if bm is None:

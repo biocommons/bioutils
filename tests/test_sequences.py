@@ -29,13 +29,8 @@ def test_translate_examples():
 def test_translate_selenoproteins():
     """unit test for sec codon"""
     assert translate_cds("AUGTGATAA") == "M**"
-    assert (
-        translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**"
-    )
-    assert (
-        translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine)
-        == "MU*"
-    )
+    assert translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**"
+    assert translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine) == "MU*"
     assert (
         translate_cds(
             "AUGTGATA",

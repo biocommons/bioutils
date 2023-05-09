@@ -46,9 +46,7 @@ def get_assembly_names():
     """
 
     return [
-        n.replace(".json.gz", "")
-        for n in pkg_resources.resource_listdir(__name__, _assy_dir)
-        if n.endswith(".json.gz")
+        n.replace(".json.gz", "") for n in pkg_resources.resource_listdir(__name__, _assy_dir) if n.endswith(".json.gz")
     ]
 
 
@@ -141,9 +139,7 @@ def make_name_ac_map(assy_name, primary_only=False):
     """
 
     return {
-        s["name"]: s["refseq_ac"]
-        for s in get_assembly(assy_name)["sequences"]
-        if (not primary_only or _is_primary(s))
+        s["name"]: s["refseq_ac"] for s in get_assembly(assy_name)["sequences"] if (not primary_only or _is_primary(s))
     }
 
 
@@ -167,9 +163,7 @@ def make_ac_name_map(assy_name, primary_only=False):
     """
 
     return {
-        s["refseq_ac"]: s["name"]
-        for s in get_assembly(assy_name)["sequences"]
-        if (not primary_only or _is_primary(s))
+        s["refseq_ac"]: s["name"] for s in get_assembly(assy_name)["sequences"] if (not primary_only or _is_primary(s))
     }
 
 

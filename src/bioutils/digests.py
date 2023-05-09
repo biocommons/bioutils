@@ -197,9 +197,7 @@ def seq_vmc_id(seq, normalize=True):
         'VMC:GS_eFwawHHdibaZBDcs9kW3gm31h1NNJcQe'
     """
 
-    return "{ir[namespace]}:{ir[accession]}".format(
-        ir=seq_vmc_identifier(seq, normalize)
-    )
+    return "{ir[namespace]}:{ir[accession]}".format(ir=seq_vmc_identifier(seq, normalize))
 
 
 def seq_vmc_identifier(seq, normalize=True):
