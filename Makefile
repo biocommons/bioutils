@@ -8,12 +8,11 @@
 SHELL:=/bin/bash -e -o pipefail
 SELF:=$(firstword $(MAKEFILE_LIST))
 
-PKG=bioutils
-PKGD=$(subst .,/,${PKG})
+PY_VERSION:=3.10
+VE_DIR=venv/${PY_VERSION}
 
-
-PYV=3.10
-VE_DIR=venv/${PYV}
+TEST_DIRS:=tests
+DOC_TESTS:=src ./README.md
 
 
 ############################################################################
@@ -22,7 +21,7 @@ default: help
 
 #=> help -- display this help message
 help:
-	@sbin/makefile-extract-documentation "$(firstword $(MAKEFILE_LIST))"
+	@sbin/makefile-extract-documentation "${SELF}"
 
 
 ############################################################################
@@ -37,18 +36,20 @@ devready:
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
+venv: ${VE_DIR}
 ${VE_DIR}: venv/%:
 	python$* -mvenv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
 	pip install --upgrade pip setuptools wheel
 
-#=> install: install package
 #=> develop: install package in develop mode
 .PHONY: develop install
 develop:
 	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
 	pip install -e .[dev,test]
+
+#=> install: install package
 install:
 	pip install .
 
@@ -58,10 +59,16 @@ build: %:
 	python -m build
 
 
-
 ############################################################################
 #= TESTING
 # see test configuration in setup.cfg
+
+#=> cqa: execute code quality tests
+cqa:
+	flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
+	isort --profile black --check src
+	black --check src
+	bandit -ll -r src
 
 #=> test: execute tests
 #=> test-code: test code (including embedded doctests)
@@ -82,7 +89,6 @@ tox:
 ############################################################################
 #= UTILITY TARGETS
 
-# N.B. Although code is stored in github, I use hg and hg-git on the command line
 #=> reformat: reformat code with yapf and commit
 .PHONY: reformat
 reformat:
@@ -91,11 +97,16 @@ reformat:
 	isort src tests
 	git commit -a -m "reformatted with black and isort"
 
-#=> docs -- make sphinx docs
-.PHONY: docs
-docs: develop
-	# RTD makes json. Build here to ensure that it works.
-	make -C doc html json
+#=> rename: rename files and substitute content for new repo name
+.PHONY: rename
+rename:
+	./sbin/rename-package
+
+# #=> docs -- make sphinx docs
+# .PHONY: docs
+# docs: develop
+# 	# RTD makes json. Build here to ensure that it works.
+# 	make -C doc html json
 
 
 ############################################################################
@@ -104,23 +115,30 @@ docs: develop
 #=> clean: remove temporary and backup files
 .PHONY: clean
 clean:
-	find . \( -name \*~ -o -name \*.bak \) -print0 | xargs -0r rm
+	rm -frv **/*~ **/*.bak
 
 #=> cleaner: remove files and directories that are easily rebuilt
 .PHONY: cleaner
 cleaner: clean
-	rm -fr .cache *.egg-info build dist docs/_build htmlcov
-	find . \( -name \*.pyc -o -name \*.orig -o -name \*.rej \) -print0 | xargs -0r rm
-	find . -name __pycache__ -print0 | xargs -0r rm -fr
+	rm -frv .cache build dist docs/_build
+	rm -frv **/__pycache__
+	rm -frv **/*.egg-info
+	rm -frv **/*.pyc
+	rm -frv **/*.orig
+	rm -frv **/*.rej
 
-#=> cleanest: remove files and directories that require more time/network fetches to rebuild
+#=> cleanest: remove files and directories that are more expensive to rebuild
 .PHONY: cleanest
 cleanest: cleaner
-	rm -fr .eggs .tox venv
+	rm -frv .eggs .tox venv
 
+#=> distclean: remove untracked files and other detritus
+.PHONY: distclean
+distclean: cleanest
+	git clean -df
 
 ## <LICENSE>
-## Copyright 2016 Source Code Committers
+## Copyright 2023 Source Code Committers
 ## 
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
