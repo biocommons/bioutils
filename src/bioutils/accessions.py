@@ -26,8 +26,7 @@ The string form may be used as a CURIE, in which case the document in
 which the CURIE is used must contain a map of ``{namespace : uri}``.
 """
 
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import re
 

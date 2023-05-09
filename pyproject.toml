@@ -87,8 +87,8 @@ exclude_lines = [
 [tool.black]
 line-length = 120
 
-#[tool.isort]
-#profile = black
+[tool.isort]
+profile = "black"
 
 # [tool.flake8]
 # flake8 does not support configuration in pyproject.toml
