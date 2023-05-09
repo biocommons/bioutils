@@ -321,9 +321,7 @@ def aa3_to_aa1(seq):
 
     if seq is None:
         return None
-    return "".join(
-        aa3_to_aa1_lut[aa3] for aa3 in [seq[i : i + 3] for i in range(0, len(seq), 3)]
-    )
+    return "".join(aa3_to_aa1_lut[aa3] for aa3 in [seq[i : i + 3] for i in range(0, len(seq), 3)])
 
 
 def complement(seq):
@@ -390,11 +388,7 @@ def looks_like_aa3_p(seq):
     Returns:
         bool: Whether the string is of the format of a 3-letter AA string.
     """
-    return (
-        seq is not None
-        and (len(seq) % 3 == 0)
-        and (len(seq) == 0 or seq[1] in ascii_lowercase)
-    )
+    return seq is not None and (len(seq) % 3 == 0) and (len(seq) == 0 or seq[1] in ascii_lowercase)
 
 
 def normalize_sequence(seq):
@@ -514,9 +508,7 @@ class TranslationTable(StrEnum):
     selenocysteine = "sec"
 
 
-def translate_cds(
-    seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard
-):
+def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard):
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
 
     Args:
@@ -617,17 +609,10 @@ def translate_cds(
         except KeyError:
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
-            if any(
-                iupac_ambiguity_code in codon
-                for iupac_ambiguity_code in iupac_ambiguity_codes
-            ):
+            if any(iupac_ambiguity_code in codon for iupac_ambiguity_code in iupac_ambiguity_codes):
                 aa = "X"
             else:
-                raise ValueError(
-                    "Codon {} at position {}..{} is undefined in codon table".format(
-                        codon, i + 1, i + 3
-                    )
-                )
+                raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(codon, i + 1, i + 3))
         protein_seq.append(aa)
 
     # check for trailing bases and add the ter symbol if required

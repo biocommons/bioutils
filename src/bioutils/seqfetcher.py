@@ -86,9 +86,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
         raise RuntimeError("No sequence fetcher for {ac}".format(ac=ac))
 
     if len(eligible_fetchers) >= 1:  # pragma: nocover (no way to test)
-        _logger.debug(
-            "Multiple sequence fetchers found for " "{ac}; using first".format(ac=ac)
-        )
+        _logger.debug("Multiple sequence fetchers found for " "{ac}; using first".format(ac=ac))
 
     fetcher = eligible_fetchers[0]
     _logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
@@ -210,10 +208,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
     """
 
     db = "protein" if ac[1] == "P" else "nucleotide"
-    url_fmt = (
-        "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?"
-        "db={db}&id={ac}&rettype=fasta"
-    )
+    url_fmt = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?" "db={db}&id={ac}&rettype=fasta"
 
     if start_i is None or end_i is None:
         url = url_fmt.format(db=db, ac=ac)
@@ -242,11 +237,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         if n_retries == 0:
             _logger.warning("Failed to fetch {}".format(url))
         sleeptime = random.randint(n_retries, 3) ** n_retries
-        _logger.warning(
-            "Failure {}/{}; retry in {} seconds".format(
-                n_retries, retry_limit, sleeptime
-            )
-        )
+        _logger.warning("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
         time.sleep(sleeptime)
         n_retries += 1
     # Falls through only on failure

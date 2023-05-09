@@ -14,68 +14,36 @@ normalize_left = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE)
 normalize_right = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE)
 normalize_expand = partial(normalize_seq, mode=NormalizationMode.EXPAND)
 normalize_vcf = partial(normalize_seq, mode=NormalizationMode.VCF)
-normalize_left_no_trim = partial(
-    normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False
-)
-normalize_right_no_trim = partial(
-    normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False
-)
-normalize_expand_no_trim = partial(
-    normalize_seq, mode=NormalizationMode.EXPAND, trim=False
-)
+normalize_left_no_trim = partial(normalize_seq, mode=NormalizationMode.LEFTSHUFFLE, trim=False)
+normalize_right_no_trim = partial(normalize_seq, mode=NormalizationMode.RIGHTSHUFFLE, trim=False)
+normalize_expand_no_trim = partial(normalize_seq, mode=NormalizationMode.EXPAND, trim=False)
 normalize_vcf_no_trim = partial(normalize_seq, mode=NormalizationMode.VCF, trim=False)
 
 
 @pytest.mark.parametrize("normalize_fn", [normalize_trim, normalize_trim_no_shuffle])
 def test_trim(normalize_fn):
     """Should trim common prefix and suffix when trim=True."""
-    assert ((25, 25), ("", "AC")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "AGCAC")
-    )
-    assert ((24, 25), ("C", "", "CAC")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "AG", "AGCAC")
-    )
-    assert ((23, 24), ("G", "", "GCA")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "AC", "AGCAC")
-    )
-    assert ((22, 24), ("AG", "G", "AGCA")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "GC", "AGCAC")
-    )
+    assert ((25, 25), ("", "AC")) == normalize_fn(interval=(22, 25), alleles=(None, "AGCAC"))
+    assert ((24, 25), ("C", "", "CAC")) == normalize_fn(interval=(22, 25), alleles=(None, "AG", "AGCAC"))
+    assert ((23, 24), ("G", "", "GCA")) == normalize_fn(interval=(22, 25), alleles=(None, "AC", "AGCAC"))
+    assert ((22, 24), ("AG", "G", "AGCA")) == normalize_fn(interval=(22, 25), alleles=(None, "GC", "AGCAC"))
 
 
 @pytest.mark.parametrize("normalize_fn", [normalize_trim, normalize_trim_no_shuffle])
 def test_anchor(normalize_fn):
-    assert ((23, 25), ("GC", "")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "A"), anchor_length=0
-    )
-    assert ((22, 26), ("AGCA", "AA")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "A"), anchor_length=1
-    )
-    assert ((21, 27), ("CAGCAG", "CAAG")) == normalize_fn(
-        interval=(22, 25), alleles=(None, "A"), anchor_length=2
-    )
+    assert ((23, 25), ("GC", "")) == normalize_fn(interval=(22, 25), alleles=(None, "A"), anchor_length=0)
+    assert ((22, 26), ("AGCA", "AA")) == normalize_fn(interval=(22, 25), alleles=(None, "A"), anchor_length=1)
+    assert ((21, 27), ("CAGCAG", "CAAG")) == normalize_fn(interval=(22, 25), alleles=(None, "A"), anchor_length=2)
 
     # off the left
-    assert ((1, 1), ("", "C")) == normalize_fn(
-        interval=(1, 1), alleles=(None, "C"), anchor_length=0
-    )
-    assert ((0, 2), ("CC", "CCC")) == normalize_fn(
-        interval=(1, 1), alleles=(None, "C"), anchor_length=1
-    )
-    assert ((0, 3), ("CCC", "CCCC")) == normalize_fn(
-        interval=(1, 1), alleles=(None, "C"), anchor_length=2
-    )
+    assert ((1, 1), ("", "C")) == normalize_fn(interval=(1, 1), alleles=(None, "C"), anchor_length=0)
+    assert ((0, 2), ("CC", "CCC")) == normalize_fn(interval=(1, 1), alleles=(None, "C"), anchor_length=1)
+    assert ((0, 3), ("CCC", "CCCC")) == normalize_fn(interval=(1, 1), alleles=(None, "C"), anchor_length=2)
 
     # off the right
-    assert ((28, 28), ("", "C")) == normalize_fn(
-        interval=(28, 28), alleles=(None, "C"), anchor_length=0
-    )
-    assert ((27, 29), ("CA", "CCA")) == normalize_fn(
-        interval=(28, 28), alleles=(None, "C"), anchor_length=1
-    )
-    assert ((26, 29), ("GCA", "GCCA")) == normalize_fn(
-        interval=(28, 28), alleles=(None, "C"), anchor_length=2
-    )
+    assert ((28, 28), ("", "C")) == normalize_fn(interval=(28, 28), alleles=(None, "C"), anchor_length=0)
+    assert ((27, 29), ("CA", "CCA")) == normalize_fn(interval=(28, 28), alleles=(None, "C"), anchor_length=1)
+    assert ((26, 29), ("GCA", "GCCA")) == normalize_fn(interval=(28, 28), alleles=(None, "C"), anchor_length=2)
 
 
 def test_trinuc():
@@ -86,15 +54,9 @@ def test_trinuc():
     #      LEFTSHUFFLE                      ^ [19,19): ['', 'AGC']
     #      RIGHTSHUFFLE                                         ^ [29,29): ['', 'GCA']
     #      EXPAND                           ^-------------------^ [19,29): ['AGCAGCAGCA', 'AGCAGCAGCAGCA']
-    assert ((19, 19), ("", "AGC")) == normalize_left(
-        interval=(22, 22), alleles=(None, "AGC")
-    )
-    assert ((29, 29), ("", "GCA")) == normalize_right(
-        interval=(22, 22), alleles=(None, "AGC")
-    )
-    assert ((19, 29), ("AGCAGCAGCA", "AGCAGCAGCAGCA")) == normalize_expand(
-        interval=(22, 22), alleles=(None, "AGC")
-    )
+    assert ((19, 19), ("", "AGC")) == normalize_left(interval=(22, 22), alleles=(None, "AGC"))
+    assert ((29, 29), ("", "GCA")) == normalize_right(interval=(22, 22), alleles=(None, "AGC"))
+    assert ((19, 29), ("AGCAGCAGCA", "AGCAGCAGCAGCA")) == normalize_expand(interval=(22, 22), alleles=(None, "AGC"))
 
 
 def test_bounds():
@@ -106,22 +68,14 @@ def test_bounds():
 
 def test_no_trim_no_shuffle():
     """Should not trim or shuffle when mode=None, trim=False."""
-    assert ((22, 25), ("AGC", "AGC")) == normalize_no_trim_no_shuffle(
-        interval=(22, 25), alleles=(None, "AGC")
-    )
-    assert ((22, 25), ("AGC", "AGCT")) == normalize_no_trim_no_shuffle(
-        interval=(22, 25), alleles=(None, "AGCT")
-    )
+    assert ((22, 25), ("AGC", "AGC")) == normalize_no_trim_no_shuffle(interval=(22, 25), alleles=(None, "AGC"))
+    assert ((22, 25), ("AGC", "AGCT")) == normalize_no_trim_no_shuffle(interval=(22, 25), alleles=(None, "AGCT"))
 
 
 def test_shuffle_no_trim():
     """Should shuffle but not trim when mode!=None and trim=False."""
-    assert ((19, 22), ("AGC", "AGC")) == normalize_left_no_trim(
-        interval=(22, 25), alleles=(None, "AGC")
-    )
-    assert ((26, 29), ("GCA", "GCA")) == normalize_right_no_trim(
-        interval=(22, 25), alleles=(None, "AGC")
-    )
+    assert ((19, 22), ("AGC", "AGC")) == normalize_left_no_trim(interval=(22, 25), alleles=(None, "AGC"))
+    assert ((26, 29), ("GCA", "GCA")) == normalize_right_no_trim(interval=(22, 25), alleles=(None, "AGC"))
     assert ((19, 29), ("AGCAGCAGCA", "AGCAGCAGCA")) == normalize_expand_no_trim(
         interval=(22, 25), alleles=(None, "AGC")
     )

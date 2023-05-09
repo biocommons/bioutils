@@ -49,9 +49,7 @@ MGP_CBAJ_ MGP_DBA2J_ MGP_FVBNJ_ MGP_LPJ_ MGP_NODShiLtJ_ MGP_NZOHlLtJ_
 MGP_PWKPhJ_ MGP_PahariEiJ_ MGP_SPRETEiJ_ MGP_WSBEiJ_""".split()
 )
 _ensembl_feature_types_re = r"E|FM|G|GT|P|R|T"
-_ensembl_re = r"^(?:{})(?:{}){}$".format(
-    _ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?"
-)
+_ensembl_re = r"^(?:{})(?:{}){}$".format(_ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?")
 
 # map of regexp => namespace
 # TODO: make this namespace => [regexps] for clarity

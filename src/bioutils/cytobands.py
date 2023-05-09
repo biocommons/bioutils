@@ -23,9 +23,7 @@ def get_cytoband_names():
     """
 
     return [
-        n.replace(".json.gz", "")
-        for n in pkg_resources.resource_listdir(__name__, _data_dir)
-        if n.endswith(".json.gz")
+        n.replace(".json.gz", "") for n in pkg_resources.resource_listdir(__name__, _data_dir) if n.endswith(".json.gz")
     ]
 
 
