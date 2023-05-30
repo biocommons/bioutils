@@ -12,6 +12,7 @@ eg$ ./sbin/assembly-to-json -p bioutils/_data/assemblies -f pull/GCF_000001405.2
 
 from argparse import ArgumentParser
 import csv
+import io
 import json
 import logging
 import os
