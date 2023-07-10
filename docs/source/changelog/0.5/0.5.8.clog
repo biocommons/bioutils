@@ -1,0 +1,17 @@
+clog format: 1; -*-outline-*-
+* HEAD (2023-07-09)
+Changes since 0.5.7 (2022-07-08).
+** New Features
+*** update assemblies and add T2T-CHM13v2.0 [19ebeff] (Reece Hart)
+** Other Changes
+*** #47 Rewrite trim_left and trim_right for linear performance. [7817f6a] (Kyle Ferriter)
+*** Handle case when no alleles are passed to trim functions [eb8607a] (Kyle Ferriter)
+*** Merge pull request #48 from theferrit32/47-large-seq-normalization [5b3a80c] (Reece Hart)
+*** Merge pull request #49 from theferrit32/46-test-vcr-compilation [271ad81] (Reece Hart)
+** Internal and Developer Changes
+*** Pin urllib3 version that vcrpy dependency depends on [9ddda27] (Kyle Ferriter)
+*** pin urllib3 to 1.26.* (rather than to specific patch version) [b60b890] (Reece Hart)
+*** add CODEOWNERS file [eef120d] (Reece Hart)
+*** updated CONTRIBUTORS.txt [8741a5f] (Reece Hart)
+*** reformatted with black and isort [3305c0e] (Reece Hart)
+*** Close #50: synchronize biocommonsexample with bioutils [5a1788c] (Reece Hart)
