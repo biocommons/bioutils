@@ -4,7 +4,7 @@ authors = [
   { name="biocommons contributors", email="biocommons-dev@googlegroups.com" },
 ]
 description = "miscellaneous simple bioinformatics utilities and lookup tables"
-readme = "README.md"
+readme = "README.rst"
 license = { file="LICENSE.txt" }
 requires-python = ">=3.8"
 classifiers = [
