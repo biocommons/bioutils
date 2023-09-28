@@ -231,8 +231,6 @@ dna_to_aa1_vmito["ATA"] = "M"
 dna_to_aa1_vmito["TGA"] = "W"
 
 
-
-
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
@@ -518,7 +516,7 @@ class TranslationTable(StrEnum):
 
     standard = "standard"
     selenocysteine = "sec"
-    vertebrate_mitochondrial = 'vmito'
+    vertebrate_mitochondrial = "vmito"
 
 
 def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard):

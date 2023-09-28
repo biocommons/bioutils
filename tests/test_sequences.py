@@ -43,10 +43,11 @@ def test_translate_selenoproteins():
     with pytest.raises(ValueError):
         translate_cds("AUGTGATA", translation_table=TranslationTable.selenocysteine)
 
+
 def test_translate_vertebrate_mitochondrial():
     """unit test for vertebrate mitochondrial codons"""
     assert translate_cds("AUGTGATAA") == "M**"
-    assert translate_cds("ATATGAAGGAGA", translation_table=TranslationTable.standard) == "MW**"
+    assert translate_cds("ATATGAAGGAGA", translation_table=TranslationTable.vertebrate_mitochondrial) == "MW**"
     assert (
         translate_cds(
             "ATAAG",
