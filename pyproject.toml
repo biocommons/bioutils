@@ -24,7 +24,13 @@ keywords = [
     "HGVS",
     "variation"
 ]
-dynamic = ["version"]
+dynamic = ["version", "optional-dependencies"]
+
+dependencies = [
+    "attrs",
+    "requests",
+    "urllib3~=1.26",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/biocommons/bioutils"
@@ -32,8 +38,8 @@ dynamic = ["version"]
 
 [build-system]
 requires = [
-	 "setuptools >= 65.3",
-   	 "setuptools_scm[toml] ~= 7.0"
+	 "setuptools >= 69.0",
+   	 "setuptools_scm[toml] >= 8.0"
 	 ]
 build-backend = "setuptools.build_meta"
 
