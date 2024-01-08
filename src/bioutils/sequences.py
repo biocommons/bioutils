@@ -221,6 +221,16 @@ dna_to_aa1_lut = {  # NCBI standard translation table
 dna_to_aa1_sec = dna_to_aa1_lut.copy()
 dna_to_aa1_sec["TGA"] = "U"
 
+# Vertebrate micochondrial translation table
+# https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=tgencodes#SG2
+
+dna_to_aa1_vmito = dna_to_aa1_lut.copy()
+dna_to_aa1_vmito["AGA"] = "*"
+dna_to_aa1_vmito["AGG"] = "*"
+dna_to_aa1_vmito["ATA"] = "M"
+dna_to_aa1_vmito["TGA"] = "W"
+
+
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
@@ -506,6 +516,7 @@ class TranslationTable(StrEnum):
 
     standard = "standard"
     selenocysteine = "sec"
+    vertebrate_mitochondrial = "vmito"
 
 
 def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard):
@@ -596,6 +607,8 @@ def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=Trans
         trans_table = dna_to_aa1_lut
     elif translation_table == TranslationTable.selenocysteine:
         trans_table = dna_to_aa1_sec
+    elif translation_table == TranslationTable.vertebrate_mitochondrial:
+        trans_table = dna_to_aa1_vmito
     else:
         raise ValueError("Unsupported translation table {}".format(translation_table))
     seq = replace_u_to_t(seq)
