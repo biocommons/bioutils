@@ -27,10 +27,6 @@ import gzip
 import json
 from importlib import resources
 
-from bioutils import _data
-
-_assy_dir = "assemblies"
-
 
 def get_assembly_names():
     """Retrieves available assemblies from the ``_data/assemblies`` directory.
@@ -44,7 +40,7 @@ def get_assembly_names():
         >>> 'GRCh37.p13' in assy_names
         True
     """
-    assemblies_path = resources.files(_data) / _assy_dir
+    assemblies_path = resources.files(__package__) / "_data" / "assemblies"
 
     return [n.name.replace(".json.gz", "") for n in assemblies_path.iterdir() if n.name.endswith(".json.gz")]
 
@@ -88,7 +84,7 @@ def get_assembly(name):
         'relationship': '=',
         'sequence_role': 'assembled-molecule'}
     """
-    fn = resources.files(_data) / _assy_dir / f"{name}.json.gz"
+    fn = resources.files(__package__) / "_data" / "assemblies" / f"{name}.json.gz"
     if not fn.exists():
         raise FileNotFoundError
 
