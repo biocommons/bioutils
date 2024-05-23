@@ -46,9 +46,7 @@ def get_assembly_names():
     """
     assemblies_path = resources.files(_data) / _assy_dir
 
-    return [
-        n.name.replace(".json.gz", "") for n in assemblies_path.iterdir() if n.name.endswith(".json.gz")
-    ]
+    return [n.name.replace(".json.gz", "") for n in assemblies_path.iterdir() if n.name.endswith(".json.gz")]
 
 
 def get_assembly(name):
