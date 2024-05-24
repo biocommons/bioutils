@@ -25,11 +25,7 @@ Definitions:
 
 import gzip
 import json
-
-import pkg_resources
-
-_assy_dir = "_data/assemblies"
-_assy_path_fmt = _assy_dir + "/" + "{name}.json.gz"
+from importlib import resources
 
 
 def get_assembly_names():
@@ -44,10 +40,9 @@ def get_assembly_names():
         >>> 'GRCh37.p13' in assy_names
         True
     """
+    assemblies_path = resources.files(__package__) / "_data" / "assemblies"
 
-    return [
-        n.replace(".json.gz", "") for n in pkg_resources.resource_listdir(__name__, _assy_dir) if n.endswith(".json.gz")
-    ]
+    return [n.name.replace(".json.gz", "") for n in assemblies_path.iterdir() if n.name.endswith(".json.gz")]
 
 
 def get_assembly(name):
@@ -89,8 +84,10 @@ def get_assembly(name):
         'relationship': '=',
         'sequence_role': 'assembled-molecule'}
     """
+    fn = resources.files(__package__) / "_data" / "assemblies" / f"{name}.json.gz"
+    if not fn.exists():
+        raise FileNotFoundError
 
-    fn = pkg_resources.resource_filename(__name__, _assy_path_fmt.format(name=name))
     return json.load(gzip.open(fn, mode="rt", encoding="utf-8"))
 
 
