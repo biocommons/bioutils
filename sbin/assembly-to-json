@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 """convert assembly text file to json
 
 eg$ ./sbin/assembly-to-json -p bioutils/_data/assemblies -f pull/GCF_000001405.29.assembly.txt
@@ -27,7 +24,7 @@ class AssemblyParser(object):
 
     def __init__(self, body):
         self._body = body.replace("\r","")
-    
+
     @property
     def name(self):
         return re.search("^# Assembly name:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
@@ -42,7 +39,7 @@ class AssemblyParser(object):
     @property
     def taxid(self):
         return re.search("^# Taxid:\s+(\S+)", self._body, flags=re.MULTILINE).group(1).strip()
-    
+
     @property
     def genbank_accession(self):
         try:
@@ -148,4 +145,4 @@ if __name__ == "__main__":
         except Exception as e:
             logger.error("oopsie on " + assy_id_or_name)
             logger.exception(e)
-            
+
