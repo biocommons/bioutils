@@ -4,11 +4,10 @@
 
 import gzip
 import json
+from importlib import resources
+from pathlib import Path
 
-import pkg_resources
-
-_data_dir = "_data/cytobands"
-_data_path_fmt = _data_dir + "/" + "{name}.json.gz"
+_data_dir = Path(str(resources.files(__package__) / "_data" / "cytobands"))
 
 
 def get_cytoband_names():
@@ -22,9 +21,7 @@ def get_cytoband_names():
         ['ucsc-hg19', 'ucsc-hg38']
     """
 
-    return [
-        n.replace(".json.gz", "") for n in pkg_resources.resource_listdir(__name__, _data_dir) if n.endswith(".json.gz")
-    ]
+    return [n.name.replace(".json.gz", "") for n in _data_dir.glob("*.json.gz")]
 
 
 def get_cytoband_map(name):
@@ -43,7 +40,7 @@ def get_cytoband_map(name):
         [55600000, 58500000, 'gpos50']
     """
 
-    fn = pkg_resources.resource_filename(__name__, _data_path_fmt.format(name=name))
+    fn = _data_dir / f"{name}.json.gz"
     return json.load(gzip.open(fn, mode="rt", encoding="utf-8"))
 
 
