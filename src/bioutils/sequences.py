@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Simple functions and lookup tables for nucleic acid and amino acid sequences.
-"""
+"""Simple functions and lookup tables for nucleic acid and amino acid sequences."""
 
 import logging
 import re

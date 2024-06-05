@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Provides sequence fetching from NCBI and Ensembl.
+"""Provides sequence fetching from NCBI and Ensembl."""
 
-"""
 import logging
 import os
 import random
