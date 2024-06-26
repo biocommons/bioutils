@@ -25,6 +25,7 @@ Some sample serializations of Identifiers:
 The string form may be used as a CURIE, in which case the document in
 which the CURIE is used must contain a map of ``{namespace : uri}``.
 """
+
 import re
 
 from .exceptions import BioutilsError
