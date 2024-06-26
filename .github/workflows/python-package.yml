@@ -34,9 +34,9 @@ jobs:
       run: |
         isort --check src
 
-    - name: Format check with black
+    - name: Format check with Ruff
       run: |
-        black --check src
+        ruff format --check src
 
     # Disable bandit until issues are resolved
     # - name: Security check with bandit
