@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
     "Topic :: Scientific/Engineering :: Medical Science Apps."
@@ -90,9 +90,6 @@ exclude_lines = [
     "if __name__ == .__main__.:",
 ]
 
-[tool.black]
-line-length = 120
-
 [tool.isort]
 profile = "black"
 
@@ -107,3 +104,8 @@ disable = "R0913"
 
 [tool.pylint.format]
 max-line-length = "120"
+
+
+[tool.ruff]
+src = ["src", "tests"]
+line-length = 120
