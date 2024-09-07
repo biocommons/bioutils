@@ -11,6 +11,12 @@ from bioutils.seqfetcher import (
     fetch_seq,
 )
 
+@pytest.fixture(autouse=True)
+def clear_env():
+    if "NCBI_API_KEY" in os.environ:
+        del os.environ["NCBI_API_KEY"]
+
+
 
 @vcr.use_cassette
 def test_fetch_seq():
