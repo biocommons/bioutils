@@ -13,6 +13,10 @@ from bioutils.seqfetcher import (
 
 @pytest.fixture(autouse=True)
 def clear_env():
+    """Some tests in this module assume that the default utils access configs are
+    active. If you execute tests in an environment with an existing `NCBI_API_KEY` env
+    var, those tests will fail unless we first remove that variable.
+    """
     if "NCBI_API_KEY" in os.environ:
         del os.environ["NCBI_API_KEY"]
 
