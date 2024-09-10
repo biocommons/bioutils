@@ -70,7 +70,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        make develop
+        make devready
 
     - name: Test with pytest
       run: |
