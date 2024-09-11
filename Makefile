@@ -9,7 +9,7 @@ SHELL:=/bin/bash -e -o pipefail
 SELF:=$(firstword $(MAKEFILE_LIST))
 
 PY_VERSION:=$(shell python3 --version | cut -d" " -f2 | cut -d. -f1-2)
-VE_DIR:=venv/${PY_VERSION}
+VE_DIR=venv
 
 $(info Using Python ${PY_VERSION})
 
@@ -46,10 +46,10 @@ ${VE_DIR}: venv/%:
 	pip install --upgrade pip setuptools wheel
 
 #=> develop: install package in develop mode
-.PHONY: develop install
+#=> develop: install package in develop mode
+.PHONY: develop
 develop:
-	@if [ -z "$${VIRTUAL_ENV}" ]; then echo "Not in a virtual environment; see README.md" 1>&2; exit 1; fi
-	pip install -e .[dev,test]
+	pip install -e ".[dev, test]"
 
 #=> install: install package
 install:
