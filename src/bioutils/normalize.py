@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Provides functionality for normalizing alleles, ensuring comparable representations."""
 
-import copy
 import enum
 import logging
 import math
