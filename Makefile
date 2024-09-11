@@ -50,7 +50,6 @@ ${VE_DIR}: venv/%:
 .PHONY: develop
 develop:
 	pip install -e ".[dev, test]"
-	pre-commit install
 
 #=> install: install package
 install:
