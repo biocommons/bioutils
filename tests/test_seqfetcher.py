@@ -10,6 +10,7 @@ from bioutils.seqfetcher import (
     fetch_seq,
 )
 
+
 @pytest.fixture(autouse=True)
 def clear_env():
     """Some tests in this module assume that the default utils access configs are
@@ -18,7 +19,6 @@ def clear_env():
     """
     if "NCBI_API_KEY" in os.environ:
         del os.environ["NCBI_API_KEY"]
-
 
 
 @vcr.use_cassette
