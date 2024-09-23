@@ -24,30 +24,46 @@ keywords = [
     "HGVS",
     "variation"
 ]
-dynamic = ["version", "optional-dependencies"]
-
+dynamic = ["version"]
 dependencies = [
     "attrs",
     "requests",
     "urllib3~=1.26",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "bandit~=1.7",
+    "build~=0.8",
+    "flake8~=4.0",
+    "ipython~=8.4",
+    "isort~=5.10",
+    "mypy",
+    "pylint~=2.14",
+    "ruff == 0.4.4",
+]
+test = [
+    "pytest~=7.1",
+    "pytest-cov~=4.0",
+    "pytest-optional-tests",
+    "tox~=3.25",
+    "vcrpy",
+]
+docs = ["mkdocs"]
+
 [project.urls]
 "Homepage" = "https://github.com/biocommons/bioutils"
 "Bug Tracker" = "https://github.com/biocommons/bioutils/issues"
 
 [build-system]
-requires = [
-	 "setuptools >= 69.0",
-   	 "setuptools_scm[toml] >= 8.0"
-	 ]
+requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+"*" = ["_data/*/*.json.gz"]
 
 [tool.setuptools_scm]
 
-
-# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 [tool.pytest.ini_options]
 addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
 doctest_optionflags = [
@@ -64,7 +80,6 @@ markers = [
 testpaths = [
   "tests"
 ]
-
 
 [tool.coverage.run]
 branch = true
