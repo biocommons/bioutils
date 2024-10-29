@@ -9,7 +9,7 @@ SHELL:=/bin/bash -e -o pipefail
 SELF:=$(firstword $(MAKEFILE_LIST))
 
 PY_VERSION:=$(shell python3 --version | cut -d" " -f2 | cut -d. -f1-2)
-VE_DIR=venv
+VE_DIR=venv/${PY_VERSION}
 
 $(info Using Python ${PY_VERSION})
 
@@ -38,12 +38,12 @@ devready:
 	@echo '#################################################################################'
 
 #=> venv: make a Python 3 virtual environment
-venv: ${VE_DIR}
-${VE_DIR}: venv/%:
-	python$* -mvenv $@; \
+.PHONY: venv/%
+venv/%:
+	python$* -m venv $@; \
 	source $@/bin/activate; \
 	python -m ensurepip --upgrade; \
-	pip install --upgrade pip setuptools wheel
+	pip install --upgrade pip setuptools
 
 #=> develop: install package in develop mode
 #=> develop: install package in develop mode
