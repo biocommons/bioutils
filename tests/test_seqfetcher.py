@@ -36,7 +36,7 @@ def test_fetch_seq():
     assert "MESRETLSSSRQRGGESDFLPVSSA" == fetch_seq("NP_056374.2", 0, 25)
     assert "GATCCACCTGCCTCAGCCTCCCAGA" == fetch_seq("GL000191.1", 0, 25)
     assert "TTTATTTATTTTAGATACTTATCTC" == fetch_seq("KB663603.1", 0, 25)
-    assert "CGCCTCCCTTCCCCCTCCCCGCCCG" == fetch_seq("ENST00000288602", 0, 25)
+    assert "CCGCTCGGGCCCCGGCTCTCGGTTA" == fetch_seq("ENST00000288602.11", 0, 25)
     assert "MAALSGGGGGGAEPGQALFNGDMEP" == fetch_seq("ENSP00000288602", 0, 25)
 
 
