@@ -9,15 +9,14 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.23.0
+      - python-requests/2.32.3
     method: GET
     uri: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_001230161.1&rettype=fasta&seq_start=3191&seq_stop=3190&tool=bioutils&email=biocommons-dev@googlegroups.com
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAADTJwQqCQBAG4LtP8R8LPChB0IAHCTsHPUAs26gLurPNjFBvb5eOHx8GVVHCdbix
-        x/nel7KkGDxJJioqn+/TXDmshyPhwe+Nc2SYB3Ukg2xu6cWQEfZPDXliwqiyosOpvbQ1Fs6Tzz+e
-        m6aqdgAAAP//AwCI7yCadQAAAA==
+      string: '+Error%3A+CEFetchPApplication%3A%3Aproxy_stream()%3A+Error%3A+S+e+q+u+e+n+c+e++s+t+a+r+t++i+s++o+u+t+s+i+d+e++o+f++s+e+q+u+e+n+c+e++r+a+n+g+e+%3A++f+r+o+m++%3D++3+1+9+1+,++l+e+n+g+t+h++%3D++6+0+0+%0A%0A
+
+        '
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -34,16 +33,18 @@ interactions:
       Content-Type:
       - text/plain; charset=UTF-8
       Date:
-      - Wed, 05 May 2021 15:16:49 GMT
+      - Tue, 29 Oct 2024 01:38:17 GMT
       NCBI-PHID:
-      - 939B83F3D1102835000021B6396BAD26.1.1.m_5
+      - 322C747DCD3729C500005ACD6CF2CE3F.1.1.m_5
       NCBI-SID:
-      - 5C70FB9A9077F4C6_5FA0SID
+      - 7EE76A74F4915BDA_0FEDSID
+      Referrer-Policy:
+      - origin-when-cross-origin
       Server:
       - Finatra
       Set-Cookie:
-      - ncbi_sid=5C70FB9A9077F4C6_5FA0SID; domain=.nih.gov; path=/; expires=Thu, 05
-        May 2022 15:16:50 GMT
+      - ncbi_sid=7EE76A74F4915BDA_0FEDSID; domain=.nih.gov; path=/; expires=Wed, 29
+        Oct 2025 01:38:17 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Transfer-Encoding:
