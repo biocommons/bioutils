@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 ncbi_tool = "bioutils"
 ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
-enst_default_type = "cdna"
+enst_default_seq_type = "cdna"
 
 
 def fetch_seq(ac, start_i=None, end_i=None, **rest):
@@ -98,7 +98,7 @@ def fetch_seq(ac, start_i=None, end_i=None, **rest):
 # Internal functions
 
 
-def _fetch_seq_ensembl(ac, start_i=None, end_i=None, type=None):
+def _fetch_seq_ensembl(ac, start_i=None, end_i=None, seq_type=None):
     """Fetch sequence slice from Ensembl public REST interface.
 
     Args:
@@ -143,16 +143,16 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None, type=None):
         ac, version = m.groups()
         version = int(version)
 
-    if ac.startswith("ENST") and type is None:
+    if ac.startswith("ENST") and seq_type is None:
         try:
-            type = os.environ["ENST_DEFAULT_TYPE"]
+            seq_type = os.environ["ENST_DEFAULT_SEQ_TYPE"]
         except KeyError:
-            type = enst_default_type
-            _logger.warning(f"{ac}: Transcript type not specified or set in ENST_DEFAULT_TYPE; assuming {type}")
+            seq_type = enst_default_seq_type
+            _logger.warning(f"{ac}: Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE; assuming {seq_type}")
 
     url = f"http://rest.ensembl.org/sequence/id/{ac}"
-    if type:
-        url += f"?type={type}"
+    if seq_type:
+        url += f"?type={seq_type}"
     r = requests.get(url, headers={"Content-Type": "application/json"})
     r.raise_for_status()
     data = r.json()
