@@ -88,12 +88,6 @@ def test_fetch_ENST00000617537_env(caplog, monkeypatch):
 
 
 @vcr.use_cassette
-def test_warnings():
-    ac = "ENST00000617537"
-    assert sequence_lengths[ac][enst_default_type] == len(fetch_seq(ac))
-
-
-@vcr.use_cassette
 def test_fetch_seq_ncbi_invalid_positions():
     with pytest.raises(RuntimeError) as excinfo:
         _fetch_seq_ncbi("NP_001230161.1", 3190, 3190)
