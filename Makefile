@@ -77,9 +77,9 @@ cqa:
 #=> test-docs: test example code in docs
 .PHONY: test test-code test-docs
 test:
-	pytest -s
+	pytest
 test-learn:
-	VCR_RECORD_MODE=new_episodes pytest -sx
+	VCR_RECORD_MODE=new_episodes pytest -x
 test-code:
 	pytest src
 test-docs:
