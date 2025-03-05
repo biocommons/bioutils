@@ -4,11 +4,7 @@ import os
 import pytest
 import vcr
 
-from bioutils.seqfetcher import (
-    _add_eutils_api_key,
-    _fetch_seq_ncbi,
-    fetch_seq,
-)
+from bioutils.seqfetcher import _add_eutils_api_key, _fetch_seq_ncbi, fetch_seq, enst_default_type
 
 
 @pytest.fixture(autouse=True)
@@ -38,6 +34,63 @@ def test_fetch_seq():
     assert "TTTATTTATTTTAGATACTTATCTC" == fetch_seq("KB663603.1", 0, 25)
     assert "CCGCTCGGGCCCCGGCTCTCGGTTA" == fetch_seq("ENST00000288602.11", 0, 25)
     assert "MAALSGGGGGGAEPGQALFNGDMEP" == fetch_seq("ENSP00000288602", 0, 25)
+
+
+# >>> from bioutils import seqfetcher
+# >>> s_def = seqfetcher.fetch_seq("ENST00000617537")
+# ENST00000617537: Transcript type not specified or set in ENST_DEFAULT_TYPE; assuming cdna
+# >>> s_gen = seqfetcher.fetch_seq("ENST00000617537", type="genomic")
+# >>> s_cdna = seqfetcher.fetch_seq("ENST00000617537", type="cdna")
+# >>> s_cds = seqfetcher.fetch_seq("ENST00000617537", type="cds")
+# >>> len(s_def), len(s_gen), len(s_cdna), len(s_cds)
+# (2385, 211554, 2385, 1728)
+# >>> import os
+# >>> os.environ["ENST_DEFAULT_TYPE"] = "cds"
+# >>> s_def = seqfetcher.fetch_seq("ENST00000617537")
+# >>> s_gen = seqfetcher.fetch_seq("ENST00000617537", type="genomic")
+# >>> s_cdna = seqfetcher.fetch_seq("ENST00000617537", type="cdna")
+# >>> s_cds = seqfetcher.fetch_seq("ENST00000617537", type="cds")
+# >>> len(s_def), len(s_gen), len(s_cdna), len(s_cds)
+# (1728, 211554, 2385, 1728)
+
+sequence_lengths = {
+    "ENST00000617537": {
+        "genomic": 211554,
+        "cdna": 2385,
+        "cds": 1728,
+    }
+}
+
+
+@vcr.use_cassette
+def test_fetch_ENST00000617537_noenv(caplog, monkeypatch):
+    """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_TYPE unset"""
+    monkeypatch.delenv("ENST_DEFAULT_TYPE", raising=False)
+    ac = "ENST00000617537"
+    assert sequence_lengths[ac][enst_default_type] == len(fetch_seq(ac))
+    assert "Transcript type not specified or set in ENST_DEFAULT_TYPE" in caplog.text
+    assert sequence_lengths[ac]["genomic"] == len(fetch_seq(ac, type="genomic"))
+    assert sequence_lengths[ac]["cdna"] == len(fetch_seq(ac, type="cdna"))
+    assert sequence_lengths[ac]["cds"] == len(fetch_seq(ac, type="cds"))
+
+
+@vcr.use_cassette
+def test_fetch_ENST00000617537_env(caplog, monkeypatch):
+    """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_TYPE set"""
+    user_enst_default_type = "cds"  # ideally != enst_default_type to ensure use
+    monkeypatch.setenv("ENST_DEFAULT_TYPE", user_enst_default_type)
+    ac = "ENST00000617537"
+    assert sequence_lengths[ac][user_enst_default_type] == len(fetch_seq(ac))
+    assert "Transcript type not specified or set in ENST_DEFAULT_TYPE" not in caplog.text
+    assert sequence_lengths[ac]["genomic"] == len(fetch_seq(ac, type="genomic"))
+    assert sequence_lengths[ac]["cdna"] == len(fetch_seq(ac, type="cdna"))
+    assert sequence_lengths[ac]["cds"] == len(fetch_seq(ac, type="cds"))
+
+
+@vcr.use_cassette
+def test_warnings():
+    ac = "ENST00000617537"
+    assert sequence_lengths[ac][enst_default_type] == len(fetch_seq(ac))
 
 
 @vcr.use_cassette
@@ -88,3 +141,5 @@ def test_rate_limit():
     num_requests = num_threads = 5
     p = multiprocessing.Pool(num_threads)
     p.map(_check1, range(num_requests))
+    p.close()
+    p.join()
