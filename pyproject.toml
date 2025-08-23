@@ -37,7 +37,6 @@ dev = [
     "flake8~=4.0",
     "ipython~=8.4",
     "isort~=5.10",
-    "mypy",
     "pylint~=2.14",
     "ruff == 0.4.4",
 ]
