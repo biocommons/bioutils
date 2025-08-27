@@ -38,7 +38,7 @@ dev = [
     "ipython~=8.4",
     "isort~=5.10",
     "pylint~=2.14",
-    "ruff == 0.4.4",
+    "ruff~=0.9",
 ]
 test = [
     "pytest~=7.1",
@@ -62,13 +62,16 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 
 [tool.pytest.ini_options]
-addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
+addopts = "-v --strict-markers -m 'not extra' --doctest-modules --cov=src"
 doctest_optionflags = [
     "ALLOW_BYTES",
     "ALLOW_UNICODE",
     "ELLIPSIS",
     "IGNORE_EXCEPTION_DETAIL",
     "NORMALIZE_WHITESPACE",
+]
+filterwarnings = [
+    "default::Warning"
 ]
 markers = [
     "network: tests that require network connectivity",

@@ -78,6 +78,8 @@ cqa:
 .PHONY: test test-code test-docs
 test:
 	pytest
+test-learn:
+	VCR_RECORD_MODE=new_episodes pytest -x
 test-code:
 	pytest src
 test-docs:
