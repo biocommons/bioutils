@@ -145,4 +145,3 @@ if __name__ == "__main__":
         except Exception as e:
             logger.error("oopsie on " + assy_id_or_name)
             logger.exception(e)
-

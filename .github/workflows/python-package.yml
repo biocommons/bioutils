@@ -44,6 +44,20 @@ jobs:
       run: |
         ruff format --check .
 
+    - name: Ensure EOF line
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: end-of-file-fixer --all-files
+
+    - name: Fix trailing whitespace
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: trailing-whitespace --all-files
+
+    - name: Fix mixed line endings
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: mixed-line-ending --all-files
   test:
     runs-on: ubuntu-latest
 

@@ -63,14 +63,7 @@ build: %:
 
 ############################################################################
 #= TESTING
-# see test configuration in setup.cfg
-
-#=> cqa: execute code quality tests
-cqa:
-	flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
-	isort --profile black --check src
-	ruff format --check src
-	bandit -ll -r src
+# see test configuration in pyproject.toml
 
 #=> test: execute tests
 #=> test-code: test code (including embedded doctests)
@@ -82,6 +75,17 @@ test-code:
 	pytest src
 test-docs:
 	pytest docs
+
+#=> cqa: execute code quality tests
+cqa:
+	ruff format --check
+	ruff check
+
+#=> reformat: reformat code
+.PHONY: reformat
+reformat:
+	ruff check --fix
+	ruff format
 
 #=> tox -- run all tox tests
 tox:

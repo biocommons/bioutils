@@ -1,3 +1,5 @@
+"""bioutils provides some common utilities and lookup tables for bioinformatics."""
+
 from importlib.metadata import PackageNotFoundError, version
 
 try:

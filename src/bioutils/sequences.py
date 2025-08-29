@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Simple functions and lookup tables for nucleic acid and amino acid sequences."""
 
 import logging
@@ -233,7 +232,7 @@ dna_to_aa1_vmito["TGA"] = "W"
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
 
 
-def aa_to_aa1(seq):
+def aa_to_aa1(seq: str) -> str:
     """Coerces string of 1- or 3-letter amino acids to 1-letter representation.
 
     Args:
@@ -250,14 +249,14 @@ def aa_to_aa1(seq):
         'CATSARELAME'
 
         >>> aa_to_aa1(None)
-    """
 
+    """
     if seq is None:
         return None
     return aa3_to_aa1(seq) if looks_like_aa3_p(seq) else seq
 
 
-def aa_to_aa3(seq):
+def aa_to_aa3(seq: str) -> str:
     """Coerces string of 1- or 3-letter amino acids to 3-letter representation.
 
     Args:
@@ -274,14 +273,14 @@ def aa_to_aa3(seq):
         'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
         >>> aa_to_aa3(None)
-    """
 
+    """
     if seq is None:
         return None
     return aa1_to_aa3(seq) if not looks_like_aa3_p(seq) else seq
 
 
-def aa1_to_aa3(seq):
+def aa1_to_aa3(seq: str) -> str:
     """Converts string of 1-letter amino acids to 3-letter amino acids.
 
     Should only be used if the format of the sequence is known; otherwise use ``aa_to_aa3()``.
@@ -300,14 +299,14 @@ def aa1_to_aa3(seq):
         'CysAlaThrSerAlaArgGluLeuAlaMetGlu'
 
         >>> aa1_to_aa3(None)
-    """
 
+    """
     if seq is None:
         return None
     return "".join(aa1_to_aa3_lut[aa1] for aa1 in seq)
 
 
-def aa3_to_aa1(seq):
+def aa3_to_aa1(seq: str) -> str:
     """Converts string of 3-letter amino acids to 1-letter amino acids.
 
     Should only be used if the format of the sequence is known; otherwise use ``aa_to_aa1()``.
@@ -326,14 +325,14 @@ def aa3_to_aa1(seq):
         'CATSARELAME'
 
         >>> aa3_to_aa1(None)
-    """
 
+    """
     if seq is None:
         return None
     return "".join(aa3_to_aa1_lut[aa3] for aa3 in [seq[i : i + 3] for i in range(0, len(seq), 3)])
 
 
-def complement(seq):
+def complement(seq: str) -> str:
     """Retrieves the complement of a sequence.
 
     Args:
@@ -347,14 +346,14 @@ def complement(seq):
         'TAGC'
 
         >>> complement(None)
-    """
 
+    """
     if seq is None:
         return None
     return seq.translate(complement_transtable)
 
 
-def elide_sequence(s, flank=5, elision="..."):
+def elide_sequence(s: str, flank: int = 5, elision: str = "...") -> str:
     """Trims the middle of the sequence, leaving the right and left flanks.
 
     Args:
@@ -362,7 +361,7 @@ def elide_sequence(s, flank=5, elision="..."):
         flank (int, optional): The length of each flank. Defaults to five.
         elision (str, optional): The symbol used to represent the part trimmed. Defaults to '...'.
 
-        Returns:
+    Returns:
             str: The sequence with the middle replaced by ``elision``.
 
     Examples:
@@ -380,15 +379,15 @@ def elide_sequence(s, flank=5, elision="..."):
 
         >>> elide_sequence("ABCDEFGHIJKLMNOPQRSTUVWXYZ", flank=12, elision=".")
         'ABCDEFGHIJKL.OPQRSTUVWXYZ'
-    """
 
+    """
     elided_sequence_len = flank + flank + len(elision)
     if len(s) <= elided_sequence_len:
         return s
     return s[:flank] + elision + s[-flank:]
 
 
-def looks_like_aa3_p(seq):
+def looks_like_aa3_p(seq: str) -> bool:
     """Indicates whether a string looks like a 3-letter AA string.
 
     Args:
@@ -396,11 +395,12 @@ def looks_like_aa3_p(seq):
 
     Returns:
         bool: Whether the string is of the format of a 3-letter AA string.
+
     """
     return seq is not None and (len(seq) % 3 == 0) and (len(seq) == 0 or seq[1] in ascii_lowercase)
 
 
-def normalize_sequence(seq):
+def normalize_sequence(seq: str) -> str:
     """Converts sequence to normalized representation for hashing.
 
     Essentially, removes whitespace and asterisks, and uppercases the string.
@@ -425,19 +425,19 @@ def normalize_sequence(seq):
         Traceback (most recent call last):
         ...
         RuntimeError: Normalized sequence contains non-alphabetic characters
-    """
 
+    """
     nseq = re.sub(r"[\s\*]", "", seq).upper()
     m = re.search("[^A-Z]", nseq)
     if m:
-        _logger.debug("Original sequence: " + seq)
-        _logger.debug("Normalized sequence: " + nseq)
-        _logger.debug("First non-[A-Z] at {}".format(m.start()))
+        _logger.debug("Original sequence: %s", seq)
+        _logger.debug("Normalized sequence: %s", nseq)
+        _logger.debug("First non-[A-Z] at %s", m.start())
         raise RuntimeError("Normalized sequence contains non-alphabetic characters")
     return nseq
 
 
-def reverse_complement(seq):
+def reverse_complement(seq: str) -> str:
     """Converts a sequence to its reverse complement.
 
     Args:
@@ -451,14 +451,14 @@ def reverse_complement(seq):
         'CGAT'
 
         >>> reverse_complement(None)
-    """
 
+    """
     if seq is None:
         return None
     return "".join(reversed(complement(seq)))
 
 
-def replace_t_to_u(seq):
+def replace_t_to_u(seq: str) -> str:
     """Replaces the T's in a sequence with U's.
 
     Args:
@@ -472,14 +472,14 @@ def replace_t_to_u(seq):
         'ACGU'
 
         >>> replace_t_to_u(None)
-    """
 
+    """
     if seq is None:
         return None
     return seq.replace("T", "U").replace("t", "u")
 
 
-def replace_u_to_t(seq):
+def replace_u_to_t(seq: str) -> str:
     """Replaces the U's in a sequence with T's.
 
     Args:
@@ -493,8 +493,8 @@ def replace_u_to_t(seq):
         'ACGT'
 
         >>> replace_u_to_t(None)
-    """
 
+    """
     if seq is None:
         return None
     return seq.replace("U", "T").replace("u", "t")
@@ -518,7 +518,12 @@ class TranslationTable(StrEnum):
     vertebrate_mitochondrial = "vmito"
 
 
-def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=TranslationTable.standard):
+def translate_cds(
+    seq: str,
+    full_codons: bool = True,
+    ter_symbol: str = "*",
+    translation_table: TranslationTable = TranslationTable.standard,
+) -> str:
     """Translates a DNA or RNA sequence into a single-letter amino acid sequence.
 
     Args:
@@ -591,8 +596,8 @@ def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=Trans
         Traceback (most recent call last):
         ...
         ValueError: Codon CGQ at position 4..6 is undefined in codon table
-    """
 
+    """
     if seq is None:
         return None
 
@@ -609,7 +614,7 @@ def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=Trans
     elif translation_table == TranslationTable.vertebrate_mitochondrial:
         trans_table = dna_to_aa1_vmito
     else:
-        raise ValueError("Unsupported translation table {}".format(translation_table))
+        raise ValueError(f"Unsupported translation table {translation_table}")
     seq = replace_u_to_t(seq)
     seq = seq.upper()
 
@@ -618,13 +623,15 @@ def translate_cds(seq, full_codons=True, ter_symbol="*", translation_table=Trans
         codon = seq[i : i + 3]
         try:
             aa = trans_table[codon]
-        except KeyError:
+        except KeyError as e:
             # if this contains an ambiguous code, set aa to X, otherwise, throw error
             iupac_ambiguity_codes = "BDHVNUWSMKRYZ"
             if any(iupac_ambiguity_code in codon for iupac_ambiguity_code in iupac_ambiguity_codes):
                 aa = "X"
             else:
-                raise ValueError("Codon {} at position {}..{} is undefined in codon table".format(codon, i + 1, i + 3))
+                raise ValueError(
+                    f"Codon {codon} at position {i + 1}..{i + 3} is undefined in codon table"
+                ) from e
         protein_seq.append(aa)
 
     # check for trailing bases and add the ter symbol if required

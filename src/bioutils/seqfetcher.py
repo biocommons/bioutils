@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 """Provides sequence fetching from NCBI and Ensembl."""
 
+import http
 import logging
 import os
 import random
@@ -17,7 +17,7 @@ ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
 
 
-def fetch_seq(ac, start_i=None, end_i=None):
+def fetch_seq(ac: str, start_i: int | None = None, end_i: int | None = None) -> str:
     """Fetches sequences and subsequences from NCBI eutils and Ensembl REST interfaces.
 
     Args:
@@ -37,18 +37,18 @@ def fetch_seq(ac, start_i=None, end_i=None):
         RuntimeError: If the request to the database fails.
 
     Examples:
-        >>> len(fetch_seq('NP_056374.2'))
+        >>> len(fetch_seq("NP_056374.2"))
         1596
 
-        >>> fetch_seq('NP_056374.2',0,10)   # This!
+        >>> fetch_seq("NP_056374.2", 0, 10)  # This!
         'MESRETLSSS'
 
-        >>> fetch_seq('NP_056374.2')[0:10]  # Not this!
+        >>> fetch_seq("NP_056374.2")[0:10]  # Not this!
         'MESRETLSSS'
 
         # Providing intervals is especially important for large sequences:
 
-        >>> fetch_seq('NC_000001.10',2000000,2000030)
+        >>> fetch_seq("NC_000001.10", 2000000, 2000030)
         'ATCACACGTGCAGGAACCCTTTTCCAAAGG'
 
         # This call will pull back 30 bases plus overhead; without the
@@ -57,17 +57,17 @@ def fetch_seq(ac, start_i=None, end_i=None):
         # Essentially any RefSeq, Genbank, BIC, or Ensembl sequence may be
         # fetched.
 
-        >>> fetch_seq('NM_9.9')
+        >>> fetch_seq("NM_9.9")
         Traceback (most recent call last):
         ...
         RuntimeError: No sequence available for NM_9.9
 
-        >>> fetch_seq('QQ01234')
+        >>> fetch_seq("QQ01234")
         Traceback (most recent call last):
         ...
         RuntimeError: No sequence fetcher for QQ01234
-    """
 
+    """
     ac_dispatch = [
         {
             "re": re.compile(r"^(?:AC|N[CGMPRTW])_|^[A-L]\w\d|^U\d"),
@@ -79,25 +79,25 @@ def fetch_seq(ac, start_i=None, end_i=None):
     eligible_fetchers = [dr["fetcher"] for dr in ac_dispatch if dr["re"].match(ac)]
 
     if len(eligible_fetchers) == 0:
-        raise RuntimeError("No sequence fetcher for {ac}".format(ac=ac))
+        raise RuntimeError(f"No sequence fetcher for {ac}")
 
     if len(eligible_fetchers) >= 1:  # pragma: nocover (no way to test)
-        _logger.debug("Multiple sequence fetchers found for " "{ac}; using first".format(ac=ac))
+        _logger.debug("Multiple sequence fetchers found for %s; using first", ac)
 
     fetcher = eligible_fetchers[0]
-    _logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
+    _logger.debug("fetching %s with %s", ac, fetcher)
 
     try:
         return fetcher(ac, start_i, end_i)
     except requests.RequestException as ex:
-        raise RuntimeError("Failed to fetch {ac} ({ex})".format(ac=ac, ex=ex))
+        raise RuntimeError(f"Failed to fetch {ac} ({ex})") from ex
 
 
 # ###########################################################################
 # Internal functions
 
 
-def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
+def _fetch_seq_ensembl(ac: str, start_i: int | None = None, end_i: int | None = None) -> str:
     """Fetch sequence slice from Ensembl public REST interface.
 
     Args:
@@ -131,8 +131,8 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
         >> ac = 'ENSP00000288602'
         >> _fetch_seq_ensembl(ac ,0, 10) == _fetch_seq_ensembl(ac)[0:10]
         True
-    """
 
+    """
     # Ensembl API only takes transcript IDs (without version) and returns the latest one
     # So we need to strip the transcript version, then check if what was returned was the one we requested
     version = None
@@ -142,7 +142,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
         version = int(version)
 
     url = f"http://rest.ensembl.org/sequence/id/{ac}"
-    r = requests.get(url, headers={"Content-Type": "application/json"})
+    r = requests.get(url, headers={"Content-Type": "application/json"}, timeout=30)
     r.raise_for_status()
     data = r.json()
     if version is not None:
@@ -155,8 +155,8 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
     return seq if (start_i is None or end_i is None) else seq[start_i:end_i]
 
 
-def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
-    """Fetches sequences from NCBI using the eutils interface.
+def _fetch_seq_ncbi(ac: str, start_i: int | None = None, end_i: int | None = None) -> str | None:
+    """Fetch sequences from NCBI using the eutils interface.
 
     Args:
         ac (str): The accession of the sequence to fetch.
@@ -201,10 +201,12 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
         >> _fetch_seq_ncbi('NP_056374.2',0,10) == _fetch_seq_ncbi('NP_056374.2')[0:10]
         True
-    """
 
+    """
     db = "protein" if ac[1] == "P" else "nucleotide"
-    url_fmt = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?" "db={db}&id={ac}&rettype=fasta"
+    url_fmt = (
+        "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db={db}&id={ac}&rettype=fasta"
+    )
 
     if start_i is None or end_i is None:
         url = url_fmt.format(db=db, ac=ac)
@@ -212,35 +214,35 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         url_fmt += "&seq_start={start}&seq_stop={stop}"
         url = url_fmt.format(db=db, ac=ac, start=start_i + 1, stop=end_i)
 
-    url += "&tool={tool}&email={email}".format(tool=ncbi_tool, email=ncbi_email)
+    url += f"&tool={ncbi_tool}&email={ncbi_email}"
 
     url = _add_eutils_api_key(url)
 
     n_retries = 0
     while True:
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=60)
         if resp.ok:
-            seq = "".join(resp.text.splitlines()[1:])
-            return seq
-        elif resp.status_code == 400:
+            return "".join(resp.text.splitlines()[1:])
+        if resp.status_code == http.HTTPStatus.BAD_REQUEST:
             # Invalid sequence or start/stop position for that sequence
             raise RuntimeError(
-                "Fetching sequence {} with start index {} and end index {} failed, invalid sequence "
-                "or start or end position".format(ac, start_i, end_i)
+                f"Fetching sequence {ac} with start index {start_i} and end index {end_i} failed, invalid sequence "
+                "or start or end position"
             )
         if n_retries >= retry_limit:
             break
         if n_retries == 0:
-            _logger.warning("Failed to fetch {}".format(url))
-        sleeptime = random.randint(n_retries, 3) ** n_retries
-        _logger.warning("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
+            _logger.warning("Failed to fetch %s", url)
+        sleeptime = random.randint(n_retries, 3) ** n_retries  # noqa: S311
+        _logger.warning("Failure %s/%s; retry in %s seconds", n_retries, retry_limit, sleeptime)
         time.sleep(sleeptime)
         n_retries += 1
     # Falls through only on failure
     resp.raise_for_status()
+    return None
 
 
-def _add_eutils_api_key(url):
+def _add_eutils_api_key(url: str) -> str:
     """Adds an eutils api key to the query.
 
     Args:
@@ -249,11 +251,11 @@ def _add_eutils_api_key(url):
     Returns:
         str: The query url with the api key, if one is stored in the environment variable
             ``NCBI_API_KEY``, otherwise it is unaltered.
-    """
 
+    """
     apikey = os.environ.get("NCBI_API_KEY")
     if apikey:
-        url += "&api_key={apikey}".format(apikey=apikey)
+        url += f"&api_key={apikey}"
     return url
 
 

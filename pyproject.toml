@@ -32,13 +32,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "bandit~=1.7",
     "build~=0.8",
-    "flake8~=4.0",
     "ipython~=8.4",
-    "isort~=5.10",
-    "pylint~=2.14",
-    "ruff == 0.4.4",
+    "pre-commit >= 4.2.0",
+    "ruff == 0.12.8",
 ]
 test = [
     "pytest~=7.1",
@@ -102,22 +99,95 @@ exclude_lines = [
     "if __name__ == .__main__.:",
 ]
 
-[tool.isort]
-profile = "black"
-
-# [tool.flake8]
-# flake8 does not support configuration in pyproject.toml
-# https://github.com/PyCQA/flake8/issues/234#issuecomment-812800832
-# The config in setup.cfg
-
-[tool.pylint.'MESSAGES CONTROL']
-disable = "R0913"
-
-
-[tool.pylint.format]
-max-line-length = "120"
-
-
 [tool.ruff]
 src = ["src", "tests"]
-line-length = 120
+line-length = 100
+exclude = [
+    "bin",
+    "sbin",
+    "docs",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # not used
+    "AIR",
+    "ERA",
+    "FAST",
+    "YTT",
+    "FBT",
+    "CPY",
+    "DJ",
+    "EM",
+    "EXE",
+    "FIX",
+    "FA",
+    "INT",
+    "PYI",
+    "TID",
+    "TD",
+    "TC",
+    "C90",
+    "NPY",
+    "PD",
+    # ignore for compatibility with formatter
+    "D206",
+    "D300",
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "E501",
+    "W191",
+    "S321",
+    "COM812",
+    # don't require types on *args, **kwargs
+    "ANN002",
+    "ANN003",
+    # subjective pylint thresholds
+    "PLR0904",
+    "PLR091",
+    "PLR1702",
+    # excessive docstring requirements
+    "D105",
+    "D205",
+    "D203",
+    "D213",  # conflicts with D212
+    "D400",
+    "D401",
+    "D403",
+    "D415",
+    # excessive type ignore requirements
+    "PGH003",
+    # kinda hairy to sort out
+    "PLC0206",
+    # maybe good to work on someday, but low priority
+    "TRY003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# ANN001 - missing-type-function-argument
+# ANN2 - missing-return-type
+# D100 - undocumented-public-module
+# D102 - undocumented-public-class
+# D103 - undocumented-public-function
+# S101 - assert
+# B011 - assert-false
+# INP001 - implicit-namespace-package
+# PLR2004 - magic-value-comparison
+"tests/*" = [
+    "ANN001",
+    "ANN2",
+    "D10",
+    "S101",
+    "B011",
+    "INP001",
+    "PLR2004",
+]
+
+[tool.ruff.lint.flake8-annotations]
+mypy-init-return = true
+
+[tool.ruff.format]
+docstring-code-format = true
