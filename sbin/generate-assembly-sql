@@ -36,7 +36,7 @@ create unique index assy_name_unique on assembly_sequence(assy, name);
 
 
 \copy assembly from assy.csv with CSV HEADER DELIMITER '   '
-\copy assembly_sequence from seqs.csv with CSV HEADER DELIMITER '        ' 
+\copy assembly_sequence from seqs.csv with CSV HEADER DELIMITER '        '
 
 """)
 
@@ -58,7 +58,7 @@ create unique index assy_name_unique on assembly_sequence(assy, name);
 
     for an in assys.keys():
         assy = assys[an]
-        
+
         assy_fh.writerow({
             "assy": an,
             "genbank_ac": assy["genbank_ac"],

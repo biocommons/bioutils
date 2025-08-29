@@ -1,3 +1,4 @@
+import contextlib
 import multiprocessing
 import os
 
@@ -13,7 +14,9 @@ from bioutils.seqfetcher import (
 
 @pytest.fixture(autouse=True)
 def clear_env():
-    """Some tests in this module assume that the default utils access configs are
+    """Clear environment.
+
+    Some tests in this module assume that the default utils access configs are
     active. If you execute tests in an environment with an existing `NCBI_API_KEY` env
     var, those tests will fail unless we first remove that variable.
     """
@@ -23,21 +26,21 @@ def clear_env():
 
 @vcr.use_cassette
 def test_fetch_seq():
-    assert 1596 == len(fetch_seq("NP_056374.2"))
+    assert len(fetch_seq("NP_056374.2")) == 1596
 
-    assert "MESRETLSSS" == fetch_seq("NP_056374.2", 0, 10)
-    assert "MESRETLSSS" == fetch_seq("NP_056374.2")[0:10]  # NOT RECOMMENDED
+    assert fetch_seq("NP_056374.2", 0, 10) == "MESRETLSSS"
+    assert fetch_seq("NP_056374.2")[0:10] == "MESRETLSSS"  # NOT RECOMMENDED
 
-    assert "ATCACACGTGCAGGAACCCTTTTCC" == fetch_seq("NC_000001.10", 2000000, 2000025)
-    assert "AAAATTAAATTAAAATAAATAAAAA" == fetch_seq("NG_032072.1", 0, 25)
-    assert "TTGTGTGTTAGGGTGCTCTAAGCAA" == fetch_seq("NW_003571030.1", 0, 25)
-    assert "GAATTCCTCGTTCACACAGTTTCTT" == fetch_seq("NT_113901.1", 0, 25)
-    assert "NNNNNNNNNNNNNNNNNNNNNNNNN" == fetch_seq("NC_000001.10", 0, 25)
-    assert "MESRETLSSSRQRGGESDFLPVSSA" == fetch_seq("NP_056374.2", 0, 25)
-    assert "GATCCACCTGCCTCAGCCTCCCAGA" == fetch_seq("GL000191.1", 0, 25)
-    assert "TTTATTTATTTTAGATACTTATCTC" == fetch_seq("KB663603.1", 0, 25)
-    assert "CCGCTCGGGCCCCGGCTCTCGGTTA" == fetch_seq("ENST00000288602.11", 0, 25)
-    assert "MAALSGGGGGGAEPGQALFNGDMEP" == fetch_seq("ENSP00000288602", 0, 25)
+    assert fetch_seq("NC_000001.10", 2000000, 2000025) == "ATCACACGTGCAGGAACCCTTTTCC"
+    assert fetch_seq("NG_032072.1", 0, 25) == "AAAATTAAATTAAAATAAATAAAAA"
+    assert fetch_seq("NW_003571030.1", 0, 25) == "TTGTGTGTTAGGGTGCTCTAAGCAA"
+    assert fetch_seq("NT_113901.1", 0, 25) == "GAATTCCTCGTTCACACAGTTTCTT"
+    assert fetch_seq("NC_000001.10", 0, 25) == "NNNNNNNNNNNNNNNNNNNNNNNNN"
+    assert fetch_seq("NP_056374.2", 0, 25) == "MESRETLSSSRQRGGESDFLPVSSA"
+    assert fetch_seq("GL000191.1", 0, 25) == "GATCCACCTGCCTCAGCCTCCCAGA"
+    assert fetch_seq("KB663603.1", 0, 25) == "TTTATTTATTTTAGATACTTATCTC"
+    assert fetch_seq("ENST00000288602.11", 0, 25) == "CCGCTCGGGCCCCGGCTCTCGGTTA"
+    assert fetch_seq("ENSP00000288602", 0, 25) == "MAALSGGGGGGAEPGQALFNGDMEP"
 
 
 @vcr.use_cassette
@@ -55,10 +58,8 @@ def test_add_eutils_api_key():
         os.environ["NCBI_API_KEY"] = "test-api-key"
         assert _add_eutils_api_key(url) == url + "&api_key=test-api-key"
     finally:
-        try:
+        with contextlib.suppress(KeyError):
             os.environ.pop("NCBI_API_KEY")
-        except KeyError:
-            pass
 
 
 @vcr.use_cassette
@@ -79,7 +80,7 @@ def test_fetch_seq_errors():
 
 def _check1(_x):
     # small, fast query
-    assert "MESRETLSSS" == fetch_seq("NP_056374.2", 0, 10)
+    assert fetch_seq("NP_056374.2", 0, 10) == "MESRETLSSS"
 
 
 # no vcr!

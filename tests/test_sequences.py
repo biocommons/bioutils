@@ -4,13 +4,12 @@ from bioutils.sequences import TranslationTable, translate_cds
 
 
 def test_translate_examples():
-    """test for standard translation table"""
-
+    """Test for standard translation table"""
     assert translate_cds("ATGCGA") == "MR"
     assert translate_cds("AUGCGA") == "MR"
     assert translate_cds(None) is None
     assert translate_cds("") == ""
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError):  # noqa: PT011
         translate_cds("AUGCG")
 
     assert translate_cds("AUGCG", full_codons=False) == "M*"
@@ -22,12 +21,12 @@ def test_translate_examples():
     assert translate_cds("AGM") == "X"
     assert translate_cds("GAS") == "X"
     assert translate_cds("CUN") == "L"
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError):  # noqa: PT011
         translate_cds("AUGCGQ")
 
 
 def test_translate_selenoproteins():
-    """unit test for sec codon"""
+    """Unit test for sec codon"""
     assert translate_cds("AUGTGATAA") == "M**"
     assert translate_cds("AUGTGATAA", translation_table=TranslationTable.standard) == "M**"
     assert translate_cds("AUGTGATAA", translation_table=TranslationTable.selenocysteine) == "MU*"
@@ -40,14 +39,17 @@ def test_translate_selenoproteins():
         == "MU*"
     )
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError):  # noqa: PT011
         translate_cds("AUGTGATA", translation_table=TranslationTable.selenocysteine)
 
 
 def test_translate_vertebrate_mitochondrial():
-    """unit test for vertebrate mitochondrial codons"""
+    """Unit test for vertebrate mitochondrial codons"""
     assert translate_cds("AUGTGATAA") == "M**"
-    assert translate_cds("ATATGAAGGAGA", translation_table=TranslationTable.vertebrate_mitochondrial) == "MW**"
+    assert (
+        translate_cds("ATATGAAGGAGA", translation_table=TranslationTable.vertebrate_mitochondrial)
+        == "MW**"
+    )
     assert (
         translate_cds(
             "ATAAG",
@@ -57,5 +59,5 @@ def test_translate_vertebrate_mitochondrial():
         == "M*"
     )
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError):  # noqa: PT011
         translate_cds("ATAAG", translation_table=TranslationTable.vertebrate_mitochondrial)

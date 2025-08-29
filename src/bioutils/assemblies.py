@@ -28,7 +28,7 @@ import json
 from importlib import resources
 
 
-def get_assembly_names():
+def get_assembly_names() -> list[str]:
     """Retrieves available assemblies from the ``_data/assemblies`` directory.
 
     Returns:
@@ -37,15 +37,20 @@ def get_assembly_names():
     Examples:
         >>> assy_names = get_assembly_names()
 
-        >>> 'GRCh37.p13' in assy_names
+        >>> "GRCh37.p13" in assy_names
         True
+
     """
     assemblies_path = resources.files(__package__) / "_data" / "assemblies"
 
-    return [n.name.replace(".json.gz", "") for n in assemblies_path.iterdir() if n.name.endswith(".json.gz")]
+    return [
+        n.name.replace(".json.gz", "")
+        for n in assemblies_path.iterdir()
+        if n.name.endswith(".json.gz")
+    ]
 
 
-def get_assembly(name):
+def get_assembly(name: str) -> dict:
     """Retreives the assembly data for a given assembly.
 
     Args:
@@ -56,25 +61,25 @@ def get_assembly(name):
 
 
     Examples:
-        >>> assy = get_assembly('GRCh37.p13')
+        >>> assy = get_assembly("GRCh37.p13")
 
-        >>> assy['name']
+        >>> assy["name"]
         'GRCh37.p13'
 
-        >>> assy['description']
+        >>> assy["description"]
         'Genome Reference Consortium Human Build 37 patch release 13 (GRCh37.p13)'
 
-        >>> assy['refseq_ac']
+        >>> assy["refseq_ac"]
         'GCF_000001405.25'
 
-        >>> assy['genbank_ac']
+        >>> assy["genbank_ac"]
         'GCA_000001405.14'
 
-        >>> len(assy['sequences'])
+        >>> len(assy["sequences"])
         297
 
         >>> import pprint
-        >>> pprint.pprint(assy['sequences'][0])
+        >>> pprint.pprint(assy["sequences"][0])
         {'aliases': ['chr1'],
         'assembly_unit': 'Primary Assembly',
         'genbank_ac': 'CM000663.1',
@@ -83,6 +88,7 @@ def get_assembly(name):
         'refseq_ac': 'NC_000001.10',
         'relationship': '=',
         'sequence_role': 'assembled-molecule'}
+
     """
     fn = resources.files(__package__) / "_data" / "assemblies" / f"{name}.json.gz"
     if not fn.exists():
@@ -91,7 +97,7 @@ def get_assembly(name):
     return json.load(gzip.open(fn, mode="rt", encoding="utf-8"))
 
 
-def get_assemblies(names=[]):
+def get_assemblies(names: list[str] | None = None) -> dict:
     """Retrieves data from multiple assemblies.
 
     If assemblies are not specified, retrieves data from all available ones.
@@ -104,20 +110,20 @@ def get_assemblies(names=[]):
             are the dictionaries of assembly data as described in ``get_assembly()``.
 
     Examples:
-        >>> assemblies = get_assemblies(names=['GRCh37.p13'])
-        >>> assy = assemblies['GRCh37.p13']
+        >>> assemblies = get_assemblies(names=["GRCh37.p13"])
+        >>> assy = assemblies["GRCh37.p13"]
 
         >>> assemblies = get_assemblies()
-        >>> 'GRCh38.p2' in assemblies
+        >>> "GRCh38.p2" in assemblies
         True
-    """
 
-    if names == []:
+    """
+    if not names:
         names = get_assembly_names()
     return {a["name"]: a for a in (get_assembly(n) for n in names)}
 
 
-def make_name_ac_map(assy_name, primary_only=False):
+def make_name_ac_map(assy_name: str, primary_only: bool = False) -> dict:
     """Creates a map from sequence names to accessions for a given assembly.
 
     Args:
@@ -130,17 +136,19 @@ def make_name_ac_map(assy_name, primary_only=False):
             Where sequence_name and accession are both strings.
 
     Examples:
-        >>> grch38p5_name_ac_map = make_name_ac_map('GRCh38.p5')
-        >>> grch38p5_name_ac_map['1']
+        >>> grch38p5_name_ac_map = make_name_ac_map("GRCh38.p5")
+        >>> grch38p5_name_ac_map["1"]
         'NC_000001.11'
-    """
 
+    """
     return {
-        s["name"]: s["refseq_ac"] for s in get_assembly(assy_name)["sequences"] if (not primary_only or _is_primary(s))
+        s["name"]: s["refseq_ac"]
+        for s in get_assembly(assy_name)["sequences"]
+        if (not primary_only or _is_primary(s))
     }
 
 
-def make_ac_name_map(assy_name, primary_only=False):
+def make_ac_name_map(assy_name: str, primary_only: bool = False) -> dict:
     """Creates a map from accessions to sequence names for a given assembly.
 
     Args:
@@ -154,13 +162,15 @@ def make_ac_name_map(assy_name, primary_only=False):
 
 
     Examples:
-        >>> grch38p5_ac_name_map = make_ac_name_map('GRCh38.p5')
-        >>> grch38p5_ac_name_map['NC_000001.11']
+        >>> grch38p5_ac_name_map = make_ac_name_map("GRCh38.p5")
+        >>> grch38p5_ac_name_map["NC_000001.11"]
         '1'
-    """
 
+    """
     return {
-        s["refseq_ac"]: s["name"] for s in get_assembly(assy_name)["sequences"] if (not primary_only or _is_primary(s))
+        s["refseq_ac"]: s["name"]
+        for s in get_assembly(assy_name)["sequences"]
+        if (not primary_only or _is_primary(s))
     }
 
 
@@ -168,7 +178,7 @@ def make_ac_name_map(assy_name, primary_only=False):
 # Internal functions
 
 
-def _is_primary(s):
+def _is_primary(s: dict) -> bool:
     """Indicates whether a sequence is a part of the primary assembly.
 
     Args:
@@ -179,11 +189,11 @@ def _is_primary(s):
 
 
     Examples:
-        >>> _is_primary({'assembly_unit': 'Primary Assembly'})
+        >>> _is_primary({"assembly_unit": "Primary Assembly"})
         True
 
-        >>> _is_primary({'assembly_unit': 'Something else entirely'})
+        >>> _is_primary({"assembly_unit": "Something else entirely"})
         False
-    """
 
+    """
     return s["assembly_unit"] == "Primary Assembly"

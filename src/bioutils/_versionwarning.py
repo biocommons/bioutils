@@ -16,5 +16,5 @@ version_warning = (
 
 _logger = logging.getLogger(__package__)
 
-if sys.version_info < (3, 6):
+if sys.version_info < (3, 6):  # noqa: UP036
     _logger.warning(version_warning)

@@ -1,4 +1,4 @@
-"""Simple routines to deal with accessions, identifiers, etc.
+r"""Simple routines to deal with accessions, identifiers, etc.
 
 Biocommons terminology: an identifier is composed of a *namespace* and
 an *accession*. The namespace is a string, composed of any character
@@ -30,24 +30,130 @@ import re
 
 from .exceptions import BioutilsError
 
-_ensembl_species_prefixes = "|".join(
-    """ENS ENSACA ENSAME ENSAMX
-ENSANA ENSAPL ENSBTA ENSCAF ENSCAN ENSCAP ENSCAT ENSCCA ENSCEL ENSCGR
-ENSCGR ENSCHI ENSCHO ENSCIN ENSCJA ENSCLA ENSCPO ENSCSA ENSCSAV ENSDAR
-ENSDNO ENSDOR ENSEBU ENSECA ENSEEU ENSETE ENSFAL ENSFCA ENSFDA ENSGAC
-ENSGAL ENSGGO ENSGMO ENSHGLF ENSHGLM ENSJJA ENSLAC ENSLAF ENSLOC
-ENSMAU ENSMEU ENSMFA ENSMGA ENSMIC ENSMLE ENSMLU ENSMMU ENSMNE ENSMOC
-ENSMOD ENSMPU ENSMUS ENSNGA ENSNLE ENSOAN ENSOAR ENSOCU ENSODE ENSOGA
-ENSONI ENSOPR ENSORL ENSPAN ENSPCA ENSPCO ENSPEM ENSPFO ENSPMA ENSPPA
-ENSPPR ENSPPY ENSPSI ENSPTI ENSPTR ENSPVA ENSRBI ENSRNO ENSRRO ENSSAR
-ENSSBO ENSSCE ENSSHA ENSSSC ENSSTO ENSTBE ENSTGU ENSTNI ENSTRU ENSTSY
-ENSTTR ENSVPA ENSXET ENSXMA FB MGP_129S1SvImJ_ MGP_AJ_ MGP_AKRJ_
-MGP_BALBcJ_ MGP_C3HHeJ_ MGP_C57BL6NJ_ MGP_CAROLIEiJ_ MGP_CASTEiJ_
-MGP_CBAJ_ MGP_DBA2J_ MGP_FVBNJ_ MGP_LPJ_ MGP_NODShiLtJ_ MGP_NZOHlLtJ_
-MGP_PWKPhJ_ MGP_PahariEiJ_ MGP_SPRETEiJ_ MGP_WSBEiJ_""".split()
+_ensembl_species_prefixes = "|".join(  # noqa: FLY002
+    [
+        "ENS",
+        "ENSACA",
+        "ENSAME",
+        "ENSAMX",
+        "ENSANA",
+        "ENSAPL",
+        "ENSBTA",
+        "ENSCAF",
+        "ENSCAN",
+        "ENSCAP",
+        "ENSCAT",
+        "ENSCCA",
+        "ENSCEL",
+        "ENSCGR",
+        "ENSCGR",
+        "ENSCHI",
+        "ENSCHO",
+        "ENSCIN",
+        "ENSCJA",
+        "ENSCLA",
+        "ENSCPO",
+        "ENSCSA",
+        "ENSCSAV",
+        "ENSDAR",
+        "ENSDNO",
+        "ENSDOR",
+        "ENSEBU",
+        "ENSECA",
+        "ENSEEU",
+        "ENSETE",
+        "ENSFAL",
+        "ENSFCA",
+        "ENSFDA",
+        "ENSGAC",
+        "ENSGAL",
+        "ENSGGO",
+        "ENSGMO",
+        "ENSHGLF",
+        "ENSHGLM",
+        "ENSJJA",
+        "ENSLAC",
+        "ENSLAF",
+        "ENSLOC",
+        "ENSMAU",
+        "ENSMEU",
+        "ENSMFA",
+        "ENSMGA",
+        "ENSMIC",
+        "ENSMLE",
+        "ENSMLU",
+        "ENSMMU",
+        "ENSMNE",
+        "ENSMOC",
+        "ENSMOD",
+        "ENSMPU",
+        "ENSMUS",
+        "ENSNGA",
+        "ENSNLE",
+        "ENSOAN",
+        "ENSOAR",
+        "ENSOCU",
+        "ENSODE",
+        "ENSOGA",
+        "ENSONI",
+        "ENSOPR",
+        "ENSORL",
+        "ENSPAN",
+        "ENSPCA",
+        "ENSPCO",
+        "ENSPEM",
+        "ENSPFO",
+        "ENSPMA",
+        "ENSPPA",
+        "ENSPPR",
+        "ENSPPY",
+        "ENSPSI",
+        "ENSPTI",
+        "ENSPTR",
+        "ENSPVA",
+        "ENSRBI",
+        "ENSRNO",
+        "ENSRRO",
+        "ENSSAR",
+        "ENSSBO",
+        "ENSSCE",
+        "ENSSHA",
+        "ENSSSC",
+        "ENSSTO",
+        "ENSTBE",
+        "ENSTGU",
+        "ENSTNI",
+        "ENSTRU",
+        "ENSTSY",
+        "ENSTTR",
+        "ENSVPA",
+        "ENSXET",
+        "ENSXMA",
+        "FB",
+        "MGP_129S1SvImJ_",
+        "MGP_AJ_",
+        "MGP_AKRJ_",
+        "MGP_BALBcJ_",
+        "MGP_C3HHeJ_",
+        "MGP_C57BL6NJ_",
+        "MGP_CAROLIEiJ_",
+        "MGP_CASTEiJ_",
+        "MGP_CBAJ_",
+        "MGP_DBA2J_",
+        "MGP_FVBNJ_",
+        "MGP_LPJ_",
+        "MGP_NODShiLtJ_",
+        "MGP_NZOHlLtJ_",
+        "MGP_PWKPhJ_",
+        "MGP_PahariEiJ_",
+        "MGP_SPRETEiJ_",
+        "MGP_WSBEiJ_",
+    ]
 )
 _ensembl_feature_types_re = r"E|FM|G|GT|P|R|T"
-_ensembl_re = r"^(?:{})(?:{}){}$".format(_ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?")
+_ensembl_re = r"^(?:{})(?:{}){}$".format(
+    _ensembl_species_prefixes, _ensembl_feature_types_re, r"\d{11}(?:\.\d+)?"
+)
 
 # map of regexp => namespace
 # TODO: make this namespace => [regexps] for clarity
@@ -73,7 +179,7 @@ ac_namespace_regexps = {
 ac_namespace_regexps = {re.compile(k): v for k, v in ac_namespace_regexps.items()}
 
 
-def chr22XY(c):
+def chr22XY(c: str | int) -> int:  # noqa: N802
     """Reformats chromosome to be of the form Chr1, ..., Chr22, ChrX, ChrY, etc.
 
     Args:
@@ -83,13 +189,13 @@ def chr22XY(c):
         str: The reformatted chromosome.
 
     Examples:
-        >>> chr22XY('1')
+        >>> chr22XY("1")
         'chr1'
 
         >>> chr22XY(1)
         'chr1'
 
-        >>> chr22XY('chr1')
+        >>> chr22XY("chr1")
         'chr1'
 
         >>> chr22XY(23)
@@ -106,6 +212,7 @@ def chr22XY(c):
 
         >>> chr22XY("M")
         'chrM'
+
     """
     c = str(c)
     if c[0:3] == "chr":
@@ -117,7 +224,7 @@ def chr22XY(c):
     return "chr" + c
 
 
-def coerce_namespace(ac):
+def coerce_namespace(ac: str) -> str:
     """Prefixes accession with inferred namespace if not present.
 
     Intended to be used to promote consistent and unambiguous accession identifiers.
@@ -145,6 +252,7 @@ def coerce_namespace(ac):
         Traceback (most recent call last):
         ...
         ValueError: Could not infer namespace for QQ_01234.5
+
     """
     if ":" not in ac:
         ns = infer_namespace(ac)
@@ -154,7 +262,7 @@ def coerce_namespace(ac):
     return ac
 
 
-def infer_namespace(ac):
+def infer_namespace(ac: str) -> str | None:
     """Infers a unique namespace from an accession, if one exists.
 
     Args:
@@ -186,17 +294,17 @@ def infer_namespace(ac):
 
         >>> infer_namespace("BOGUS99") is None
         True
-    """
 
+    """
     namespaces = infer_namespaces(ac)
     if not namespaces:
         return None
     if len(namespaces) > 1:
-        raise BioutilsError("Multiple namespaces possible for {}".format(ac))
+        raise BioutilsError(f"Multiple namespaces possible for {ac}")
     return namespaces[0]
 
 
-def infer_namespaces(ac):
+def infer_namespaces(ac: str) -> list[str]:
     """Infers namespaces possible for a given accession, based on syntax.
 
     Args:
@@ -232,11 +340,12 @@ def infer_namespaces(ac):
 
         >>> infer_namespaces("A0A022YWF9")
         ['uniprot']
+
     """
     return [v for k, v in ac_namespace_regexps.items() if k.match(ac)]
 
 
-def prepend_chr(chr):
+def prepend_chr(chrom: str) -> str:
     """Prepends chromosome with 'chr' if not present.
 
     Users are strongly discouraged from using this function. Adding a
@@ -244,38 +353,40 @@ def prepend_chr(chr):
     with authoritative assembly records.
 
     Args:
-        chr (str): The chromosome.
+        chrom (str): The chromosome.
 
     Returns:
         str: The chromosome with 'chr' prepended.
 
     Examples:
-        >>> prepend_chr('22')
+        >>> prepend_chr("22")
         'chr22'
 
-        >>> prepend_chr('chr22')
+        >>> prepend_chr("chr22")
         'chr22'
+
     """
-    return chr if chr[0:3] == "chr" else "chr" + chr
+    return chrom if chrom[0:3] == "chr" else "chr" + chrom
 
 
-def strip_chr(chr):
+def strip_chr(chrom: str) -> str:
     """Removes the 'chr' prefix if present.
 
     Args:
-        chr (str): The chromosome.
+        chrom (str): The chromosome.
 
     Returns:
         str: The chromosome without a 'chr' prefix.
 
     Examples:
-        >>> strip_chr('22')
+        >>> strip_chr("22")
         '22'
 
-        >>> strip_chr('chr22')
+        >>> strip_chr("chr22")
         '22'
+
     """
-    return chr[3:] if chr[0:3] == "chr" else chr
+    return chrom[3:] if chrom[0:3] == "chr" else chrom
 
 
 ## <LICENSE>

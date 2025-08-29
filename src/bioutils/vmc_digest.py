@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+"""Get sequence digests."""
+
 import hashlib
 
 from .digest import Digest
@@ -7,9 +8,11 @@ ENC = "UTF-8"
 DEFAULT_DIGEST_SIZE = 24
 
 
-def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
-    """Returns the VMC Digest as a Digest object, which has both bytes and
-    string (URL-safe, Base 64) representations.
+def vmc_digest(data: str, digest_size: int = DEFAULT_DIGEST_SIZE) -> bytes:
+    r"""Get VMC digest.
+
+    Return as a Digest object, which has both bytes and string (URL-safe, Base 64)
+    representations.
 
     >>> d = vmc_digest("")
 
@@ -101,11 +104,11 @@ def vmc_digest(data, digest_size=DEFAULT_DIGEST_SIZE):
         - [6] https://en.wikipedia.org/wiki/Birthday_problem
 
     """
-
     # TODO: Consider relaxing %3 constraint and stripping padding
     if digest_size % 3 != 0:
         raise ValueError("digest_size must be a multiple of 3")
-    if not 0 <= digest_size <= 63:
+    size_limit = 63
+    if not 0 <= digest_size <= size_limit:
         raise ValueError("digest_size must be between 0 and 63 (bytes)")
 
     sha512 = Digest(hashlib.sha512(data.encode(ENC)).digest())
