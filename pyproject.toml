@@ -50,7 +50,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 
 [project.urls]
-Documentation = "https://biocommons.github.io/python-package/"
+Documentation = "https://biocommons.github.io/bioutils/"
 Homepage = "https://github.com/biocommons/bioutils"
 Issues = "https://github.com/biocommons/bioutils/issues"
 Repository = "https://github.com/biocommons/bioutils"

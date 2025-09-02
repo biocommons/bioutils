@@ -4,11 +4,7 @@ import os
 import pytest
 import vcr
 
-from bioutils.seqfetcher import (
-    _add_eutils_api_key,
-    _fetch_seq_ncbi,
-    fetch_seq,
-)
+from bioutils.seqfetcher import _add_eutils_api_key, _fetch_seq_ncbi, fetch_seq, enst_default_seq_type
 
 
 @pytest.fixture(autouse=True)
@@ -38,6 +34,40 @@ def test_fetch_seq():
     assert "TTTATTTATTTTAGATACTTATCTC" == fetch_seq("KB663603.1", 0, 25)
     assert "CCGCTCGGGCCCCGGCTCTCGGTTA" == fetch_seq("ENST00000288602.11", 0, 25)
     assert "MAALSGGGGGGAEPGQALFNGDMEP" == fetch_seq("ENSP00000288602", 0, 25)
+
+
+ENST00000617537_470_480 = {
+    # In [16]: s_gen[470:480], s_cdna[470:480], s_cds[470:480]
+    # Out[16]: ("TAGGTATGCA", "TAGGGTGTGT", "TGACATTTGT")
+    "genomic": "TAGGTATGCA",
+    "cdna": "TAGGGTGTGT",
+    "cds": "TGACATTTGT",
+}
+
+
+@vcr.use_cassette
+def test_fetch_ENST00000617537_noenv(caplog, monkeypatch):
+    """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_SEQ_TYPE unset"""
+    monkeypatch.delenv("ENST_DEFAULT_SEQ_TYPE", raising=False)
+    ac = "ENST00000617537"
+    assert ENST00000617537_470_480[enst_default_seq_type] == fetch_seq(ac, start_i=470, end_i=480)
+    assert "Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE" in caplog.text
+    assert ENST00000617537_470_480["genomic"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="genomic")
+    assert ENST00000617537_470_480["cdna"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cdna")
+    assert ENST00000617537_470_480["cds"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cds")
+
+
+@vcr.use_cassette
+def test_fetch_ENST00000617537_env(caplog, monkeypatch):
+    """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_SEQ_TYPE set"""
+    user_enst_default_type = "cds"  # intentionally != enst_default_seq_type to ensure use
+    monkeypatch.setenv("ENST_DEFAULT_SEQ_TYPE", user_enst_default_type)
+    ac = "ENST00000617537"
+    assert ENST00000617537_470_480[user_enst_default_type] == fetch_seq(ac, start_i=470, end_i=480)
+    assert "Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE" not in caplog.text
+    assert ENST00000617537_470_480["genomic"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="genomic")
+    assert ENST00000617537_470_480["cdna"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cdna")
+    assert ENST00000617537_470_480["cds"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cds")
 
 
 @vcr.use_cassette
@@ -88,3 +118,5 @@ def test_rate_limit():
     num_requests = num_threads = 5
     p = multiprocessing.Pool(num_threads)
     p.map(_check1, range(num_requests))
+    p.close()
+    p.join()

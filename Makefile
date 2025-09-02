@@ -37,7 +37,6 @@ publish: build ## publish package to PyPI
 	$(call INFO_MESSAGE, "Publishing package")
 	uv publish  # Requires UV_PUBLISH_TOKEN or Trusted Publishing setup
 
-
 ############################################################################
 #= FORMATTING, TESTING, AND CODE QUALITY
 
@@ -54,6 +53,10 @@ cqa: ## Run code quality assessments
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
 	uv run pytest --cov=. --cov-report=xml
+
+# to be incorporated
+# test-learn:
+#	VCR_RECORD_MODE=new_episodes pytest -x
 
 ############################################################################
 #= DOCUMENTATION
