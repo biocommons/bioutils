@@ -46,7 +46,7 @@ cqa: ## Run code quality assessments
 	$(call INFO_MESSAGE, "Checking lock file consistency")
 	uv lock --locked
 	$(call INFO_MESSAGE, "Linting and reformatting files")
-	uv run pre-commit run -a
+	uv run pre-commit run
 	$(call INFO_MESSAGE, "Checking for obsolete dependencies")
 	uv run deptry src
 
