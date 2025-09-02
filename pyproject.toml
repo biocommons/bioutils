@@ -47,7 +47,7 @@ keywords = [
 license = "Apache-2.0"
 name = "bioutils"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 [project.urls]
 Documentation = "https://biocommons.github.io/python-package/"
@@ -57,16 +57,19 @@ Repository = "https://github.com/biocommons/bioutils"
 
 [tool.coverage.report]
 exclude_lines = [
-  # Don't complain about missing debug-only code:
-  "def __repr__",
-  # Don't complain if non-runnable code isn't run:
-  "if __name__ == .__main__.:",
-  "if self.debug",
-  # Have to re-enable the standard pragma
-  "pragma: no cover",
-  # Don't complain if tests don't hit defensive assertion code:
-  "raise AssertionError",
-  "raise NotImplementedError"
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if __name__ == .__main__.:",
 ]
 show_missing = true
 skip_empty = true
