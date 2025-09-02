@@ -8,12 +8,6 @@
 .DEFAULT_GOAL := help
 default: help
 
-COLOR_RESET=\033[0m
-COLOR_CYAN_BOLD=\033[1;36m
-define INFO_MESSAGE
-	@echo -e "⏩$(COLOR_CYAN_BOLD)$(1)$(COLOR_RESET)"
-endef
-
 ############################################################################
 #= BASIC USAGE
 
