@@ -37,14 +37,12 @@ dev = [
     "flake8~=4.0",
     "ipython~=8.4",
     "isort~=5.10",
-    "mypy",
     "pylint~=2.14",
     "ruff~=0.9",
 ]
 test = [
     "pytest~=7.1",
     "pytest-cov~=4.0",
-    "pytest-optional-tests",
     "tox~=3.25",
     "vcrpy",
 ]
