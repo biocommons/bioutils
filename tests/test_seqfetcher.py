@@ -36,12 +36,12 @@ def test_fetch_seq():
     assert "MAALSGGGGGGAEPGQALFNGDMEP" == fetch_seq("ENSP00000288602", 0, 25)
 
 
-sequence_lengths = {
-    "ENST00000617537": {
-        "genomic": 211554,
-        "cdna": 2385,
-        "cds": 1728,
-    }
+ENST00000617537_470_480 = {
+    # In [16]: s_gen[470:480], s_cdna[470:480], s_cds[470:480]
+    # Out[16]: ("TAGGTATGCA", "TAGGGTGTGT", "TGACATTTGT")
+    "genomic": "TAGGTATGCA",
+    "cdna": "TAGGGTGTGT",
+    "cds": "TGACATTTGT",
 }
 
 
@@ -50,24 +50,24 @@ def test_fetch_ENST00000617537_noenv(caplog, monkeypatch):
     """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_SEQ_TYPE unset"""
     monkeypatch.delenv("ENST_DEFAULT_SEQ_TYPE", raising=False)
     ac = "ENST00000617537"
-    assert sequence_lengths[ac][enst_default_seq_type] == len(fetch_seq(ac))
+    assert ENST00000617537_470_480[enst_default_seq_type] == fetch_seq(ac, start_i=470, end_i=480)
     assert "Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE" in caplog.text
-    assert sequence_lengths[ac]["genomic"] == len(fetch_seq(ac, seq_type="genomic"))
-    assert sequence_lengths[ac]["cdna"] == len(fetch_seq(ac, seq_type="cdna"))
-    assert sequence_lengths[ac]["cds"] == len(fetch_seq(ac, seq_type="cds"))
+    assert ENST00000617537_470_480["genomic"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="genomic")
+    assert ENST00000617537_470_480["cdna"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cdna")
+    assert ENST00000617537_470_480["cds"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cds")
 
 
 @vcr.use_cassette
 def test_fetch_ENST00000617537_env(caplog, monkeypatch):
     """ensure expected lengths for ENST00000617537 with ENST_DEFAULT_SEQ_TYPE set"""
-    user_enst_default_type = "cds"  # ideally != enst_default_type to ensure use
+    user_enst_default_type = "cds"  # intentionally != enst_default_seq_type to ensure use
     monkeypatch.setenv("ENST_DEFAULT_SEQ_TYPE", user_enst_default_type)
     ac = "ENST00000617537"
-    assert sequence_lengths[ac][user_enst_default_type] == len(fetch_seq(ac))
+    assert ENST00000617537_470_480[user_enst_default_type] == fetch_seq(ac, start_i=470, end_i=480)
     assert "Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE" not in caplog.text
-    assert sequence_lengths[ac]["genomic"] == len(fetch_seq(ac, seq_type="genomic"))
-    assert sequence_lengths[ac]["cdna"] == len(fetch_seq(ac, seq_type="cdna"))
-    assert sequence_lengths[ac]["cds"] == len(fetch_seq(ac, seq_type="cds"))
+    assert ENST00000617537_470_480["genomic"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="genomic")
+    assert ENST00000617537_470_480["cdna"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cdna")
+    assert ENST00000617537_470_480["cds"] == fetch_seq(ac, start_i=470, end_i=480, seq_type="cds")
 
 
 @vcr.use_cassette
