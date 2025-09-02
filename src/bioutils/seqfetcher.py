@@ -15,9 +15,10 @@ _logger = logging.getLogger(__name__)
 ncbi_tool = "bioutils"
 ncbi_email = "biocommons-dev@googlegroups.com"
 retry_limit = 3
+enst_default_seq_type = "cdna"
 
 
-def fetch_seq(ac, start_i=None, end_i=None):
+def fetch_seq(ac, start_i=None, end_i=None, **rest):
     """Fetches sequences and subsequences from NCBI eutils and Ensembl REST interfaces.
 
     Args:
@@ -82,13 +83,13 @@ def fetch_seq(ac, start_i=None, end_i=None):
         raise RuntimeError("No sequence fetcher for {ac}".format(ac=ac))
 
     if len(eligible_fetchers) >= 1:  # pragma: nocover (no way to test)
-        _logger.debug("Multiple sequence fetchers found for " "{ac}; using first".format(ac=ac))
+        _logger.debug("Multiple sequence fetchers found for {ac}; using first".format(ac=ac))
 
     fetcher = eligible_fetchers[0]
     _logger.debug("fetching {ac} with {f}".format(ac=ac, f=fetcher))
 
     try:
-        return fetcher(ac, start_i, end_i)
+        return fetcher(ac, start_i, end_i, **rest)
     except requests.RequestException as ex:
         raise RuntimeError("Failed to fetch {ac} ({ex})".format(ac=ac, ex=ex))
 
@@ -97,7 +98,7 @@ def fetch_seq(ac, start_i=None, end_i=None):
 # Internal functions
 
 
-def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
+def _fetch_seq_ensembl(ac, start_i=None, end_i=None, seq_type=None):
     """Fetch sequence slice from Ensembl public REST interface.
 
     Args:
@@ -106,6 +107,7 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
             Defaults to None.
         end_i (int, optional): The end index (interbase coordinates) of the subsequence to fetch.
             Defaults to None.
+        seq_type (str, optional): The type of Ensembl sequence to fetch
 
     Returns:
         str: The requested (sub)sequence
@@ -141,7 +143,16 @@ def _fetch_seq_ensembl(ac, start_i=None, end_i=None):
         ac, version = m.groups()
         version = int(version)
 
+    if ac.startswith("ENST") and seq_type is None:
+        try:
+            seq_type = os.environ["ENST_DEFAULT_SEQ_TYPE"]
+        except KeyError:
+            seq_type = enst_default_seq_type
+            _logger.warning(f"{ac}: Transcript type not specified or set in ENST_DEFAULT_SEQ_TYPE; assuming {seq_type}")
+
     url = f"http://rest.ensembl.org/sequence/id/{ac}"
+    if seq_type:
+        url += f"?type={seq_type}"
     r = requests.get(url, headers={"Content-Type": "application/json"})
     r.raise_for_status()
     data = r.json()
@@ -204,7 +215,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
     """
 
     db = "protein" if ac[1] == "P" else "nucleotide"
-    url_fmt = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?" "db={db}&id={ac}&rettype=fasta"
+    url_fmt = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db={db}&id={ac}&rettype=fasta"
 
     if start_i is None or end_i is None:
         url = url_fmt.format(db=db, ac=ac)

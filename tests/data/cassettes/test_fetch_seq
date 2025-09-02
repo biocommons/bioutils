@@ -96,8 +96,6 @@ interactions:
         Oct 2025 01:38:10 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -164,8 +162,6 @@ interactions:
         Oct 2025 01:38:10 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -276,8 +272,6 @@ interactions:
         Oct 2025 01:38:11 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -345,8 +339,6 @@ interactions:
         Oct 2025 01:38:12 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -414,8 +406,6 @@ interactions:
         Oct 2025 01:38:12 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -483,8 +473,6 @@ interactions:
         Oct 2025 01:38:13 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -552,8 +540,6 @@ interactions:
         Oct 2025 01:38:13 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -620,8 +606,6 @@ interactions:
         Oct 2025 01:38:14 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -688,8 +672,6 @@ interactions:
         Oct 2025 01:38:14 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -757,8 +739,6 @@ interactions:
         Oct 2025 01:38:15 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -826,8 +806,6 @@ interactions:
         Oct 2025 01:38:15 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
-      Transfer-Encoding:
-      - chunked
       X-RateLimit-Limit:
       - '3'
       X-RateLimit-Remaining:
@@ -920,6 +898,47 @@ interactions:
       - '1303'
       X-Runtime:
       - '0.054641'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: http://rest.ensembl.org/sequence/id/ENST00000288602?type=cdna
+  response:
+    body:
+      string: '{"query":"ENST00000288602","molecule":"dna","desc":null,"seq":"CCGCTCGGGCCCCGGCTCTCGGTTATAAGATGGCGGCGCTGAGCGGTGGCGGTGGTGGCGGCGCGGAGCCGGGCCAGGCTCTGTTCAACGGGGACATGGAGCCCGAGGCCGGCGCCGGCGCCGGCGCCGCGGCCTCTTCGGCTGCGGACCCTGCCATTCCGGAGGAGGTGTGGAATATCAAACAAATGATTAAGTTGACACAGGAACATATAGAGGCCCTATTGGACAAATTTGGTGGGGAGCATAATCCACCATCAATATATCTGGAGGCCTATGAAGAATACACCAGCAAGCTAGATGCACTCCAACAAAGAGAACAACAGTTATTGGAATCTCTGGGGAACGGAACTGATTTTTCTGTTTCTAGCTCTGCATCAATGGATACCGTTACATCTTCTTCCTCTTCTAGCCTTTCAGTGCTACCTTCATCTCTTTCAGTTTTTCAAAATCCCACAGATGTGGCACGGAGCAACCCCAAGTCACCACAAAAACCTATCGTTAGAGTCTTCCTGCCCAACAAACAGAGGACAGTGGTACCTGCAAGGTGTGGAGTTACAGTCCGAGACAGTCTAAAGAAAGCACTGATGATGAGAGGTCTAATCCCAGAGTGCTGTGCTGTTTACAGAATTCAGGATGGAGAGAAGAAACCAATTGGTTGGGACACTGATATTTCCTGGCTTACTGGAGAAGAATTGCATGTGGAAGTGTTGGAGAATGTTCCACTTACAACACACAACTTTGTACGAAAAACGTTTTTCACCTTAGCATTTTGTGACTTTTGTCGAAAGCTGCTTTTCCAGGGTTTCCGCTGTCAAACATGTGGTTATAAATTTCACCAGCGTTGTAGTACAGAAGTTCCACTGATGTGTGTTAATTATGACCAACTTGATTTGCTGTTTGTCTCCAAGTTCTTTGAACACCACCCAATACCACAGGAAGAGGCGTCCTTAGCAGAGACTGCCCTAACATCTGGATCATCCCCTTCCGCACCCGCCTCGGACTCTATTGGGCCCCAAATTCTCACCAGTCCGTCTCCTTCAAAATCCATTCCAATTCCACAGCCCTTCCGACCAGCAGATGAAGATCATCGAAATCAATTTGGGCAACGAGACCGATCCTCATCAGCTCCCAATGTGCATATAAACACAATAGAACCTGTCAATATTGATGACTTGATTAGAGACCAAGGATTTCGTGGTGATGGAGCCCCTTTGAACCAGCTGATGCGCTGTCTTCGGAAATACCAATCCCGGACTCCCAGTCCCCTCCTACATTCTGTCCCCAGTGAAATAGTGTTTGATTTTGAGCCTGGCCCAGTGTTCAGAGGATCAACCACAGGTTTGTCTGCTACCCCCCCTGCCTCATTACCTGGCTCACTAACTAACGTGAAAGCCTTACAGAAATCTCCAGGACCTCAGCGAGAAAGGAAGTCATCTTCATCCTCAGAAGACAGGAATCGAATGAAAACACTTGGTAGACGGGACTCGAGTGATGATTGGGAGATTCCTGATGGGCAGATTACAGTGGGACAAAGAATTGGATCTGGATCATTTGGAACAGTCTACAAGGGAAAGTGGCATGGTGATGTGGCAGTGAAAATGTTGAATGTGACAGCACCTACACCTCAGCAGTTACAAGCCTTCAAAAATGAAGTAGGAGTACTCAGGAAAACACGACATGTGAATATCCTACTCTTCATGGGCTATTCCACAAAGCCACAACTGGCTATTGTTACCCAGTGGTGTGAGGGCTCCAGCTTGTATCACCATCTCCATATCATTGAGACCAAATTTGAGATGATCAAACTTATAGATATTGCACGACAGACTGCACAGGGCATGGATTACTTACACGCCAAGTCAATCATCCACAGAGACCTCAAGAGTAATAATATATTTCTTCATGAAGACCTCACAGTAAAAATAGGTGATTTTGGTCTAGCTACAGTGAAATCTCGATGGAGTGGGTCCCATCAGTTTGAACAGTTGTCTGGATCCATTTTGTGGATGGCACCAGAAGTCATCAGAATGCAAGATAAAAATCCATACAGCTTTCAGTCAGATGTATATGCATTTGGAATTGTTCTGTATGAATTGATGACTGGACAGTTACCTTATTCAAACATCAACAACAGGGACCAGATAATTTTTATGGTGGGACGAGGATACCTGTCTCCAGATCTCAGTAAGGTACGGAGTAACTGTCCAAAAGCCATGAAGAGATTAATGGCAGAGTGCCTCAAAAAGAAAAGAGATGAGAGACCACTCTTTCCCCAAATTCTCGCCTCTATTGAGCTGCTGGCCCGCTCATTGCCAAAAATTCACCGCAGTGCATCAGAACCCTCCTTGAATCGGGCTGGTTTCCAAACAGAGGATTTTAGTCTATATGCTTGTGCTTCTCCAAAAACACCCATCCAGGCAGGGGGATATGGTGCGTTTCCTGTCCACTGAAACAAATGAGTGAGAGAGTTCAGGAGAGTAGCAACAAAAGGAAAATAAATGAACATATGTTTGCTTATATGTTAAATTGAATAAAATACTCTCTTTTTTTTTAAGGTGAAC","id":"ENST00000288602","version":11}'
+    headers:
+      Content-Length:
+      - '2662'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 05 Mar 2025 04:21:08 GMT
+      Vary:
+      - Content-Type
+      - Origin
+      X-RateLimit-Limit:
+      - '55000'
+      X-RateLimit-Period:
+      - '3600'
+      X-RateLimit-Remaining:
+      - '54999'
+      X-RateLimit-Reset:
+      - '2332'
+      X-Runtime:
+      - '0.206213'
     status:
       code: 200
       message: OK
