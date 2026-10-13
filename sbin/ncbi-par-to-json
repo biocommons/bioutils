@@ -1,0 +1,105 @@
+#!/usr/bin/env python
+"""Convert an NCBI ``assembly_regions.txt`` report into the JSON form shipped in ``_data/par``.
+
+NCBI publishes a region report for each assembly at::
+
+  https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/<nnn>/<nnn>/<nnn>/<acc>_<name>/
+      <acc>_<name>_assembly_regions.txt
+
+It is tab-separated with ``#`` comment lines, one row per region, and the
+pseudoautosomal regions are the rows whose ``Scaffold-Role`` is ``PAR``::
+
+  PAR#1   X   10001       2781479     PAR   na   na   na
+  PAR#2   X   155701383   156030895   PAR   na   na   na
+
+Coordinates are 1-based inclusive. They are converted to interbase (0-based,
+left-closed, right-open), the convention used by ``bioutils.cytobands`` and
+``bioutils.coordinates``, as ``[start - 1, end]``. The region names are kept,
+minus the ``#``: ``PAR#1`` becomes ``PAR1``.
+
+Chromosome names are checked against, and their accessions taken from, the
+assembly data already in bioutils, so no accession is hardcoded. The output is
+a flat JSON document in the style of ``_data/assemblies``: provenance fields
+(``assembly``, ``refseq_ac``, ``accessions``, ``coordinates``, ``source``,
+``source_url``) at the top level beside ``regions``.
+
+Usage::
+
+  ./sbin/ncbi-par-to-json GRCh38.p14 GCF_000001405.40_GRCh38.p14_assembly_regions.txt \
+      | gzip -c >src/bioutils/_data/par/GRCh38.json.gz
+"""
+
+import json
+import sys
+from pathlib import Path
+
+from bioutils.assemblies import get_assembly, make_name_ac_map
+
+COORDINATES = "interbase (0-based, left-closed, right-open)"
+
+# Column indices in assembly_regions.txt.
+REGION_NAME, CHROMOSOME, START, STOP, ROLE = range(5)
+
+
+def source_url(refseq_ac: str, assembly_name: str) -> str:
+    """NCBI FTP location of ``assembly_regions.txt`` for an assembly, from its RefSeq accession."""
+    # GCF_000001405.40 -> 000001405 -> 000/001/405
+    digits = refseq_ac.split("_", maxsplit=1)[1].split(".", maxsplit=1)[0]
+    path = "/".join(digits[i : i + 3] for i in range(0, 9, 3))
+    stem = f"{refseq_ac}_{assembly_name}"
+    return f"https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/{path}/{stem}/{stem}_assembly_regions.txt"
+
+
+def parse_par_regions(fn):
+    """Yield ``(label, chrom, start, end)`` per PAR row, 1-based inclusive."""
+    with Path(fn).open(encoding="utf-8") as fh:
+        for line in fh:
+            if line.startswith("#") or not line.strip():
+                continue
+            fields = line.rstrip("\n").split("\t")
+            if fields[ROLE] != "PAR":
+                continue
+            label = fields[REGION_NAME].replace("#", "")
+            if not label.startswith("PAR"):
+                msg = f"unexpected PAR region name in: {line!r}"
+                raise ValueError(msg)
+            yield (label, fields[CHROMOSOME], int(fields[START]), int(fields[STOP]))
+
+
+def main(assembly_name, regions_fn):
+    assembly = get_assembly(assembly_name)
+    name_ac_map = make_name_ac_map(assembly_name, primary_only=True)
+
+    # Convert 1-based inclusive [start, end] to interbase [start - 1, end].
+    regions = {}
+    accessions = {}
+    for label, chrom, start, end in parse_par_regions(regions_fn):
+        if chrom not in name_ac_map:
+            msg = f"chromosome {chrom!r} not in assembly {assembly_name}"
+            raise ValueError(msg)
+        if label in regions.setdefault(chrom, {}):
+            msg = f"duplicate region {label} on {chrom}"
+            raise ValueError(msg)
+        regions[chrom][label] = [start - 1, end]
+        accessions[chrom] = name_ac_map[chrom]
+    if not regions:
+        msg = f"no PAR rows in {regions_fn}"
+        raise ValueError(msg)
+
+    # Flat document in the style of _data/assemblies: provenance fields at the
+    # top level beside the data key.
+    doc = {
+        "assembly": assembly_name,
+        "refseq_ac": assembly["refseq_ac"],
+        "accessions": accessions,
+        "coordinates": COORDINATES,
+        "source": "NCBI assembly_regions.txt (1-based inclusive, converted)",
+        "source_url": source_url(assembly["refseq_ac"], assembly_name),
+        "regions": regions,
+    }
+    json.dump(doc, sys.stdout, indent=2, sort_keys=True)
+    sys.stdout.write("\n")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])
