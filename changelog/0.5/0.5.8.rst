@@ -1,0 +1,28 @@
+
+HEAD (2023-07-09)
+##################
+
+Changes since 0.5.7 (2022-07-08).
+
+New Features
+$$$$$$$$$$$$$
+
+* update assemblies and add T2T-CHM13v2.0 [`19ebeff <https://github.com/biocommons/bioutils/commit/19ebeff>`_] (Reece Hart)
+
+Other Changes
+$$$$$$$$$$$$$$
+
+* `#47 <https://github.com/biocommons/bioutils/issues/47/>`_ Rewrite trim_left and trim_right for linear performance. [`7817f6a <https://github.com/biocommons/bioutils/commit/7817f6a>`_] (Kyle Ferriter)
+* Handle case when no alleles are passed to trim functions [`eb8607a <https://github.com/biocommons/bioutils/commit/eb8607a>`_] (Kyle Ferriter)
+* Merge pull request #48 from theferrit32/47-large-seq-normalization [`5b3a80c <https://github.com/biocommons/bioutils/commit/5b3a80c>`_] (Reece Hart)
+* Merge pull request #49 from theferrit32/46-test-vcr-compilation [`271ad81 <https://github.com/biocommons/bioutils/commit/271ad81>`_] (Reece Hart)
+
+Internal and Developer Changes
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+* Pin urllib3 version that vcrpy dependency depends on [`9ddda27 <https://github.com/biocommons/bioutils/commit/9ddda27>`_] (Kyle Ferriter)
+* pin urllib3 to 1.26.* (rather than to specific patch version) [`b60b890 <https://github.com/biocommons/bioutils/commit/b60b890>`_] (Reece Hart)
+* add CODEOWNERS file [`eef120d <https://github.com/biocommons/bioutils/commit/eef120d>`_] (Reece Hart)
+* updated CONTRIBUTORS.txt [`8741a5f <https://github.com/biocommons/bioutils/commit/8741a5f>`_] (Reece Hart)
+* reformatted with black and isort [`3305c0e <https://github.com/biocommons/bioutils/commit/3305c0e>`_] (Reece Hart)
+* Close `#50 <https://github.com/biocommons/bioutils/issues/50/>`_: synchronize biocommonsexample with bioutils [`5a1788c <https://github.com/biocommons/bioutils/commit/5a1788c>`_] (Reece Hart)

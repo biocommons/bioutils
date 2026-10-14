@@ -1,0 +1,5 @@
+clog format: 1; -*-outline-*-
+* 0.5.4 (2021-05-02)
+Changes since 0.5.3 (2021-04-14).
+** Internal and Developer Changes
+*** #31: improve support for degenerate codons [ebcec67] (kayleeyuhas)
