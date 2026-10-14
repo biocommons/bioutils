@@ -8,7 +8,6 @@ import vcr
 from bioutils.seqfetcher import (
     _add_eutils_api_key,
     _fetch_seq_ncbi,
-    _redact_api_key_from_url,
     enst_default_seq_type,
     fetch_seq,
 )
@@ -98,27 +97,6 @@ def test_add_eutils_api_key():
             pass
 
 
-@pytest.mark.parametrize(
-    ("query", "redacted_query"),
-    [
-        ("?api_key=test-api-key", "?api_key=[REDACTED]"),
-        ("?db=protein&api_key=test-api-key", "?db=protein&api_key=[REDACTED]"),
-        ("?api_key=test-api-key&db=protein", "?api_key=[REDACTED]&db=protein"),
-        (
-            "?api_key=first-key&api_key=second-key",
-            "?api_key=[REDACTED]&api_key=[REDACTED]",
-        ),
-        ("?api_key=test%2Bapi%26key#fragment", "?api_key=[REDACTED]#fragment"),
-        ("?api_key=&db=protein", "?api_key=&db=protein"),
-        ("?db=protein", "?db=protein"),
-        ("", ""),
-    ],
-)
-def test_redact_api_key_from_url(query, redacted_query):
-    url = "https://example.com/efetch"
-    assert _redact_api_key_from_url(url + query) == url + redacted_query
-
-
 @pytest.mark.parametrize("api_key", [None, "test-api-key"])
 def test_fetch_seq_ncbi_retry_logging(api_key, caplog, monkeypatch):
     if api_key:
@@ -138,7 +116,8 @@ def test_fetch_seq_ncbi_retry_logging(api_key, caplog, monkeypatch):
     if api_key:
         assert url.endswith("&api_key=" + api_key)
         assert api_key not in caplog.text
-        assert "Failed to fetch " + url.replace(api_key, "[REDACTED]") in caplog.text
+        assert "api_key=" not in caplog.text
+        assert "Failed to fetch " + url.split("&api_key=")[0] in caplog.text
     else:
         assert "api_key=" not in url
         assert "Failed to fetch " + url in caplog.text

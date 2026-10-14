@@ -98,11 +98,6 @@ def fetch_seq(ac, start_i=None, end_i=None, **rest):
 # Internal functions
 
 
-def _redact_api_key_from_url(url: str) -> str:
-    """Redact api_key parameter values from a URL for safe logging."""
-    return re.sub(r"([&?]api_key=)[^&#]+", r"\1[REDACTED]", url)
-
-
 def _fetch_seq_ensembl(ac, start_i=None, end_i=None, seq_type=None):
     """Fetch sequence slice from Ensembl public REST interface.
 
@@ -230,6 +225,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     url += "&tool={tool}&email={email}".format(tool=ncbi_tool, email=ncbi_email)
 
+    log_url = url
     url = _add_eutils_api_key(url)
 
     n_retries = 0
@@ -247,7 +243,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         if n_retries >= retry_limit:
             break
         if n_retries == 0:
-            _logger.warning("Failed to fetch %s", _redact_api_key_from_url(url))
+            _logger.warning("Failed to fetch %s", log_url)
         sleeptime = random.randint(n_retries, 3) ** n_retries
         _logger.warning("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
         time.sleep(sleeptime)
