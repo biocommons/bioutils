@@ -1,10 +1,16 @@
 import multiprocessing
 import os
+from unittest.mock import Mock
 
 import pytest
 import vcr
 
-from bioutils.seqfetcher import _add_eutils_api_key, _fetch_seq_ncbi, fetch_seq, enst_default_seq_type
+from bioutils.seqfetcher import (
+    _add_eutils_api_key,
+    _fetch_seq_ncbi,
+    enst_default_seq_type,
+    fetch_seq,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -89,6 +95,34 @@ def test_add_eutils_api_key():
             os.environ.pop("NCBI_API_KEY")
         except KeyError:
             pass
+
+
+@pytest.mark.parametrize("api_key", [None, "test-api-key"])
+def test_fetch_seq_ncbi_retry_logging(api_key, caplog, monkeypatch):
+    if api_key:
+        monkeypatch.setenv("NCBI_API_KEY", api_key)
+    failed_response = Mock(ok=False, status_code=500)
+    successful_response = Mock(ok=True, text=">NP_056374.2\nMESRETLSSS\n")
+    get = Mock(side_effect=[failed_response, successful_response])
+    sleep = Mock()
+    monkeypatch.setattr("bioutils.seqfetcher.requests.get", get)
+    monkeypatch.setattr("bioutils.seqfetcher.time.sleep", sleep)
+
+    assert _fetch_seq_ncbi("NP_056374.2", 0, 10) == "MESRETLSSS"
+
+    url = get.call_args_list[0].args[0]
+    assert get.call_args_list[1].args[0] == url
+    assert "db=protein&id=NP_056374.2&rettype=fasta&seq_start=1&seq_stop=10" in url
+    if api_key:
+        assert url.endswith("&api_key=" + api_key)
+        assert api_key not in caplog.text
+        assert "api_key=" not in caplog.text
+        assert "Failed to fetch " + url.split("&api_key=")[0] in caplog.text
+    else:
+        assert "api_key=" not in url
+        assert "Failed to fetch " + url in caplog.text
+    assert "Failure 0/3; retry in 1 seconds" in caplog.text
+    sleep.assert_called_once_with(1)
 
 
 @vcr.use_cassette

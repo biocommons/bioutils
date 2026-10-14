@@ -225,6 +225,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
 
     url += "&tool={tool}&email={email}".format(tool=ncbi_tool, email=ncbi_email)
 
+    log_url = url
     url = _add_eutils_api_key(url)
 
     n_retries = 0
@@ -242,7 +243,7 @@ def _fetch_seq_ncbi(ac, start_i=None, end_i=None):
         if n_retries >= retry_limit:
             break
         if n_retries == 0:
-            _logger.warning("Failed to fetch {}".format(url))
+            _logger.warning("Failed to fetch %s", log_url)
         sleeptime = random.randint(n_retries, 3) ** n_retries
         _logger.warning("Failure {}/{}; retry in {} seconds".format(n_retries, retry_limit, sleeptime))
         time.sleep(sleeptime)
