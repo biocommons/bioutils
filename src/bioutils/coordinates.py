@@ -40,7 +40,7 @@ def strand_pm_to_int(s):
     """Converts '+' and '-' to 1 and -1, respectively.
 
     Args:
-        s (string)
+        s (str): The strand as '+' or '-'.
 
     Returns:
         int: 1 if s == '+', -1 if s == '-', otherwise None.
@@ -59,7 +59,7 @@ def strand_int_to_pm(i):
     """Converts 1 and -1 to '+' and '-' respectively.
 
     Args:
-        i (int)
+        i (int): The strand as 1 or -1.
 
     Returns:
         str: '+' if i == 1, '-' if i == -1, otherwise None.
