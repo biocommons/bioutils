@@ -68,7 +68,7 @@ keywords = [
 license = "Apache-2.0"
 name = "bioutils"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 
 [project.urls]
 Changelog = "https://github.com/biocommons/bioutils/releases"
