@@ -10,12 +10,12 @@ dev = [
   "mkdocs>=1.6",
   "mkdocstrings[python]>=0.30",
   "mypy>=1.17",
+  "nox>=2026.8.17",
   "pre-commit>=3.8",
   "pytest-cov>=4.1",
   "pytest>=7.4",
   "ruff>=0.12",
-  "tox-uv>=1.28",
-  "vcrpy"
+  "vcrpy",
 ]
 
 [project]
@@ -96,7 +96,6 @@ pytest = "pytest"
 pytest-cov = "pytest_cov"
 pyyaml = "yaml"
 ruff = "ruff"
-tox-uv = "tox_uv"
 ty = "ty"
 
 [tool.pytest.ini_options]

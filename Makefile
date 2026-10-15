@@ -54,6 +54,10 @@ test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
 	uv run pytest --cov=. --cov-report=xml
 
+.PHONY: test-matrix
+test-matrix: ## Test with each supported Python version (via nox)
+	uv run nox
+
 # to be incorporated
 # test-learn:
 #	VCR_RECORD_MODE=new_episodes pytest -x
