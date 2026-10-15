@@ -87,19 +87,19 @@ docs-test: ## Test if documentation can be built without warnings or errors
 ############################################################################
 #= UTILITIES
 
-.PHONY: outdated-packages
-outdated-packages: ## List outdated packages
-	$(call INFO_MESSAGE, "Listing outdated packages")
+.PHONY: show-outdated-deps
+show-outdated-deps: ## List outdated dependencies
+	$(call INFO_MESSAGE, "Listing outdated dependencies")
 	uv pip list --outdated
 
-.PHONY: upgrade-packages
-upgrade-packages: ## Upgrade installed packages
-	$(call INFO_MESSAGE, "Upgrading packages")
+.PHONY: upgrade-deps
+upgrade-deps: ## Upgrade installed dependencies
+	$(call INFO_MESSAGE, "Upgrading dependencies")
 	uv lock --upgrade
 
-.PHONY: bump-packages
-bump-packages: ## Bumping versions of installed
-	$(call INFO_MESSAGE, "Bumping version")
+.PHONY: bump-deps
+bump-deps: ## Bumping versions of installed dependencies
+	$(call INFO_MESSAGE, "Bumping dependency versions")
 	uv-bump
 
 ############################################################################
