@@ -2,15 +2,17 @@
 *.bak
 *.cover
 *.egg
+*.egg-info
 *.egg-info/
+*.enc
 *.log
 *.manifest
 *.mo
 *.orig
 *.pot
 *.py.cover
-*.py[cod]
 *.py[codz]
+*.rej
 *.sage.py
 *.so
 *.spec
@@ -21,6 +23,7 @@
 .Python
 .abstra/
 .cache
+.claude/
 .coverage
 .coverage.*
 .cursorignore
@@ -33,6 +36,7 @@
 .idea
 .installed.cfg
 .ipynb_checkpoints
+.keys
 .mypy_cache/
 .nox/
 .pdm-build/
@@ -50,6 +54,8 @@
 .scrapy
 .spyderproject
 .spyproject
+.tags
+.tags.mk
 .tox/
 .venv
 .vscode
@@ -61,7 +67,9 @@ __marimo__/
 __pycache__/
 __pypackages__/
 archive
+bdist
 bioutils/_data/assemblies/pull
+build
 build/
 celerybeat-schedule
 celerybeat.pid
@@ -71,7 +79,10 @@ cython_debug/
 develop-eggs/
 dist/
 dmypy.json
+doc*/changelog/*/.tags
+doc*/changelog/*/.tags.mk
 doc/_build
+doc/build
 doc/changelog/*/.tags
 doc/changelog/*/.tags.mk
 doc/changelog/*/hg-git-remap.pl
@@ -98,6 +109,7 @@ profile_default/
 sdist/
 share/python-wheels/
 target/
+tmp/
 var/
 venv.bak/
 venv/

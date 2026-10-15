@@ -1,21 +1,34 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools >= 70.1", "setuptools_scm[toml] ~= 8.1"]
+requires = ["setuptools ~= 84.0.0", "setuptools_scm[toml] ~= 10.3.4"]
 
 [dependency-groups]
 dev = [
-  "deptry>=0.23",
-  "mkdocs-awesome-nav>=3.1.2",
-  "mkdocs-material>=9.6",
-  "mkdocs>=1.6",
-  "mkdocstrings[python]>=0.30",
-  "mypy>=1.17",
+  # code quality & formatting
+  "deptry>=0.25.1",
+  "mypy>=2.4.0",
   "nox>=2026.8.17",
-  "pre-commit>=3.8",
-  "pytest-cov>=4.1",
-  "pytest>=7.4",
-  "ruff>=0.12",
-  "vcrpy",
+  "prek>=0.5.5",
+  "ruff>=0.17.0",
+  "toml-sort>=0.25.0",
+  "uv-bump>=0.6.0",
+
+  # testing
+  "pytest>=9.1.1",
+  "pytest-cov>=7.1.0",
+  "pytest-recording>=0.14.0",
+  "tox-uv>=1.37.0",
+  "vcrpy>=8.3.0",
+
+  # documentation
+  "mkdocs>=1.6.1",
+  "mkdocs-awesome-nav>=3.3.0",
+  "mkdocs-material>=9.7.7",
+  "mkdocstrings[python]>=1.0.7",
+
+  # misc dev tools
+  "ipython>=9.17.1",
+  "jupyter>=1.1.1",
 ]
 
 [project]
@@ -23,7 +36,9 @@ authors = [
   {email = "biocommons-dev@googlegroups.com", name = "biocommons contributors"}
 ]
 classifiers = [
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -31,6 +46,8 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: 3.15",
   "Programming Language :: Python",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
@@ -40,10 +57,12 @@ dependencies = [
 description = "miscellaneous simple bioinformatics utilities and lookup tables"
 dynamic = ["version"]
 keywords = [
-  "HGVS",
   "biocommons",
   "bioinformatics",
+  "computational biology",
+  "genome variation",
   "genomics",
+  "hgvs",
   "variation"
 ]
 license = "Apache-2.0"
@@ -52,6 +71,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 
 [project.urls]
+Changelog = "https://github.com/biocommons/bioutils/releases"
 Documentation = "https://biocommons.github.io/bioutils/"
 Homepage = "https://github.com/biocommons/bioutils"
 Issues = "https://github.com/biocommons/bioutils/issues"
@@ -78,7 +98,11 @@ skip_empty = true
 
 [tool.coverage.run]
 branch = true
-omit = ["*/test/*", "*/tests/*", "*_test.py"]
+omit = [
+  "*_test.py",
+  "*/test/*",
+  "*/tests/*",
+]
 source = ["src"]
 
 [tool.deptry]
@@ -91,7 +115,6 @@ mkdocs = "mkdocs"
 mkdocs-material = "mkdocs_material"
 mkdocstrings = "mkdocstrings"
 mypy = "mypy"
-pre-commit = "pre_commit"
 pytest = "pytest"
 pytest-cov = "pytest_cov"
 pyyaml = "yaml"
@@ -114,10 +137,9 @@ markers = [
 testpaths = ["tests"]
 
 [tool.ruff]
-fix = true
 line-length = 100
 src = ["src", "tests"]
-target-version = "py39"
+target-version = "py314"
 
 [tool.ruff.format]
 docstring-code-format = true

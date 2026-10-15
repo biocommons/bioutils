@@ -5,6 +5,7 @@ copyright: Maintained by <a href="https://biocommons.com">biocommons</a>.
 
 plugins:
   - search
+  - awesome-nav
   - mkdocstrings:
       handlers:
         python:
@@ -12,7 +13,6 @@ plugins:
             docstring_options:
               returns_named_value: false
             show_source: false
-  - awesome-nav
 theme:
   name: material
   feature:
