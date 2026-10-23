@@ -1,10 +1,15 @@
 site_name: bioutils
 repo_url: https://github.com/biocommons/bioutils
 site_url: https://biocommons.github.io/bioutils
+site_description: miscellaneous simple bioinformatics utilities and lookup tables
+site_author: Biocommons Contributors
+edit_uri: edit/main/docs/
+repo_name: biocommons/bioutils
 copyright: Maintained by <a href="https://biocommons.com">biocommons</a>.
 
 plugins:
   - search
+  - awesome-nav
   - mkdocstrings:
       handlers:
         python:
@@ -12,7 +17,6 @@ plugins:
             docstring_options:
               returns_named_value: false
             show_source: false
-  - awesome-nav
 theme:
   name: material
   feature:
