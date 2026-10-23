@@ -19,7 +19,9 @@ Attributes:
     LEFTSHUFFLE: Normalize alleles to maximal extent left.
     RIGHTSHUFFLE: Normalize alleles to maximal extent right.
     TRIMONLY: Only trim the common prefix and suffix of alleles. Deprecated -- use `mode=None` with `trim=True` instead.
-    VCF: Normalize with VCF.
+    VCF: Normalize as in VCF: trim, shuffle left and, only when the reference or an alternate
+        allele would otherwise be empty, prepend the base before the variant (or append the
+        base after it when the variant starts at the first position).
 """
 
 
@@ -88,14 +90,13 @@ def normalize(
     if mode is not None and not isinstance(mode, NormalizationMode):
         mode = NormalizationMode[mode]  # e.g., mode="LEFTSHUFFLE" OK
 
-    if mode == NormalizationMode.VCF:
+    vcf = mode == NormalizationMode.VCF
+    if vcf:
         if anchor_length:
             raise ValueError("May not provide non-zero anchor size with VCF normalization mode")
         if not trim:
             raise ValueError("May not disable trimming with VCF normalization mode")
         mode = NormalizationMode.LEFTSHUFFLE
-        left_anchor = 1
-        right_anchor = 0
 
     if alleles[0] is not None:
         raise ValueError("First allele, the reference allele, must be None")
@@ -168,6 +169,15 @@ def normalize(
             alleles=alleles,
             comment=f"After mode: {mode}",
         )
+
+    if vcf and not all(alleles):
+        # VCF requires a padding base only when the REF or an ALT allele would
+        # otherwise be empty: the base before the variant, or the base after it
+        # when the variant starts at the first position of the sequence.
+        if interval.start > bounds.start:
+            left_anchor = 1
+        else:
+            right_anchor = 1
 
     # Add left and/or right flanking sequence
     if left_anchor or right_anchor:
