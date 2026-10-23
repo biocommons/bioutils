@@ -61,10 +61,11 @@ test: ## Test the code with pytest
 .PHONY: test-coverage
 test-coverage: ## Test the code with pytest and generate coverage report
 	@echo "🚀 Testing code: Running pytest with coverage"
-	uv run pytest --cov=src --cov-report=term-missing
+	uv run pytest --cov --cov-report=term-missing --cov-report=xml
 
 .PHONY: test-matrix
 test-matrix: ## Test with each supported Python version (via nox)
+	@echo "🚀 Testing code: Testing supported versions with nox"
 	uv run nox
 
 # to be incorporated
@@ -83,6 +84,11 @@ docs-serve: ## Build and serve the documentation
 docs-test: ## Test if documentation can be built without warnings or errors
 	$(call INFO_MESSAGE, "Testing whether docs can be build")
 	uv run mkdocs build -s
+
+.PHONY: docs-deploy
+docs-deploy: ## Deploy documentation to GitHub Pages
+	$(call INFO_MESSAGE, "Deploying docs to GitHub Pages")
+	uv run mkdocs gh-deploy --force
 
 ############################################################################
 #= UTILITIES
@@ -121,7 +127,7 @@ cleaner: clean  ## Remove files and directories that are easily rebuilt
 .PHONY: cleanest
 cleanest: cleaner  ## Remove files and directories that can be rebuilt
 	$(call INFO_MESSAGE, "Remove files and directories that can be rebuilt")
-	rm -frv .eggs .tox .venv venv
+	rm -frv .eggs .nox .venv venv
 
 .PHONY: distclean
 distclean: cleanest  ## Remove untracked files and other detritus

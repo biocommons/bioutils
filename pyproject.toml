@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools ~= 84.0.0", "setuptools_scm[toml] ~= 10.3.4"]
+requires = ["setuptools >= 80.0", "setuptools_scm[toml] >= 9.0"]
 
 [dependency-groups]
 dev = [
@@ -17,7 +17,6 @@ dev = [
   "pytest>=9.1.1",
   "pytest-cov>=7.1.0",
   "pytest-recording>=0.14.0",
-  "tox-uv>=1.37.0",
   "vcrpy>=8.3.0",
 
   # documentation
@@ -47,9 +46,9 @@ classifiers = [
   "Programming Language :: Python :: 3.15",
   "Programming Language :: Python",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
-  "Topic :: Scientific/Engineering :: Medical Science Apps.",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
+# mandatory runtime dependencies only
 dependencies = [
   "attrs",
   "requests"
@@ -57,12 +56,10 @@ dependencies = [
 description = "miscellaneous simple bioinformatics utilities and lookup tables"
 dynamic = ["version"]
 keywords = [
+  "HGVS",
   "biocommons",
   "bioinformatics",
-  "computational biology",
-  "genome variation",
   "genomics",
-  "hgvs",
   "variation"
 ]
 license = "Apache-2.0"
@@ -73,9 +70,11 @@ requires-python = ">=3.11"
 [project.urls]
 Changelog = "https://github.com/biocommons/bioutils/releases"
 Documentation = "https://biocommons.github.io/bioutils/"
-Homepage = "https://github.com/biocommons/bioutils"
-Issues = "https://github.com/biocommons/bioutils/issues"
-Repository = "https://github.com/biocommons/bioutils"
+Homepage = "https://github.com/biocommons/bioutils/"
+Issues = "https://github.com/biocommons/bioutils/issues/"
+Repository = "https://github.com/biocommons/bioutils/"
+
+[tool.coverage]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -122,7 +121,7 @@ ruff = "ruff"
 ty = "ty"
 
 [tool.pytest.ini_options]
-addopts = "-s -v -x --strict-markers -m 'not extra' --doctest-modules --cov=src"
+addopts = "--doctest-modules"
 doctest_optionflags = [
   "ALLOW_BYTES",
   "ALLOW_UNICODE",
@@ -131,15 +130,18 @@ doctest_optionflags = [
   "NORMALIZE_WHITESPACE"
 ]
 markers = [
+  "extra: optional tests; deselect with -m 'not extra'",
   "network: tests that require network connectivity",
   "slow: slow tests that should be run infrequently"
 ]
+strict_markers = true
+# src doctests not collected: seqfetcher.fetch_seq doctest needs network
 testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
 src = ["src", "tests"]
-target-version = "py314"
+target-version = "py311"
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -170,9 +172,12 @@ ignore = [
   "E117",
   "E501",
   "E731",
+  "N801",
+  "N802",
   "PLR0913",
+  "RET504",
   "S321",
-  "W191"
+  "W191",
 ]
 select = [
   "A", # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
@@ -203,11 +208,16 @@ select = [
   "YTT" # https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
 ]
 
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/**/*.py" = [
+  "PLR2004", # Magic value used in comparison
+  "S101", # Use of `assert` detected
+]
 
 [tool.setuptools]
 include-package-data = true
+package-dir = {"" = "src"}
+zip-safe = true
 
 [tool.setuptools.package-data]
 "*" = ["_data/*/*.json.gz"]

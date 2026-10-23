@@ -112,6 +112,28 @@ def test_error_ref_allele():
         normalize_trim(interval=(22, 25), alleles=("foo", "AGC"))
 
 
+def test_vcf():
+    """VCF mode: left-shuffle, trim, and pad with a base only when an allele would be empty."""
+    # Both alleles are non-empty after trimming (SNV, MNV, delins): no padding base
+    assert ((22, 23), ("A", "T")) == normalize_vcf(interval=(22, 23), alleles=(None, "T"))
+    assert ((22, 24), ("AG", "TT")) == normalize_vcf(interval=(22, 24), alleles=(None, "TT"))
+    assert ((22, 24), ("AG", "T")) == normalize_vcf(interval=(22, 24), alleles=(None, "T"))
+    assert ((22, 25), ("AGC", "T", "TT")) == normalize_vcf(
+        interval=(22, 25), alleles=(None, "T", "TT")
+    )
+
+    # An empty allele (insertion, deletion) needs the base before the variant
+    assert ((21, 22), ("C", "CT")) == normalize_vcf(interval=(22, 22), alleles=(None, "T"))
+    assert ((21, 24), ("CAG", "C")) == normalize_vcf(interval=(22, 24), alleles=(None, ""))
+    assert ((21, 25), ("CAGC", "CA", "C")) == normalize_vcf(
+        interval=(22, 25), alleles=(None, "A", "")
+    )
+
+    # At the first position there is no base before the variant, so the base after it is used
+    assert ((0, 1), ("C", "TC")) == normalize_vcf(interval=(0, 0), alleles=(None, "T"))
+    assert ((0, 3), ("CCC", "C")) == normalize_vcf(interval=(0, 2), alleles=(None, ""))
+
+
 def test_error_vcf_mode_no_trim():
     """Should raise error when mode=VCF, trim=False."""
     with pytest.raises(ValueError) as exc_info:
