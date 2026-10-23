@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '1 1 * * *'
 
+permissions:
+  contents: read
+
 jobs:
   stale:
     uses: biocommons/.github/.github/workflows/stale.yml@1
