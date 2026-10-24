@@ -1,0 +1,12 @@
+clog format: 1; -*-outline-*-
+* 0.5.6 (2022-06-09)
+Changes since 0.5.5 (2021-05-05).
+** Bug Fixes
+*** fix #36 by adding a new translation table ... (#37) [b5d4d0f] (Andreas Prlic)
+*** Fix test warnings and a new failure from #36 [22b5556] (Reece Hart)
+** New Features
+*** Handle Ensembl transcript versions [b3eaf83] (Dave Lawrence)
+** Internal and Developer Changes
+*** Update Makefile to support newer bioutils conventions [ed6eaf6] (Reece Hart)
+*** Adopt GitHub Actions for testing and deployment [35c6a7f] (Reece Hart)
+*** Switch to Python 3.10 by default [5895087] (Reece Hart)

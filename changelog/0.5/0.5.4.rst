@@ -1,0 +1,10 @@
+
+0.5.4 (2021-05-02)
+###################
+
+Changes since 0.5.3 (2021-04-14).
+
+Internal and Developer Changes
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+* `#31 <https://github.com/biocommons/bioutils/issues/31/>`_: improve support for degenerate codons [`ebcec67 <https://github.com/biocommons/bioutils/commit/ebcec67>`_] (kayleeyuhas)

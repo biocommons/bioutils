@@ -1,0 +1,10 @@
+
+0.5.7 (2022-06-13)
+###################
+
+Changes since 0.5.6 (2022-06-09).
+
+New Features
+$$$$$$$$$$$$$
+
+* Enable independent control of trimming and shuffling during normalization [`203ef4e <https://github.com/biocommons/bioutils/commit/203ef4e>`_] (Ryan Gomoto)

@@ -1,0 +1,18 @@
+
+0.5.2 (2019-11-06)
+###################
+
+Changes since 0.5.1 (2019-07-31).
+
+Special Attention
+$$$$$$$$$$$$$$$$$$
+
+* Thanks to @trentwatt for significant documentation contributions!  See
+https://bioutils.readthedocs.io/en/master/ for his handiwork.
+
+Other Changes
+$$$$$$$$$$$$$$
+
+* Added changelogs for 0.5.0 and 0.5.1, which @reece forgot to include :-(
+* `#22 <https://github.com/biocommons/bioutils/issues/22/>`_ added function docs for all modules [`c0090ed <https://github.com/biocommons/bioutils/commit/c0090ed>`_] (trentwatt)
+* `#23 <https://github.com/biocommons/bioutils/issues/23/>`_: fix setup.cfg description tags (`description` → `long-description`) [`8945c04 <https://github.com/biocommons/bioutils/commit/8945c04>`_] (Reece Hart)

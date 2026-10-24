@@ -1,0 +1,10 @@
+
+0.5.5 (2021-05-03)
+###################
+
+Changes since 0.5.4 (2021-05-02).
+
+Bug Fixes
+$$$$$$$$$$
+
+* Don't retry sequence fetch with invalid coordinates [`94e80cd <https://github.com/biocommons/bioutils/commit/94e80cd>`_] (pjcoenen)

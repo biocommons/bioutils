@@ -1,0 +1,12 @@
+clog format: 1; -*-outline-*-
+* 0.4.0 (2018-10-22)
+Changes since 0.3.3 (2017-09-03).
+** Important Notice
+Support for Python <3.6 will be dropped on 2019-03-31. See
+https://github.com/biocommons/org/wiki/Migrating-to-Python-3.6
+** New Features
+*** Closes #10: Support NCBI API keys (and NCBI_API_KEY env variable) [8739c98] (@timothyjlaurent)
+*** Closes #12: add infer_namespaces and infer_namespace functions [2a53c7f]
+*** Dropped biopython dependency [0382b86] (@afrubin)
+*** Added bioutils.sequences.py:elide_sequence() function [018a762]
+*** Added GRCh38.p12 [3876f36]
