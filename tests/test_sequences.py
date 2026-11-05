@@ -1,6 +1,6 @@
 import pytest
 
-from bioutils.sequences import TranslationTable, translate_cds
+from bioutils.sequences import TranslationTable, complement, reverse_complement, translate_cds
 
 
 def test_translate_examples():
@@ -59,3 +59,21 @@ def test_translate_vertebrate_mitochondrial():
 
     with pytest.raises(ValueError):
         translate_cds("ATAAG", translation_table=TranslationTable.vertebrate_mitochondrial)
+
+
+def test_complement():
+    assert complement("ACGT") == "TGCA"
+    assert complement("RYKMBVDH") == "YRMKVBHD"
+    assert complement("SWN") == "SWN"
+    assert complement("acgtrykmbvdhswn") == "tgcayrmkvbhdswn"
+    assert complement("AcGt") == "TgCa"
+    assert complement("A-C*") == "T-G*"
+    assert complement("") == ""
+    assert complement(None) is None
+
+
+def test_reverse_complement():
+    assert reverse_complement("ATCG") == "CGAT"
+    assert reverse_complement("GY") == "RC"
+    assert reverse_complement("ARTD") == "HAYT"
+    assert reverse_complement(None) is None
