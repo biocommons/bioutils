@@ -233,7 +233,18 @@ dna_to_aa1_vmito["ATA"] = "M"
 dna_to_aa1_vmito["TGA"] = "W"
 
 
-complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
+# Complements of the IUPAC nucleotide codes (https://www.bioinformatics.org/sms/iupac.html).
+# Applied in both cases; other characters pass through unchanged.
+_IUPAC_COMPLEMENT = {
+    "A": "T", "C": "G", "G": "C", "T": "A",
+    "R": "Y", "Y": "R", "K": "M", "M": "K",
+    "B": "V", "V": "B", "D": "H", "H": "D",
+    "S": "S", "W": "W", "N": "N",
+}  # fmt: skip
+complement_transtable = bytes.maketrans(
+    "".join(b + b.lower() for b in _IUPAC_COMPLEMENT).encode(),
+    "".join(c + c.lower() for c in _IUPAC_COMPLEMENT.values()).encode(),
+)
 
 
 def aa_to_aa1(seq):
@@ -339,6 +350,9 @@ def aa3_to_aa1(seq):
 def complement(seq):
     """Retrieves the complement of a sequence.
 
+    IUPAC ambiguity codes are complemented, and case is preserved. Other characters are
+    returned unchanged.
+
     Args:
         seq (str): A nucleotide sequence.
 
@@ -348,6 +362,12 @@ def complement(seq):
     Examples:
         >>> complement("ATCG")
         'TAGC'
+
+        >>> complement("ATRY")
+        'TAYR'
+
+        >>> complement("atcg")
+        'tagc'
 
         >>> complement(None)
     """
