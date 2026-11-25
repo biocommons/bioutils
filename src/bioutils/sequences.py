@@ -233,17 +233,11 @@ dna_to_aa1_vmito["ATA"] = "M"
 dna_to_aa1_vmito["TGA"] = "W"
 
 
-# IUPAC nucleotide codes (https://www.bioinformatics.org/sms/iupac.html); applied in both cases
-iupac_complement_lut = {
-    "A": "T", "C": "G", "G": "C", "T": "A",
-    "R": "Y", "Y": "R", "K": "M", "M": "K",
-    "B": "V", "V": "B", "D": "H", "H": "D",
-    "S": "S", "W": "W", "N": "N",
-}  # fmt: skip
-_bases = "".join(iupac_complement_lut)
-_complements = "".join(iupac_complement_lut.values())
+# Complements of the IUPAC nucleotide codes (https://www.bioinformatics.org/sms/iupac.html),
+# in both cases. S, W and N are their own complements; other characters pass through.
 complement_transtable = bytes.maketrans(
-    (_bases + _bases.lower()).encode(), (_complements + _complements.lower()).encode()
+    b"ACGTRYKMBVDHSWNacgtrykmbvdhswn",
+    b"TGCAYRMKVBHDSWNtgcayrmkvbhdswn",
 )
 
 
