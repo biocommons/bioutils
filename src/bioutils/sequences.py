@@ -222,6 +222,7 @@ dna_to_aa1_lut = {  # NCBI standard translation table
 # translation table for selenocysteine
 dna_to_aa1_sec = dna_to_aa1_lut.copy()
 dna_to_aa1_sec["TGA"] = "U"
+del dna_to_aa1_sec["TRA"]
 
 # Vertebrate micochondrial translation table
 # https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=tgencodes#SG2
@@ -229,8 +230,18 @@ dna_to_aa1_sec["TGA"] = "U"
 dna_to_aa1_vmito = dna_to_aa1_lut.copy()
 dna_to_aa1_vmito["AGA"] = "*"
 dna_to_aa1_vmito["AGG"] = "*"
+dna_to_aa1_vmito["AGR"] = "*"
 dna_to_aa1_vmito["ATA"] = "M"
+dna_to_aa1_vmito["ATR"] = "M"
 dna_to_aa1_vmito["TGA"] = "W"
+dna_to_aa1_vmito["TGR"] = "W"
+del dna_to_aa1_vmito["ATH"]
+del dna_to_aa1_vmito["ATM"]
+del dna_to_aa1_vmito["ATW"]
+del dna_to_aa1_vmito["MGA"]
+del dna_to_aa1_vmito["MGG"]
+del dna_to_aa1_vmito["MGR"]
+del dna_to_aa1_vmito["TRA"]
 
 
 complement_transtable = bytes.maketrans(b"ACGT", b"TGCA")
